@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				<class name="PickEN" table="Pick"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Odd" type="double"> 
+						<column name="odd"  not-null="true"/>
+					</property>
+					<property name="Description" type="string"> 
+						<column name="description"  not-null="true"/>
+					</property>
+					<property name="PickResult" > 
+						<column name="pickResult"  not-null="true"/>
+					</property>
+					<property name="Bookie" type="string"> 
+						<column name="bookie"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Post" table="[pick_post]"  >
+							<key>
+								
+									<column name="FK_id_idPick"/> 
+							</key>
+      						<many-to-many class="PickadosGenNHibernate.EN.Pickados.PostEN">
+									<column name="FK_id_idPost"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<many-to-one name="Event_rel" class="PickadosGenNHibernate.EN.Pickados.Event_EN" >	
+								<column name="FK_id_idEvent"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="PickENReadAllHQL">from PickEN</query>
+		</hibernate-mapping>
+	
