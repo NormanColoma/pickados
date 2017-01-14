@@ -79,5 +79,53 @@ public System.Collections.Generic.IList<PostEN> GetAll (int first, int size)
         list = _IPostCAD.GetAll (first, size);
         return list;
 }
+public int NewPost (TimeSpan p_created_at, TimeSpan p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
+{
+        PostEN postEN = null;
+        int oid;
+
+        //Initialized PostEN
+        postEN = new PostEN ();
+        postEN.Created_at = p_created_at;
+
+        postEN.Modified_at = p_modified_at;
+
+        postEN.Stake = p_stake;
+
+        postEN.Description = p_description;
+
+        postEN.Private_ = p_private;
+
+
+        postEN.Pick = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
+        if (p_pick != null) {
+                foreach (int item in p_pick) {
+                        PickadosGenNHibernate.EN.Pickados.PickEN en = new PickadosGenNHibernate.EN.Pickados.PickEN ();
+                        en.Id = item;
+                        postEN.Pick.Add (en);
+                }
+        }
+
+        else{
+                postEN.Pick = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
+        }
+
+
+        if (p_tipster != -1) {
+                // El argumento p_tipster -> Property tipster es oid = false
+                // Lista de oids id
+                postEN.Tipster = new PickadosGenNHibernate.EN.Pickados.TipsterEN ();
+                postEN.Tipster.Id = p_tipster;
+        }
+
+        postEN.TotalOdd = p_totalOdd;
+
+        postEN.PostResult = p_postResult;
+
+        //Call to PostCAD
+
+        oid = _IPostCAD.NewPost (postEN);
+        return oid;
+}
 }
 }

@@ -189,7 +189,7 @@
 	<Compile Include="CAD\Pickados\IPostCAD.cs" />
 	<Compile Include="CAD\Pickados\PostCAD.cs" />
 	<Compile Include="CP\Pickados\PostCP.cs" />
-			<Compile Include="CP\Pickados\PostCP_PublishPost.cs" />
+			<Compile Include="CEN\Pickados\PostCEN_PublishPost.cs" />
 			
 			
 			
@@ -198,6 +198,7 @@
 			<Compile Include="CEN\Pickados\PostCEN_GetTotalOdd.cs" />
 			
 			<Compile Include="CEN\Pickados\PostCEN_VerifyPost.cs" />
+			
 			
 	<Compile Include="EN\Pickados\UsuarioEN.cs" />
 	<Compile Include="CEN\Pickados\UsuarioCEN.cs" />

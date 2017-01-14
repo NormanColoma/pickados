@@ -13,7 +13,6 @@ void ModifyDefault (PostEN post);
 
 
 
-int PublishPost (PostEN post);
 
 void ModifyPost (PostEN post);
 
@@ -27,5 +26,10 @@ PostEN GetByID (int id
 
 
 System.Collections.Generic.IList<PostEN> GetAll (int first, int size);
+
+
+
+
+int NewPost (PostEN post);
 }
 }

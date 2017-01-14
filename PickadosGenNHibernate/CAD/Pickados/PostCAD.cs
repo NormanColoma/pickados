@@ -132,45 +132,6 @@ public void ModifyDefault (PostEN post)
 }
 
 
-public int PublishPost (PostEN post)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                if (post.Pick != null) {
-                        for (int i = 0; i < post.Pick.Count; i++) {
-                                post.Pick [i] = (PickadosGenNHibernate.EN.Pickados.PickEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.PickEN), post.Pick [i].Id);
-                                post.Pick [i].Post.Add (post);
-                        }
-                }
-                if (post.Tipster != null) {
-                        // Argumento OID y no colección.
-                        post.Tipster = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), post.Tipster.Id);
-
-                        post.Tipster.Post
-                        .Add (post);
-                }
-
-                session.Save (post);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PostCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return post.Id;
-}
-
 public void ModifyPost (PostEN post)
 {
         try
@@ -298,6 +259,45 @@ public System.Collections.Generic.IList<PostEN> GetAll (int first, int size)
         }
 
         return result;
+}
+
+public int NewPost (PostEN post)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (post.Pick != null) {
+                        for (int i = 0; i < post.Pick.Count; i++) {
+                                post.Pick [i] = (PickadosGenNHibernate.EN.Pickados.PickEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.PickEN), post.Pick [i].Id);
+                                post.Pick [i].Post.Add (post);
+                        }
+                }
+                if (post.Tipster != null) {
+                        // Argumento OID y no colección.
+                        post.Tipster = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), post.Tipster.Id);
+
+                        post.Tipster.Post
+                        .Add (post);
+                }
+
+                session.Save (post);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PostCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return post.Id;
 }
 }
 }
