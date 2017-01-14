@@ -37,5 +37,70 @@ public ITimecastCAD get_ITimecastCAD ()
 {
         return this._ITimecastCAD;
 }
+
+public int New_ (double p_odd, string p_description, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_pickResult, string p_bookie, int p_event_rel, string p_scorer_name, int p_player, string p_score_time)
+{
+        TimecastEN timecastEN = null;
+        int oid;
+
+        //Initialized TimecastEN
+        timecastEN = new TimecastEN ();
+        timecastEN.Odd = p_odd;
+
+        timecastEN.Description = p_description;
+
+        timecastEN.PickResult = p_pickResult;
+
+        timecastEN.Bookie = p_bookie;
+
+
+        if (p_event_rel != -1) {
+                // El argumento p_event_rel -> Property event_rel es oid = false
+                // Lista de oids id
+                timecastEN.Event_rel = new PickadosGenNHibernate.EN.Pickados.Event_EN ();
+                timecastEN.Event_rel.Id = p_event_rel;
+        }
+
+        timecastEN.Scorer_name = p_scorer_name;
+
+
+        if (p_player != -1) {
+                // El argumento p_player -> Property player es oid = false
+                // Lista de oids id
+                timecastEN.Player = new PickadosGenNHibernate.EN.Pickados.PlayerEN ();
+                timecastEN.Player.Id = p_player;
+        }
+
+        timecastEN.Score_time = p_score_time;
+
+        //Call to TimecastCAD
+
+        oid = _ITimecastCAD.New_ (timecastEN);
+        return oid;
+}
+
+public void Modify (int p_Timecast_OID, double p_odd, string p_description, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_pickResult, string p_bookie, string p_scorer_name, string p_score_time)
+{
+        TimecastEN timecastEN = null;
+
+        //Initialized TimecastEN
+        timecastEN = new TimecastEN ();
+        timecastEN.Id = p_Timecast_OID;
+        timecastEN.Odd = p_odd;
+        timecastEN.Description = p_description;
+        timecastEN.PickResult = p_pickResult;
+        timecastEN.Bookie = p_bookie;
+        timecastEN.Scorer_name = p_scorer_name;
+        timecastEN.Score_time = p_score_time;
+        //Call to TimecastCAD
+
+        _ITimecastCAD.Modify (timecastEN);
+}
+
+public void Destroy (int id
+                     )
+{
+        _ITimecastCAD.Destroy (id);
+}
 }
 }

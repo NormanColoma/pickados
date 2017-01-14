@@ -37,10 +37,6 @@ TipsterEN GetByID (int id
 System.Collections.Generic.IList<TipsterEN> GetAll (int first, int size);
 
 
-void DeleteFollower (int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs);
-
-void AddPost (int p_Tipster_OID, System.Collections.Generic.IList<int> p_post_OIDs);
-
 void AddFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows ();

@@ -110,5 +110,112 @@ public void ModifyDefault (TimecastEN timecast)
                 SessionClose ();
         }
 }
+
+
+public int New_ (TimecastEN timecast)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (timecast.Event_rel != null) {
+                        // Argumento OID y no colección.
+                        timecast.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), timecast.Event_rel.Id);
+
+                        timecast.Event_rel.Pick_rel
+                        .Add (timecast);
+                }
+                if (timecast.Player != null) {
+                        // Argumento OID y no colección.
+                        timecast.Player = (PickadosGenNHibernate.EN.Pickados.PlayerEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.PlayerEN), timecast.Player.Id);
+
+                        timecast.Player.Scorer
+                        .Add (timecast);
+                }
+
+                session.Save (timecast);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return timecast.Id;
+}
+
+public void Modify (TimecastEN timecast)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                TimecastEN timecastEN = (TimecastEN)session.Load (typeof(TimecastEN), timecast.Id);
+
+                timecastEN.Odd = timecast.Odd;
+
+
+                timecastEN.Description = timecast.Description;
+
+
+                timecastEN.PickResult = timecast.PickResult;
+
+
+                timecastEN.Bookie = timecast.Bookie;
+
+
+                timecastEN.Scorer_name = timecast.Scorer_name;
+
+
+                timecastEN.Score_time = timecast.Score_time;
+
+                session.Update (timecastEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Destroy (int id
+                     )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                TimecastEN timecastEN = (TimecastEN)session.Load (typeof(TimecastEN), id);
+                session.Delete (timecastEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

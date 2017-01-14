@@ -110,5 +110,112 @@ public void ModifyDefault (WincastEN wincast)
                 SessionClose ();
         }
 }
+
+
+public int New_ (WincastEN wincast)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (wincast.Event_rel != null) {
+                        // Argumento OID y no colección.
+                        wincast.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), wincast.Event_rel.Id);
+
+                        wincast.Event_rel.Pick_rel
+                        .Add (wincast);
+                }
+                if (wincast.Player != null) {
+                        // Argumento OID y no colección.
+                        wincast.Player = (PickadosGenNHibernate.EN.Pickados.PlayerEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.PlayerEN), wincast.Player.Id);
+
+                        wincast.Player.Scorer
+                        .Add (wincast);
+                }
+
+                session.Save (wincast);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return wincast.Id;
+}
+
+public void Modify (WincastEN wincast)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WincastEN wincastEN = (WincastEN)session.Load (typeof(WincastEN), wincast.Id);
+
+                wincastEN.Odd = wincast.Odd;
+
+
+                wincastEN.Description = wincast.Description;
+
+
+                wincastEN.PickResult = wincast.PickResult;
+
+
+                wincastEN.Bookie = wincast.Bookie;
+
+
+                wincastEN.Scorer_name = wincast.Scorer_name;
+
+
+                wincastEN.Team_name = wincast.Team_name;
+
+                session.Update (wincastEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Destroy (int id
+                     )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WincastEN wincastEN = (WincastEN)session.Load (typeof(WincastEN), id);
+                session.Delete (wincastEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

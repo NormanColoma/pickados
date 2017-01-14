@@ -16,6 +16,12 @@
 
 			
 					
+					<property name="Premium" type="boolean"> 
+						<column name="premium"  not-null="true"/>
+					</property>
+					<property name="Subscription_fee" type="double"> 
+						<column name="subscription_fee"  not-null="true"/>
+					</property>
 			
 			
 		  			
@@ -61,6 +67,10 @@
 									<column name="FK_id_idTipster"/> 
       						</many-to-many>
     					</bag>
+			
+			
+					
+					
 					
 					
 					

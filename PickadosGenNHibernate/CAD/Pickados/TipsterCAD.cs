@@ -94,6 +94,12 @@ public void ModifyDefault (TipsterEN tipster)
 
 
 
+
+                tipsterEN.Premium = tipster.Premium;
+
+
+                tipsterEN.Subscription_fee = tipster.Subscription_fee;
+
                 session.Update (tipsterEN);
                 SessionCommit ();
         }
@@ -159,6 +165,12 @@ public void ModifyTipster (TipsterEN tipster)
 
 
                 tipsterEN.Password = tipster.Password;
+
+
+                tipsterEN.Premium = tipster.Premium;
+
+
+                tipsterEN.Subscription_fee = tipster.Subscription_fee;
 
                 session.Update (tipsterEN);
                 SessionCommit ();
@@ -357,83 +369,6 @@ public System.Collections.Generic.IList<TipsterEN> GetAll (int first, int size)
         }
 
         return result;
-}
-
-public void DeleteFollower (int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                PickadosGenNHibernate.EN.Pickados.TipsterEN tipsterEN = null;
-                tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), p_Tipster_OID);
-
-                PickadosGenNHibernate.EN.Pickados.TipsterEN followed_byENAux = null;
-                if (tipsterEN.Followed_by != null) {
-                        foreach (int item in p_followed_by_OIDs) {
-                                followed_byENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
-                                if (tipsterEN.Followed_by.Contains (followed_byENAux) == true) {
-                                        tipsterEN.Followed_by.Remove (followed_byENAux);
-                                        followed_byENAux.Follow_to.Remove (tipsterEN);
-                                }
-                                else
-                                        throw new ModelException ("The identifier " + item + " in p_followed_by_OIDs you are trying to unrelationer, doesn't exist in TipsterEN");
-                        }
-                }
-
-                session.Update (tipsterEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-public void AddPost (int p_Tipster_OID, System.Collections.Generic.IList<int> p_post_OIDs)
-{
-        PickadosGenNHibernate.EN.Pickados.TipsterEN tipsterEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), p_Tipster_OID);
-                PickadosGenNHibernate.EN.Pickados.PostEN postENAux = null;
-                if (tipsterEN.Post == null) {
-                        tipsterEN.Post = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PostEN>();
-                }
-
-                foreach (int item in p_post_OIDs) {
-                        postENAux = new PickadosGenNHibernate.EN.Pickados.PostEN ();
-                        postENAux = (PickadosGenNHibernate.EN.Pickados.PostEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.PostEN), item);
-                        postENAux.Tipster = tipsterEN;
-
-                        tipsterEN.Post.Add (postENAux);
-                }
-
-
-                session.Update (tipsterEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
 }
 
 public void AddFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)

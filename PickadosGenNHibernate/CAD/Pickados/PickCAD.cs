@@ -275,5 +275,35 @@ public System.Collections.Generic.IList<PickEN> GetAll (int first, int size)
 
         return result;
 }
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> PicksByResult ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PickEN self where FROM PickEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PickENpicksByResultHQL");
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

@@ -12,11 +12,8 @@
 						</id>
 			
 					
-					<property name="Hour" type="timestamp"> 
-						<column name="hour"  not-null="true"/>
-					</property>
-					<property name="Place" type="string"> 
-						<column name="place"  not-null="true"/>
+					<property name="Date" type="date"> 
+						<column name="date"  not-null="true"/>
 					</property>
 			
 			
@@ -38,8 +35,6 @@
 					    </bag>
 					
 			
-			
-					
 					
 					
 					

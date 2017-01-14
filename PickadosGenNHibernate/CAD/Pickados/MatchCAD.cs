@@ -114,98 +114,7 @@ public void ModifyDefault (MatchEN match)
 }
 
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetTeams ()
-{
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM MatchEN self where FROM PartidoEN";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("MatchENgetTeamsHQL");
-
-                result = query.List<PickadosGenNHibernate.EN.Pickados.MatchEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
-public void AddVisitante (int p_Match_OID, int p_away_OID)
-{
-        PickadosGenNHibernate.EN.Pickados.MatchEN matchEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                matchEN = (MatchEN)session.Load (typeof(MatchEN), p_Match_OID);
-                matchEN.Away = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), p_away_OID);
-
-                matchEN.Away.Event_away.Add (matchEN);
-
-
-
-                session.Update (matchEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-
-public void AddLocal (int p_Match_OID, int p_home_OID)
-{
-        PickadosGenNHibernate.EN.Pickados.MatchEN matchEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                matchEN = (MatchEN)session.Load (typeof(MatchEN), p_Match_OID);
-                matchEN.Home = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), p_home_OID);
-
-                matchEN.Home.Event_home.Add (matchEN);
-
-
-
-                session.Update (matchEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-
-public int New_ (MatchEN match)
+public int NewMatch (MatchEN match)
 {
         try
         {
@@ -245,17 +154,14 @@ public int New_ (MatchEN match)
         return match.Id;
 }
 
-public void Modify (MatchEN match)
+public void ModifyMatch (MatchEN match)
 {
         try
         {
                 SessionInitializeTransaction ();
                 MatchEN matchEN = (MatchEN)session.Load (typeof(MatchEN), match.Id);
 
-                matchEN.Hour = match.Hour;
-
-
-                matchEN.Place = match.Place;
+                matchEN.Date = match.Date;
 
 
                 matchEN.Stadium = match.Stadium;
@@ -277,8 +183,8 @@ public void Modify (MatchEN match)
                 SessionClose ();
         }
 }
-public void Destroy (int id
-                     )
+public void DeleteMatch (int id
+                         )
 {
         try
         {

@@ -240,35 +240,6 @@ public void DeletePost (int id
         }
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPicks ()
-{
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM PostEN self where FROM PostEN";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("PostENgetPicksHQL");
-
-                result = query.List<PickadosGenNHibernate.EN.Pickados.PostEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PostCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
 //Sin e: GetByID
 //Con e: PostEN
 public PostEN GetByID (int id
@@ -327,45 +298,6 @@ public System.Collections.Generic.IList<PostEN> GetAll (int first, int size)
         }
 
         return result;
-}
-
-public void AddPick (int p_Post_OID, System.Collections.Generic.IList<int> p_pick_OIDs)
-{
-        PickadosGenNHibernate.EN.Pickados.PostEN postEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                postEN = (PostEN)session.Load (typeof(PostEN), p_Post_OID);
-                PickadosGenNHibernate.EN.Pickados.PickEN pickENAux = null;
-                if (postEN.Pick == null) {
-                        postEN.Pick = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
-                }
-
-                foreach (int item in p_pick_OIDs) {
-                        pickENAux = new PickadosGenNHibernate.EN.Pickados.PickEN ();
-                        pickENAux = (PickadosGenNHibernate.EN.Pickados.PickEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.PickEN), item);
-                        pickENAux.Post.Add (postEN);
-
-                        postEN.Pick.Add (pickENAux);
-                }
-
-
-                session.Update (postEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PostCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
 }
 }
 }

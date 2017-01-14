@@ -27,16 +27,9 @@ private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickE
 
 
 /**
- *	Atributo hour
+ *	Atributo date
  */
-private TimeSpan hour;
-
-
-
-/**
- *	Atributo place
- */
-private string place;
+private Nullable<DateTime> date;
 
 
 
@@ -61,14 +54,8 @@ public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickado
 
 
 
-public virtual TimeSpan Hour {
-        get { return hour; } set { hour = value;  }
-}
-
-
-
-public virtual string Place {
-        get { return place; } set { place = value;  }
+public virtual Nullable<DateTime> Date {
+        get { return date; } set { date = value;  }
 }
 
 
@@ -82,20 +69,20 @@ public Event_EN()
 
 
 
-public Event_EN(int id, PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, TimeSpan hour, string place
+public Event_EN(int id, PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date
                 )
 {
-        this.init (Id, competition, pick_rel, hour, place);
+        this.init (Id, competition, pick_rel, date);
 }
 
 
 public Event_EN(Event_EN event_)
 {
-        this.init (Id, event_.Competition, event_.Pick_rel, event_.Hour, event_.Place);
+        this.init (Id, event_.Competition, event_.Pick_rel, event_.Date);
 }
 
 private void init (int id
-                   , PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, TimeSpan hour, string place)
+                   , PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date)
 {
         this.Id = id;
 
@@ -104,9 +91,7 @@ private void init (int id
 
         this.Pick_rel = pick_rel;
 
-        this.Hour = hour;
-
-        this.Place = place;
+        this.Date = date;
 }
 
 public override bool Equals (object obj)

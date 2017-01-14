@@ -63,10 +63,6 @@ public void DeletePost (int id
         _IPostCAD.DeletePost (id);
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPicks ()
-{
-        return _IPostCAD.GetPicks ();
-}
 public PostEN GetByID (int id
                        )
 {
@@ -82,12 +78,6 @@ public System.Collections.Generic.IList<PostEN> GetAll (int first, int size)
 
         list = _IPostCAD.GetAll (first, size);
         return list;
-}
-public void AddPick (int p_Post_OID, System.Collections.Generic.IList<int> p_pick_OIDs)
-{
-        //Call to PostCAD
-
-        _IPostCAD.AddPick (p_Post_OID, p_pick_OIDs);
 }
 }
 }

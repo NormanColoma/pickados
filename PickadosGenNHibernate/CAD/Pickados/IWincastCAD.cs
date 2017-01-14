@@ -10,5 +10,15 @@ WincastEN ReadOIDDefault (int id
                           );
 
 void ModifyDefault (WincastEN wincast);
+
+
+
+int New_ (WincastEN wincast);
+
+void Modify (WincastEN wincast);
+
+
+void Destroy (int id
+              );
 }
 }

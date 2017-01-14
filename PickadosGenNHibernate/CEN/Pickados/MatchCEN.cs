@@ -38,32 +38,14 @@ public IMatchCAD get_IMatchCAD ()
         return this._IMatchCAD;
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetTeams ()
-{
-        return _IMatchCAD.GetTeams ();
-}
-public void AddVisitante (int p_Match_OID, int p_away_OID)
-{
-        //Call to MatchCAD
-
-        _IMatchCAD.AddVisitante (p_Match_OID, p_away_OID);
-}
-public void AddLocal (int p_Match_OID, int p_home_OID)
-{
-        //Call to MatchCAD
-
-        _IMatchCAD.AddLocal (p_Match_OID, p_home_OID);
-}
-public int New_ (TimeSpan p_hour, string p_place, int p_away, int p_home, string p_stadium)
+public int NewMatch (Nullable<DateTime> p_date, int p_away, int p_home, string p_stadium)
 {
         MatchEN matchEN = null;
         int oid;
 
         //Initialized MatchEN
         matchEN = new MatchEN ();
-        matchEN.Hour = p_hour;
-
-        matchEN.Place = p_place;
+        matchEN.Date = p_date;
 
 
         if (p_away != -1) {
@@ -85,29 +67,28 @@ public int New_ (TimeSpan p_hour, string p_place, int p_away, int p_home, string
 
         //Call to MatchCAD
 
-        oid = _IMatchCAD.New_ (matchEN);
+        oid = _IMatchCAD.NewMatch (matchEN);
         return oid;
 }
 
-public void Modify (int p_Match_OID, TimeSpan p_hour, string p_place, string p_stadium)
+public void ModifyMatch (int p_Match_OID, Nullable<DateTime> p_date, string p_stadium)
 {
         MatchEN matchEN = null;
 
         //Initialized MatchEN
         matchEN = new MatchEN ();
         matchEN.Id = p_Match_OID;
-        matchEN.Hour = p_hour;
-        matchEN.Place = p_place;
+        matchEN.Date = p_date;
         matchEN.Stadium = p_stadium;
         //Call to MatchCAD
 
-        _IMatchCAD.Modify (matchEN);
+        _IMatchCAD.ModifyMatch (matchEN);
 }
 
-public void Destroy (int id
-                     )
+public void DeleteMatch (int id
+                         )
 {
-        _IMatchCAD.Destroy (id);
+        _IMatchCAD.DeleteMatch (id);
 }
 }
 }

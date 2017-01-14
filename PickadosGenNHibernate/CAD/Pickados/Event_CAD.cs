@@ -93,10 +93,7 @@ public void ModifyDefault (Event_EN event_)
 
 
 
-                event_EN.Hour = event_.Hour;
-
-
-                event_EN.Place = event_.Place;
+                event_EN.Date = event_.Date;
 
                 session.Update (event_EN);
                 SessionCommit ();
@@ -150,10 +147,7 @@ public void ModifyEvent (Event_EN event_)
                 SessionInitializeTransaction ();
                 Event_EN event_EN = (Event_EN)session.Load (typeof(Event_EN), event_.Id);
 
-                event_EN.Hour = event_.Hour;
-
-
-                event_EN.Place = event_.Place;
+                event_EN.Date = event_.Date;
 
                 session.Update (event_EN);
                 SessionCommit ();

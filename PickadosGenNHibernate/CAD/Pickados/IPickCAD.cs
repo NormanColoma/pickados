@@ -27,5 +27,8 @@ PickEN GetByID (int id
 
 
 System.Collections.Generic.IList<PickEN> GetAll (int first, int size);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> PicksByResult ();
 }
 }

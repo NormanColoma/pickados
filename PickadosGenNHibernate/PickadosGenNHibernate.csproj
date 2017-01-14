@@ -113,7 +113,6 @@
 			
 			
 			
-			<Compile Include="CEN\Pickados\PickCEN_PicksByResult.cs" />
 			
 	<Compile Include="EN\Pickados\Event_EN.cs" />
 	<Compile Include="CEN\Pickados\Event_CEN.cs" />
@@ -134,6 +133,8 @@
 	<Compile Include="CP\Pickados\CompetitionCP.cs" />
 			
 			
+			
+			<Compile Include="CEN\Pickados\CompetitionCEN_GetCompetitionsByPlace.cs" />
 			
 	<Compile Include="EN\Pickados\TeamEN.cs" />
 	<Compile Include="CEN\Pickados\TeamCEN.cs" />
@@ -194,8 +195,6 @@
 			
 			
 			
-			
-			
 			<Compile Include="CEN\Pickados\PostCEN_GetTotalOdd.cs" />
 			
 			<Compile Include="CEN\Pickados\PostCEN_VerifyPost.cs" />
@@ -226,24 +225,16 @@
 			
 			
 			
-			
-			
 			<Compile Include="CEN\Pickados\TipsterCEN_GetStatsByTimeRange.cs" />
 			
+			
+			<Compile Include="CEN\Pickados\TipsterCEN_BecomePremium.cs" />
 			
 	<Compile Include="EN\Pickados\AdminEN.cs" />
 	<Compile Include="CEN\Pickados\AdminCEN.cs" />
 	<Compile Include="CAD\Pickados\IAdminCAD.cs" />
 	<Compile Include="CAD\Pickados\AdminCAD.cs" />
 	<Compile Include="CP\Pickados\AdminCP.cs" />
-			
-			
-			
-	<Compile Include="EN\Pickados\PremiumEN.cs" />
-	<Compile Include="CEN\Pickados\PremiumCEN.cs" />
-	<Compile Include="CAD\Pickados\IPremiumCAD.cs" />
-	<Compile Include="CAD\Pickados\PremiumCAD.cs" />
-	<Compile Include="CP\Pickados\PremiumCP.cs" />
 			
 			
 			
@@ -283,9 +274,6 @@
 			
 			
 			
-			
-			
-			
 	<Compile Include="EN\Pickados\ScorerEN.cs" />
 	<Compile Include="CEN\Pickados\ScorerCEN.cs" />
 	<Compile Include="CAD\Pickados\IScorerCAD.cs" />
@@ -299,11 +287,17 @@
 	<Compile Include="CAD\Pickados\IWincastCAD.cs" />
 	<Compile Include="CAD\Pickados\WincastCAD.cs" />
 	<Compile Include="CP\Pickados\WincastCP.cs" />
+			
+			
+			
 	<Compile Include="EN\Pickados\TimecastEN.cs" />
 	<Compile Include="CEN\Pickados\TimecastCEN.cs" />
 	<Compile Include="CAD\Pickados\ITimecastCAD.cs" />
 	<Compile Include="CAD\Pickados\TimecastCAD.cs" />
 	<Compile Include="CP\Pickados\TimecastCP.cs" />
+			
+			
+			
 	<Compile Include="Enumerated\Pickados\PickResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\ResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\LineEnum.cs" />
@@ -336,7 +330,6 @@
 	<EmbeddedResource Include="Mappings\Pickados\usuario.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\tipster.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\admin.hbm.xml" />
-	<EmbeddedResource Include="Mappings\Pickados\premium.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\stats.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\player.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\sport.hbm.xml" />

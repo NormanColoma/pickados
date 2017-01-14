@@ -35,6 +35,20 @@ private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipst
 
 
 
+/**
+ *	Atributo premium
+ */
+private bool premium;
+
+
+
+/**
+ *	Atributo subscription_fee
+ */
+private double subscription_fee;
+
+
+
 
 
 
@@ -62,6 +76,18 @@ public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickado
 
 
 
+public virtual bool Premium {
+        get { return premium; } set { premium = value;  }
+}
+
+
+
+public virtual double Subscription_fee {
+        get { return subscription_fee; } set { subscription_fee = value;  }
+}
+
+
+
 
 
 public TipsterEN() : base ()
@@ -74,21 +100,21 @@ public TipsterEN() : base ()
 
 
 
-public TipsterEN(int id, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by
+public TipsterEN(int id, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee
                  , TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password
                  )
 {
-        this.init (Id, monthlyStats, post, follow_to, followed_by, createdAt, modifiedAt, alias, email, password);
+        this.init (Id, monthlyStats, post, follow_to, followed_by, premium, subscription_fee, createdAt, modifiedAt, alias, email, password);
 }
 
 
 public TipsterEN(TipsterEN tipster)
 {
-        this.init (Id, tipster.MonthlyStats, tipster.Post, tipster.Follow_to, tipster.Followed_by, tipster.CreatedAt, tipster.ModifiedAt, tipster.Alias, tipster.Email, tipster.Password);
+        this.init (Id, tipster.MonthlyStats, tipster.Post, tipster.Follow_to, tipster.Followed_by, tipster.Premium, tipster.Subscription_fee, tipster.CreatedAt, tipster.ModifiedAt, tipster.Alias, tipster.Email, tipster.Password);
 }
 
 private void init (int id
-                   , System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password)
+                   , System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee, TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password)
 {
         this.Id = id;
 
@@ -100,6 +126,10 @@ private void init (int id
         this.Follow_to = follow_to;
 
         this.Followed_by = followed_by;
+
+        this.Premium = premium;
+
+        this.Subscription_fee = subscription_fee;
 
         this.CreatedAt = createdAt;
 

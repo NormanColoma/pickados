@@ -38,16 +38,14 @@ public IEvent_CAD get_IEvent_CAD ()
         return this._IEvent_CAD;
 }
 
-public int NewEvent (TimeSpan p_hour, string p_place)
+public int NewEvent (Nullable<DateTime> p_date)
 {
         Event_EN event_EN = null;
         int oid;
 
         //Initialized Event_EN
         event_EN = new Event_EN ();
-        event_EN.Hour = p_hour;
-
-        event_EN.Place = p_place;
+        event_EN.Date = p_date;
 
         //Call to Event_CAD
 
@@ -55,15 +53,14 @@ public int NewEvent (TimeSpan p_hour, string p_place)
         return oid;
 }
 
-public void ModifyEvent (int p_Event_OID, TimeSpan p_hour, string p_place)
+public void ModifyEvent (int p_Event_OID, Nullable<DateTime> p_date)
 {
         Event_EN event_EN = null;
 
         //Initialized Event_EN
         event_EN = new Event_EN ();
         event_EN.Id = p_Event_OID;
-        event_EN.Hour = p_hour;
-        event_EN.Place = p_place;
+        event_EN.Date = p_date;
         //Call to Event_CAD
 
         _IEvent_CAD.ModifyEvent (event_EN);

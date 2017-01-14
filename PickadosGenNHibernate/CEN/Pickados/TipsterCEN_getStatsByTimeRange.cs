@@ -19,7 +19,7 @@ namespace PickadosGenNHibernate.CEN.Pickados
 {
 public partial class TipsterCEN
 {
-public PickadosGenNHibernate.EN.Pickados.StatsEN GetStatsByTimeRange (int p_oid)
+public PickadosGenNHibernate.EN.Pickados.StatsEN GetStatsByTimeRange (int p_oid, Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
 {
         /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_getStatsByTimeRange) ENABLED START*/
 

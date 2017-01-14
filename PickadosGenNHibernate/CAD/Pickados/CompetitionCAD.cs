@@ -95,6 +95,9 @@ public void ModifyDefault (CompetitionEN competition)
 
 
 
+
+                competitionEN.Place = competition.Place;
+
                 session.Update (competitionEN);
                 SessionCommit ();
         }
@@ -155,6 +158,9 @@ public void ModifyCompetition (CompetitionEN competition)
                 CompetitionEN competitionEN = (CompetitionEN)session.Load (typeof(CompetitionEN), competition.Id);
 
                 competitionEN.Name = competition.Name;
+
+
+                competitionEN.Place = competition.Place;
 
                 session.Update (competitionEN);
                 SessionCommit ();

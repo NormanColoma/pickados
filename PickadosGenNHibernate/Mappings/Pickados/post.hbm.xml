@@ -73,6 +73,5 @@
 		 </class>	
 		  
 		  <query name="PostENReadAllHQL">from PostEN</query>
-		  <query name="PostENgetPicksHQL"><![CDATA[FROM PostEN]]></query>
 		</hibernate-mapping>
 	

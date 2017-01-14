@@ -38,7 +38,7 @@ public ITipsterCAD get_ITipsterCAD ()
         return this._ITipsterCAD;
 }
 
-public int NewTipster (TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password)
+public int NewTipster (TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password, bool p_premium, double p_subscription_fee)
 {
         TipsterEN tipsterEN = null;
         int oid;
@@ -55,13 +55,17 @@ public int NewTipster (TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_ali
 
         tipsterEN.Password = Utils.Util.GetEncondeMD5 (p_password);
 
+        tipsterEN.Premium = p_premium;
+
+        tipsterEN.Subscription_fee = p_subscription_fee;
+
         //Call to TipsterCAD
 
         oid = _ITipsterCAD.NewTipster (tipsterEN);
         return oid;
 }
 
-public void ModifyTipster (int p_Tipster_OID, TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password)
+public void ModifyTipster (int p_Tipster_OID, TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password, bool p_premium, double p_subscription_fee)
 {
         TipsterEN tipsterEN = null;
 
@@ -73,6 +77,8 @@ public void ModifyTipster (int p_Tipster_OID, TimeSpan p_createdAt, TimeSpan p_m
         tipsterEN.Alias = p_alias;
         tipsterEN.Email = p_email;
         tipsterEN.Password = Utils.Util.GetEncondeMD5 (p_password);
+        tipsterEN.Premium = p_premium;
+        tipsterEN.Subscription_fee = p_subscription_fee;
         //Call to TipsterCAD
 
         _ITipsterCAD.ModifyTipster (tipsterEN);
@@ -113,18 +119,6 @@ public System.Collections.Generic.IList<TipsterEN> GetAll (int first, int size)
 
         list = _ITipsterCAD.GetAll (first, size);
         return list;
-}
-public void DeleteFollower (int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs)
-{
-        //Call to TipsterCAD
-
-        _ITipsterCAD.DeleteFollower (p_Tipster_OID, p_followed_by_OIDs);
-}
-public void AddPost (int p_Tipster_OID, System.Collections.Generic.IList<int> p_post_OIDs)
-{
-        //Call to TipsterCAD
-
-        _ITipsterCAD.AddPost (p_Tipster_OID, p_post_OIDs);
 }
 public void AddFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)
 {

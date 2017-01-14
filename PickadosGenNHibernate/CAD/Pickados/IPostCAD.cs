@@ -22,16 +22,10 @@ void DeletePost (int id
                  );
 
 
-System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPicks ();
-
-
 PostEN GetByID (int id
                 );
 
 
 System.Collections.Generic.IList<PostEN> GetAll (int first, int size);
-
-
-void AddPick (int p_Post_OID, System.Collections.Generic.IList<int> p_pick_OIDs);
 }
 }

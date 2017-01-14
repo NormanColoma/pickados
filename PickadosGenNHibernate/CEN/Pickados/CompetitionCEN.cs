@@ -38,7 +38,7 @@ public ICompetitionCAD get_ICompetitionCAD ()
         return this._ICompetitionCAD;
 }
 
-public int NewCompetition (string p_name, int p_sport)
+public int NewCompetition (string p_name, int p_sport, string p_place)
 {
         CompetitionEN competitionEN = null;
         int oid;
@@ -55,13 +55,15 @@ public int NewCompetition (string p_name, int p_sport)
                 competitionEN.Sport.Id = p_sport;
         }
 
+        competitionEN.Place = p_place;
+
         //Call to CompetitionCAD
 
         oid = _ICompetitionCAD.NewCompetition (competitionEN);
         return oid;
 }
 
-public void ModifyCompetition (int p_Competition_OID, string p_name)
+public void ModifyCompetition (int p_Competition_OID, string p_name, string p_place)
 {
         CompetitionEN competitionEN = null;
 
@@ -69,6 +71,7 @@ public void ModifyCompetition (int p_Competition_OID, string p_name)
         competitionEN = new CompetitionEN ();
         competitionEN.Id = p_Competition_OID;
         competitionEN.Name = p_name;
+        competitionEN.Place = p_place;
         //Call to CompetitionCAD
 
         _ICompetitionCAD.ModifyCompetition (competitionEN);

@@ -15,6 +15,9 @@
 					<property name="Name" type="string"> 
 						<column name="name"  unique="true" not-null="true"/>
 					</property>
+					<property name="Place" type="string"> 
+						<column name="place"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -35,6 +38,8 @@
 								<column name="FK_idSport_idSport"/> 
 						</many-to-one>
 											 					
+			
+					
 					
 					
 					
