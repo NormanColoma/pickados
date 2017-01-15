@@ -108,6 +108,9 @@ public void ModifyDefault (StatsEN stats)
 
                 statsEN.InitialDate = stats.InitialDate;
 
+                statsEN.TotalStaked = stats.TotalStaked;
+
+                statsEN.OddAccumulator = stats.TotalStaked;
 
                 session.Update (statsEN);
                 SessionCommit ();
@@ -184,6 +187,12 @@ public void ModifyMonthlyStats (StatsEN stats)
 
 
                 statsEN.InitialDate = stats.InitialDate;
+
+
+                statsEN.TotalStaked = stats.TotalStaked;
+
+                statsEN.OddAccumulator = stats.TotalStaked;
+
 
                 session.Update (statsEN);
                 SessionCommit ();

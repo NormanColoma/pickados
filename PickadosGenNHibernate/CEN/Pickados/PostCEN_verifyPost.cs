@@ -21,13 +21,13 @@ namespace PickadosGenNHibernate.CEN.Pickados
 {
 public partial class PostCEN
 {
-public void VerifyPost (int p_oid)
+public void VerifyPost (int p_oid, PostCEN postCEN, TipsterCEN tipsterCEN, StatsCEN statsCEN)
 {
             /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_verifyPost) ENABLED START*/
 
             // Write here your custom code...
-            PostCAD postCAD = new PostCAD();
-            PostCEN postCEN = new PostCEN(postCAD);
+           
+            
             PostEN postEN = postCEN.GetByID(p_oid);
 
             if (postEN != null) {
@@ -46,20 +46,20 @@ public void VerifyPost (int p_oid)
 
                     if (finished) {
 
-                        TipsterCAD tipsterCAD = new TipsterCAD();
-                        TipsterCEN tipsterCEN = new TipsterCEN(tipsterCAD);
+                        
+                        
                         TipsterEN tipsterEN = tipsterCEN.GetByID(postEN.Tipster.Id);
 
                         //Comprueba si hay stats creadas, si no, crea para este mes
                         
-                            StatsCAD statsCAD = new StatsCAD();
-                            StatsCEN statsCEN = new StatsCEN(statsCAD);
+                            
+                            
                             StatsEN statsEN = new StatsEN();
                             statsEN.Tipster = postEN.Tipster;
-
+                            int id_stats = 0;
                         if (tipsterEN.MonthlyStats != null && !tipsterEN.MonthlyStats.Any())
                         {
-                            statsCAD.NewMonthlyStats(statsEN);
+                            id_stats = statsCEN.get_IStatsCAD().NewMonthlyStats(statsEN);
                         }
                         else {
                             Boolean exist = false;
@@ -72,52 +72,66 @@ public void VerifyPost (int p_oid)
                                 
                                 if (stats.InitialDate.Value.Month.Equals(DateTime.Now.Month) )
                                 {
-                                    statsENaux = statsCEN.GetByID(stats.Id);
+                                    
+                                    id_stats = stats.Id;
                                     exist = true;
                                 }
                             }
 
 
-                            if (exist)
+                            if (!exist)
                             {
-                                    //ACTUALIA EXISTENTE
+                                id_stats = statsCEN.get_IStatsCAD().NewMonthlyStats(statsEN);
                             }
-                            else {
-                                statsCAD.NewMonthlyStats(statsEN);
 
+                        }
+
+                        statsEN = statsCEN.GetByID(id_stats);
+                        statsEN.TotalPicks += 1;
+                        statsEN.OddAccumulator += postEN.TotalOdd;
+                        statsEN.TotalStaked += postEN.Stake;
+                        statsEN.OddAverage = statsEN.OddAccumulator / statsEN.TotalPicks;
+                        statsEN.StakeAverage = statsEN.TotalStaked / statsEN.TotalPicks;
+
+
+                        //TODO- Compute multiple picks with some push one
+                        //Verifying pick results
+                        postEN.PostResult = PickResultEnum.won;
+
+                        if (postEN.Pick.Count() == 1) postEN.PostResult = postEN.Pick.First().PickResult;
+                        else {
+                            foreach (PickEN pick in postEN.Pick)
+                            {
+                                if (pick.PickResult.Equals(PickResultEnum.lost))
+                                {
+                                    postEN.PostResult  = PickResultEnum.lost;
+                                }
                             }
                         }
 
-                        statsEN.InitialDate = DateTime.Now;
 
-                            statsEN.TotalPicks += 1;
-                           // statsEN.OddAverage = postEN.TotalOdd;
-                            //statsEN.StakeAverage = postEN.Stake;
-
-                            //TODO- AQUÍ recorrería los picks por si se trata de combinada, para fijar el pickresult de post.
-                            postEN.PostResult = PickResultEnum.won;
-
-
-                            //HACE FALTA UN ACUMULATEODD Y TOTALSTAKED
-                            switch (postEN.PostResult)
+                        
+                        switch (postEN.PostResult)
                             {
                                 case PickResultEnum.won:
-                                    statsEN.Benefit += postEN.TotalOdd * postEN.Stake - postEN.Stake;
-                                    //statsEN.Yield = benefit / totalstaked * 100
+                                double benef = postEN.TotalOdd * postEN.Stake - postEN.Stake;
+                                statsEN.Benefit += benef;
+                                
                                     break;
                                 case PickResultEnum.lost:
-                                    statsEN.Benefit -= postEN.Stake;
-                                    //statsEN.Yield
-                                    break;
-                                case PickResultEnum.push:
+                                statsEN.Benefit -= postEN.Stake;
                                     //statsEN.Yield
                                     break;
                                 default:
-                                    Console.WriteLine("Default case");
+                                    Console.WriteLine("Not recognise ");
                                     break;
                             }
-                        
-                        //Si hay stats, actualiza la existente de este mes
+
+                        statsEN.Yield = (float) (statsEN.Benefit / statsEN.TotalStaked * 100);
+
+                        //Actualizamos y guardamos las stats
+
+                        statsCEN.get_IStatsCAD().ModifyMonthlyStats(statsEN);
                     }
                 }
 
