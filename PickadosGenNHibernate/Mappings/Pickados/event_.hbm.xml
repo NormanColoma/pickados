@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				<class name="Event_EN" table="Event"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Date" type="date"> 
+						<column name="date"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<many-to-one name="Competition" class="PickadosGenNHibernate.EN.Pickados.CompetitionEN" >	
+								<column name="FK_id_idCompetition"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Pick_rel" cascade="delete">
+							<key>
+							
+								
+								<column name="FK_id_idEvent"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.PickEN"/>
+					    </bag>
+					
+			
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="Event_ENReadAllHQL">from Event_EN</query>
+		</hibernate-mapping>
+	

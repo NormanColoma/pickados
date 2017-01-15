@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				<class name="UsuarioEN" table="Usuario"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="CreatedAt" type="timestamp"> 
+						<column name="createdAt"  not-null="true"/>
+					</property>
+					<property name="ModifiedAt" type="timestamp"> 
+						<column name="modifiedAt"  not-null="true"/>
+					</property>
+					<property name="Alias" type="string"> 
+						<column name="alias"  not-null="true"/>
+					</property>
+					<property name="Email" type="string"> 
+						<column name="email"  not-null="true"/>
+					</property>
+					<property name="Password" type="string"> 
+						<column name="password"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		</hibernate-mapping>
+	

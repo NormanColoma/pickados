@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				<class name="SportEN" table="Sport"> 
+				  	
+						<id name="Id" column="idSport" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Name" type="string"> 
+						<column name="name"  not-null="true"/>
+					</property>
+			
+			
+		  			
+						<bag name="Competition" cascade="delete">
+							<key>
+							
+								
+								<column name="FK_idSport_idSport"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.CompetitionEN"/>
+					    </bag>
+					
+			
+			
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="SportENReadAllHQL">from SportEN</query>
+		</hibernate-mapping>
+	

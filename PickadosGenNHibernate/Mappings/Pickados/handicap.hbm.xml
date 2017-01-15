@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				
+<joined-subclass name="HandicapEN" extends="PickadosGenNHibernate.EN.Pickados.GoalEN" table="Handicap"> 
+	<key>
+    	
+				<column name="id"/>
+		
+    	
+   	</key>
+
+			
+					
+					<property name="Result" > 
+						<column name="result"  not-null="true"/>
+					</property>
+			
+			
+					
+		
+ 	  
+		 </joined-subclass>
+		  
+		  <query name="HandicapENReadAllHQL">from HandicapEN</query>
+		</hibernate-mapping>
+	

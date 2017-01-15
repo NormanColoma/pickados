@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				
+<joined-subclass name="ResultEN" extends="PickadosGenNHibernate.EN.Pickados.PickEN" table="Result"> 
+	<key>
+    	
+				<column name="id"/>
+		
+    	
+   	</key>
+
+			
+					
+					<property name="Result" > 
+						<column name="result"  not-null="true"/>
+					</property>
+					<property name="Matchtime" > 
+						<column name="matchtime"  not-null="true"/>
+					</property>
+			
+			
+			
+					
+					
+		
+ 	  
+		 </joined-subclass>
+		  
+		  <query name="ResultENReadAllHQL">from ResultEN</query>
+		</hibernate-mapping>
+	

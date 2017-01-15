@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				
+<joined-subclass name="GoalEN" extends="PickadosGenNHibernate.EN.Pickados.PickEN" table="Goal"> 
+	<key>
+    	
+				<column name="id"/>
+		
+    	
+   	</key>
+
+			
+					
+					<property name="Line" > 
+						<column name="line"  not-null="true"/>
+					</property>
+					<property name="Quantity" type="double"> 
+						<column name="quantity"  not-null="true"/>
+					</property>
+					<property name="Asian" type="boolean"> 
+						<column name="asian"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+					
+					
+					
+		
+ 	  
+		 </joined-subclass>
+		  
+		  <query name="GoalENReadAllHQL">from GoalEN</query>
+		</hibernate-mapping>
+	
