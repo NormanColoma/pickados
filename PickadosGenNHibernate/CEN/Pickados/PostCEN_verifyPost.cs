@@ -10,6 +10,7 @@ using PickadosGenNHibernate.Exceptions;
 using PickadosGenNHibernate.EN.Pickados;
 using PickadosGenNHibernate.CAD.Pickados;
 using System.Linq;
+using PickadosGenNHibernate.Enumerated.Pickados;
 
 
 /*PROTECTED REGION ID(usingPickadosGenNHibernate.CEN.Pickados_Post_verifyPost) ENABLED START*/
@@ -37,8 +38,8 @@ public void VerifyPost (int p_oid)
                     Boolean finished = true;
                     foreach (PickEN pick in postEN.Pick)
                     {
-                        if (pick.PickResult.Equals(Enumerated.Pickados.PickResultEnum.unfinished) ||
-                           pick.PickResult.Equals(Enumerated.Pickados.PickResultEnum.unstarted)) {
+                        if (pick.PickResult.Equals(PickResultEnum.unfinished) ||
+                           pick.PickResult.Equals(PickResultEnum.unstarted)) {
                             finished = false;
                         }
                     }
@@ -50,8 +51,71 @@ public void VerifyPost (int p_oid)
                         TipsterEN tipsterEN = tipsterCEN.GetByID(postEN.Tipster.Id);
 
                         //Comprueba si hay stats creadas, si no, crea para este mes
+                        
+                            StatsCAD statsCAD = new StatsCAD();
+                            StatsCEN statsCEN = new StatsCEN(statsCAD);
+                            StatsEN statsEN = new StatsEN();
+                            statsEN.Tipster = postEN.Tipster;
+
+                        if (tipsterEN.MonthlyStats != null && !tipsterEN.MonthlyStats.Any())
+                        {
+                            statsCAD.NewMonthlyStats(statsEN);
+                        }
+                        else {
+                            Boolean exist = false;
+                            StatsEN statsENaux = new StatsEN();
+                            //Comprobamos entre las existentes si hay alguna de este mes.
+                            //Se puede mejorar accediendo directamente a la última creada
+                            foreach (StatsEN stats in tipsterEN.MonthlyStats)
+                            {
+                                
+                                if (stats.InitialDate.Value.Month.Equals(DateTime.Now.Month) )
+                                {
+                                   // OBTIENE BY ID ESTA  statsENaux = statsCEN
+                                    exist = true;
+                                }
+                            }
 
 
+                            if (exist)
+                            {
+                                    //ACTUALIA EXISTENTE
+                            }
+                            else {
+                                statsCAD.NewMonthlyStats(statsEN);
+
+                            }
+                        }
+
+                        statsEN.InitialDate = DateTime.Now;
+
+                            statsEN.TotalPicks += 1;
+                           // statsEN.OddAverage = postEN.TotalOdd;
+                            //statsEN.StakeAverage = postEN.Stake;
+
+                            //TODO- AQUÍ recorrería los picks por si se trata de combinada, para fijar el pickresult de post.
+                            postEN.PostResult = PickResultEnum.won;
+
+
+                            //HACE FALTA UN ACUMULATEODD Y TOTALSTAKED
+                            switch (postEN.PostResult)
+                            {
+                                case PickResultEnum.won:
+                                    statsEN.Benefit += postEN.TotalOdd * postEN.Stake - postEN.Stake;
+                                    //statsEN.Yield = benefit / totalstaked * 100
+                                    break;
+                                case PickResultEnum.lost:
+                                    statsEN.Benefit -= postEN.Stake;
+                                    //statsEN.Yield
+                                    break;
+                                case PickResultEnum.push:
+                                    //statsEN.Yield
+                                    break;
+                                default:
+                                    Console.WriteLine("Default case");
+                                    break;
+                            }
+                        
                         //Si hay stats, actualiza la existente de este mes
                     }
                 }

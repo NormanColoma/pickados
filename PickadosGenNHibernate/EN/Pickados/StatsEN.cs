@@ -116,6 +116,13 @@ public virtual PickadosGenNHibernate.EN.Pickados.TipsterEN Tipster {
 
 public StatsEN()
 {
+            benefit = 0;
+            stakeAverage = 0;
+            yield = 0;
+            oddAverage = 0;
+            totalPicks = 0;
+            InitialDate = DateTime.Now;
+
 }
 
 
