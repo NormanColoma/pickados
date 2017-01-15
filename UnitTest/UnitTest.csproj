@@ -62,7 +62,7 @@
   <ItemGroup>
     <Compile Include="PublishPostTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeamTest.cs" />
+    <Compile Include="PlayerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PickadosGenNHibernate\PickadosGenNHibernate.csproj">
