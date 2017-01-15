@@ -21,7 +21,7 @@ namespace UnitTest
             var tipsterCADMock = new Mock<ITipsterCAD>();
             var statsCADMock = new Mock<IStatsCAD>();
 
-            //Creating post with pickresult=won
+            //Creating post with pickresult=won !
             PostEN postEN = new PostEN();
             PickEN pickEN = new PickEN();
             pickEN.PickResult = PickResultEnum.won;
