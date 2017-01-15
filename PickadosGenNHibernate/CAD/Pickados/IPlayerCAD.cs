@@ -4,30 +4,36 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-public partial interface IPlayerCAD
-{
-PlayerEN ReadOIDDefault (int id
-                         );
+    public partial interface IPlayerCAD
+    {
+        PlayerEN ReadOIDDefault(int id
+                                 );
 
-void ModifyDefault (PlayerEN player);
-
-
-
-int New_ (PlayerEN player);
-
-void Modify (PlayerEN player);
+        void ModifyDefault(PlayerEN player);
 
 
-void Destroy (int id
-              );
+
+        int NewPlayer(PlayerEN player);
+
+        void ModifyPlayer(PlayerEN player);
 
 
-void JoinClubTeam (int p_Player_OID, int p_club_team_OID);
+        void DeletePlayer(int id
+                           );
 
-void JoinNationalTeam (int p_Player_OID, int p_national_team_OID);
 
-void UnlinkClubTeam (int p_Player_OID, int p_club_team_OID);
+        void JoinClubTeam(int p_Player_OID, int p_club_team_OID);
 
-void UnlinkNationalTeam (int p_Player_OID, int p_national_team_OID);
-}
+        void JoinNationalTeam(int p_Player_OID, int p_national_team_OID);
+
+        void UnlinkClubTeam(int p_Player_OID, int p_club_team_OID);
+
+        void UnlinkNationalTeam(int p_Player_OID, int p_national_team_OID);
+
+        PlayerEN GetById(int id
+                          );
+
+
+        System.Collections.Generic.IList<PlayerEN> GetAll(int first, int size);
+    }
 }

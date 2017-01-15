@@ -15,7 +15,6 @@ namespace UnitTest
         [TestMethod]
         public void PublishPostOkTest()
         {
-
             //Create mocks
             var postCADMock = new Mock<IPostCAD>();
             var pickCADMock = new Mock<IPickCAD>();
