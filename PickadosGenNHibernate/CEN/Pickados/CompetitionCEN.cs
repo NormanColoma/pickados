@@ -82,5 +82,13 @@ public void DeleteCompetition (int id
 {
         _ICompetitionCAD.DeleteCompetition (id);
 }
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionsByPlace(string place)
+{
+
+
+    return _ICompetitionCAD.GetCompetitionsByPlace(place);
+
 }
+    }
 }
