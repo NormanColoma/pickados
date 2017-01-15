@@ -21,11 +21,13 @@ public partial class TipsterCEN
 {
 public void BecomePremium (int p_oid, double fee)
 {
-        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_becomePremium) ENABLED START*/
+            /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_becomePremium) ENABLED START*/
 
-        // Write here your custom code...
+            // Write here your custom code...
 
-        throw new NotImplementedException ("Method BecomePremium() not yet implemented.");
+        TipsterEN cambio = GetByID(p_oid);
+
+        ModifyTipster(p_oid, cambio.CreatedAt, cambio.ModifiedAt, cambio.Alias, cambio.Email, cambio.Password, true, fee);
 
         /*PROTECTED REGION END*/
 }

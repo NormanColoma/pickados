@@ -79,9 +79,14 @@ public void ModifyTipster (int p_Tipster_OID, TimeSpan p_createdAt, TimeSpan p_m
         tipsterEN.Password = Utils.Util.GetEncondeMD5 (p_password);
         tipsterEN.Premium = p_premium;
         tipsterEN.Subscription_fee = p_subscription_fee;
-        //Call to TipsterCAD
-
-        _ITipsterCAD.ModifyTipster (tipsterEN);
+            //Call to TipsterCAD
+        try
+        {
+            _ITipsterCAD.ModifyTipster(tipsterEN);
+        } catch(Exception e)
+        {
+            throw e;
+        }
 }
 
 public void DeleteTipster (int id
