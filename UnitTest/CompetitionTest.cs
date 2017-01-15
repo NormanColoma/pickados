@@ -62,7 +62,7 @@ namespace UnitTest
             try
             {
                 competitionCEN.GetCompetitionsByPlace(It.IsAny<string>());
-                Assert.Fail("Should throw model exception");
+                Assert.Fail("Should throw DataLayer exception");
             }
             catch (Exception actualException)
             {
