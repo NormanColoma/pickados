@@ -64,6 +64,7 @@ public void VerifyPost (int p_oid)
                         else {
                             Boolean exist = false;
                             StatsEN statsENaux = new StatsEN();
+
                             //Comprobamos entre las existentes si hay alguna de este mes.
                             //Se puede mejorar accediendo directamente a la última creada
                             foreach (StatsEN stats in tipsterEN.MonthlyStats)
@@ -71,7 +72,7 @@ public void VerifyPost (int p_oid)
                                 
                                 if (stats.InitialDate.Value.Month.Equals(DateTime.Now.Month) )
                                 {
-                                   // OBTIENE BY ID ESTA  statsENaux = statsCEN
+                                    statsENaux = statsCEN.GetByID(stats.Id);
                                     exist = true;
                                 }
                             }

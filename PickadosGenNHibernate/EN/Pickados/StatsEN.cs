@@ -60,11 +60,22 @@ private Nullable<DateTime> initialDate;
 private PickadosGenNHibernate.EN.Pickados.TipsterEN tipster;
 
 
+/**
+ *	Atributo totalStaked
+ */
+private double totalStaked;
+
+
+
+/**
+ *	Atributo oddAccumulator
+ */
+private double oddAccumulator;
 
 
 
 
-public virtual int Id {
+        public virtual int Id {
         get { return id; } set { id = value;  }
 }
 
@@ -110,11 +121,23 @@ public virtual PickadosGenNHibernate.EN.Pickados.TipsterEN Tipster {
         get { return tipster; } set { tipster = value;  }
 }
 
+        public virtual double TotalStaked
+        {
+            get { return totalStaked; }
+            set { totalStaked = value; }
+        }
 
 
 
+        public virtual double OddAccumulator
+        {
+            get { return oddAccumulator; }
+            set { oddAccumulator = value; }
+        }
 
-public StatsEN()
+
+
+        public StatsEN()
 {
             benefit = 0;
             stakeAverage = 0;
@@ -122,25 +145,26 @@ public StatsEN()
             oddAverage = 0;
             totalPicks = 0;
             InitialDate = DateTime.Now;
-
+            totalStaked = 0;
+            oddAccumulator = 0;
 }
 
 
 
-public StatsEN(int id, double benefit, double stakeAverage, float yield, double oddAverage, int totalPicks, Nullable<DateTime> initialDate, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster
+public StatsEN(int id, double benefit, double stakeAverage, float yield, double oddAverage, int totalPicks, Nullable<DateTime> initialDate, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalStaked, double oddAccumulator
                )
 {
-        this.init (Id, benefit, stakeAverage, yield, oddAverage, totalPicks, initialDate, tipster);
+        this.init (Id, benefit, stakeAverage, yield, oddAverage, totalPicks, initialDate, tipster, totalStaked, oddAccumulator);
 }
 
 
 public StatsEN(StatsEN stats)
 {
-        this.init (Id, stats.Benefit, stats.StakeAverage, stats.Yield, stats.OddAverage, stats.TotalPicks, stats.InitialDate, stats.Tipster);
+        this.init (Id, stats.Benefit, stats.StakeAverage, stats.Yield, stats.OddAverage, stats.TotalPicks, stats.InitialDate, stats.Tipster, stats.TotalStaked, stats.OddAccumulator);
 }
 
 private void init (int id
-                   , double benefit, double stakeAverage, float yield, double oddAverage, int totalPicks, Nullable<DateTime> initialDate, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster)
+                   , double benefit, double stakeAverage, float yield, double oddAverage, int totalPicks, Nullable<DateTime> initialDate, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalStaked, double oddAccumulator)
 {
         this.Id = id;
 
@@ -158,6 +182,10 @@ private void init (int id
         this.InitialDate = initialDate;
 
         this.Tipster = tipster;
+
+        this.OddAccumulator = oddAccumulator;
+
+        this.TotalStaked = TotalStaked;
 }
 
 public override bool Equals (object obj)

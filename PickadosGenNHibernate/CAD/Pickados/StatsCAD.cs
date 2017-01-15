@@ -226,5 +226,65 @@ public void DeleteMonthlyStats (int id
                 SessionClose ();
         }
 }
-}
+
+        public StatsEN GetByID(int id
+                                )
+        {
+            StatsEN statsEN = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+                statsEN = (StatsEN)session.Get(typeof(StatsEN), id);
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return statsEN;
+        }
+
+        public System.Collections.Generic.IList<StatsEN> ReadAll(int first, int size)
+        {
+            System.Collections.Generic.IList<StatsEN> result = null;
+            try
+            {
+                SessionInitializeTransaction();
+                if (size > 0)
+                    result = session.CreateCriteria(typeof(StatsEN)).
+                             SetFirstResult(first).SetMaxResults(size).List<StatsEN>();
+                else
+                    result = session.CreateCriteria(typeof(StatsEN)).List<StatsEN>();
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return result;
+        }
+    }
 }
