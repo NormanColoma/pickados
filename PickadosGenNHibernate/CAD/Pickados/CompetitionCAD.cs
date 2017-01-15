@@ -179,8 +179,7 @@ public void ModifyCompetition (CompetitionEN competition)
                 SessionClose ();
         }
 }
-public void DeleteCompetition (int id
-                               )
+public void DeleteCompetition (int id)
 {
         try
         {
@@ -203,5 +202,37 @@ public void DeleteCompetition (int id
                 SessionClose ();
         }
 }
-}
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionsByPlace(string place)
+        {
+            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> result;
+            try
+            {
+                SessionInitializeTransaction();
+                //String sql = @"FROM CompetitionEN self where FROM CompetitionEN WHERE place = :place";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery("CompetitionENgetCompetitionsByPlaceHQL");
+                query.SetParameter("place", place);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return result;
+        }
+    }
 }

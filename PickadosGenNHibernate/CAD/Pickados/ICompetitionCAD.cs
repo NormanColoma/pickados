@@ -20,5 +20,7 @@ void ModifyCompetition (CompetitionEN competition);
 
 void DeleteCompetition (int id
                         );
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionsByPlace (string place);
 }
 }
