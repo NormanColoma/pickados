@@ -55,6 +55,8 @@ namespace UnitTest
             double expected_odds = 0;
             double actual_odds = postCEN.GetTotalOdd(It.IsAny<int>());
             Assert.AreEqual(expected_odds, actual_odds);
+
+            //Testing CI for features branches
         }
 
     }
