@@ -84,5 +84,7 @@
 		  <query name="TipsterENgetPostsHQL"><![CDATA[SELECT post FROM PostEN as post, TipsterEN as tipster WHERE post.Tipster.Id = tipster.Id ]]></query>
 		  <query name="TipsterENgetFollowsHQL"><![CDATA[select follow_to FROM TipsterEN where id=:id]]></query>
 		  <query name="TipsterENgetTipstersWithBenefitHQL"><![CDATA[FROM TipsterEN]]></query>
-		</hibernate-mapping>
+      <query name="TipsterENgetStatsByMonthHQL"><![CDATA[SELECT tip FROM TipsterEN as tip, StatsEN as stat WHERE tip.id = stat.Tipster.id AND MONTH(stat.initialDate) = MONTH(:p_date)]]></query>
+
+    </hibernate-mapping>
 	

@@ -44,7 +44,9 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
         void DeleteFollow(int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
 
+       System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersWithBenefit();
 
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersWithBenefit();
+       System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByMonth(DateTime p_date);
+
     }
 }

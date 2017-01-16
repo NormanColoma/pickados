@@ -528,5 +528,37 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
             return result;
         }
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByMonth(DateTime p_date)
+        {
+            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> result;
+            try
+            {
+                SessionInitializeTransaction();
+                //String sql = @"FROM TipsterEN self where SELECT tip FROM TipsterEN as tip, StatsEN as stat WHERE tip.id = stat.Tipster.id AND MONTH(stat.initialDate) = MONTH(:p_date)";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery("TipsterENgetStatsByMonthHQL");
+                query.SetParameter("p_date", p_date);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.StatsEN>();
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return result;
+        }
     }
 }
