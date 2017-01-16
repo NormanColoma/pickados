@@ -294,5 +294,81 @@ namespace UnitTest
 
             playerMock.Verify(mock => mock.UnlinkNationalTeam(It.IsAny<int>(), It.IsAny<int>()));
         }
+
+        [TestMethod]
+        public void GetPlayersFromTeamTest()
+        {
+            //Create mocks
+            var playerMock = new Mock<IPlayerCAD>();
+            List<PlayerEN> jugadores = new List<PlayerEN>();
+            PlayerEN nuevo = new PlayerEN();
+            nuevo.Name = "Pepe";
+            jugadores.Add(nuevo);
+
+            playerMock.Setup(mock => mock.GetPlayersByTeam(It.IsAny<int>())).Returns(jugadores);
+
+            PlayerCEN playerCEN = new PlayerCEN(playerMock.Object);
+
+            IList<PlayerEN> otro = playerCEN.GetPlayersByTeam(It.IsAny<int>());
+            Assert.AreEqual(jugadores.Count, otro.Count);
+
+            playerMock.Verify(mock => mock.GetPlayersByTeam(It.IsAny<int>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetPlayersFromTeamModelExceptionTest()
+        {
+            //Create mocks
+            var playerMock = new Mock<IPlayerCAD>();
+            List<PlayerEN> jugadores = new List<PlayerEN>();
+            PlayerEN nuevo = new PlayerEN();
+            nuevo.Name = "Pepe";
+            jugadores.Add(nuevo);
+
+            playerMock.Setup(mock => mock.GetPlayersByTeam(It.IsAny<int>())).Throws(new ModelException());
+
+            PlayerCEN playerCEN = new PlayerCEN(playerMock.Object);
+
+            try
+            {
+                IList<PlayerEN> otro = playerCEN.GetPlayersByTeam(It.IsAny<int>());
+                Assert.Fail("This method should throw an exception");
+            } catch(Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(ModelException));
+            }
+
+            playerMock.Verify(mock => mock.GetPlayersByTeam(It.IsAny<int>()), Times.Once);
+        }
+
+        public void GetPlayersFromTeamDataLayerExceptionTest()
+        {
+            //Create mocks
+            var playerMock = new Mock<IPlayerCAD>();
+            List<PlayerEN> jugadores = new List<PlayerEN>();
+            PlayerEN nuevo = new PlayerEN();
+            nuevo.Name = "Pepe";
+            jugadores.Add(nuevo);
+
+            playerMock.Setup(mock => mock.GetPlayersByTeam(It.IsAny<int>())).Throws(new ModelException("Error in playerCAD"));
+
+            PlayerCEN playerCEN = new PlayerCEN(playerMock.Object);
+
+            try
+            {
+                IList<PlayerEN> otro = playerCEN.GetPlayersByTeam(It.IsAny<int>());
+                Assert.Fail("This method should throw an exception");
+            }
+            catch (Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(DataLayerException));
+                Assert.AreEqual("Error in PlayerCAD.", e.Message);
+
+            }
+
+            playerMock.Verify(mock => mock.GetPlayersByTeam(It.IsAny<int>()), Times.Once);
+        }
+
+
     }
 }

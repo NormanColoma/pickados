@@ -112,5 +112,10 @@ namespace PickadosGenNHibernate.CEN.Pickados
             list = _IPlayerCAD.GetAllPlayers(first, size);
             return list;
         }
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByTeam(int teamOid)
+        {
+            return _IPlayerCAD.GetPlayersByTeam(teamOid);
+        }
     }
 }

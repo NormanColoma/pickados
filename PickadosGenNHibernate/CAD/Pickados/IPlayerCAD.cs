@@ -35,5 +35,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
 
         System.Collections.Generic.IList<PlayerEN> GetAllPlayers(int first, int size);
-    }
+
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByTeam(int teamOid);
+}
 }

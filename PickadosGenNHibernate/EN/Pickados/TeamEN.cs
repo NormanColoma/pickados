@@ -176,5 +176,10 @@ namespace PickadosGenNHibernate.EN.Pickados
             hash += this.Id.GetHashCode();
             return hash;
         }
+
+        public static implicit operator TeamEN(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
