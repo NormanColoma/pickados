@@ -14,7 +14,7 @@ namespace UnitTest
     {
         
         [TestMethod]
-        public void UpdateStatsGivenPostWithWonPick()
+        public void VerifyingPost()
         {
 
             //Create mocks
@@ -64,6 +64,31 @@ namespace UnitTest
            tipsterCADMock.Verify(mock => mock.GetTipsterById(It.IsAny<int>()), Times.Once);
            postCADMock.Verify(mock => mock.GetPostById(It.IsAny<int>()), Times.Once);
            postCADMock.Verify(mock => mock.GetPostById(It.IsAny<int>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void UpdateStatsGivenPostWithWonPick()
+        {
+            //Creating post with pickresult=won !
+            PostEN postEN = new PostEN();
+            PostCEN postCEN = new PostCEN();
+            PickEN pickEN = new PickEN();
+            pickEN.PickResult = PickResultEnum.won;
+
+            IList<PickEN> picks = new List<PickEN>();
+            picks.Add(pickEN);
+            postEN.Pick = picks;
+            postEN.TotalOdd = 2;
+            postEN.Stake = 1;
+            //Create mocks
+
+            StatsEN stats = postCEN.updateStats(new StatsEN(), postEN);
+            Assert.AreEqual(stats.TotalPicks, 1);
+            Assert.AreEqual(stats.TotalStaked, 1);
+            Assert.AreEqual(stats.OddAverage, 2);
+            Assert.AreEqual(stats.Yield, 100);
+            Assert.AreEqual(stats.Benefit, 1);
+
         }
     }
 }

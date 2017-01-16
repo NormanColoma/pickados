@@ -91,59 +91,68 @@ namespace PickadosGenNHibernate.CEN.Pickados
                         }
 
                         statsEN = statsCEN.GetStatById(id_stats);
-                        statsEN.TotalPicks += 1;
-                        statsEN.OddAccumulator += postEN.TotalOdd;
-                        statsEN.TotalStaked += postEN.Stake;
-                        statsEN.OddAverage = statsEN.OddAccumulator / statsEN.TotalPicks;
-                        statsEN.StakeAverage = statsEN.TotalStaked / statsEN.TotalPicks;
 
-
-                        //TODO- Compute multiple picks with some push one
-                        //Verifying pick results
-                        postEN.PostResult = PickResultEnum.won;
-
-                        if (postEN.Pick.Count() == 1) postEN.PostResult = postEN.Pick.First().PickResult;
-                        else
-                        {
-                            foreach (PickEN pick in postEN.Pick)
-                            {
-                                if (pick.PickResult.Equals(PickResultEnum.lost))
-                                {
-                                    postEN.PostResult = PickResultEnum.lost;
-                                }
-                            }
-                        }
-
-
-
-                        switch (postEN.PostResult)
-                        {
-                            case PickResultEnum.won:
-                                double benef = postEN.TotalOdd * postEN.Stake - postEN.Stake;
-                                statsEN.Benefit += benef;
-
-                                break;
-                            case PickResultEnum.lost:
-                                statsEN.Benefit -= postEN.Stake;
-                                //statsEN.Yield
-                                break;
-                            default:
-                                Console.WriteLine("Not recognise ");
-                                break;
-                        }
-
-                        statsEN.Yield = (float)(statsEN.Benefit / statsEN.TotalStaked * 100);
-
+                        StatsEN statsEN_aux = new StatsEN();
+                        statsEN_aux = updateStats(statsEN_aux, postEN);
                         //Actualizamos y guardamos las stats
 
-                        statsCEN.get_IStatsCAD().ModifyMonthlyStats(statsEN);
+                        statsCEN.get_IStatsCAD().ModifyMonthlyStats(statsEN_aux);
                     }
                 }
 
 
             }
 
+
+
             /*PROTECTED REGION END*/
+        }
+
+        public StatsEN updateStats(StatsEN stats, PostEN post) {
+            stats.TotalPicks += 1;
+            stats.OddAccumulator += post.TotalOdd;
+            stats.TotalStaked += post.Stake;
+            stats.OddAverage = stats.OddAccumulator / stats.TotalPicks;
+            stats.StakeAverage = stats.TotalStaked / stats.TotalPicks;
+
+
+            //TODO- Compute multiple picks with some push one
+            //Verifying pick results
+            post.PostResult = PickResultEnum.won;
+
+            if (post.Pick.Count() == 1) post.PostResult = post.Pick.First().PickResult;
+            else
+            {
+                foreach (PickEN pick in post.Pick)
+                {
+                    if (pick.PickResult.Equals(PickResultEnum.lost))
+                    {
+                        post.PostResult = PickResultEnum.lost;
+                    }
+                }
+            }
+
+
+
+            switch (post.PostResult)
+            {
+                case PickResultEnum.won:
+                    double benef = post.TotalOdd * post.Stake - post.Stake;
+                    stats.Benefit += benef;
+
+                    break;
+                case PickResultEnum.lost:
+                    stats.Benefit -= post.Stake;
+                    //statsEN.Yield
+                    break;
+                default:
+                    Console.WriteLine("Not recognise ");
+                    break;
+            }
+
+            stats.Yield = (float)(stats.Benefit / stats.TotalStaked * 100);
+
+            return stats;
         }
     }
 }
