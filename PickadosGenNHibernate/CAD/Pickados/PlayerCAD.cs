@@ -389,5 +389,37 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
             return result;
         }
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByTeam(int teamOid)
+        {
+            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> result;
+            try
+            {
+                SessionInitializeTransaction();
+                //String sql = @"FROM PlayerEN self where FROM PlayerEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery("PlayerENgetPlayersByTeamHQL");
+                query.SetParameter("teamOid", teamOid);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PlayerEN>();
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return result;
+        }
     }
 }

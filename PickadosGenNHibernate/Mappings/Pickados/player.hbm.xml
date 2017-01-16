@@ -49,6 +49,6 @@
 		
 		 </class>	
 		  
-		  <query name="PlayerENReadAllHQL">from PlayerEN</query>
+		  <query name="PlayerENReadAllHQL">from PlayerEN as p, TeamEN as t where (p.club_team = t.id or p.national_team=t.id) and t.id =: id</query>
 		</hibernate-mapping>
 	
