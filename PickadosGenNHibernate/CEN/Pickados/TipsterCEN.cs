@@ -90,9 +90,9 @@ namespace PickadosGenNHibernate.CEN.Pickados
             _ITipsterCAD.DeleteTipster(id);
         }
 
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers()
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers(int oid)
         {
-            return _ITipsterCAD.GetFollowers();
+            return _ITipsterCAD.GetFollowers(oid);
         }
         public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPosts()
         {
@@ -126,9 +126,9 @@ namespace PickadosGenNHibernate.CEN.Pickados
 
             _ITipsterCAD.AddFollow(p_Tipster_OID, p_follow_to_OIDs);
         }
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows()
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows(int oid)
         {
-            return _ITipsterCAD.GetFollows();
+            return _ITipsterCAD.GetFollows(oid);
         }
         public void DeleteFollow(int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)
         {
