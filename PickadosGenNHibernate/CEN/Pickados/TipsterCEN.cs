@@ -140,5 +140,10 @@ namespace PickadosGenNHibernate.CEN.Pickados
         {
             return _ITipsterCAD.GetTipstersWithBenefit();
         }
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByMonth(DateTime p_date)
+        {
+            return _ITipsterCAD.GetStatsByMonth(p_date);
+        }
     }
 }

@@ -48,16 +48,22 @@ namespace UnitTest
             PostCEN postCEN = new PostCEN(postCADMock.Object);
             TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
             StatsCEN statsCEN = new StatsCEN(statsCADMock.Object);
-            postCEN.VerifyPost(1, postCEN, tipsterCEN, statsCEN);
 
 
-            Assert.AreEqual(1, 1);
-            /**Assert.AreEqual(1, actual_totalStaked);
-            Assert.AreEqual(2, actual_oddAccumulator);
-            Assert.AreEqual(1, actual_stakeAverage);
-            Assert.AreEqual(2, actual_oddAverage);
-            Assert.AreEqual(100, actual_yield);
-            Assert.AreEqual(1, actual_totalPicks);**/
+            try
+            {
+                postCEN.VerifyPost(1, postCEN, tipsterCEN, statsCEN);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Should not throw exception");
+            }
+
+
+
+           tipsterCADMock.Verify(mock => mock.GetTipsterById(It.IsAny<int>()), Times.Once);
+           postCADMock.Verify(mock => mock.GetPostById(It.IsAny<int>()), Times.Once);
+           postCADMock.Verify(mock => mock.GetPostById(It.IsAny<int>()), Times.Once);
         }
     }
 }

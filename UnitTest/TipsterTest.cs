@@ -356,5 +356,24 @@ namespace UnitTest
 
         }
 
+        [TestMethod]
+        public void GettingStatsByMonthShouldThrowModelException()
+        {
+            var mockCADtipster = new Mock<ITipsterCAD>();
+
+            mockCADtipster.Setup(mock => mock.GetStatsByMonth(It.IsAny<DateTime>())).Throws(new ModelException());
+
+            TipsterCEN tipsterCEN = new TipsterCEN(mockCADtipster.Object);
+            try
+            {
+                tipsterCEN.GetStatsByMonth(It.IsAny<DateTime>());
+                Assert.Fail("Should throw model exception");
+            }
+            catch (Exception actualException)
+            {
+                Assert.IsInstanceOfType(actualException, typeof(ModelException));
+            }
+        }
+
     }
 }
