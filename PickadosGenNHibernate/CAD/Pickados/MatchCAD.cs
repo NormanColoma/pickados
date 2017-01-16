@@ -277,5 +277,70 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
             return result;
         }
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByTeam(string team)
+        {
+            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> result;
+            try
+            {
+                SessionInitializeTransaction();
+                //String sql = @"FROM MatchEN self where FROM MatchEN m WHERE m.home := team or m.away := team";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery("MatchENgetMatchByTeamHQL");
+                query.SetParameter("home", team);
+                query.SetParameter("away", team);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.MatchEN>();
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in MatchCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return result;
+        }
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition(string competition)
+        {
+            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> result;
+            try
+            {
+                SessionInitializeTransaction();
+                //String sql = @"FROM MatchEN self where FROM MatchEN m where m.competition := competition";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery("MatchENgetMatchByCompetitionHQL");
+                query.SetParameter("competition", competition);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.MatchEN>();
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in MatchCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return result;
+        }
     }
 }

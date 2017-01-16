@@ -61,6 +61,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CompetitionTest.cs" />
+    <Compile Include="MatchTest.cs" />
     <Compile Include="PlayerTest.cs" />
     <Compile Include="PublishPostTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

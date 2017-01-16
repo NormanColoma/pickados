@@ -109,5 +109,15 @@ namespace PickadosGenNHibernate.CEN.Pickados
             list = _IMatchCAD.GetAllMatches(first, size);
             return list;
         }
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByTeam(string team)
+        {
+            return _IMatchCAD.GetMatchByTeam(team);
+        }
+
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition(string competition)
+        {
+            return _IMatchCAD.GetMatchByCompetition(competition);
+        }
     }
 }
