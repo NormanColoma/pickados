@@ -30,6 +30,12 @@
 					<property name="InitialDate" type="date"> 
 						<column name="initialDate"  not-null="true"/>
 					</property>
+          <property name="TotalStaked" type="double">
+            <column name="totalStaked"  not-null="true"/>
+          </property>
+          <property name="OddAccumulator" type="double">
+            <column name="oddAccumulator"  not-null="true"/>
+          </property>
 			
 			
 			

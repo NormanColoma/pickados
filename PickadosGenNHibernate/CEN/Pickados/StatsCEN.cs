@@ -38,7 +38,7 @@ public IStatsCAD get_IStatsCAD ()
         return this._IStatsCAD;
 }
 
-public int NewMonthlyStats (double p_benefit, double p_stakeAverage, float p_yield, double p_oddAverage, int p_totalPicks, Nullable<DateTime> p_initialDate, int p_tipster)
+public int NewMonthlyStats (double p_benefit, double p_stakeAverage, float p_yield, double p_oddAverage, int p_totalPicks, Nullable<DateTime> p_initialDate, int p_tipster, double p_totalstaked, double p_oddaccumulator)
 {
         StatsEN statsEN = null;
         int oid;
@@ -57,6 +57,9 @@ public int NewMonthlyStats (double p_benefit, double p_stakeAverage, float p_yie
 
         statsEN.InitialDate = p_initialDate;
 
+            statsEN.TotalStaked = p_totalstaked;
+
+            statsEN.OddAccumulator = p_oddaccumulator;
 
         if (p_tipster != -1) {
                 // El argumento p_tipster -> Property tipster es oid = false
@@ -71,7 +74,7 @@ public int NewMonthlyStats (double p_benefit, double p_stakeAverage, float p_yie
         return oid;
 }
 
-public void ModifyMonthlyStats (int p_Stats_OID, double p_benefit, double p_stakeAverage, float p_yield, double p_oddAverage, int p_totalPicks, Nullable<DateTime> p_initialDate)
+public void ModifyMonthlyStats (int p_Stats_OID, double p_benefit, double p_stakeAverage, float p_yield, double p_oddAverage, int p_totalPicks, Nullable<DateTime> p_initialDate, double p_totalstaked, double p_oddaccumulator)
 {
         StatsEN statsEN = null;
 
@@ -84,9 +87,12 @@ public void ModifyMonthlyStats (int p_Stats_OID, double p_benefit, double p_stak
         statsEN.OddAverage = p_oddAverage;
         statsEN.TotalPicks = p_totalPicks;
         statsEN.InitialDate = p_initialDate;
-        //Call to StatsCAD
+        statsEN.TotalStaked = p_totalstaked;
+        statsEN.OddAccumulator = p_oddaccumulator;
 
-        _IStatsCAD.ModifyMonthlyStats (statsEN);
+            //Call to StatsCAD
+
+            _IStatsCAD.ModifyMonthlyStats (statsEN);
 }
 
 public void DeleteMonthlyStats (int id
@@ -94,5 +100,23 @@ public void DeleteMonthlyStats (int id
 {
         _IStatsCAD.DeleteMonthlyStats (id);
 }
-}
+
+
+public StatsEN GetByID(int id
+                                )
+        {
+            StatsEN statsEN = null;
+
+            statsEN = _IStatsCAD.GetByID(id);
+            return statsEN;
+        }
+
+ public System.Collections.Generic.IList<StatsEN> ReadAll(int first, int size)
+        {
+            System.Collections.Generic.IList<StatsEN> list = null;
+
+            list = _IStatsCAD.ReadAll(first, size);
+            return list;
+        }
+    }
 }

@@ -20,5 +20,12 @@ void ModifyMonthlyStats (StatsEN stats);
 
 void DeleteMonthlyStats (int id
                          );
+
+StatsEN GetByID(int id
+                 );
+
+
+System.Collections.Generic.IList<StatsEN> ReadAll(int first, int size);
+   
 }
 }
