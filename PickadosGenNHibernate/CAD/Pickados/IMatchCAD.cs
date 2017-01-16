@@ -27,5 +27,9 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
 
         System.Collections.Generic.IList<MatchEN> GetAllMatches(int first, int size);
+
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByTeam(string team);
+
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition(string competition);
     }
 }
