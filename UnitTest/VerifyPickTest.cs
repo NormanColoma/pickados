@@ -12,6 +12,7 @@ namespace UnitTest
     [TestClass]
     public class VerifyPickTest
     {
+        
         [TestMethod]
         public void UpdateStatsGivenPostWithWonPick()
         {
@@ -38,12 +39,12 @@ namespace UnitTest
 
             StatsEN statsEN = new StatsEN();
 
-            postCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(postEN);
-            tipsterCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(tipsterEN);
+            postCADMock.Setup(mock => mock.GetPostById(It.IsAny<int>())).Returns(postEN);
+            tipsterCADMock.Setup(mock => mock.GetTipsterById(It.IsAny<int>())).Returns(tipsterEN);
             statsCADMock.Setup(mock => mock.NewMonthlyStats(It.IsAny<StatsEN>())).Returns(1);
-            statsCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(statsEN);
+            statsCADMock.Setup(mock => mock.GetStatById(It.IsAny<int>())).Returns(statsEN);
 
-
+            
             PostCEN postCEN = new PostCEN(postCADMock.Object);
             TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
             StatsCEN statsCEN = new StatsCEN(statsCADMock.Object);

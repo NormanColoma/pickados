@@ -17,147 +17,153 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-public partial class TimecastCAD : BasicCAD, ITimecastCAD
-{
-public TimecastCAD() : base ()
-{
-}
-
-public TimecastCAD(ISession sessionAux) : base (sessionAux)
-{
-}
-
-
-
-public TimecastEN ReadOIDDefault (int id
-                                  )
-{
-        TimecastEN timecastEN = null;
-
-        try
+    public partial class TimecastCAD : BasicCAD, ITimecastCAD
+    {
+        public TimecastCAD() : base()
         {
-                SessionInitializeTransaction ();
-                timecastEN = (TimecastEN)session.Get (typeof(TimecastEN), id);
-                SessionCommit ();
         }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+        public TimecastCAD(ISession sessionAux) : base(sessionAux)
+        {
+        }
+
+
+
+        public TimecastEN ReadOIDDefault(int id
+                                          )
+        {
+            TimecastEN timecastEN = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+                timecastEN = (TimecastEN)session.Get(typeof(TimecastEN), id);
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TimecastCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return timecastEN;
         }
 
-
-        finally
+        public System.Collections.Generic.IList<TimecastEN> ReadAllDefault(int first, int size)
         {
-                SessionClose ();
-        }
-
-        return timecastEN;
-}
-
-public System.Collections.Generic.IList<TimecastEN> ReadAllDefault (int first, int size)
-{
-        System.Collections.Generic.IList<TimecastEN> result = null;
-        try
-        {
-                using (ITransaction tx = session.BeginTransaction ())
+            System.Collections.Generic.IList<TimecastEN> result = null;
+            try
+            {
+                using (ITransaction tx = session.BeginTransaction())
                 {
-                        if (size > 0)
-                                result = session.CreateCriteria (typeof(TimecastEN)).
-                                         SetFirstResult (first).SetMaxResults (size).List<TimecastEN>();
-                        else
-                                result = session.CreateCriteria (typeof(TimecastEN)).List<TimecastEN>();
+                    if (size > 0)
+                        result = session.CreateCriteria(typeof(TimecastEN)).
+                                 SetFirstResult(first).SetMaxResults(size).List<TimecastEN>();
+                    else
+                        result = session.CreateCriteria(typeof(TimecastEN)).List<TimecastEN>();
                 }
-        }
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TimecastCAD.", ex);
+            }
+
+            return result;
         }
 
-        return result;
-}
+        // Modify default (Update all attributes of the class)
 
-// Modify default (Update all attributes of the class)
-
-public void ModifyDefault (TimecastEN timecast)
-{
-        try
+        public void ModifyDefault(TimecastEN timecast)
         {
-                SessionInitializeTransaction ();
-                TimecastEN timecastEN = (TimecastEN)session.Load (typeof(TimecastEN), timecast.Id);
+            try
+            {
+                SessionInitializeTransaction();
+                TimecastEN timecastEN = (TimecastEN)session.Load(typeof(TimecastEN), timecast.Id);
 
                 timecastEN.Score_time = timecast.Score_time;
 
-                session.Update (timecastEN);
-                SessionCommit ();
-        }
+                session.Update(timecastEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TimecastCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
         }
 
 
-        finally
+        public int NewTimecast(TimecastEN timecast)
         {
-                SessionClose ();
-        }
-}
+            try
+            {
+                SessionInitializeTransaction();
+                if (timecast.Event_rel != null)
+                {
+                    // Argumento OID y no colección.
+                    timecast.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), timecast.Event_rel.Id);
 
-
-public int New_ (TimecastEN timecast)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                if (timecast.Event_rel != null) {
-                        // Argumento OID y no colección.
-                        timecast.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), timecast.Event_rel.Id);
-
-                        timecast.Event_rel.Pick_rel
-                        .Add (timecast);
+                    timecast.Event_rel.Pick_rel
+                    .Add(timecast);
                 }
-                if (timecast.Player != null) {
-                        // Argumento OID y no colección.
-                        timecast.Player = (PickadosGenNHibernate.EN.Pickados.PlayerEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.PlayerEN), timecast.Player.Id);
+                if (timecast.Player != null)
+                {
+                    // Argumento OID y no colección.
+                    timecast.Player = (PickadosGenNHibernate.EN.Pickados.PlayerEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.PlayerEN), timecast.Player.Id);
 
-                        timecast.Player.Scorer
-                        .Add (timecast);
+                    timecast.Player.Scorer
+                    .Add(timecast);
                 }
 
-                session.Save (timecast);
-                SessionCommit ();
-        }
+                session.Save(timecast);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TimecastCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return timecast.Id;
         }
 
-
-        finally
+        public void ModifyTimecast(TimecastEN timecast)
         {
-                SessionClose ();
-        }
-
-        return timecast.Id;
-}
-
-public void Modify (TimecastEN timecast)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                TimecastEN timecastEN = (TimecastEN)session.Load (typeof(TimecastEN), timecast.Id);
+            try
+            {
+                SessionInitializeTransaction();
+                TimecastEN timecastEN = (TimecastEN)session.Load(typeof(TimecastEN), timecast.Id);
 
                 timecastEN.Odd = timecast.Odd;
 
@@ -176,46 +182,48 @@ public void Modify (TimecastEN timecast)
 
                 timecastEN.Score_time = timecast.Score_time;
 
-                session.Update (timecastEN);
-                SessionCommit ();
-        }
+                session.Update(timecastEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TimecastCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
         }
-
-
-        finally
+        public void DeleteTimecast(int id
+                                    )
         {
-                SessionClose ();
-        }
-}
-public void Destroy (int id
-                     )
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                TimecastEN timecastEN = (TimecastEN)session.Load (typeof(TimecastEN), id);
-                session.Delete (timecastEN);
-                SessionCommit ();
-        }
+            try
+            {
+                SessionInitializeTransaction();
+                TimecastEN timecastEN = (TimecastEN)session.Load(typeof(TimecastEN), id);
+                session.Delete(timecastEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TimecastCAD.", ex);
-        }
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TimecastCAD.", ex);
+            }
 
 
-        finally
-        {
-                SessionClose ();
+            finally
+            {
+                SessionClose();
+            }
         }
-}
-}
+    }
 }

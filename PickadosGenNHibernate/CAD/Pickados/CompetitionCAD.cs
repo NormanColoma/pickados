@@ -17,79 +17,81 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-public partial class CompetitionCAD : BasicCAD, ICompetitionCAD
-{
-public CompetitionCAD() : base ()
-{
-}
-
-public CompetitionCAD(ISession sessionAux) : base (sessionAux)
-{
-}
-
-
-
-public CompetitionEN ReadOIDDefault (int id
-                                     )
-{
-        CompetitionEN competitionEN = null;
-
-        try
+    public partial class CompetitionCAD : BasicCAD, ICompetitionCAD
+    {
+        public CompetitionCAD() : base()
         {
-                SessionInitializeTransaction ();
-                competitionEN = (CompetitionEN)session.Get (typeof(CompetitionEN), id);
-                SessionCommit ();
         }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+        public CompetitionCAD(ISession sessionAux) : base(sessionAux)
+        {
+        }
+
+
+
+        public CompetitionEN ReadOIDDefault(int id
+                                             )
+        {
+            CompetitionEN competitionEN = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+                competitionEN = (CompetitionEN)session.Get(typeof(CompetitionEN), id);
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return competitionEN;
         }
 
-
-        finally
+        public System.Collections.Generic.IList<CompetitionEN> ReadAllDefault(int first, int size)
         {
-                SessionClose ();
-        }
-
-        return competitionEN;
-}
-
-public System.Collections.Generic.IList<CompetitionEN> ReadAllDefault (int first, int size)
-{
-        System.Collections.Generic.IList<CompetitionEN> result = null;
-        try
-        {
-                using (ITransaction tx = session.BeginTransaction ())
+            System.Collections.Generic.IList<CompetitionEN> result = null;
+            try
+            {
+                using (ITransaction tx = session.BeginTransaction())
                 {
-                        if (size > 0)
-                                result = session.CreateCriteria (typeof(CompetitionEN)).
-                                         SetFirstResult (first).SetMaxResults (size).List<CompetitionEN>();
-                        else
-                                result = session.CreateCriteria (typeof(CompetitionEN)).List<CompetitionEN>();
+                    if (size > 0)
+                        result = session.CreateCriteria(typeof(CompetitionEN)).
+                                 SetFirstResult(first).SetMaxResults(size).List<CompetitionEN>();
+                    else
+                        result = session.CreateCriteria(typeof(CompetitionEN)).List<CompetitionEN>();
                 }
-        }
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
+
+            return result;
         }
 
-        return result;
-}
+        // Modify default (Update all attributes of the class)
 
-// Modify default (Update all attributes of the class)
-
-public void ModifyDefault (CompetitionEN competition)
-{
-        try
+        public void ModifyDefault(CompetitionEN competition)
         {
-                SessionInitializeTransaction ();
-                CompetitionEN competitionEN = (CompetitionEN)session.Load (typeof(CompetitionEN), competition.Id);
+            try
+            {
+                SessionInitializeTransaction();
+                CompetitionEN competitionEN = (CompetitionEN)session.Load(typeof(CompetitionEN), competition.Id);
 
                 competitionEN.Name = competition.Name;
 
@@ -98,110 +100,116 @@ public void ModifyDefault (CompetitionEN competition)
 
                 competitionEN.Place = competition.Place;
 
-                session.Update (competitionEN);
-                SessionCommit ();
-        }
+                session.Update(competitionEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
         }
 
 
-        finally
+        public int NewCompetition(CompetitionEN competition)
         {
-                SessionClose ();
-        }
-}
+            try
+            {
+                SessionInitializeTransaction();
+                if (competition.Sport != null)
+                {
+                    // Argumento OID y no colección.
+                    competition.Sport = (PickadosGenNHibernate.EN.Pickados.SportEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.SportEN), competition.Sport.Id);
 
-
-public int NewCompetition (CompetitionEN competition)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                if (competition.Sport != null) {
-                        // Argumento OID y no colección.
-                        competition.Sport = (PickadosGenNHibernate.EN.Pickados.SportEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.SportEN), competition.Sport.Id);
-
-                        competition.Sport.Competition
-                        .Add (competition);
+                    competition.Sport.Competition
+                    .Add(competition);
                 }
 
-                session.Save (competition);
-                SessionCommit ();
-        }
+                session.Save(competition);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return competition.Id;
         }
 
-
-        finally
+        public void ModifyCompetition(CompetitionEN competition)
         {
-                SessionClose ();
-        }
-
-        return competition.Id;
-}
-
-public void ModifyCompetition (CompetitionEN competition)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                CompetitionEN competitionEN = (CompetitionEN)session.Load (typeof(CompetitionEN), competition.Id);
+            try
+            {
+                SessionInitializeTransaction();
+                CompetitionEN competitionEN = (CompetitionEN)session.Load(typeof(CompetitionEN), competition.Id);
 
                 competitionEN.Name = competition.Name;
 
 
                 competitionEN.Place = competition.Place;
 
-                session.Update (competitionEN);
-                SessionCommit ();
-        }
+                session.Update(competitionEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
         }
-
-
-        finally
+        public void DeleteCompetition(int id
+                                       )
         {
-                SessionClose ();
-        }
-}
-public void DeleteCompetition (int id)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                CompetitionEN competitionEN = (CompetitionEN)session.Load (typeof(CompetitionEN), id);
-                session.Delete (competitionEN);
-                SessionCommit ();
-        }
+            try
+            {
+                SessionInitializeTransaction();
+                CompetitionEN competitionEN = (CompetitionEN)session.Load(typeof(CompetitionEN), id);
+                session.Delete(competitionEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
-        }
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
 
 
-        finally
-        {
-                SessionClose ();
+            finally
+            {
+                SessionClose();
+            }
         }
-}
 
         public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionsByPlace(string place)
         {
@@ -215,6 +223,67 @@ public void DeleteCompetition (int id)
                 query.SetParameter("place", place);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return result;
+        }
+        //Sin e: GetCompetitionById
+        //Con e: CompetitionEN
+        public CompetitionEN GetCompetitionById(int id
+                                                 )
+        {
+            CompetitionEN competitionEN = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+                competitionEN = (CompetitionEN)session.Get(typeof(CompetitionEN), id);
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in CompetitionCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return competitionEN;
+        }
+
+        public System.Collections.Generic.IList<CompetitionEN> GetAllCompetitions(int first, int size)
+        {
+            System.Collections.Generic.IList<CompetitionEN> result = null;
+            try
+            {
+                SessionInitializeTransaction();
+                if (size > 0)
+                    result = session.CreateCriteria(typeof(CompetitionEN)).
+                             SetFirstResult(first).SetMaxResults(size).List<CompetitionEN>();
+                else
+                    result = session.CreateCriteria(typeof(CompetitionEN)).List<CompetitionEN>();
                 SessionCommit();
             }
 

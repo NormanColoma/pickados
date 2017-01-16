@@ -205,10 +205,10 @@ namespace PickadosGenNHibernate.CAD.Pickados
             }
         }
 
-        //Sin e: GetByID
+        //Sin e: GetTeamById
         //Con e: TeamEN
-        public TeamEN GetByID(int id
-                               )
+        public TeamEN GetTeamById(int id
+                                   )
         {
             TeamEN teamEN = null;
 
@@ -236,7 +236,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
             return teamEN;
         }
 
-        public System.Collections.Generic.IList<TeamEN> GetAll(int first, int size)
+        public System.Collections.Generic.IList<TeamEN> GetAllTeams(int first, int size)
         {
             System.Collections.Generic.IList<TeamEN> result = null;
             try

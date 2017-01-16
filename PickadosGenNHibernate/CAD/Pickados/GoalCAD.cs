@@ -17,79 +17,81 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-public partial class GoalCAD : BasicCAD, IGoalCAD
-{
-public GoalCAD() : base ()
-{
-}
-
-public GoalCAD(ISession sessionAux) : base (sessionAux)
-{
-}
-
-
-
-public GoalEN ReadOIDDefault (int id
-                              )
-{
-        GoalEN goalEN = null;
-
-        try
+    public partial class GoalCAD : BasicCAD, IGoalCAD
+    {
+        public GoalCAD() : base()
         {
-                SessionInitializeTransaction ();
-                goalEN = (GoalEN)session.Get (typeof(GoalEN), id);
-                SessionCommit ();
         }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+        public GoalCAD(ISession sessionAux) : base(sessionAux)
+        {
+        }
+
+
+
+        public GoalEN ReadOIDDefault(int id
+                                      )
+        {
+            GoalEN goalEN = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+                goalEN = (GoalEN)session.Get(typeof(GoalEN), id);
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in GoalCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in GoalCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return goalEN;
         }
 
-
-        finally
+        public System.Collections.Generic.IList<GoalEN> ReadAllDefault(int first, int size)
         {
-                SessionClose ();
-        }
-
-        return goalEN;
-}
-
-public System.Collections.Generic.IList<GoalEN> ReadAllDefault (int first, int size)
-{
-        System.Collections.Generic.IList<GoalEN> result = null;
-        try
-        {
-                using (ITransaction tx = session.BeginTransaction ())
+            System.Collections.Generic.IList<GoalEN> result = null;
+            try
+            {
+                using (ITransaction tx = session.BeginTransaction())
                 {
-                        if (size > 0)
-                                result = session.CreateCriteria (typeof(GoalEN)).
-                                         SetFirstResult (first).SetMaxResults (size).List<GoalEN>();
-                        else
-                                result = session.CreateCriteria (typeof(GoalEN)).List<GoalEN>();
+                    if (size > 0)
+                        result = session.CreateCriteria(typeof(GoalEN)).
+                                 SetFirstResult(first).SetMaxResults(size).List<GoalEN>();
+                    else
+                        result = session.CreateCriteria(typeof(GoalEN)).List<GoalEN>();
                 }
-        }
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in GoalCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in GoalCAD.", ex);
+            }
+
+            return result;
         }
 
-        return result;
-}
+        // Modify default (Update all attributes of the class)
 
-// Modify default (Update all attributes of the class)
-
-public void ModifyDefault (GoalEN goal)
-{
-        try
+        public void ModifyDefault(GoalEN goal)
         {
-                SessionInitializeTransaction ();
-                GoalEN goalEN = (GoalEN)session.Load (typeof(GoalEN), goal.Id);
+            try
+            {
+                SessionInitializeTransaction();
+                GoalEN goalEN = (GoalEN)session.Load(typeof(GoalEN), goal.Id);
 
                 goalEN.Line = goal.Line;
 
@@ -99,64 +101,67 @@ public void ModifyDefault (GoalEN goal)
 
                 goalEN.Asian = goal.Asian;
 
-                session.Update (goalEN);
-                SessionCommit ();
-        }
+                session.Update(goalEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in GoalCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in GoalCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
         }
 
 
-        finally
+        public int NewGoal(GoalEN goal)
         {
-                SessionClose ();
-        }
-}
+            try
+            {
+                SessionInitializeTransaction();
+                if (goal.Event_rel != null)
+                {
+                    // Argumento OID y no colección.
+                    goal.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), goal.Event_rel.Id);
 
-
-public int NewGoal (GoalEN goal)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                if (goal.Event_rel != null) {
-                        // Argumento OID y no colección.
-                        goal.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), goal.Event_rel.Id);
-
-                        goal.Event_rel.Pick_rel
-                        .Add (goal);
+                    goal.Event_rel.Pick_rel
+                    .Add(goal);
                 }
 
-                session.Save (goal);
-                SessionCommit ();
-        }
+                session.Save(goal);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in GoalCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in GoalCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return goal.Id;
         }
 
-
-        finally
+        public void ModifyGoal(GoalEN goal)
         {
-                SessionClose ();
-        }
-
-        return goal.Id;
-}
-
-public void ModifyGoal (GoalEN goal)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                GoalEN goalEN = (GoalEN)session.Load (typeof(GoalEN), goal.Id);
+            try
+            {
+                SessionInitializeTransaction();
+                GoalEN goalEN = (GoalEN)session.Load(typeof(GoalEN), goal.Id);
 
                 goalEN.Odd = goal.Odd;
 
@@ -178,46 +183,48 @@ public void ModifyGoal (GoalEN goal)
 
                 goalEN.Asian = goal.Asian;
 
-                session.Update (goalEN);
-                SessionCommit ();
-        }
+                session.Update(goalEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in GoalCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in GoalCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
         }
-
-
-        finally
+        public void DeleteGoal(int id
+                                )
         {
-                SessionClose ();
-        }
-}
-public void DeleteGoal (int id
-                        )
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                GoalEN goalEN = (GoalEN)session.Load (typeof(GoalEN), id);
-                session.Delete (goalEN);
-                SessionCommit ();
-        }
+            try
+            {
+                SessionInitializeTransaction();
+                GoalEN goalEN = (GoalEN)session.Load(typeof(GoalEN), id);
+                session.Delete(goalEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in GoalCAD.", ex);
-        }
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in GoalCAD.", ex);
+            }
 
 
-        finally
-        {
-                SessionClose ();
+            finally
+            {
+                SessionClose();
+            }
         }
-}
-}
+    }
 }

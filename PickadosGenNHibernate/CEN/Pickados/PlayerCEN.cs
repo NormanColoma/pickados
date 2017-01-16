@@ -96,20 +96,20 @@ namespace PickadosGenNHibernate.CEN.Pickados
 
             _IPlayerCAD.UnlinkNationalTeam(p_Player_OID, p_national_team_OID);
         }
-        public PlayerEN GetById(int id
-                                 )
+        public PlayerEN GetPlayerById(int id
+                                       )
         {
             PlayerEN playerEN = null;
 
-            playerEN = _IPlayerCAD.GetById(id);
+            playerEN = _IPlayerCAD.GetPlayerById(id);
             return playerEN;
         }
 
-        public System.Collections.Generic.IList<PlayerEN> GetAll(int first, int size)
+        public System.Collections.Generic.IList<PlayerEN> GetAllPlayers(int first, int size)
         {
             System.Collections.Generic.IList<PlayerEN> list = null;
 
-            list = _IPlayerCAD.GetAll(first, size);
+            list = _IPlayerCAD.GetAllPlayers(first, size);
             return list;
         }
     }

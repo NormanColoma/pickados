@@ -75,20 +75,20 @@ namespace PickadosGenNHibernate.CEN.Pickados
             _ITeamCAD.DeleteTeam(id);
         }
 
-        public TeamEN GetByID(int id
-                               )
+        public TeamEN GetTeamById(int id
+                                   )
         {
             TeamEN teamEN = null;
 
-            teamEN = _ITeamCAD.GetByID(id);
+            teamEN = _ITeamCAD.GetTeamById(id);
             return teamEN;
         }
 
-        public System.Collections.Generic.IList<TeamEN> GetAll(int first, int size)
+        public System.Collections.Generic.IList<TeamEN> GetAllTeams(int first, int size)
         {
             System.Collections.Generic.IList<TeamEN> list = null;
 
-            list = _ITeamCAD.GetAll(first, size);
+            list = _ITeamCAD.GetAllTeams(first, size);
             return list;
         }
     }
