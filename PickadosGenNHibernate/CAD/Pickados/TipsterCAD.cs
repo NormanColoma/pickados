@@ -220,7 +220,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
             }
         }
 
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers()
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers(int oid)
         {
             System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
             try
@@ -229,7 +229,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
                 //String sql = @"FROM TipsterEN self where select followed_by FROM TipsterEN";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery("TipsterENgetFollowersHQL");
-
+                query.SetParameter("id", oid);
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit();
             }
@@ -426,7 +426,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
             }
         }
 
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows()
+        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows(int oid)
         {
             System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
             try
@@ -435,7 +435,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
                 //String sql = @"FROM TipsterEN self where FROM TipsterEN";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery("TipsterENgetFollowsHQL");
-
+                query.SetParameter("id", oid);
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit();
             }

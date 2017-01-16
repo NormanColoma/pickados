@@ -5,6 +5,7 @@ using PickadosGenNHibernate.CEN.Pickados;
 using Moq;
 using PickadosGenNHibernate.CAD.Pickados;
 using PickadosGenNHibernate.Exceptions;
+using System.Collections.Generic;
 
 namespace UnitTest
 {
@@ -159,6 +160,199 @@ namespace UnitTest
 
             userCADMock.Verify(mock => mock.GetTipsterById(It.IsAny<int>()), Times.Once);
             userCADMock.Verify(mock => mock.ModifyTipster(It.IsAny<TipsterEN>()), Times.Once);
+
+        }
+
+        [TestMethod]
+        public void GetFollowsTest()
+        {
+            var tipsterCADMock = new Mock<ITipsterCAD>();
+
+            tipsterCADMock.Setup(mock => mock.GetFollows(It.IsAny<int>())).Returns(It.IsAny<List<TipsterEN>>());
+
+            TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
+            List<int> follows = new List<int>();
+            follows.Add(2);
+            follows.Add(3);
+
+            try
+            {
+                tipsterCEN.AddFollow(1, follows);
+                tipsterCEN.GetFollows(1);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Should not throw exception");
+            }
+
+            tipsterCADMock.Verify(mock => mock.GetFollows(It.IsAny<int>()), Times.Once);
+
+        }
+
+        [TestMethod]
+        public void GetFollowsModelExceptionTest()
+        {
+            var tipsterCADMock = new Mock<ITipsterCAD>();
+
+            tipsterCADMock.Setup(mock => mock.GetFollows(It.IsAny<int>())).Throws(new ModelException());
+
+            TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
+            List<int> follows = new List<int>();
+            follows.Add(2);
+            follows.Add(3);
+
+            try
+            {
+                tipsterCEN.AddFollow(1, follows);
+                tipsterCEN.GetFollows(1);
+                Assert.Fail("Should throw model exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(ModelException));
+            }
+
+            tipsterCADMock.Verify(mock => mock.GetFollows(It.IsAny<int>()), Times.Once);
+
+        }
+
+        [TestMethod]
+        public void GetFollowsDataLayerExceptionTest()
+        {
+            var tipsterCADMock = new Mock<ITipsterCAD>();
+
+            tipsterCADMock.Setup(mock => mock.GetFollows(It.IsAny<int>())).Throws(new DataLayerException("Error in TipsterCAD."));
+
+            TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
+            List<int> follows = new List<int>();
+            follows.Add(2);
+            follows.Add(3);
+
+            try
+            {
+                tipsterCEN.AddFollow(1, follows);
+                tipsterCEN.GetFollows(1);
+                Assert.Fail("Should throw data layer exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(DataLayerException));
+                Assert.AreEqual("Error in TipsterCAD.", ex.Message);
+            }
+
+            tipsterCADMock.Verify(mock => mock.GetFollows(It.IsAny<int>()), Times.Once);
+
+        }
+
+        [TestMethod]
+        public void DeleteFollowsTest()
+        {
+            var tipsterCADMock = new Mock<ITipsterCAD>();
+
+            tipsterCADMock.Setup(mock => mock.GetFollows(It.IsAny<int>())).Returns(It.IsAny<List<TipsterEN>>());
+
+            TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
+            List<int> follows = new List<int>();
+            follows.Add(2);
+            follows.Add(3);
+
+            List<int> deletes = new List<int>();
+            follows.Add(2);
+
+            try
+            {
+                tipsterCEN.AddFollow(1, follows);
+                tipsterCEN.DeleteFollow(1, deletes);
+                tipsterCEN.GetFollows(1);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Should not throw exception");
+            }
+
+            tipsterCADMock.Verify(mock => mock.GetFollows(It.IsAny<int>()), Times.Once);
+
+        }
+
+        [TestMethod]
+        public void DeleteFollowsModelExceptionTest()
+        {
+            var tipsterCADMock = new Mock<ITipsterCAD>();
+
+            tipsterCADMock.Setup(mock => mock.DeleteFollow(It.IsAny<int>(), It.IsAny<List<int>>())).Throws(new ModelException());
+
+            TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
+            List<int> follows = new List<int>();
+            follows.Add(2);
+            follows.Add(3);
+
+            List<int> deletes = new List<int>();
+            follows.Add(2);
+
+            try
+            {
+                tipsterCEN.AddFollow(1, follows);
+                tipsterCEN.DeleteFollow(1, deletes);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(ModelException));
+            }
+
+            tipsterCADMock.Verify(mock => mock.DeleteFollow(It.IsAny<int>(), It.IsAny<List<int>>()), Times.Once);
+
+        }
+
+        [TestMethod]
+        public void GetFollowersTest()
+        {
+            var tipsterCADMock = new Mock<ITipsterCAD>();
+
+            tipsterCADMock.Setup(mock => mock.GetFollowers(It.IsAny<int>())).Returns(It.IsAny<List<TipsterEN>>());
+
+            TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
+            List<int> followers = new List<int>();
+            followers.Add(2);
+            followers.Add(3);
+
+            try
+            {
+                tipsterCEN.AddFollower(1, followers);
+                tipsterCEN.GetFollowers(1);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Should not throw exception");
+            }
+
+            tipsterCADMock.Verify(mock => mock.GetFollowers(It.IsAny<int>()), Times.Once);
+
+        }
+
+        [TestMethod]
+        public void GetFollowersModelExceptionTest()
+        {
+            var tipsterCADMock = new Mock<ITipsterCAD>();
+
+            tipsterCADMock.Setup(mock => mock.GetFollowers(It.IsAny<int>())).Throws(new ModelException());
+
+            TipsterCEN tipsterCEN = new TipsterCEN(tipsterCADMock.Object);
+            List<int> followers = new List<int>();
+            followers.Add(2);
+            followers.Add(3);
+
+            try
+            {
+                tipsterCEN.AddFollower(1, followers);
+                tipsterCEN.GetFollowers(1);
+                Assert.Fail("Should throw model exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(ModelException));
+            }
+
+            tipsterCADMock.Verify(mock => mock.GetFollowers(It.IsAny<int>()), Times.Once);
 
         }
 

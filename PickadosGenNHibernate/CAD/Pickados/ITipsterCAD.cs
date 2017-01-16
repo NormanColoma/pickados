@@ -22,7 +22,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
                             );
 
 
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers();
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers(int oid);
 
 
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPosts();
@@ -39,7 +39,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
         void AddFollow(int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
 
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows();
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows(int oid);
 
 
         void DeleteFollow(int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
