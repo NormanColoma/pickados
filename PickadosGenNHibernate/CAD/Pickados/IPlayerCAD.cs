@@ -30,10 +30,10 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
         void UnlinkNationalTeam(int p_Player_OID, int p_national_team_OID);
 
-        PlayerEN GetById(int id
-                          );
+        PlayerEN GetPlayerById(int id
+                                );
 
 
-        System.Collections.Generic.IList<PlayerEN> GetAll(int first, int size);
+        System.Collections.Generic.IList<PlayerEN> GetAllPlayers(int first, int size);
     }
 }

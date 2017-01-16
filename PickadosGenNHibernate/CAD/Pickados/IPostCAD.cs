@@ -4,32 +4,32 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-public partial interface IPostCAD
-{
-PostEN ReadOIDDefault (int id
-                       );
+    public partial interface IPostCAD
+    {
+        PostEN ReadOIDDefault(int id
+                               );
 
-void ModifyDefault (PostEN post);
-
-
-
-
-void ModifyPost (PostEN post);
-
-
-void DeletePost (int id
-                 );
-
-
-PostEN GetByID (int id
-                );
-
-
-System.Collections.Generic.IList<PostEN> GetAll (int first, int size);
+        void ModifyDefault(PostEN post);
 
 
 
 
-int NewPost (PostEN post);
-}
+        void ModifyPost(PostEN post);
+
+
+        void DeletePost(int id
+                         );
+
+
+        PostEN GetPostById(int id
+                            );
+
+
+        System.Collections.Generic.IList<PostEN> GetAllPosts(int first, int size);
+
+
+
+
+        int NewPost(PostEN post);
+    }
 }

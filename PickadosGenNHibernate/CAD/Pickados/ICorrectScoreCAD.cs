@@ -4,21 +4,21 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-public partial interface ICorrectScoreCAD
-{
-CorrectScoreEN ReadOIDDefault (int id
-                               );
+    public partial interface ICorrectScoreCAD
+    {
+        CorrectScoreEN ReadOIDDefault(int id
+                                       );
 
-void ModifyDefault (CorrectScoreEN correctScore);
-
-
-
-int NewCorrectScore (CorrectScoreEN correctScore);
-
-void ModifyCorrectScore (CorrectScoreEN correctScore);
+        void ModifyDefault(CorrectScoreEN correctScore);
 
 
-void DeleteCorrectScore (int id
-                         );
-}
+
+        int NewCorrectScore(CorrectScoreEN correctScore);
+
+        void ModifyCorrectScore(CorrectScoreEN correctScore);
+
+
+        void DeleteCorrectScore(int id
+                                 );
+    }
 }

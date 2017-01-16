@@ -22,10 +22,10 @@ namespace PickadosGenNHibernate.CAD.Pickados
                          );
 
 
-        TeamEN GetByID(int id
-                        );
+        TeamEN GetTeamById(int id
+                            );
 
 
-        System.Collections.Generic.IList<TeamEN> GetAll(int first, int size);
+        System.Collections.Generic.IList<TeamEN> GetAllTeams(int first, int size);
     }
 }

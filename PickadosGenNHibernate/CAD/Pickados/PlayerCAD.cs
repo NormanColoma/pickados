@@ -328,10 +328,10 @@ namespace PickadosGenNHibernate.CAD.Pickados
                 SessionClose();
             }
         }
-        //Sin e: GetById
+        //Sin e: GetPlayerById
         //Con e: PlayerEN
-        public PlayerEN GetById(int id
-                                 )
+        public PlayerEN GetPlayerById(int id
+                                       )
         {
             PlayerEN playerEN = null;
 
@@ -359,7 +359,7 @@ namespace PickadosGenNHibernate.CAD.Pickados
             return playerEN;
         }
 
-        public System.Collections.Generic.IList<PlayerEN> GetAll(int first, int size)
+        public System.Collections.Generic.IList<PlayerEN> GetAllPlayers(int first, int size)
         {
             System.Collections.Generic.IList<PlayerEN> result = null;
             try

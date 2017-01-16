@@ -20,16 +20,16 @@ namespace UnitTest
             nuevo.Alias = "Macareno";
             nuevo.Password = "Hola12345";
 
-            userCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(nuevo);
+            userCADMock.Setup(mock => mock.GetTipsterById(It.IsAny<int>())).Returns(nuevo);
 
             TipsterCEN tipster = new TipsterCEN(userCADMock.Object);
 
-            TipsterEN actual = tipster.GetByID(1);
+            TipsterEN actual = tipster.GetTipsterById(1);
 
             Assert.AreEqual(actual.Alias, "Macareno");
             Assert.AreEqual(actual.Password, "Hola12345");
 
-            userCADMock.Verify(mock => mock.GetByID(It.IsAny<int>()), Times.Once);
+            userCADMock.Verify(mock => mock.GetTipsterById(It.IsAny<int>()), Times.Once);
 
         }
 
@@ -42,16 +42,16 @@ namespace UnitTest
             nuevo.Alias = "Macareno";
             nuevo.Password = "Hola12345";
 
-            userCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(nuevo);
+            userCADMock.Setup(mock => mock.GetTipsterById(It.IsAny<int>())).Returns(nuevo);
 
             TipsterCEN tipster = new TipsterCEN(userCADMock.Object);
 
-            TipsterEN actual = tipster.GetByID(1);
+            TipsterEN actual = tipster.GetTipsterById(1);
 
             Assert.AreEqual(actual.Alias, "Macareno");
             Assert.AreNotEqual(actual.Password, "Macareno");
 
-            userCADMock.Verify(mock => mock.GetByID(It.IsAny<int>()), Times.Once);
+            userCADMock.Verify(mock => mock.GetTipsterById(It.IsAny<int>()), Times.Once);
 
         }
 
@@ -64,16 +64,16 @@ namespace UnitTest
             nuevo.Alias = "Macareno";
             nuevo.Password = "Adios12345";
 
-            userCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(nuevo);
+            userCADMock.Setup(mock => mock.GetTipsterById(It.IsAny<int>())).Returns(nuevo);
 
             TipsterCEN tipster = new TipsterCEN(userCADMock.Object);
             tipster.ModifyTipster(1, new TimeSpan(), new TimeSpan(), "Macareno", "hola@gmail.com", "Adios12345", false, 0);
-            TipsterEN actual = tipster.GetByID(1);
+            TipsterEN actual = tipster.GetTipsterById(1);
 
             Assert.AreEqual(actual.Alias, "Macareno");
             Assert.AreEqual(actual.Password, "Adios12345");
 
-            userCADMock.Verify(mock => mock.GetByID(It.IsAny<int>()), Times.Once);
+            userCADMock.Verify(mock => mock.GetTipsterById(It.IsAny<int>()), Times.Once);
         }
 
         [TestMethod]
@@ -116,16 +116,16 @@ namespace UnitTest
             nuevo.Premium = true;
             nuevo.Subscription_fee = 1.5;
 
-            userCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(nuevo);
+            userCADMock.Setup(mock => mock.GetTipsterById(It.IsAny<int>())).Returns(nuevo);
 
             TipsterCEN tipster = new TipsterCEN(userCADMock.Object);
             tipster.BecomePremium(1, 1.5);
-            TipsterEN actual = tipster.GetByID(1);
+            TipsterEN actual = tipster.GetTipsterById(1);
 
             Assert.IsTrue(actual.Premium);
             Assert.AreEqual(actual.Subscription_fee, actual.Subscription_fee);
 
-            userCADMock.Verify(mock => mock.GetByID(It.IsAny<int>()), Times.AtMost(2));
+            userCADMock.Verify(mock => mock.GetTipsterById(It.IsAny<int>()), Times.AtMost(2));
 
         }
 
@@ -143,7 +143,7 @@ namespace UnitTest
             nuevo.Premium = true;
             nuevo.Subscription_fee = 1.5;
 
-            userCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(nuevo);
+            userCADMock.Setup(mock => mock.GetTipsterById(It.IsAny<int>())).Returns(nuevo);
             userCADMock.Setup(mock => mock.ModifyTipster(It.IsAny<TipsterEN>())).Throws(new DataLayerException("Error in TipsterCAD"));
 
             TipsterCEN tipster = new TipsterCEN(userCADMock.Object);
@@ -157,7 +157,7 @@ namespace UnitTest
                 Assert.AreEqual("Error in TipsterCAD", e.Message);
             }
 
-            userCADMock.Verify(mock => mock.GetByID(It.IsAny<int>()), Times.Once);
+            userCADMock.Verify(mock => mock.GetTipsterById(It.IsAny<int>()), Times.Once);
             userCADMock.Verify(mock => mock.ModifyTipster(It.IsAny<TipsterEN>()), Times.Once);
 
         }

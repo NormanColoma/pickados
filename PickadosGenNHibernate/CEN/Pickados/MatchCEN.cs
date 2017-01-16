@@ -15,80 +15,99 @@ using PickadosGenNHibernate.CAD.Pickados;
 
 namespace PickadosGenNHibernate.CEN.Pickados
 {
-/*
- *      Definition of the class MatchCEN
- *
- */
-public partial class MatchCEN
-{
-private IMatchCAD _IMatchCAD;
+    /*
+     *      Definition of the class MatchCEN
+     *
+     */
+    public partial class MatchCEN
+    {
+        private IMatchCAD _IMatchCAD;
 
-public MatchCEN()
-{
-        this._IMatchCAD = new MatchCAD ();
-}
+        public MatchCEN()
+        {
+            this._IMatchCAD = new MatchCAD();
+        }
 
-public MatchCEN(IMatchCAD _IMatchCAD)
-{
-        this._IMatchCAD = _IMatchCAD;
-}
+        public MatchCEN(IMatchCAD _IMatchCAD)
+        {
+            this._IMatchCAD = _IMatchCAD;
+        }
 
-public IMatchCAD get_IMatchCAD ()
-{
-        return this._IMatchCAD;
-}
+        public IMatchCAD get_IMatchCAD()
+        {
+            return this._IMatchCAD;
+        }
 
-public int NewMatch (Nullable<DateTime> p_date, int p_away, int p_home, string p_stadium)
-{
-        MatchEN matchEN = null;
-        int oid;
+        public int NewMatch(Nullable<DateTime> p_date, int p_away, int p_home, string p_stadium)
+        {
+            MatchEN matchEN = null;
+            int oid;
 
-        //Initialized MatchEN
-        matchEN = new MatchEN ();
-        matchEN.Date = p_date;
+            //Initialized MatchEN
+            matchEN = new MatchEN();
+            matchEN.Date = p_date;
 
 
-        if (p_away != -1) {
+            if (p_away != -1)
+            {
                 // El argumento p_away -> Property away es oid = false
                 // Lista de oids id
-                matchEN.Away = new PickadosGenNHibernate.EN.Pickados.TeamEN ();
+                matchEN.Away = new PickadosGenNHibernate.EN.Pickados.TeamEN();
                 matchEN.Away.Id = p_away;
-        }
+            }
 
 
-        if (p_home != -1) {
+            if (p_home != -1)
+            {
                 // El argumento p_home -> Property home es oid = false
                 // Lista de oids id
-                matchEN.Home = new PickadosGenNHibernate.EN.Pickados.TeamEN ();
+                matchEN.Home = new PickadosGenNHibernate.EN.Pickados.TeamEN();
                 matchEN.Home.Id = p_home;
+            }
+
+            matchEN.Stadium = p_stadium;
+
+            //Call to MatchCAD
+
+            oid = _IMatchCAD.NewMatch(matchEN);
+            return oid;
         }
 
-        matchEN.Stadium = p_stadium;
+        public void ModifyMatch(int p_Match_OID, Nullable<DateTime> p_date, string p_stadium)
+        {
+            MatchEN matchEN = null;
 
-        //Call to MatchCAD
+            //Initialized MatchEN
+            matchEN = new MatchEN();
+            matchEN.Id = p_Match_OID;
+            matchEN.Date = p_date;
+            matchEN.Stadium = p_stadium;
+            //Call to MatchCAD
 
-        oid = _IMatchCAD.NewMatch (matchEN);
-        return oid;
-}
+            _IMatchCAD.ModifyMatch(matchEN);
+        }
 
-public void ModifyMatch (int p_Match_OID, Nullable<DateTime> p_date, string p_stadium)
-{
-        MatchEN matchEN = null;
+        public void DeleteMatch(int id
+                                 )
+        {
+            _IMatchCAD.DeleteMatch(id);
+        }
 
-        //Initialized MatchEN
-        matchEN = new MatchEN ();
-        matchEN.Id = p_Match_OID;
-        matchEN.Date = p_date;
-        matchEN.Stadium = p_stadium;
-        //Call to MatchCAD
+        public MatchEN GetMatchById(int id
+                                     )
+        {
+            MatchEN matchEN = null;
 
-        _IMatchCAD.ModifyMatch (matchEN);
-}
+            matchEN = _IMatchCAD.GetMatchById(id);
+            return matchEN;
+        }
 
-public void DeleteMatch (int id
-                         )
-{
-        _IMatchCAD.DeleteMatch (id);
-}
-}
+        public System.Collections.Generic.IList<MatchEN> GetAllMatches(int first, int size)
+        {
+            System.Collections.Generic.IList<MatchEN> list = null;
+
+            list = _IMatchCAD.GetAllMatches(first, size);
+            return list;
+        }
+    }
 }

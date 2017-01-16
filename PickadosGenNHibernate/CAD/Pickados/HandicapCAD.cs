@@ -17,140 +17,145 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-public partial class HandicapCAD : BasicCAD, IHandicapCAD
-{
-public HandicapCAD() : base ()
-{
-}
-
-public HandicapCAD(ISession sessionAux) : base (sessionAux)
-{
-}
-
-
-
-public HandicapEN ReadOIDDefault (int id
-                                  )
-{
-        HandicapEN handicapEN = null;
-
-        try
+    public partial class HandicapCAD : BasicCAD, IHandicapCAD
+    {
+        public HandicapCAD() : base()
         {
-                SessionInitializeTransaction ();
-                handicapEN = (HandicapEN)session.Get (typeof(HandicapEN), id);
-                SessionCommit ();
         }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+        public HandicapCAD(ISession sessionAux) : base(sessionAux)
+        {
+        }
+
+
+
+        public HandicapEN ReadOIDDefault(int id
+                                          )
+        {
+            HandicapEN handicapEN = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+                handicapEN = (HandicapEN)session.Get(typeof(HandicapEN), id);
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in HandicapCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in HandicapCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return handicapEN;
         }
 
-
-        finally
+        public System.Collections.Generic.IList<HandicapEN> ReadAllDefault(int first, int size)
         {
-                SessionClose ();
-        }
-
-        return handicapEN;
-}
-
-public System.Collections.Generic.IList<HandicapEN> ReadAllDefault (int first, int size)
-{
-        System.Collections.Generic.IList<HandicapEN> result = null;
-        try
-        {
-                using (ITransaction tx = session.BeginTransaction ())
+            System.Collections.Generic.IList<HandicapEN> result = null;
+            try
+            {
+                using (ITransaction tx = session.BeginTransaction())
                 {
-                        if (size > 0)
-                                result = session.CreateCriteria (typeof(HandicapEN)).
-                                         SetFirstResult (first).SetMaxResults (size).List<HandicapEN>();
-                        else
-                                result = session.CreateCriteria (typeof(HandicapEN)).List<HandicapEN>();
+                    if (size > 0)
+                        result = session.CreateCriteria(typeof(HandicapEN)).
+                                 SetFirstResult(first).SetMaxResults(size).List<HandicapEN>();
+                    else
+                        result = session.CreateCriteria(typeof(HandicapEN)).List<HandicapEN>();
                 }
-        }
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in HandicapCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in HandicapCAD.", ex);
+            }
+
+            return result;
         }
 
-        return result;
-}
+        // Modify default (Update all attributes of the class)
 
-// Modify default (Update all attributes of the class)
-
-public void ModifyDefault (HandicapEN handicap)
-{
-        try
+        public void ModifyDefault(HandicapEN handicap)
         {
-                SessionInitializeTransaction ();
-                HandicapEN handicapEN = (HandicapEN)session.Load (typeof(HandicapEN), handicap.Id);
+            try
+            {
+                SessionInitializeTransaction();
+                HandicapEN handicapEN = (HandicapEN)session.Load(typeof(HandicapEN), handicap.Id);
 
                 handicapEN.Result = handicap.Result;
 
-                session.Update (handicapEN);
-                SessionCommit ();
-        }
+                session.Update(handicapEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in HandicapCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in HandicapCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
         }
 
 
-        finally
+        public int NewHandicap(HandicapEN handicap)
         {
-                SessionClose ();
-        }
-}
+            try
+            {
+                SessionInitializeTransaction();
+                if (handicap.Event_rel != null)
+                {
+                    // Argumento OID y no colección.
+                    handicap.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), handicap.Event_rel.Id);
 
-
-public int NewHandicap (HandicapEN handicap)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                if (handicap.Event_rel != null) {
-                        // Argumento OID y no colección.
-                        handicap.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), handicap.Event_rel.Id);
-
-                        handicap.Event_rel.Pick_rel
-                        .Add (handicap);
+                    handicap.Event_rel.Pick_rel
+                    .Add(handicap);
                 }
 
-                session.Save (handicap);
-                SessionCommit ();
-        }
+                session.Save(handicap);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in HandicapCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in HandicapCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+
+            return handicap.Id;
         }
 
-
-        finally
+        public void ModifyHandicap(HandicapEN handicap)
         {
-                SessionClose ();
-        }
-
-        return handicap.Id;
-}
-
-public void ModifyHandicap (HandicapEN handicap)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                HandicapEN handicapEN = (HandicapEN)session.Load (typeof(HandicapEN), handicap.Id);
+            try
+            {
+                SessionInitializeTransaction();
+                HandicapEN handicapEN = (HandicapEN)session.Load(typeof(HandicapEN), handicap.Id);
 
                 handicapEN.Odd = handicap.Odd;
 
@@ -175,46 +180,48 @@ public void ModifyHandicap (HandicapEN handicap)
 
                 handicapEN.Result = handicap.Result;
 
-                session.Update (handicapEN);
-                SessionCommit ();
-        }
+                session.Update(handicapEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in HandicapCAD.", ex);
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in HandicapCAD.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
         }
-
-
-        finally
+        public void DeleteHandicap(int id
+                                    )
         {
-                SessionClose ();
-        }
-}
-public void DeleteHandicap (int id
-                            )
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                HandicapEN handicapEN = (HandicapEN)session.Load (typeof(HandicapEN), id);
-                session.Delete (handicapEN);
-                SessionCommit ();
-        }
+            try
+            {
+                SessionInitializeTransaction();
+                HandicapEN handicapEN = (HandicapEN)session.Load(typeof(HandicapEN), id);
+                session.Delete(handicapEN);
+                SessionCommit();
+            }
 
-        catch (Exception ex) {
-                SessionRollBack ();
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in HandicapCAD.", ex);
-        }
+                    throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in HandicapCAD.", ex);
+            }
 
 
-        finally
-        {
-                SessionClose ();
+            finally
+            {
+                SessionClose();
+            }
         }
-}
-}
+    }
 }

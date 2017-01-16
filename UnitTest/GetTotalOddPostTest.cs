@@ -29,7 +29,7 @@ namespace UnitTest
             post.Pick = picks;
 
             //Setting up mocks
-            postCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(post);
+            postCADMock.Setup(mock => mock.GetPostById(It.IsAny<int>())).Returns(post);
 
             //Testing method 
             PostCEN postCEN = new PostCEN(postCADMock.Object);
@@ -48,7 +48,7 @@ namespace UnitTest
             PostEN post = new PostEN();
 
             //Setting up mocks
-            postCADMock.Setup(mock => mock.GetByID(It.IsAny<int>())).Returns(post);
+            postCADMock.Setup(mock => mock.GetPostById(It.IsAny<int>())).Returns(post);
 
             //Testing method 
             PostCEN postCEN = new PostCEN(postCADMock.Object);
