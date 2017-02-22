@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				<class name="TeamEN" table="Team"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Name" type="string"> 
+						<column name="name"  unique="true" not-null="true"/>
+					</property>
+					<property name="Country" type="string"> 
+						<column name="country"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<bag name="Event_home" >
+							<key>
+							
+								
+								<column name="FK_id_idLocal"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.MatchEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Event_away" >
+							<key>
+							
+								
+								<column name="FK_id_idAway"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.MatchEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Club_player" >
+							<key>
+							
+								
+								<column name="FK_id_idClub_team"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.PlayerEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="National_player" >
+							<key>
+							
+								
+								<column name="FK_id_idNational_team"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.PlayerEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="TeamENReadAllHQL">from TeamEN</query>
+		</hibernate-mapping>
+	

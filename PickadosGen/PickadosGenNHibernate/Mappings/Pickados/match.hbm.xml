@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				
+<joined-subclass name="MatchEN" extends="PickadosGenNHibernate.EN.Pickados.Event_EN" table="Match"> 
+	<key>
+    	
+				<column name="id"/>
+		
+    	
+   	</key>
+
+			
+					
+					<property name="Stadium" type="string"> 
+						<column name="stadium"  not-null="true"/>
+					</property>
+			
+			
+		  			
+						<many-to-one name="Away" class="PickadosGenNHibernate.EN.Pickados.TeamEN" >	
+								<column name="FK_id_idAway"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Home" class="PickadosGenNHibernate.EN.Pickados.TeamEN" >	
+								<column name="FK_id_idLocal"/> 
+						</many-to-one>
+											 					
+			
+					
+					
+					
+		
+ 	  
+		 </joined-subclass>
+		  
+		  <query name="MatchENReadAllHQL">from MatchEN</query>
+      <query name="MatchENgetMatchByTeamHQL"><![CDATA[FROM MatchEN m WHERE m.home := team or m.away := team]]></query>
+      <query name="MatchENgetMatchByCompetitionHQL"><![CDATA[FROM MatchEN m where m.competition := competition]]></query>
+		</hibernate-mapping>
+	

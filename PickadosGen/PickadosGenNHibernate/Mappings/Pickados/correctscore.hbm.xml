@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				
+<joined-subclass name="CorrectScoreEN" extends="PickadosGenNHibernate.EN.Pickados.PickEN" table="CorrectScore"> 
+	<key>
+    	
+				<column name="id"/>
+		
+    	
+   	</key>
+
+			
+					
+					<property name="HomeScore" type="integer"> 
+						<column name="homeScore"  not-null="true"/>
+					</property>
+					<property name="AwayScore" type="integer"> 
+						<column name="awayScore"  not-null="true"/>
+					</property>
+			
+			
+			
+					
+					
+		
+ 	  
+		 </joined-subclass>
+		  
+		  <query name="CorrectScoreENReadAllHQL">from CorrectScoreEN</query>
+		</hibernate-mapping>
+	
