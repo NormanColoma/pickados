@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				<class name="StatsEN" table="Stats"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Benefit" type="double"> 
+						<column name="benefit"  not-null="true"/>
+					</property>
+					<property name="StakeAverage" type="double"> 
+						<column name="stakeAverage"  not-null="true"/>
+					</property>
+					<property name="Yield" type="float"> 
+						<column name="yield"  not-null="true"/>
+					</property>
+					<property name="OddAverage" type="double"> 
+						<column name="oddAverage"  not-null="true"/>
+					</property>
+					<property name="TotalPicks" type="integer"> 
+						<column name="totalPicks"  not-null="true"/>
+					</property>
+					<property name="InitialDate" type="date"> 
+						<column name="initialDate"  not-null="true"/>
+					</property>
+					<property name="OddAccumulator" type="double"> 
+						<column name="oddAccumulator"  not-null="true"/>
+					</property>
+					<property name="TotalStaked" type="double"> 
+						<column name="totalStaked"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Tipster" class="PickadosGenNHibernate.EN.Pickados.TipsterEN" >	
+								<column name="FK_id_idTipster"/> 
+						</many-to-one>
+											 					
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="StatsENReadAllHQL">from StatsEN</query>
+		</hibernate-mapping>
+	
