@@ -4,21 +4,23 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial interface IHandicapCAD
-    {
-        HandicapEN ReadOIDDefault(int id
-                                   );
+public partial interface IHandicapCAD
+{
+HandicapEN ReadOIDDefault (int id
+                           );
 
-        void ModifyDefault(HandicapEN handicap);
+void ModifyDefault (HandicapEN handicap);
 
-
-
-        int NewHandicap(HandicapEN handicap);
-
-        void ModifyHandicap(HandicapEN handicap);
+System.Collections.Generic.IList<HandicapEN> ReadAllDefault (int first, int size);
 
 
-        void DeleteHandicap(int id
-                             );
-    }
+
+int NewHandicap (HandicapEN handicap);
+
+void ModifyHandicap (HandicapEN handicap);
+
+
+void DeleteHandicap (int id
+                     );
+}
 }

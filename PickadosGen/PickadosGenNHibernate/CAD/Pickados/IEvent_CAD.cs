@@ -4,33 +4,35 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial interface IEvent_CAD
-    {
-        Event_EN ReadOIDDefault(int id
-                                 );
+public partial interface IEvent_CAD
+{
+Event_EN ReadOIDDefault (int id
+                         );
 
-        void ModifyDefault(Event_EN event_);
+void ModifyDefault (Event_EN event_);
 
-
-
-        int NewEvent(Event_EN event_);
-
-        void ModifyEvent(Event_EN event_);
+System.Collections.Generic.IList<Event_EN> ReadAllDefault (int first, int size);
 
 
-        void DeleteEvent(int id
-                          );
+
+int NewEvent (Event_EN event_);
+
+void ModifyEvent (Event_EN event_);
 
 
-        Event_EN GetEventById(int id
-                               );
+void DeleteEvent (int id
+                  );
 
 
-        System.Collections.Generic.IList<Event_EN> GetAllEvents(int first, int size);
+Event_EN GetEventById (int id
+                       );
 
 
-        void JoinCompetition(int p_Event_OID, int p_competition_OID);
+System.Collections.Generic.IList<Event_EN> GetAllEvents (int first, int size);
 
-        void UnlinkCompetition(int p_Event_OID, int p_competition_OID);
-    }
+
+void JoinCompetition (int p_Event_OID, int p_competition_OID);
+
+void UnlinkCompetition (int p_Event_OID, int p_competition_OID);
+}
 }

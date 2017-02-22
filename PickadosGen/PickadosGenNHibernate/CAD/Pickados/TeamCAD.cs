@@ -17,81 +17,79 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class TeamCAD : BasicCAD, ITeamCAD
-    {
-        public TeamCAD() : base()
+public partial class TeamCAD : BasicCAD, ITeamCAD
+{
+public TeamCAD() : base ()
+{
+}
+
+public TeamCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public TeamEN ReadOIDDefault (int id
+                              )
+{
+        TeamEN teamEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                teamEN = (TeamEN)session.Get (typeof(TeamEN), id);
+                SessionCommit ();
         }
 
-        public TeamCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public TeamEN ReadOIDDefault(int id
-                                      )
-        {
-            TeamEN teamEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                teamEN = (TeamEN)session.Get(typeof(TeamEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TeamCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return teamEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<TeamEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<TeamEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return teamEN;
+}
+
+public System.Collections.Generic.IList<TeamEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<TeamEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(TeamEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<TeamEN>();
-                    else
-                        result = session.CreateCriteria(typeof(TeamEN)).List<TeamEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(TeamEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<TeamEN>();
+                        else
+                                result = session.CreateCriteria (typeof(TeamEN)).List<TeamEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TeamCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
 
-        public void ModifyDefault(TeamEN team)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (TeamEN team)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                TeamEN teamEN = (TeamEN)session.Load(typeof(TeamEN), team.Id);
+                SessionInitializeTransaction ();
+                TeamEN teamEN = (TeamEN)session.Load (typeof(TeamEN), team.Id);
 
                 teamEN.Name = team.Name;
 
@@ -102,169 +100,163 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
 
 
-                session.Update(teamEN);
-                SessionCommit();
-            }
+                session.Update (teamEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TeamCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
         }
 
 
-        public int NewTeam(TeamEN team)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-
-                session.Save(team);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TeamCAD.", ex);
-            }
+                SessionClose ();
+        }
+}
 
 
-            finally
-            {
-                SessionClose();
-            }
+public int NewTeam (TeamEN team)
+{
+        try
+        {
+                SessionInitializeTransaction ();
 
-            return team.Id;
+                session.Save (team);
+                SessionCommit ();
         }
 
-        public void ModifyTeam(TeamEN team)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                TeamEN teamEN = (TeamEN)session.Load(typeof(TeamEN), team.Id);
+                SessionClose ();
+        }
+
+        return team.Id;
+}
+
+public void ModifyTeam (TeamEN team)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                TeamEN teamEN = (TeamEN)session.Load (typeof(TeamEN), team.Id);
 
                 teamEN.Name = team.Name;
 
 
                 teamEN.Country = team.Country;
 
-                session.Update(teamEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TeamCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-        }
-        public void DeleteTeam(int id
-                                )
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                TeamEN teamEN = (TeamEN)session.Load(typeof(TeamEN), id);
-                session.Delete(teamEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TeamCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (teamEN);
+                SessionCommit ();
         }
 
-        //Sin e: GetTeamById
-        //Con e: TeamEN
-        public TeamEN GetTeamById(int id
-                                   )
-        {
-            TeamEN teamEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                teamEN = (TeamEN)session.Get(typeof(TeamEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TeamCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return teamEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<TeamEN> GetAllTeams(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<TeamEN> result = null;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+public void DeleteTeam (int id
+                        )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                TeamEN teamEN = (TeamEN)session.Load (typeof(TeamEN), id);
+                session.Delete (teamEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+//Sin e: GetTeamById
+//Con e: TeamEN
+public TeamEN GetTeamById (int id
+                           )
+{
+        TeamEN teamEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                teamEN = (TeamEN)session.Get (typeof(TeamEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return teamEN;
+}
+
+public System.Collections.Generic.IList<TeamEN> GetAllTeams (int first, int size)
+{
+        System.Collections.Generic.IList<TeamEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
                 if (size > 0)
-                    result = session.CreateCriteria(typeof(TeamEN)).
-                             SetFirstResult(first).SetMaxResults(size).List<TeamEN>();
+                        result = session.CreateCriteria (typeof(TeamEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<TeamEN>();
                 else
-                    result = session.CreateCriteria(typeof(TeamEN)).List<TeamEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TeamCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                        result = session.CreateCriteria (typeof(TeamEN)).List<TeamEN>();
+                SessionCommit ();
         }
-    }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+}
 }

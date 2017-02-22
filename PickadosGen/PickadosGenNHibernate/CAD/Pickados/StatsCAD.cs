@@ -17,81 +17,79 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class StatsCAD : BasicCAD, IStatsCAD
-    {
-        public StatsCAD() : base()
+public partial class StatsCAD : BasicCAD, IStatsCAD
+{
+public StatsCAD() : base ()
+{
+}
+
+public StatsCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public StatsEN ReadOIDDefault (int id
+                               )
+{
+        StatsEN statsEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                statsEN = (StatsEN)session.Get (typeof(StatsEN), id);
+                SessionCommit ();
         }
 
-        public StatsCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public StatsEN ReadOIDDefault(int id
-                                       )
-        {
-            StatsEN statsEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                statsEN = (StatsEN)session.Get(typeof(StatsEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return statsEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<StatsEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<StatsEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return statsEN;
+}
+
+public System.Collections.Generic.IList<StatsEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<StatsEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(StatsEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<StatsEN>();
-                    else
-                        result = session.CreateCriteria(typeof(StatsEN)).List<StatsEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(StatsEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<StatsEN>();
+                        else
+                                result = session.CreateCriteria (typeof(StatsEN)).List<StatsEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
+        }
 
-        public void ModifyDefault(StatsEN stats)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (StatsEN stats)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                StatsEN statsEN = (StatsEN)session.Load(typeof(StatsEN), stats.Id);
+                SessionInitializeTransaction ();
+                StatsEN statsEN = (StatsEN)session.Load (typeof(StatsEN), stats.Id);
 
                 statsEN.Benefit = stats.Benefit;
 
@@ -117,67 +115,64 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 statsEN.TotalStaked = stats.TotalStaked;
 
-                session.Update(statsEN);
-                SessionCommit();
-            }
+                session.Update (statsEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
         }
 
 
-        public int NewMonthlyStats(StatsEN stats)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                if (stats.Tipster != null)
-                {
-                    // Argumento OID y no colección.
-                    stats.Tipster = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), stats.Tipster.Id);
+                SessionClose ();
+        }
+}
 
-                    stats.Tipster.MonthlyStats
-                    .Add(stats);
+
+public int NewMonthlyStats (StatsEN stats)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (stats.Tipster != null) {
+                        // Argumento OID y no colección.
+                        stats.Tipster = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), stats.Tipster.Id);
+
+                        stats.Tipster.MonthlyStats
+                        .Add (stats);
                 }
 
-                session.Save(stats);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return stats.Id;
+                session.Save (stats);
+                SessionCommit ();
         }
 
-        public void ModifyMonthlyStats(StatsEN stats)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                StatsEN statsEN = (StatsEN)session.Load(typeof(StatsEN), stats.Id);
+                SessionClose ();
+        }
+
+        return stats.Id;
+}
+
+public void ModifyMonthlyStats (StatsEN stats)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                StatsEN statsEN = (StatsEN)session.Load (typeof(StatsEN), stats.Id);
 
                 statsEN.Benefit = stats.Benefit;
 
@@ -202,110 +197,106 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 statsEN.TotalStaked = stats.TotalStaked;
 
-                session.Update(statsEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-        }
-        public void DeleteMonthlyStats(int id
-                                        )
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                StatsEN statsEN = (StatsEN)session.Load(typeof(StatsEN), id);
-                session.Delete(statsEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (statsEN);
+                SessionCommit ();
         }
 
-        //Sin e: GetStatById
-        //Con e: StatsEN
-        public StatsEN GetStatById(int id
-                                    )
-        {
-            StatsEN statsEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                statsEN = (StatsEN)session.Get(typeof(StatsEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return statsEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<StatsEN> GetAllStats(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<StatsEN> result = null;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+public void DeleteMonthlyStats (int id
+                                )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                StatsEN statsEN = (StatsEN)session.Load (typeof(StatsEN), id);
+                session.Delete (statsEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+//Sin e: GetStatById
+//Con e: StatsEN
+public StatsEN GetStatById (int id
+                            )
+{
+        StatsEN statsEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                statsEN = (StatsEN)session.Get (typeof(StatsEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return statsEN;
+}
+
+public System.Collections.Generic.IList<StatsEN> GetAllStats (int first, int size)
+{
+        System.Collections.Generic.IList<StatsEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
                 if (size > 0)
-                    result = session.CreateCriteria(typeof(StatsEN)).
-                             SetFirstResult(first).SetMaxResults(size).List<StatsEN>();
+                        result = session.CreateCriteria (typeof(StatsEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<StatsEN>();
                 else
-                    result = session.CreateCriteria(typeof(StatsEN)).List<StatsEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in StatsCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                        result = session.CreateCriteria (typeof(StatsEN)).List<StatsEN>();
+                SessionCommit ();
         }
-    }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+}
 }

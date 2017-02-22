@@ -58,6 +58,6 @@
 		 </class>	
 		  
 		  <query name="PickENReadAllHQL">from PickEN</query>
-		  <query name="PickENpicksByResultHQL"><![CDATA[FROM PickEN]]></query>
+		  <query name="PickENgetPicksByResultHQL"><![CDATA[FROM PickEN where pickResult := p_pickResult]]></query>
 		</hibernate-mapping>
 	

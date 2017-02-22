@@ -4,32 +4,33 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial interface IMatchCAD
-    {
-        MatchEN ReadOIDDefault(int id
-                                );
+public partial interface IMatchCAD
+{
+MatchEN ReadOIDDefault (int id
+                        );
 
-        void ModifyDefault(MatchEN match);
+void ModifyDefault (MatchEN match);
 
-
-
-        int NewMatch(MatchEN match);
-
-        void ModifyMatch(MatchEN match);
+System.Collections.Generic.IList<MatchEN> ReadAllDefault (int first, int size);
 
 
-        void DeleteMatch(int id
-                          );
+
+int NewMatch (MatchEN match);
+
+void ModifyMatch (MatchEN match);
 
 
-        MatchEN GetMatchById(int id
-                              );
+void DeleteMatch (int id
+                  );
 
 
-        System.Collections.Generic.IList<MatchEN> GetAllMatches(int first, int size);
+MatchEN GetMatchById (int id
+                      );
 
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByTeam(string team);
 
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition(string competition);
-    }
+System.Collections.Generic.IList<MatchEN> GetAllMatches (int first, int size);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByTeam (string team);
+}
 }

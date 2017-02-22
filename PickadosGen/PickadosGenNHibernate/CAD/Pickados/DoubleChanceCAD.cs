@@ -17,145 +17,140 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class DoubleChanceCAD : BasicCAD, IDoubleChanceCAD
-    {
-        public DoubleChanceCAD() : base()
+public partial class DoubleChanceCAD : BasicCAD, IDoubleChanceCAD
+{
+public DoubleChanceCAD() : base ()
+{
+}
+
+public DoubleChanceCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public DoubleChanceEN ReadOIDDefault (int id
+                                      )
+{
+        DoubleChanceEN doubleChanceEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                doubleChanceEN = (DoubleChanceEN)session.Get (typeof(DoubleChanceEN), id);
+                SessionCommit ();
         }
 
-        public DoubleChanceCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public DoubleChanceEN ReadOIDDefault(int id
-                                              )
-        {
-            DoubleChanceEN doubleChanceEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                doubleChanceEN = (DoubleChanceEN)session.Get(typeof(DoubleChanceEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in DoubleChanceCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return doubleChanceEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in DoubleChanceCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<DoubleChanceEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<DoubleChanceEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return doubleChanceEN;
+}
+
+public System.Collections.Generic.IList<DoubleChanceEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<DoubleChanceEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(DoubleChanceEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<DoubleChanceEN>();
-                    else
-                        result = session.CreateCriteria(typeof(DoubleChanceEN)).List<DoubleChanceEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(DoubleChanceEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<DoubleChanceEN>();
+                        else
+                                result = session.CreateCriteria (typeof(DoubleChanceEN)).List<DoubleChanceEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in DoubleChanceCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in DoubleChanceCAD.", ex);
+        }
 
-        public void ModifyDefault(DoubleChanceEN doubleChance)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (DoubleChanceEN doubleChance)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                DoubleChanceEN doubleChanceEN = (DoubleChanceEN)session.Load(typeof(DoubleChanceEN), doubleChance.Id);
+                SessionInitializeTransaction ();
+                DoubleChanceEN doubleChanceEN = (DoubleChanceEN)session.Load (typeof(DoubleChanceEN), doubleChance.Id);
 
                 doubleChanceEN.Result_b = doubleChance.Result_b;
 
-                session.Update(doubleChanceEN);
-                SessionCommit();
-            }
+                session.Update (doubleChanceEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in DoubleChanceCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in DoubleChanceCAD.", ex);
         }
 
 
-        public int NewDobleChance(DoubleChanceEN doubleChance)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                if (doubleChance.Event_rel != null)
-                {
-                    // Argumento OID y no colección.
-                    doubleChance.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), doubleChance.Event_rel.Id);
+                SessionClose ();
+        }
+}
 
-                    doubleChance.Event_rel.Pick_rel
-                    .Add(doubleChance);
+
+public int NewDobleChance (DoubleChanceEN doubleChance)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (doubleChance.Event_rel != null) {
+                        // Argumento OID y no colección.
+                        doubleChance.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), doubleChance.Event_rel.Id);
+
+                        doubleChance.Event_rel.Pick_rel
+                        .Add (doubleChance);
                 }
 
-                session.Save(doubleChance);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in DoubleChanceCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return doubleChance.Id;
+                session.Save (doubleChance);
+                SessionCommit ();
         }
 
-        public void ModifyDobleChance(DoubleChanceEN doubleChance)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in DoubleChanceCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                DoubleChanceEN doubleChanceEN = (DoubleChanceEN)session.Load(typeof(DoubleChanceEN), doubleChance.Id);
+                SessionClose ();
+        }
+
+        return doubleChance.Id;
+}
+
+public void ModifyDobleChance (DoubleChanceEN doubleChance)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                DoubleChanceEN doubleChanceEN = (DoubleChanceEN)session.Load (typeof(DoubleChanceEN), doubleChance.Id);
 
                 doubleChanceEN.Odd = doubleChance.Odd;
 
@@ -177,48 +172,46 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 doubleChanceEN.Result_b = doubleChance.Result_b;
 
-                session.Update(doubleChanceEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in DoubleChanceCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (doubleChanceEN);
+                SessionCommit ();
         }
-        public void DeleteDobleChance(int id
-                                       )
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in DoubleChanceCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                DoubleChanceEN doubleChanceEN = (DoubleChanceEN)session.Load(typeof(DoubleChanceEN), id);
-                session.Delete(doubleChanceEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in DoubleChanceCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                SessionClose ();
         }
-    }
+}
+public void DeleteDobleChance (int id
+                               )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                DoubleChanceEN doubleChanceEN = (DoubleChanceEN)session.Load (typeof(DoubleChanceEN), id);
+                session.Delete (doubleChanceEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in DoubleChanceCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+}
 }

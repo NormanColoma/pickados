@@ -79,7 +79,7 @@ namespace UnitTest
             matchMock.Verify(mock => mock.GetMatchByTeam(It.IsAny<string>()), Times.Once);
         }
 
-        [TestMethod]
+       /** [TestMethod]
         public void GetMatchByCompetitionOkTest()
         {
             var matchMock = new Mock<IMatchCAD>();
@@ -140,6 +140,6 @@ namespace UnitTest
             }
 
             matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<string>()), Times.Once);
-        }
+        }**/
     }
 }

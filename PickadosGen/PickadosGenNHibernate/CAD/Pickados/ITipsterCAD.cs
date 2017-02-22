@@ -4,49 +4,53 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial interface ITipsterCAD
-    {
-        TipsterEN ReadOIDDefault(int id
-                                  );
+public partial interface ITipsterCAD
+{
+TipsterEN ReadOIDDefault (int id
+                          );
 
-        void ModifyDefault(TipsterEN tipster);
+void ModifyDefault (TipsterEN tipster);
 
-
-
-        int NewTipster(TipsterEN tipster);
-
-        void ModifyTipster(TipsterEN tipster);
+System.Collections.Generic.IList<TipsterEN> ReadAllDefault (int first, int size);
 
 
-        void DeleteTipster(int id
-                            );
+
+int NewTipster (TipsterEN tipster);
+
+void ModifyTipster (TipsterEN tipster);
 
 
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers(int oid);
+void DeleteTipster (int id
+                    );
 
 
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPosts();
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers (int ? p_oid);
 
 
-        void AddFollower(int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs);
-
-        TipsterEN GetTipsterById(int id
-                                  );
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPosts ();
 
 
-        System.Collections.Generic.IList<TipsterEN> GetAllTipsters(int first, int size);
+void AddFollower (int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs);
+
+TipsterEN GetTipsterById (int id
+                          );
 
 
-        void AddFollow(int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
-
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows(int oid);
+System.Collections.Generic.IList<TipsterEN> GetAllTipsters (int first, int size);
 
 
-        void DeleteFollow(int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
+void AddFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
 
-       System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersWithBenefit();
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows (int ? p_oid);
 
-       System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByMonth(DateTime p_date);
 
-    }
+void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersWithBenefit ();
+
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date);
+}
 }

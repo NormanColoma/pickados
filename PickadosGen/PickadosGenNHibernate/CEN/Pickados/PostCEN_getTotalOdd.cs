@@ -17,28 +17,27 @@ using PickadosGenNHibernate.CAD.Pickados;
 
 namespace PickadosGenNHibernate.CEN.Pickados
 {
-    public partial class PostCEN
-    {
-        public double GetTotalOdd(int p_oid)
-        {
-            /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_getTotalOdd) ENABLED START*/
+public partial class PostCEN
+{
+public double GetTotalOdd (int p_oid)
+{
+        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_getTotalOdd) ENABLED START*/
 
-            // Write here your custom code...
+        // Write here your custom code...
 
-            PostEN post = GetPostById(p_oid);
-            double total_odd = 0;
-            if (!post.Equals(null))
-            {
+        PostEN post = GetPostById (p_oid);
+        double total_odd = 0;
+
+        if (!post.Equals (null)) {
                 IList<PickEN> picks = post.Pick;
-                foreach (PickEN pick in picks)
-                {
-                    total_odd += pick.Odd;
+                foreach (PickEN pick in picks) {
+                        total_odd += pick.Odd;
                 }
-            }
-
-            return total_odd;
-
-            /*PROTECTED REGION END*/
         }
-    }
+
+        return total_odd;
+
+        /*PROTECTED REGION END*/
+}
+}
 }

@@ -17,17 +17,17 @@ using PickadosGenNHibernate.CAD.Pickados;
 
 namespace PickadosGenNHibernate.CEN.Pickados
 {
-    public partial class TipsterCEN
-    {
-        public PickadosGenNHibernate.EN.Pickados.StatsEN GetStatsByTimeRange(int p_oid, Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
-        {
-            /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_getStatsByTimeRange) ENABLED START*/
+public partial class TipsterCEN
+{
+public PickadosGenNHibernate.EN.Pickados.StatsEN GetStatsByTimeRange (int p_oid, Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
+{
+        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_getStatsByTimeRange) ENABLED START*/
 
-            // Write here your custom code...
+        // Write here your custom code...
 
-            throw new NotImplementedException("Method GetStatsByTimeRange() not yet implemented.");
+        throw new NotImplementedException ("Method GetStatsByTimeRange() not yet implemented.");
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        /*PROTECTED REGION END*/
+}
+}
 }

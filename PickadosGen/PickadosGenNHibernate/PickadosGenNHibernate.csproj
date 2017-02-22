@@ -1,267 +1,396 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PickadosGenNHibernate</RootNamespace>
-    <AssemblyName>PickadosGenNHibernate</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PickadosGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
-    </Reference>
-    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PickadosGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="System.Transactions" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\PickadosGenNHibernate\AppLib\Antlr3.Runtime.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\Castle.DynamicProxy2.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\Iesi.Collections.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\LinFu.DynamicProxy.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\log4net.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\NHibernate.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\nunit.core.dll" />
-    <Content Include="..\PickadosGenNHibernate\AppLib\nunit.framework.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="NHibernateHelper.cs" />
-    <Compile Include="Utils\Util.cs" />
-    <Compile Include="Exceptions\ModelException.cs" />
-    <Compile Include="Exceptions\DataLayerException.cs" />
-    <Compile Include="CAD\BasicCAD.cs" />
-    <Compile Include="CP\BasicCP.cs" />
-    <Compile Include="EN\Pickados\PickEN.cs" />
-    <Compile Include="CEN\Pickados\PickCEN.cs" />
-    <Compile Include="CAD\Pickados\IPickCAD.cs" />
-    <Compile Include="CAD\Pickados\PickCAD.cs" />
-    <Compile Include="CP\Pickados\PickCP.cs" />
-    <Compile Include="EN\Pickados\Event_EN.cs" />
-    <Compile Include="CEN\Pickados\Event_CEN.cs" />
-    <Compile Include="CAD\Pickados\IEvent_CAD.cs" />
-    <Compile Include="CAD\Pickados\Event_CAD.cs" />
-    <Compile Include="CP\Pickados\Event_CP.cs" />
-    <Compile Include="EN\Pickados\CompetitionEN.cs" />
-    <Compile Include="CEN\Pickados\CompetitionCEN.cs" />
-    <Compile Include="CAD\Pickados\ICompetitionCAD.cs" />
-    <Compile Include="CAD\Pickados\CompetitionCAD.cs" />
-    <Compile Include="CP\Pickados\CompetitionCP.cs" />
-    <Compile Include="EN\Pickados\TeamEN.cs" />
-    <Compile Include="CEN\Pickados\TeamCEN.cs" />
-    <Compile Include="CAD\Pickados\ITeamCAD.cs" />
-    <Compile Include="CAD\Pickados\TeamCAD.cs" />
-    <Compile Include="CP\Pickados\TeamCP.cs" />
-    <Compile Include="EN\Pickados\ResultEN.cs" />
-    <Compile Include="CEN\Pickados\ResultCEN.cs" />
-    <Compile Include="CAD\Pickados\IResultCAD.cs" />
-    <Compile Include="CAD\Pickados\ResultCAD.cs" />
-    <Compile Include="CP\Pickados\ResultCP.cs" />
-    <Compile Include="EN\Pickados\GoalEN.cs" />
-    <Compile Include="CEN\Pickados\GoalCEN.cs" />
-    <Compile Include="CAD\Pickados\IGoalCAD.cs" />
-    <Compile Include="CAD\Pickados\GoalCAD.cs" />
-    <Compile Include="CP\Pickados\GoalCP.cs" />
-    <Compile Include="EN\Pickados\HandicapEN.cs" />
-    <Compile Include="CEN\Pickados\HandicapCEN.cs" />
-    <Compile Include="CAD\Pickados\IHandicapCAD.cs" />
-    <Compile Include="CAD\Pickados\HandicapCAD.cs" />
-    <Compile Include="CP\Pickados\HandicapCP.cs" />
-    <Compile Include="EN\Pickados\DoubleChanceEN.cs" />
-    <Compile Include="CEN\Pickados\DoubleChanceCEN.cs" />
-    <Compile Include="CAD\Pickados\IDoubleChanceCAD.cs" />
-    <Compile Include="CAD\Pickados\DoubleChanceCAD.cs" />
-    <Compile Include="CP\Pickados\DoubleChanceCP.cs" />
-    <Compile Include="EN\Pickados\CorrectScoreEN.cs" />
-    <Compile Include="CEN\Pickados\CorrectScoreCEN.cs" />
-    <Compile Include="CAD\Pickados\ICorrectScoreCAD.cs" />
-    <Compile Include="CAD\Pickados\CorrectScoreCAD.cs" />
-    <Compile Include="CP\Pickados\CorrectScoreCP.cs" />
-    <Compile Include="EN\Pickados\PostEN.cs" />
-    <Compile Include="CEN\Pickados\PostCEN.cs" />
-    <Compile Include="CAD\Pickados\IPostCAD.cs" />
-    <Compile Include="CAD\Pickados\PostCAD.cs" />
-    <Compile Include="CP\Pickados\PostCP.cs" />
-    <Compile Include="CEN\Pickados\PostCEN_PublishPost.cs" />
-    <Compile Include="CEN\Pickados\PostCEN_GetTotalOdd.cs" />
-    <Compile Include="CEN\Pickados\PostCEN_VerifyPost.cs" />
-    <Compile Include="EN\Pickados\UsuarioEN.cs" />
-    <Compile Include="CEN\Pickados\UsuarioCEN.cs" />
-    <Compile Include="CAD\Pickados\IUsuarioCAD.cs" />
-    <Compile Include="CAD\Pickados\UsuarioCAD.cs" />
-    <Compile Include="CP\Pickados\UsuarioCP.cs" />
-    <Compile Include="EN\Pickados\TipsterEN.cs" />
-    <Compile Include="CEN\Pickados\TipsterCEN.cs" />
-    <Compile Include="CAD\Pickados\ITipsterCAD.cs" />
-    <Compile Include="CAD\Pickados\TipsterCAD.cs" />
-    <Compile Include="CP\Pickados\TipsterCP.cs" />
-    <Compile Include="CEN\Pickados\TipsterCEN_GetStatsByTimeRange.cs" />
-    <Compile Include="CEN\Pickados\TipsterCEN_BecomePremium.cs" />
-    <Compile Include="EN\Pickados\AdminEN.cs" />
-    <Compile Include="CEN\Pickados\AdminCEN.cs" />
-    <Compile Include="CAD\Pickados\IAdminCAD.cs" />
-    <Compile Include="CAD\Pickados\AdminCAD.cs" />
-    <Compile Include="CP\Pickados\AdminCP.cs" />
-    <Compile Include="EN\Pickados\StatsEN.cs" />
-    <Compile Include="CEN\Pickados\StatsCEN.cs" />
-    <Compile Include="CAD\Pickados\IStatsCAD.cs" />
-    <Compile Include="CAD\Pickados\StatsCAD.cs" />
-    <Compile Include="CP\Pickados\StatsCP.cs" />
-    <Compile Include="EN\Pickados\PlayerEN.cs" />
-    <Compile Include="CEN\Pickados\PlayerCEN.cs" />
-    <Compile Include="CAD\Pickados\IPlayerCAD.cs" />
-    <Compile Include="CAD\Pickados\PlayerCAD.cs" />
-    <Compile Include="CP\Pickados\PlayerCP.cs" />
-    <Compile Include="EN\Pickados\SportEN.cs" />
-    <Compile Include="CEN\Pickados\SportCEN.cs" />
-    <Compile Include="CAD\Pickados\ISportCAD.cs" />
-    <Compile Include="CAD\Pickados\SportCAD.cs" />
-    <Compile Include="CP\Pickados\SportCP.cs" />
-    <Compile Include="EN\Pickados\MatchEN.cs" />
-    <Compile Include="CEN\Pickados\MatchCEN.cs" />
-    <Compile Include="CAD\Pickados\IMatchCAD.cs" />
-    <Compile Include="CAD\Pickados\MatchCAD.cs" />
-    <Compile Include="CP\Pickados\MatchCP.cs" />
-    <Compile Include="EN\Pickados\ScorerEN.cs" />
-    <Compile Include="CEN\Pickados\ScorerCEN.cs" />
-    <Compile Include="CAD\Pickados\IScorerCAD.cs" />
-    <Compile Include="CAD\Pickados\ScorerCAD.cs" />
-    <Compile Include="CP\Pickados\ScorerCP.cs" />
-    <Compile Include="EN\Pickados\WincastEN.cs" />
-    <Compile Include="CEN\Pickados\WincastCEN.cs" />
-    <Compile Include="CAD\Pickados\IWincastCAD.cs" />
-    <Compile Include="CAD\Pickados\WincastCAD.cs" />
-    <Compile Include="CP\Pickados\WincastCP.cs" />
-    <Compile Include="EN\Pickados\TimecastEN.cs" />
-    <Compile Include="CEN\Pickados\TimecastCEN.cs" />
-    <Compile Include="CAD\Pickados\ITimecastCAD.cs" />
-    <Compile Include="CAD\Pickados\TimecastCAD.cs" />
-    <Compile Include="CP\Pickados\TimecastCP.cs" />
-    <Compile Include="Enumerated\Pickados\PickResultEnum.cs" />
-    <Compile Include="Enumerated\Pickados\ResultEnum.cs" />
-    <Compile Include="Enumerated\Pickados\LineEnum.cs" />
-    <Compile Include="Enumerated\Pickados\TimeEnum.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Mappings\Pickados\pick.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\event_.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\competition.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\team.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\result.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\goal.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\handicap.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\doublechance.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\correctscore.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\post.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\usuario.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\tipster.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\admin.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\stats.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\player.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\sport.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\match.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\scorer.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\wincast.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Pickados\timecast.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="hibernate.cfg.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Resources\xsd\nhibernate-configuration.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+		<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		  <PropertyGroup>
+		    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		    <ProductVersion>8.0.30703</ProductVersion>
+		    <SchemaVersion>2.0</SchemaVersion>
+		    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
+		    <OutputType>Library</OutputType>
+		    <AppDesignerFolder>Properties</AppDesignerFolder>
+		    <RootNamespace>PickadosGenNHibernate</RootNamespace>
+		    <AssemblyName>PickadosGenNHibernate</AssemblyName>
+		    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+		    <FileAlignment>512</FileAlignment>
+		    <PublishUrl>publish\</PublishUrl>
+		    <Install>true</Install>
+		    <InstallFrom>Disk</InstallFrom>
+		    <UpdateEnabled>false</UpdateEnabled>
+		    <UpdateMode>Foreground</UpdateMode>
+		    <UpdateInterval>7</UpdateInterval>
+		    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		    <UpdatePeriodically>false</UpdatePeriodically>
+		    <UpdateRequired>false</UpdateRequired>
+		    <MapFileExtensions>true</MapFileExtensions>
+		    <ApplicationRevision>0</ApplicationRevision>
+		    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+		    <IsWebBootstrapper>false</IsWebBootstrapper>
+		    <UseApplicationTrust>false</UseApplicationTrust>
+		    <BootstrapperEnabled>true</BootstrapperEnabled>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		    <DebugSymbols>true</DebugSymbols>
+		    <DebugType>full</DebugType>
+		    <Optimize>false</Optimize>
+		    <OutputPath>bin\Debug\</OutputPath>
+		    <DefineConstants>DEBUG;TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		    <DebugType>pdbonly</DebugType>
+		    <Optimize>true</Optimize>
+		    <OutputPath>bin\Release\</OutputPath>
+		    <DefineConstants>TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		<ItemGroup>
+		    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PickadosGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+		    </Reference>
+		    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PickadosGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+		    </Reference>
+		    <Reference Include="System" />
+		    <Reference Include="System.Core">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    
+		    <Reference Include="System.Transactions" />
+		    <Reference Include="System.Xml.Linq">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.DataSetExtensions">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data" />
+		    <Reference Include="System.Xml" />
+		</ItemGroup>
+		
+		<ItemGroup>
+		    <Content Include="..\PickadosGenNHibernate\AppLib\Antlr3.Runtime.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\Castle.DynamicProxy2.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\Iesi.Collections.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\LinFu.DynamicProxy.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\log4net.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\NHibernate.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\nunit.core.dll" />
+		    <Content Include="..\PickadosGenNHibernate\AppLib\nunit.framework.dll" />
+  		</ItemGroup>
+  		
+		<ItemGroup>
+			<Compile Include="NHibernateHelper.cs" />
+		    <Compile Include="Utils\Util.cs" />
+		    <Compile Include="Exceptions\ModelException.cs"/>
+		    <Compile Include="Exceptions\DataLayerException.cs"/>
+		    
+	<Compile Include="CAD\BasicCAD.cs"/>
+	<Compile Include="CP\BasicCP.cs"/>
+	<Compile Include="EN\Pickados\PickEN.cs" />
+	<Compile Include="CEN\Pickados\PickCEN.cs" />
+	<Compile Include="CAD\Pickados\IPickCAD.cs" />
+	<Compile Include="CAD\Pickados\PickCAD.cs" />
+	<Compile Include="CP\Pickados\PickCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\Event_EN.cs" />
+	<Compile Include="CEN\Pickados\Event_CEN.cs" />
+	<Compile Include="CAD\Pickados\IEvent_CAD.cs" />
+	<Compile Include="CAD\Pickados\Event_CAD.cs" />
+	<Compile Include="CP\Pickados\Event_CP.cs" />
+			
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\CompetitionEN.cs" />
+	<Compile Include="CEN\Pickados\CompetitionCEN.cs" />
+	<Compile Include="CAD\Pickados\ICompetitionCAD.cs" />
+	<Compile Include="CAD\Pickados\CompetitionCAD.cs" />
+	<Compile Include="CP\Pickados\CompetitionCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\TeamEN.cs" />
+	<Compile Include="CEN\Pickados\TeamCEN.cs" />
+	<Compile Include="CAD\Pickados\ITeamCAD.cs" />
+	<Compile Include="CAD\Pickados\TeamCAD.cs" />
+	<Compile Include="CP\Pickados\TeamCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\ResultEN.cs" />
+	<Compile Include="CEN\Pickados\ResultCEN.cs" />
+	<Compile Include="CAD\Pickados\IResultCAD.cs" />
+	<Compile Include="CAD\Pickados\ResultCAD.cs" />
+	<Compile Include="CP\Pickados\ResultCP.cs" />
+			
+			
+			
+	<Compile Include="EN\Pickados\GoalEN.cs" />
+	<Compile Include="CEN\Pickados\GoalCEN.cs" />
+	<Compile Include="CAD\Pickados\IGoalCAD.cs" />
+	<Compile Include="CAD\Pickados\GoalCAD.cs" />
+	<Compile Include="CP\Pickados\GoalCP.cs" />
+			
+			
+			
+	<Compile Include="EN\Pickados\HandicapEN.cs" />
+	<Compile Include="CEN\Pickados\HandicapCEN.cs" />
+	<Compile Include="CAD\Pickados\IHandicapCAD.cs" />
+	<Compile Include="CAD\Pickados\HandicapCAD.cs" />
+	<Compile Include="CP\Pickados\HandicapCP.cs" />
+			
+			
+			
+	<Compile Include="EN\Pickados\DoubleChanceEN.cs" />
+	<Compile Include="CEN\Pickados\DoubleChanceCEN.cs" />
+	<Compile Include="CAD\Pickados\IDoubleChanceCAD.cs" />
+	<Compile Include="CAD\Pickados\DoubleChanceCAD.cs" />
+	<Compile Include="CP\Pickados\DoubleChanceCP.cs" />
+			
+			
+			
+	<Compile Include="EN\Pickados\CorrectScoreEN.cs" />
+	<Compile Include="CEN\Pickados\CorrectScoreCEN.cs" />
+	<Compile Include="CAD\Pickados\ICorrectScoreCAD.cs" />
+	<Compile Include="CAD\Pickados\CorrectScoreCAD.cs" />
+	<Compile Include="CP\Pickados\CorrectScoreCP.cs" />
+			
+			
+			
+	<Compile Include="EN\Pickados\PostEN.cs" />
+	<Compile Include="CEN\Pickados\PostCEN.cs" />
+	<Compile Include="CAD\Pickados\IPostCAD.cs" />
+	<Compile Include="CAD\Pickados\PostCAD.cs" />
+	<Compile Include="CP\Pickados\PostCP.cs" />
+			<Compile Include="CEN\Pickados\PostCEN_PublishPost.cs" />
+			
+			
+			
+			
+			
+			<Compile Include="CEN\Pickados\PostCEN_GetTotalOdd.cs" />
+			
+			<Compile Include="CEN\Pickados\PostCEN_VerifyPost.cs" />
+			
+			
+	<Compile Include="EN\Pickados\UsuarioEN.cs" />
+	<Compile Include="CEN\Pickados\UsuarioCEN.cs" />
+	<Compile Include="CAD\Pickados\IUsuarioCAD.cs" />
+	<Compile Include="CAD\Pickados\UsuarioCAD.cs" />
+	<Compile Include="CP\Pickados\UsuarioCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\TipsterEN.cs" />
+	<Compile Include="CEN\Pickados\TipsterCEN.cs" />
+	<Compile Include="CAD\Pickados\ITipsterCAD.cs" />
+	<Compile Include="CAD\Pickados\TipsterCAD.cs" />
+	<Compile Include="CP\Pickados\TipsterCP.cs" />
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<Compile Include="CEN\Pickados\TipsterCEN_GetStatsByTimeRange.cs" />
+			
+			
+			<Compile Include="CEN\Pickados\TipsterCEN_BecomePremium.cs" />
+			
+			
+	<Compile Include="EN\Pickados\AdminEN.cs" />
+	<Compile Include="CEN\Pickados\AdminCEN.cs" />
+	<Compile Include="CAD\Pickados\IAdminCAD.cs" />
+	<Compile Include="CAD\Pickados\AdminCAD.cs" />
+	<Compile Include="CP\Pickados\AdminCP.cs" />
+			
+			
+			
+	<Compile Include="EN\Pickados\StatsEN.cs" />
+	<Compile Include="CEN\Pickados\StatsCEN.cs" />
+	<Compile Include="CAD\Pickados\IStatsCAD.cs" />
+	<Compile Include="CAD\Pickados\StatsCAD.cs" />
+	<Compile Include="CP\Pickados\StatsCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\PlayerEN.cs" />
+	<Compile Include="CEN\Pickados\PlayerCEN.cs" />
+	<Compile Include="CAD\Pickados\IPlayerCAD.cs" />
+	<Compile Include="CAD\Pickados\PlayerCAD.cs" />
+	<Compile Include="CP\Pickados\PlayerCP.cs" />
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\SportEN.cs" />
+	<Compile Include="CEN\Pickados\SportCEN.cs" />
+	<Compile Include="CAD\Pickados\ISportCAD.cs" />
+	<Compile Include="CAD\Pickados\SportCAD.cs" />
+	<Compile Include="CP\Pickados\SportCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\MatchEN.cs" />
+	<Compile Include="CEN\Pickados\MatchCEN.cs" />
+	<Compile Include="CAD\Pickados\IMatchCAD.cs" />
+	<Compile Include="CAD\Pickados\MatchCAD.cs" />
+	<Compile Include="CP\Pickados\MatchCP.cs" />
+			
+			
+			
+			
+			
+			
+			<Compile Include="CEN\Pickados\MatchCEN_GetMatchByCompetition.cs" />
+			
+	<Compile Include="EN\Pickados\ScorerEN.cs" />
+	<Compile Include="CEN\Pickados\ScorerCEN.cs" />
+	<Compile Include="CAD\Pickados\IScorerCAD.cs" />
+	<Compile Include="CAD\Pickados\ScorerCAD.cs" />
+	<Compile Include="CP\Pickados\ScorerCP.cs" />
+			
+			
+			
+	<Compile Include="EN\Pickados\WincastEN.cs" />
+	<Compile Include="CEN\Pickados\WincastCEN.cs" />
+	<Compile Include="CAD\Pickados\IWincastCAD.cs" />
+	<Compile Include="CAD\Pickados\WincastCAD.cs" />
+	<Compile Include="CP\Pickados\WincastCP.cs" />
+			
+			
+			
+	<Compile Include="EN\Pickados\TimecastEN.cs" />
+	<Compile Include="CEN\Pickados\TimecastCEN.cs" />
+	<Compile Include="CAD\Pickados\ITimecastCAD.cs" />
+	<Compile Include="CAD\Pickados\TimecastCAD.cs" />
+	<Compile Include="CP\Pickados\TimecastCP.cs" />
+			
+			
+			
+	<Compile Include="Enumerated\Pickados\PickResultEnum.cs" />
+	<Compile Include="Enumerated\Pickados\ResultEnum.cs" />
+	<Compile Include="Enumerated\Pickados\LineEnum.cs" />
+	<Compile Include="Enumerated\Pickados\TimeEnum.cs" />
+	
+	
+
+		    
+	
+
+		    <Compile Include="Properties\AssemblyInfo.cs" />
+		    <Compile Include="Properties\Settings.Designer.cs">
+		      <AutoGen>True</AutoGen>
+		      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		      <DependentUpon>Settings.settings</DependentUpon>
+		    </Compile>
+		  </ItemGroup>
+		  <ItemGroup>
+		  
+	<EmbeddedResource Include="Mappings\Pickados\pick.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\event_.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\competition.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\team.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\result.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\goal.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\handicap.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\doublechance.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\correctscore.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\post.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\usuario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\tipster.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\admin.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\stats.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\player.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\sport.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\match.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\scorer.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\wincast.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\timecast.hbm.xml" />
+	
+	
+
+		  </ItemGroup>
+		  <ItemGroup>
+		    <Content Include="hibernate.cfg.xml">
+		      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		    </Content>
+		  </ItemGroup>
+		  <ItemGroup>
+		    <None Include="app.config" />
+		    <None Include="Properties\Settings.settings">
+		      <Generator>SettingsSingleFileGenerator</Generator>
+		      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		    </None>
+		        <None Include="Resources\xsd\nhibernate-configuration.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\xsd\nhibernate-mapping.xsd">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		  </ItemGroup>
+	 	
+		
+	
+		<ItemGroup>
+		    <ProjectReference Include="..\APIExterna\APIExterna.csproj">
+		      <Project>{4ade35c8-a0c3-49da-9e1a-11a53ca19214}</Project>
+		      <Name>APIExterna</Name>
+		    </ProjectReference>
+	    </ItemGroup>
+	    
+		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 		       Other similar extension points exist, see Microsoft.Common.targets.
 		  <Target Name="BeforeBuild">
 		  </Target>
 		  <Target Name="AfterBuild">
 		  </Target>
 		  -->
-</Project>
+		</Project>

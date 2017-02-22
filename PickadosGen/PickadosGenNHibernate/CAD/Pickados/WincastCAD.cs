@@ -17,153 +17,147 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class WincastCAD : BasicCAD, IWincastCAD
-    {
-        public WincastCAD() : base()
+public partial class WincastCAD : BasicCAD, IWincastCAD
+{
+public WincastCAD() : base ()
+{
+}
+
+public WincastCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public WincastEN ReadOIDDefault (int id
+                                 )
+{
+        WincastEN wincastEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                wincastEN = (WincastEN)session.Get (typeof(WincastEN), id);
+                SessionCommit ();
         }
 
-        public WincastCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public WincastEN ReadOIDDefault(int id
-                                         )
-        {
-            WincastEN wincastEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                wincastEN = (WincastEN)session.Get(typeof(WincastEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in WincastCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return wincastEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<WincastEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<WincastEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return wincastEN;
+}
+
+public System.Collections.Generic.IList<WincastEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<WincastEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(WincastEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<WincastEN>();
-                    else
-                        result = session.CreateCriteria(typeof(WincastEN)).List<WincastEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(WincastEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<WincastEN>();
+                        else
+                                result = session.CreateCriteria (typeof(WincastEN)).List<WincastEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in WincastCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
+        }
 
-        public void ModifyDefault(WincastEN wincast)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (WincastEN wincast)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                WincastEN wincastEN = (WincastEN)session.Load(typeof(WincastEN), wincast.Id);
+                SessionInitializeTransaction ();
+                WincastEN wincastEN = (WincastEN)session.Load (typeof(WincastEN), wincast.Id);
 
                 wincastEN.Team_name = wincast.Team_name;
 
-                session.Update(wincastEN);
-                SessionCommit();
-            }
+                session.Update (wincastEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in WincastCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
         }
 
 
-        public int NewWincast(WincastEN wincast)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                if (wincast.Event_rel != null)
-                {
-                    // Argumento OID y no colección.
-                    wincast.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), wincast.Event_rel.Id);
+                SessionClose ();
+        }
+}
 
-                    wincast.Event_rel.Pick_rel
-                    .Add(wincast);
+
+public int NewWincast (WincastEN wincast)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (wincast.Event_rel != null) {
+                        // Argumento OID y no colección.
+                        wincast.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), wincast.Event_rel.Id);
+
+                        wincast.Event_rel.Pick_rel
+                        .Add (wincast);
                 }
-                if (wincast.Player != null)
-                {
-                    // Argumento OID y no colección.
-                    wincast.Player = (PickadosGenNHibernate.EN.Pickados.PlayerEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.PlayerEN), wincast.Player.Id);
+                if (wincast.Player != null) {
+                        // Argumento OID y no colección.
+                        wincast.Player = (PickadosGenNHibernate.EN.Pickados.PlayerEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.PlayerEN), wincast.Player.Id);
 
-                    wincast.Player.Scorer
-                    .Add(wincast);
+                        wincast.Player.Scorer
+                        .Add (wincast);
                 }
 
-                session.Save(wincast);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in WincastCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return wincast.Id;
+                session.Save (wincast);
+                SessionCommit ();
         }
 
-        public void ModifyWincast(WincastEN wincast)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                WincastEN wincastEN = (WincastEN)session.Load(typeof(WincastEN), wincast.Id);
+                SessionClose ();
+        }
+
+        return wincast.Id;
+}
+
+public void ModifyWincast (WincastEN wincast)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WincastEN wincastEN = (WincastEN)session.Load (typeof(WincastEN), wincast.Id);
 
                 wincastEN.Odd = wincast.Odd;
 
@@ -182,48 +176,46 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 wincastEN.Team_name = wincast.Team_name;
 
-                session.Update(wincastEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in WincastCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (wincastEN);
+                SessionCommit ();
         }
-        public void DeleteWincast(int id
-                                   )
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                WincastEN wincastEN = (WincastEN)session.Load(typeof(WincastEN), id);
-                session.Delete(wincastEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in WincastCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                SessionClose ();
         }
-    }
+}
+public void DeleteWincast (int id
+                           )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WincastEN wincastEN = (WincastEN)session.Load (typeof(WincastEN), id);
+                session.Delete (wincastEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in WincastCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+}
 }

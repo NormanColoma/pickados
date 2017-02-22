@@ -11,6 +11,7 @@ using PickadosGenNHibernate.CAD.Pickados;
 using PickadosGenNHibernate.CEN.Pickados;
 
 
+
 namespace PickadosGenNHibernate.CP.Pickados
 {
 public partial class StatsCP : BasicCP

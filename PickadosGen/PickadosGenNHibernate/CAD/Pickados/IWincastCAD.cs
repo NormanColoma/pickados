@@ -4,21 +4,23 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial interface IWincastCAD
-    {
-        WincastEN ReadOIDDefault(int id
-                                  );
+public partial interface IWincastCAD
+{
+WincastEN ReadOIDDefault (int id
+                          );
 
-        void ModifyDefault(WincastEN wincast);
+void ModifyDefault (WincastEN wincast);
 
-
-
-        int NewWincast(WincastEN wincast);
-
-        void ModifyWincast(WincastEN wincast);
+System.Collections.Generic.IList<WincastEN> ReadAllDefault (int first, int size);
 
 
-        void DeleteWincast(int id
-                            );
-    }
+
+int NewWincast (WincastEN wincast);
+
+void ModifyWincast (WincastEN wincast);
+
+
+void DeleteWincast (int id
+                    );
+}
 }

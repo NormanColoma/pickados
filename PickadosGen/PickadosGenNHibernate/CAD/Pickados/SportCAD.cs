@@ -17,245 +17,237 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class SportCAD : BasicCAD, ISportCAD
-    {
-        public SportCAD() : base()
+public partial class SportCAD : BasicCAD, ISportCAD
+{
+public SportCAD() : base ()
+{
+}
+
+public SportCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public SportEN ReadOIDDefault (int id
+                               )
+{
+        SportEN sportEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                sportEN = (SportEN)session.Get (typeof(SportEN), id);
+                SessionCommit ();
         }
 
-        public SportCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public SportEN ReadOIDDefault(int id
-                                       )
-        {
-            SportEN sportEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                sportEN = (SportEN)session.Get(typeof(SportEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in SportCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return sportEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in SportCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<SportEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<SportEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return sportEN;
+}
+
+public System.Collections.Generic.IList<SportEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<SportEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(SportEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<SportEN>();
-                    else
-                        result = session.CreateCriteria(typeof(SportEN)).List<SportEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(SportEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<SportEN>();
+                        else
+                                result = session.CreateCriteria (typeof(SportEN)).List<SportEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in SportCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in SportCAD.", ex);
+        }
 
-        public void ModifyDefault(SportEN sport)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (SportEN sport)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                SportEN sportEN = (SportEN)session.Load(typeof(SportEN), sport.Id);
+                SessionInitializeTransaction ();
+                SportEN sportEN = (SportEN)session.Load (typeof(SportEN), sport.Id);
 
 
                 sportEN.Name = sport.Name;
 
-                session.Update(sportEN);
-                SessionCommit();
-            }
+                session.Update (sportEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in SportCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in SportCAD.", ex);
         }
 
 
-        public int NewSport(SportEN sport)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-
-                session.Save(sport);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in SportCAD.", ex);
-            }
+                SessionClose ();
+        }
+}
 
 
-            finally
-            {
-                SessionClose();
-            }
+public int NewSport (SportEN sport)
+{
+        try
+        {
+                SessionInitializeTransaction ();
 
-            return sport.Id;
+                session.Save (sport);
+                SessionCommit ();
         }
 
-        public void ModifySport(SportEN sport)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in SportCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                SportEN sportEN = (SportEN)session.Load(typeof(SportEN), sport.Id);
+                SessionClose ();
+        }
+
+        return sport.Id;
+}
+
+public void ModifySport (SportEN sport)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                SportEN sportEN = (SportEN)session.Load (typeof(SportEN), sport.Id);
 
                 sportEN.Name = sport.Name;
 
-                session.Update(sportEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in SportCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-        }
-        public void DeleteSport(int id
-                                 )
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                SportEN sportEN = (SportEN)session.Load(typeof(SportEN), id);
-                session.Delete(sportEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in SportCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (sportEN);
+                SessionCommit ();
         }
 
-        //Sin e: GetSportById
-        //Con e: SportEN
-        public SportEN GetSportById(int id
-                                     )
-        {
-            SportEN sportEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                sportEN = (SportEN)session.Get(typeof(SportEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in SportCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return sportEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in SportCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<SportEN> GetAllSports(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<SportEN> result = null;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+public void DeleteSport (int id
+                         )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                SportEN sportEN = (SportEN)session.Load (typeof(SportEN), id);
+                session.Delete (sportEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in SportCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+//Sin e: GetSportById
+//Con e: SportEN
+public SportEN GetSportById (int id
+                             )
+{
+        SportEN sportEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                sportEN = (SportEN)session.Get (typeof(SportEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in SportCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return sportEN;
+}
+
+public System.Collections.Generic.IList<SportEN> GetAllSports (int first, int size)
+{
+        System.Collections.Generic.IList<SportEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
                 if (size > 0)
-                    result = session.CreateCriteria(typeof(SportEN)).
-                             SetFirstResult(first).SetMaxResults(size).List<SportEN>();
+                        result = session.CreateCriteria (typeof(SportEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<SportEN>();
                 else
-                    result = session.CreateCriteria(typeof(SportEN)).List<SportEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in SportCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                        result = session.CreateCriteria (typeof(SportEN)).List<SportEN>();
+                SessionCommit ();
         }
-    }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in SportCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+}
 }

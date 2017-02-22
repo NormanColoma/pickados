@@ -15,73 +15,73 @@ using PickadosGenNHibernate.CAD.Pickados;
 
 namespace PickadosGenNHibernate.CEN.Pickados
 {
-    /*
-     *      Definition of the class AdminCEN
-     *
-     */
-    public partial class AdminCEN
-    {
-        private IAdminCAD _IAdminCAD;
+/*
+ *      Definition of the class AdminCEN
+ *
+ */
+public partial class AdminCEN
+{
+private IAdminCAD _IAdminCAD;
 
-        public AdminCEN()
-        {
-            this._IAdminCAD = new AdminCAD();
-        }
+public AdminCEN()
+{
+        this._IAdminCAD = new AdminCAD ();
+}
 
-        public AdminCEN(IAdminCAD _IAdminCAD)
-        {
-            this._IAdminCAD = _IAdminCAD;
-        }
+public AdminCEN(IAdminCAD _IAdminCAD)
+{
+        this._IAdminCAD = _IAdminCAD;
+}
 
-        public IAdminCAD get_IAdminCAD()
-        {
-            return this._IAdminCAD;
-        }
+public IAdminCAD get_IAdminCAD ()
+{
+        return this._IAdminCAD;
+}
 
-        public int NewAdmin(TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password)
-        {
-            AdminEN adminEN = null;
-            int oid;
+public int NewAdmin (TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password)
+{
+        AdminEN adminEN = null;
+        int oid;
 
-            //Initialized AdminEN
-            adminEN = new AdminEN();
-            adminEN.CreatedAt = p_createdAt;
+        //Initialized AdminEN
+        adminEN = new AdminEN ();
+        adminEN.CreatedAt = p_createdAt;
 
-            adminEN.ModifiedAt = p_modifiedAt;
+        adminEN.ModifiedAt = p_modifiedAt;
 
-            adminEN.Alias = p_alias;
+        adminEN.Alias = p_alias;
 
-            adminEN.Email = p_email;
+        adminEN.Email = p_email;
 
-            adminEN.Password = Utils.Util.GetEncondeMD5(p_password);
+        adminEN.Password = Utils.Util.GetEncondeMD5 (p_password);
 
-            //Call to AdminCAD
+        //Call to AdminCAD
 
-            oid = _IAdminCAD.NewAdmin(adminEN);
-            return oid;
-        }
+        oid = _IAdminCAD.NewAdmin (adminEN);
+        return oid;
+}
 
-        public void ModifyAdmin(int p_Admin_OID, TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password)
-        {
-            AdminEN adminEN = null;
+public void ModifyAdmin (int p_Admin_OID, TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password)
+{
+        AdminEN adminEN = null;
 
-            //Initialized AdminEN
-            adminEN = new AdminEN();
-            adminEN.Id = p_Admin_OID;
-            adminEN.CreatedAt = p_createdAt;
-            adminEN.ModifiedAt = p_modifiedAt;
-            adminEN.Alias = p_alias;
-            adminEN.Email = p_email;
-            adminEN.Password = Utils.Util.GetEncondeMD5(p_password);
-            //Call to AdminCAD
+        //Initialized AdminEN
+        adminEN = new AdminEN ();
+        adminEN.Id = p_Admin_OID;
+        adminEN.CreatedAt = p_createdAt;
+        adminEN.ModifiedAt = p_modifiedAt;
+        adminEN.Alias = p_alias;
+        adminEN.Email = p_email;
+        adminEN.Password = Utils.Util.GetEncondeMD5 (p_password);
+        //Call to AdminCAD
 
-            _IAdminCAD.ModifyAdmin(adminEN);
-        }
+        _IAdminCAD.ModifyAdmin (adminEN);
+}
 
-        public void DeleteAdmin(int id
-                                 )
-        {
-            _IAdminCAD.DeleteAdmin(id);
-        }
-    }
+public void DeleteAdmin (int id
+                         )
+{
+        _IAdminCAD.DeleteAdmin (id);
+}
+}
 }

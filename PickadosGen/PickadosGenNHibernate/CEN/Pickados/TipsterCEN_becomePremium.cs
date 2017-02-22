@@ -17,19 +17,19 @@ using PickadosGenNHibernate.CAD.Pickados;
 
 namespace PickadosGenNHibernate.CEN.Pickados
 {
-    public partial class TipsterCEN
-    {
-        public void BecomePremium(int p_oid, double fee)
-        {
-            /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_becomePremium) ENABLED START*/
+public partial class TipsterCEN
+{
+public void BecomePremium (int p_oid, double fee)
+{
+        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_becomePremium) ENABLED START*/
 
-            // Write here your custom code...
+        // Write here your custom code...
 
-            TipsterEN cambio = GetTipsterById(p_oid);
+        TipsterEN cambio = GetTipsterById (p_oid);
 
-            ModifyTipster(p_oid, cambio.CreatedAt, cambio.ModifiedAt, cambio.Alias, cambio.Email, cambio.Password, true, fee);
+        ModifyTipster (p_oid, cambio.CreatedAt, cambio.ModifiedAt, cambio.Alias, cambio.Email, cambio.Password, true, fee);
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        /*PROTECTED REGION END*/
+}
+}
 }

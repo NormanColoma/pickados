@@ -4,28 +4,30 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial interface ITeamCAD
-    {
-        TeamEN ReadOIDDefault(int id
-                               );
+public partial interface ITeamCAD
+{
+TeamEN ReadOIDDefault (int id
+                       );
 
-        void ModifyDefault(TeamEN team);
+void ModifyDefault (TeamEN team);
 
-
-
-        int NewTeam(TeamEN team);
-
-        void ModifyTeam(TeamEN team);
+System.Collections.Generic.IList<TeamEN> ReadAllDefault (int first, int size);
 
 
-        void DeleteTeam(int id
-                         );
+
+int NewTeam (TeamEN team);
+
+void ModifyTeam (TeamEN team);
 
 
-        TeamEN GetTeamById(int id
-                            );
+void DeleteTeam (int id
+                 );
 
 
-        System.Collections.Generic.IList<TeamEN> GetAllTeams(int first, int size);
-    }
+TeamEN GetTeamById (int id
+                    );
+
+
+System.Collections.Generic.IList<TeamEN> GetAllTeams (int first, int size);
+}
 }

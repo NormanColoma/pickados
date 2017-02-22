@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>3069d642-c1cd-4615-85ed-c16a7dbfc94a</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PickadosGenPickadosRESTAzureREST</RootNamespace>
+    <AssemblyName>PickadosGenPickadosRESTAzureREST</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.2\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+     <Reference Include="System.Web.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.2\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+     <Reference Include="System.Web.Pages">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+     <Reference Include="System.Web.Pages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+   <ItemGroup>
+  	<Reference Include="Swashbuckle.Core">
+      <HintPath>..\ServiceLib\Swashbuckle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\ServiceLib\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+        
+  <ItemGroup>
+    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+		<SpecificVersion>False</SpecificVersion>
+		<HintPath>..\PickadosGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+	</Reference>
+	<Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+		<SpecificVersion>False</SpecificVersion>
+		<HintPath>..\PickadosGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+	</Reference>
+	<Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		<SpecificVersion>False</SpecificVersion>
+		<HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.dll</HintPath>
+	</Reference>
+	<Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		<SpecificVersion>False</SpecificVersion>
+		<HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+	</Reference>
+	<Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		<SpecificVersion>False</SpecificVersion>
+		<HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+	</Reference>
+	<Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		<SpecificVersion>False</SpecificVersion>
+		<HintPath>..\PickadosGenNHibernate\AppLib\Antlr3.Runtime.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PickadosGenNHibernate\PickadosGenNHibernate.csproj">
+      <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
+      <Name>nhibernateGen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+    <Content Include="Global.asax" />
+    <Content Include="apiapp.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    
+	<Compile Include="DTO\PickDTO.cs" />
+	<Compile Include="AssemblersDTO\PickAssemblerDTO.cs" />
+	<Compile Include="DTO\Event_DTO.cs" />
+	<Compile Include="AssemblersDTO\Event_AssemblerDTO.cs" />
+	<Compile Include="DTO\CompetitionDTO.cs" />
+	<Compile Include="AssemblersDTO\CompetitionAssemblerDTO.cs" />
+	<Compile Include="DTO\TeamDTO.cs" />
+	<Compile Include="AssemblersDTO\TeamAssemblerDTO.cs" />
+	<Compile Include="DTO\ResultDTO.cs" />
+	<Compile Include="AssemblersDTO\ResultAssemblerDTO.cs" />
+	<Compile Include="DTO\GoalDTO.cs" />
+	<Compile Include="AssemblersDTO\GoalAssemblerDTO.cs" />
+	<Compile Include="DTO\HandicapDTO.cs" />
+	<Compile Include="AssemblersDTO\HandicapAssemblerDTO.cs" />
+	<Compile Include="DTO\DoubleChanceDTO.cs" />
+	<Compile Include="AssemblersDTO\DoubleChanceAssemblerDTO.cs" />
+	<Compile Include="DTO\CorrectScoreDTO.cs" />
+	<Compile Include="AssemblersDTO\CorrectScoreAssemblerDTO.cs" />
+	<Compile Include="DTO\PostDTO.cs" />
+	<Compile Include="AssemblersDTO\PostAssemblerDTO.cs" />
+	<Compile Include="DTO\UsuarioDTO.cs" />
+	<Compile Include="AssemblersDTO\UsuarioAssemblerDTO.cs" />
+	<Compile Include="DTO\TipsterDTO.cs" />
+	<Compile Include="AssemblersDTO\TipsterAssemblerDTO.cs" />
+	<Compile Include="DTO\AdminDTO.cs" />
+	<Compile Include="AssemblersDTO\AdminAssemblerDTO.cs" />
+	<Compile Include="DTO\StatsDTO.cs" />
+	<Compile Include="AssemblersDTO\StatsAssemblerDTO.cs" />
+	<Compile Include="DTO\PlayerDTO.cs" />
+	<Compile Include="AssemblersDTO\PlayerAssemblerDTO.cs" />
+	<Compile Include="DTO\SportDTO.cs" />
+	<Compile Include="AssemblersDTO\SportAssemblerDTO.cs" />
+	<Compile Include="DTO\MatchDTO.cs" />
+	<Compile Include="AssemblersDTO\MatchAssemblerDTO.cs" />
+	<Compile Include="DTO\ScorerDTO.cs" />
+	<Compile Include="AssemblersDTO\ScorerAssemblerDTO.cs" />
+	<Compile Include="DTO\WincastDTO.cs" />
+	<Compile Include="AssemblersDTO\WincastAssemblerDTO.cs" />
+	<Compile Include="DTO\TimecastDTO.cs" />
+	<Compile Include="AssemblersDTO\TimecastAssemblerDTO.cs" />
+	
+
+    
+	
+	
+	
+	<Compile Include="Controllers\BasicController.cs" />
+	
+		<Compile Include="CAD\TipsterRESTCAD.cs" />
+		<Compile Include="DTOA\TipsterDTOA.cs" />
+		<Compile Include="Assemblers\TipsterAssembler.cs" />
+		<Compile Include="Controllers\TipsterController.cs" />
+		
+	
+	
+	
+
+    
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5137</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:16209/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

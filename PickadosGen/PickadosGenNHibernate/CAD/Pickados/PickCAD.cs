@@ -17,81 +17,79 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class PickCAD : BasicCAD, IPickCAD
-    {
-        public PickCAD() : base()
+public partial class PickCAD : BasicCAD, IPickCAD
+{
+public PickCAD() : base ()
+{
+}
+
+public PickCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public PickEN ReadOIDDefault (int id
+                              )
+{
+        PickEN pickEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                pickEN = (PickEN)session.Get (typeof(PickEN), id);
+                SessionCommit ();
         }
 
-        public PickCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public PickEN ReadOIDDefault(int id
-                                      )
-        {
-            PickEN pickEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                pickEN = (PickEN)session.Get(typeof(PickEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return pickEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<PickEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<PickEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return pickEN;
+}
+
+public System.Collections.Generic.IList<PickEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<PickEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(PickEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<PickEN>();
-                    else
-                        result = session.CreateCriteria(typeof(PickEN)).List<PickEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(PickEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<PickEN>();
+                        else
+                                result = session.CreateCriteria (typeof(PickEN)).List<PickEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
+        }
 
-        public void ModifyDefault(PickEN pick)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (PickEN pick)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                PickEN pickEN = (PickEN)session.Load(typeof(PickEN), pick.Id);
+                SessionInitializeTransaction ();
+                PickEN pickEN = (PickEN)session.Load (typeof(PickEN), pick.Id);
 
                 pickEN.Odd = pick.Odd;
 
@@ -106,67 +104,64 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
 
 
-                session.Update(pickEN);
-                SessionCommit();
-            }
+                session.Update (pickEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
         }
 
 
-        public int NewPick(PickEN pick)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                if (pick.Event_rel != null)
-                {
-                    // Argumento OID y no colección.
-                    pick.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), pick.Event_rel.Id);
+                SessionClose ();
+        }
+}
 
-                    pick.Event_rel.Pick_rel
-                    .Add(pick);
+
+public int NewPick (PickEN pick)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (pick.Event_rel != null) {
+                        // Argumento OID y no colección.
+                        pick.Event_rel = (PickadosGenNHibernate.EN.Pickados.Event_EN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.Event_EN), pick.Event_rel.Id);
+
+                        pick.Event_rel.Pick_rel
+                        .Add (pick);
                 }
 
-                session.Save(pick);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return pick.Id;
+                session.Save (pick);
+                SessionCommit ();
         }
 
-        public void ModifyPick(PickEN pick)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                PickEN pickEN = (PickEN)session.Load(typeof(PickEN), pick.Id);
+                SessionClose ();
+        }
+
+        return pick.Id;
+}
+
+public void ModifyPick (PickEN pick)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                PickEN pickEN = (PickEN)session.Load (typeof(PickEN), pick.Id);
 
                 pickEN.Odd = pick.Odd;
 
@@ -179,141 +174,136 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 pickEN.Bookie = pick.Bookie;
 
-                session.Update(pickEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-        }
-        public void DeletePick(int id
-                                )
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                PickEN pickEN = (PickEN)session.Load(typeof(PickEN), id);
-                session.Delete(pickEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (pickEN);
+                SessionCommit ();
         }
 
-        //Sin e: GetPickById
-        //Con e: PickEN
-        public PickEN GetPickById(int id
-                                   )
-        {
-            PickEN pickEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                pickEN = (PickEN)session.Get(typeof(PickEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return pickEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<PickEN> GetAllPicks(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<PickEN> result = null;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+public void DeletePick (int id
+                        )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                PickEN pickEN = (PickEN)session.Load (typeof(PickEN), id);
+                session.Delete (pickEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+//Sin e: GetPickById
+//Con e: PickEN
+public PickEN GetPickById (int id
+                           )
+{
+        PickEN pickEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                pickEN = (PickEN)session.Get (typeof(PickEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return pickEN;
+}
+
+public System.Collections.Generic.IList<PickEN> GetAllPicks (int first, int size)
+{
+        System.Collections.Generic.IList<PickEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
                 if (size > 0)
-                    result = session.CreateCriteria(typeof(PickEN)).
-                             SetFirstResult(first).SetMaxResults(size).List<PickEN>();
+                        result = session.CreateCriteria (typeof(PickEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<PickEN>();
                 else
-                    result = session.CreateCriteria(typeof(PickEN)).List<PickEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                        result = session.CreateCriteria (typeof(PickEN)).List<PickEN>();
+                SessionCommit ();
         }
 
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> PicksByResult()
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
+        }
+
+
+        finally
         {
-            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> result;
-            try
-            {
-                SessionInitializeTransaction();
-                //String sql = @"FROM PickEN self where FROM PickEN";
+                SessionClose ();
+        }
+
+        return result;
+}
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PickEN self where FROM PickEN where pickResult := p_pickResult";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery("PickENpicksByResultHQL");
+                IQuery query = (IQuery)session.GetNamedQuery ("PickENgetPicksByResultHQL");
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PickCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                SessionCommit ();
         }
-    }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+}
 }

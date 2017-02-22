@@ -4,31 +4,33 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial interface IPickCAD
-    {
-        PickEN ReadOIDDefault(int id
-                               );
+public partial interface IPickCAD
+{
+PickEN ReadOIDDefault (int id
+                       );
 
-        void ModifyDefault(PickEN pick);
+void ModifyDefault (PickEN pick);
 
-
-
-        int NewPick(PickEN pick);
-
-        void ModifyPick(PickEN pick);
+System.Collections.Generic.IList<PickEN> ReadAllDefault (int first, int size);
 
 
-        void DeletePick(int id
-                         );
+
+int NewPick (PickEN pick);
+
+void ModifyPick (PickEN pick);
 
 
-        PickEN GetPickById(int id
-                            );
+void DeletePick (int id
+                 );
 
 
-        System.Collections.Generic.IList<PickEN> GetAllPicks(int first, int size);
+PickEN GetPickById (int id
+                    );
 
 
-        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> PicksByResult();
-    }
+System.Collections.Generic.IList<PickEN> GetAllPicks (int first, int size);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult ();
+}
 }

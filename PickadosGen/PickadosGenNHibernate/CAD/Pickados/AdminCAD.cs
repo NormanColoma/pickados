@@ -17,134 +17,130 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class AdminCAD : BasicCAD, IAdminCAD
-    {
-        public AdminCAD() : base()
+public partial class AdminCAD : BasicCAD, IAdminCAD
+{
+public AdminCAD() : base ()
+{
+}
+
+public AdminCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public AdminEN ReadOIDDefault (int id
+                               )
+{
+        AdminEN adminEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                adminEN = (AdminEN)session.Get (typeof(AdminEN), id);
+                SessionCommit ();
         }
 
-        public AdminCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public AdminEN ReadOIDDefault(int id
-                                       )
-        {
-            AdminEN adminEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                adminEN = (AdminEN)session.Get(typeof(AdminEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in AdminCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return adminEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in AdminCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<AdminEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<AdminEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return adminEN;
+}
+
+public System.Collections.Generic.IList<AdminEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<AdminEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(AdminEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<AdminEN>();
-                    else
-                        result = session.CreateCriteria(typeof(AdminEN)).List<AdminEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(AdminEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<AdminEN>();
+                        else
+                                result = session.CreateCriteria (typeof(AdminEN)).List<AdminEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in AdminCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
-
-        public void ModifyDefault(AdminEN admin)
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                AdminEN adminEN = (AdminEN)session.Load(typeof(AdminEN), admin.Id);
-                session.Update(adminEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in AdminCAD.", ex);
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in AdminCAD.", ex);
+        }
 
+        return result;
+}
 
-            finally
-            {
-                SessionClose();
-            }
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (AdminEN admin)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                AdminEN adminEN = (AdminEN)session.Load (typeof(AdminEN), admin.Id);
+                session.Update (adminEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in AdminCAD.", ex);
         }
 
 
-        public int NewAdmin(AdminEN admin)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-
-                session.Save(admin);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in AdminCAD.", ex);
-            }
+                SessionClose ();
+        }
+}
 
 
-            finally
-            {
-                SessionClose();
-            }
+public int NewAdmin (AdminEN admin)
+{
+        try
+        {
+                SessionInitializeTransaction ();
 
-            return admin.Id;
+                session.Save (admin);
+                SessionCommit ();
         }
 
-        public void ModifyAdmin(AdminEN admin)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in AdminCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                AdminEN adminEN = (AdminEN)session.Load(typeof(AdminEN), admin.Id);
+                SessionClose ();
+        }
+
+        return admin.Id;
+}
+
+public void ModifyAdmin (AdminEN admin)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                AdminEN adminEN = (AdminEN)session.Load (typeof(AdminEN), admin.Id);
 
                 adminEN.CreatedAt = admin.CreatedAt;
 
@@ -160,48 +156,46 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 adminEN.Password = admin.Password;
 
-                session.Update(adminEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in AdminCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (adminEN);
+                SessionCommit ();
         }
-        public void DeleteAdmin(int id
-                                 )
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in AdminCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                AdminEN adminEN = (AdminEN)session.Load(typeof(AdminEN), id);
-                session.Delete(adminEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in AdminCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                SessionClose ();
         }
-    }
+}
+public void DeleteAdmin (int id
+                         )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                AdminEN adminEN = (AdminEN)session.Load (typeof(AdminEN), id);
+                session.Delete (adminEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in AdminCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+}
 }

@@ -3,141 +3,131 @@ using System;
 // Definición clase CompetitionEN
 namespace PickadosGenNHibernate.EN.Pickados
 {
-    public partial class CompetitionEN
-    {
-        /**
-         *	Atributo id
-         */
-        private int id;
+public partial class CompetitionEN
+{
+/**
+ *	Atributo id
+ */
+private int id;
 
 
 
-        /**
-         *	Atributo name
-         */
-        private string name;
+/**
+ *	Atributo name
+ */
+private string name;
 
 
 
-        /**
-         *	Atributo event_
-         */
-        private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_;
+/**
+ *	Atributo event_
+ */
+private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_;
 
 
 
-        /**
-         *	Atributo sport
-         */
-        private PickadosGenNHibernate.EN.Pickados.SportEN sport;
+/**
+ *	Atributo sport
+ */
+private PickadosGenNHibernate.EN.Pickados.SportEN sport;
 
 
 
-        /**
-         *	Atributo place
-         */
-        private string place;
-
-
-
-
-
-
-        public virtual int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-
-
-        public virtual string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-
-
-        public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> Event_
-        {
-            get { return event_; }
-            set { event_ = value; }
-        }
-
-
-
-        public virtual PickadosGenNHibernate.EN.Pickados.SportEN Sport
-        {
-            get { return sport; }
-            set { sport = value; }
-        }
-
-
-
-        public virtual string Place
-        {
-            get { return place; }
-            set { place = value; }
-        }
+/**
+ *	Atributo place
+ */
+private string place;
 
 
 
 
 
-        public CompetitionEN()
-        {
-            event_ = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.Event_EN>();
-        }
+
+public virtual int Id {
+        get { return id; } set { id = value;  }
+}
 
 
 
-        public CompetitionEN(int id, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_, PickadosGenNHibernate.EN.Pickados.SportEN sport, string place
-                             )
-        {
-            this.init(Id, name, event_, sport, place);
-        }
+public virtual string Name {
+        get { return name; } set { name = value;  }
+}
 
 
-        public CompetitionEN(CompetitionEN competition)
-        {
-            this.init(Id, competition.Name, competition.Event_, competition.Sport, competition.Place);
-        }
 
-        private void init(int id
-                           , string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_, PickadosGenNHibernate.EN.Pickados.SportEN sport, string place)
-        {
-            this.Id = id;
+public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> Event_ {
+        get { return event_; } set { event_ = value;  }
+}
 
 
-            this.Name = name;
 
-            this.Event_ = event_;
+public virtual PickadosGenNHibernate.EN.Pickados.SportEN Sport {
+        get { return sport; } set { sport = value;  }
+}
 
-            this.Sport = sport;
 
-            this.Place = place;
-        }
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
+public virtual string Place {
+        get { return place; } set { place = value;  }
+}
+
+
+
+
+
+public CompetitionEN()
+{
+        event_ = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.Event_EN>();
+}
+
+
+
+public CompetitionEN(int id, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_, PickadosGenNHibernate.EN.Pickados.SportEN sport, string place
+                     )
+{
+        this.init (Id, name, event_, sport, place);
+}
+
+
+public CompetitionEN(CompetitionEN competition)
+{
+        this.init (Id, competition.Name, competition.Event_, competition.Sport, competition.Place);
+}
+
+private void init (int id
+                   , string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_, PickadosGenNHibernate.EN.Pickados.SportEN sport, string place)
+{
+        this.Id = id;
+
+
+        this.Name = name;
+
+        this.Event_ = event_;
+
+        this.Sport = sport;
+
+        this.Place = place;
+}
+
+public override bool Equals (object obj)
+{
+        if (obj == null)
                 return false;
-            CompetitionEN t = obj as CompetitionEN;
-            if (t == null)
+        CompetitionEN t = obj as CompetitionEN;
+        if (t == null)
                 return false;
-            if (Id.Equals(t.Id))
+        if (Id.Equals (t.Id))
                 return true;
-            else
+        else
                 return false;
-        }
+}
 
-        public override int GetHashCode()
-        {
-            int hash = 13;
+public override int GetHashCode ()
+{
+        int hash = 13;
 
-            hash += this.Id.GetHashCode();
-            return hash;
-        }
-    }
+        hash += this.Id.GetHashCode ();
+        return hash;
+}
+}
 }

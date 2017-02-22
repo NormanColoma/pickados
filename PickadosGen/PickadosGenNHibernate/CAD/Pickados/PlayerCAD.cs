@@ -17,377 +17,363 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class PlayerCAD : BasicCAD, IPlayerCAD
-    {
-        public PlayerCAD() : base()
+public partial class PlayerCAD : BasicCAD, IPlayerCAD
+{
+public PlayerCAD() : base ()
+{
+}
+
+public PlayerCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public PlayerEN ReadOIDDefault (int id
+                                )
+{
+        PlayerEN playerEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                playerEN = (PlayerEN)session.Get (typeof(PlayerEN), id);
+                SessionCommit ();
         }
 
-        public PlayerCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public PlayerEN ReadOIDDefault(int id
-                                        )
-        {
-            PlayerEN playerEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                playerEN = (PlayerEN)session.Get(typeof(PlayerEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return playerEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<PlayerEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<PlayerEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return playerEN;
+}
+
+public System.Collections.Generic.IList<PlayerEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<PlayerEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(PlayerEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<PlayerEN>();
-                    else
-                        result = session.CreateCriteria(typeof(PlayerEN)).List<PlayerEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(PlayerEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<PlayerEN>();
+                        else
+                                result = session.CreateCriteria (typeof(PlayerEN)).List<PlayerEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
 
-        public void ModifyDefault(PlayerEN player)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (PlayerEN player)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                PlayerEN playerEN = (PlayerEN)session.Load(typeof(PlayerEN), player.Id);
+                SessionInitializeTransaction ();
+                PlayerEN playerEN = (PlayerEN)session.Load (typeof(PlayerEN), player.Id);
 
 
 
                 playerEN.Name = player.Name;
 
 
-                session.Update(playerEN);
-                SessionCommit();
-            }
+                session.Update (playerEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
         }
 
 
-        public int NewPlayer(PlayerEN player)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-
-                session.Save(player);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
+                SessionClose ();
+        }
+}
 
 
-            finally
-            {
-                SessionClose();
-            }
+public int NewPlayer (PlayerEN player)
+{
+        try
+        {
+                SessionInitializeTransaction ();
 
-            return player.Id;
+                session.Save (player);
+                SessionCommit ();
         }
 
-        public void ModifyPlayer(PlayerEN player)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                PlayerEN playerEN = (PlayerEN)session.Load(typeof(PlayerEN), player.Id);
+                SessionClose ();
+        }
+
+        return player.Id;
+}
+
+public void ModifyPlayer (PlayerEN player)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                PlayerEN playerEN = (PlayerEN)session.Load (typeof(PlayerEN), player.Id);
 
                 playerEN.Name = player.Name;
 
-                session.Update(playerEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-        }
-        public void DeletePlayer(int id
-                                  )
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                PlayerEN playerEN = (PlayerEN)session.Load(typeof(PlayerEN), id);
-                session.Delete(playerEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (playerEN);
+                SessionCommit ();
         }
 
-        public void JoinClubTeam(int p_Player_OID, int p_club_team_OID)
-        {
-            PickadosGenNHibernate.EN.Pickados.PlayerEN playerEN = null;
-            try
-            {
-                SessionInitializeTransaction();
-                playerEN = (PlayerEN)session.Load(typeof(PlayerEN), p_Player_OID);
-                playerEN.Club_team = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), p_club_team_OID);
-
-                playerEN.Club_team.Club_player.Add(playerEN);
-
-
-
-                session.Update(playerEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
         }
 
-        public void JoinNationalTeam(int p_Player_OID, int p_national_team_OID)
+
+        finally
         {
-            PickadosGenNHibernate.EN.Pickados.PlayerEN playerEN = null;
-            try
-            {
-                SessionInitializeTransaction();
-                playerEN = (PlayerEN)session.Load(typeof(PlayerEN), p_Player_OID);
-                playerEN.National_team = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), p_national_team_OID);
-
-                playerEN.National_team.National_player.Add(playerEN);
-
-
-
-                session.Update(playerEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                SessionClose ();
+        }
+}
+public void DeletePlayer (int id
+                          )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                PlayerEN playerEN = (PlayerEN)session.Load (typeof(PlayerEN), id);
+                session.Delete (playerEN);
+                SessionCommit ();
         }
 
-        public void UnlinkClubTeam(int p_Player_OID, int p_club_team_OID)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+
+public void JoinClubTeam (int p_Player_OID, int p_club_team_OID)
+{
+        PickadosGenNHibernate.EN.Pickados.PlayerEN playerEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                playerEN = (PlayerEN)session.Load (typeof(PlayerEN), p_Player_OID);
+                playerEN.Club_team = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), p_club_team_OID);
+
+                playerEN.Club_team.Club_player.Add (playerEN);
+
+
+
+                session.Update (playerEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void JoinNationalTeam (int p_Player_OID, int p_national_team_OID)
+{
+        PickadosGenNHibernate.EN.Pickados.PlayerEN playerEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                playerEN = (PlayerEN)session.Load (typeof(PlayerEN), p_Player_OID);
+                playerEN.National_team = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), p_national_team_OID);
+
+                playerEN.National_team.National_player.Add (playerEN);
+
+
+
+                session.Update (playerEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void UnlinkClubTeam (int p_Player_OID, int p_club_team_OID)
+{
+        try
+        {
+                SessionInitializeTransaction ();
                 PickadosGenNHibernate.EN.Pickados.PlayerEN playerEN = null;
-                playerEN = (PlayerEN)session.Load(typeof(PlayerEN), p_Player_OID);
+                playerEN = (PlayerEN)session.Load (typeof(PlayerEN), p_Player_OID);
 
-                if (playerEN.Club_team.Id == p_club_team_OID)
-                {
-                    playerEN.Club_team = null;
+                if (playerEN.Club_team.Id == p_club_team_OID) {
+                        playerEN.Club_team = null;
                 }
                 else
-                    throw new ModelException("The identifier " + p_club_team_OID + " in p_club_team_OID you are trying to unrelationer, doesn't exist in PlayerEN");
+                        throw new ModelException ("The identifier " + p_club_team_OID + " in p_club_team_OID you are trying to unrelationer, doesn't exist in PlayerEN");
 
-                session.Update(playerEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (playerEN);
+                SessionCommit ();
         }
-        public void UnlinkNationalTeam(int p_Player_OID, int p_national_team_OID)
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                PickadosGenNHibernate.EN.Pickados.PlayerEN playerEN = null;
-                playerEN = (PlayerEN)session.Load(typeof(PlayerEN), p_Player_OID);
 
-                if (playerEN.National_team.Id == p_national_team_OID)
-                {
-                    playerEN.National_team = null;
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void UnlinkNationalTeam (int p_Player_OID, int p_national_team_OID)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                PickadosGenNHibernate.EN.Pickados.PlayerEN playerEN = null;
+                playerEN = (PlayerEN)session.Load (typeof(PlayerEN), p_Player_OID);
+
+                if (playerEN.National_team.Id == p_national_team_OID) {
+                        playerEN.National_team = null;
                 }
                 else
-                    throw new ModelException("The identifier " + p_national_team_OID + " in p_national_team_OID you are trying to unrelationer, doesn't exist in PlayerEN");
+                        throw new ModelException ("The identifier " + p_national_team_OID + " in p_national_team_OID you are trying to unrelationer, doesn't exist in PlayerEN");
 
-                session.Update(playerEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-        }
-        //Sin e: GetPlayerById
-        //Con e: PlayerEN
-        public PlayerEN GetPlayerById(int id
-                                       )
-        {
-            PlayerEN playerEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                playerEN = (PlayerEN)session.Get(typeof(PlayerEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return playerEN;
+                session.Update (playerEN);
+                SessionCommit ();
         }
 
-        public System.Collections.Generic.IList<PlayerEN> GetAllPlayers(int first, int size)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
         {
-            System.Collections.Generic.IList<PlayerEN> result = null;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+//Sin e: GetPlayerById
+//Con e: PlayerEN
+public PlayerEN GetPlayerById (int id
+                               )
+{
+        PlayerEN playerEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                playerEN = (PlayerEN)session.Get (typeof(PlayerEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return playerEN;
+}
+
+public System.Collections.Generic.IList<PlayerEN> GetAllPlayers (int first, int size)
+{
+        System.Collections.Generic.IList<PlayerEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
                 if (size > 0)
-                    result = session.CreateCriteria(typeof(PlayerEN)).
-                             SetFirstResult(first).SetMaxResults(size).List<PlayerEN>();
+                        result = session.CreateCriteria (typeof(PlayerEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<PlayerEN>();
                 else
-                    result = session.CreateCriteria(typeof(PlayerEN)).List<PlayerEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in PlayerCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                        result = session.CreateCriteria (typeof(PlayerEN)).List<PlayerEN>();
+                SessionCommit ();
         }
-    }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+}
 }

@@ -4,28 +4,30 @@ using PickadosGenNHibernate.EN.Pickados;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial interface IStatsCAD
-    {
-        StatsEN ReadOIDDefault(int id
-                                );
+public partial interface IStatsCAD
+{
+StatsEN ReadOIDDefault (int id
+                        );
 
-        void ModifyDefault(StatsEN stats);
+void ModifyDefault (StatsEN stats);
 
-
-
-        int NewMonthlyStats(StatsEN stats);
-
-        void ModifyMonthlyStats(StatsEN stats);
+System.Collections.Generic.IList<StatsEN> ReadAllDefault (int first, int size);
 
 
-        void DeleteMonthlyStats(int id
-                                 );
+
+int NewMonthlyStats (StatsEN stats);
+
+void ModifyMonthlyStats (StatsEN stats);
 
 
-        StatsEN GetStatById(int id
-                             );
+void DeleteMonthlyStats (int id
+                         );
 
 
-        System.Collections.Generic.IList<StatsEN> GetAllStats(int first, int size);
-    }
+StatsEN GetStatById (int id
+                     );
+
+
+System.Collections.Generic.IList<StatsEN> GetAllStats (int first, int size);
+}
 }

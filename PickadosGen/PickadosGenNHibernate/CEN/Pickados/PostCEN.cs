@@ -15,121 +15,117 @@ using PickadosGenNHibernate.CAD.Pickados;
 
 namespace PickadosGenNHibernate.CEN.Pickados
 {
-    /*
-     *      Definition of the class PostCEN
-     *
-     */
-    public partial class PostCEN
-    {
-        private IPostCAD _IPostCAD;
+/*
+ *      Definition of the class PostCEN
+ *
+ */
+public partial class PostCEN
+{
+private IPostCAD _IPostCAD;
 
-        public PostCEN()
-        {
-            this._IPostCAD = new PostCAD();
-        }
+public PostCEN()
+{
+        this._IPostCAD = new PostCAD ();
+}
 
-        public PostCEN(IPostCAD _IPostCAD)
-        {
-            this._IPostCAD = _IPostCAD;
-        }
+public PostCEN(IPostCAD _IPostCAD)
+{
+        this._IPostCAD = _IPostCAD;
+}
 
-        public IPostCAD get_IPostCAD()
-        {
-            return this._IPostCAD;
-        }
+public IPostCAD get_IPostCAD ()
+{
+        return this._IPostCAD;
+}
 
-        public void ModifyPost(int p_Post_OID, TimeSpan p_created_at, TimeSpan p_modified_at, double p_stake, string p_description, bool p_private, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
-        {
-            PostEN postEN = null;
+public void ModifyPost (int p_Post_OID, TimeSpan p_created_at, TimeSpan p_modified_at, double p_stake, string p_description, bool p_private, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
+{
+        PostEN postEN = null;
 
-            //Initialized PostEN
-            postEN = new PostEN();
-            postEN.Id = p_Post_OID;
-            postEN.Created_at = p_created_at;
-            postEN.Modified_at = p_modified_at;
-            postEN.Stake = p_stake;
-            postEN.Description = p_description;
-            postEN.Private_ = p_private;
-            postEN.TotalOdd = p_totalOdd;
-            postEN.PostResult = p_postResult;
-            //Call to PostCAD
+        //Initialized PostEN
+        postEN = new PostEN ();
+        postEN.Id = p_Post_OID;
+        postEN.Created_at = p_created_at;
+        postEN.Modified_at = p_modified_at;
+        postEN.Stake = p_stake;
+        postEN.Description = p_description;
+        postEN.Private_ = p_private;
+        postEN.TotalOdd = p_totalOdd;
+        postEN.PostResult = p_postResult;
+        //Call to PostCAD
 
-            _IPostCAD.ModifyPost(postEN);
-        }
+        _IPostCAD.ModifyPost (postEN);
+}
 
-        public void DeletePost(int id
-                                )
-        {
-            _IPostCAD.DeletePost(id);
-        }
+public void DeletePost (int id
+                        )
+{
+        _IPostCAD.DeletePost (id);
+}
 
-        public PostEN GetPostById(int id
-                                   )
-        {
-            PostEN postEN = null;
+public PostEN GetPostById (int id
+                           )
+{
+        PostEN postEN = null;
 
-            postEN = _IPostCAD.GetPostById(id);
-            return postEN;
-        }
+        postEN = _IPostCAD.GetPostById (id);
+        return postEN;
+}
 
-        public System.Collections.Generic.IList<PostEN> GetAllPosts(int first, int size)
-        {
-            System.Collections.Generic.IList<PostEN> list = null;
+public System.Collections.Generic.IList<PostEN> GetAllPosts (int first, int size)
+{
+        System.Collections.Generic.IList<PostEN> list = null;
 
-            list = _IPostCAD.GetAllPosts(first, size);
-            return list;
-        }
-        public int NewPost(TimeSpan p_created_at, TimeSpan p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
-        {
-            PostEN postEN = null;
-            int oid;
+        list = _IPostCAD.GetAllPosts (first, size);
+        return list;
+}
+public int NewPost (TimeSpan p_created_at, TimeSpan p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
+{
+        PostEN postEN = null;
+        int oid;
 
-            //Initialized PostEN
-            postEN = new PostEN();
-            postEN.Created_at = p_created_at;
+        //Initialized PostEN
+        postEN = new PostEN ();
+        postEN.Created_at = p_created_at;
 
-            postEN.Modified_at = p_modified_at;
+        postEN.Modified_at = p_modified_at;
 
-            postEN.Stake = p_stake;
+        postEN.Stake = p_stake;
 
-            postEN.Description = p_description;
+        postEN.Description = p_description;
 
-            postEN.Private_ = p_private;
+        postEN.Private_ = p_private;
 
 
-            postEN.Pick = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
-            if (p_pick != null)
-            {
-                foreach (int item in p_pick)
-                {
-                    PickadosGenNHibernate.EN.Pickados.PickEN en = new PickadosGenNHibernate.EN.Pickados.PickEN();
-                    en.Id = item;
-                    postEN.Pick.Add(en);
+        postEN.Pick = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
+        if (p_pick != null) {
+                foreach (int item in p_pick) {
+                        PickadosGenNHibernate.EN.Pickados.PickEN en = new PickadosGenNHibernate.EN.Pickados.PickEN ();
+                        en.Id = item;
+                        postEN.Pick.Add (en);
                 }
-            }
+        }
 
-            else
-            {
+        else{
                 postEN.Pick = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
-            }
+        }
 
 
-            if (p_tipster != -1)
-            {
+        if (p_tipster != -1) {
                 // El argumento p_tipster -> Property tipster es oid = false
                 // Lista de oids id
-                postEN.Tipster = new PickadosGenNHibernate.EN.Pickados.TipsterEN();
+                postEN.Tipster = new PickadosGenNHibernate.EN.Pickados.TipsterEN ();
                 postEN.Tipster.Id = p_tipster;
-            }
-
-            postEN.TotalOdd = p_totalOdd;
-
-            postEN.PostResult = p_postResult;
-
-            //Call to PostCAD
-
-            oid = _IPostCAD.NewPost(postEN);
-            return oid;
         }
-    }
+
+        postEN.TotalOdd = p_totalOdd;
+
+        postEN.PostResult = p_postResult;
+
+        //Call to PostCAD
+
+        oid = _IPostCAD.NewPost (postEN);
+        return oid;
+}
+}
 }

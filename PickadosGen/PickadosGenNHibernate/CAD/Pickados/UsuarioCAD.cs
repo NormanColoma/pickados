@@ -17,81 +17,79 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class UsuarioCAD : BasicCAD, IUsuarioCAD
-    {
-        public UsuarioCAD() : base()
+public partial class UsuarioCAD : BasicCAD, IUsuarioCAD
+{
+public UsuarioCAD() : base ()
+{
+}
+
+public UsuarioCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public UsuarioEN ReadOIDDefault (int id
+                                 )
+{
+        UsuarioEN usuarioEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), id);
+                SessionCommit ();
         }
 
-        public UsuarioCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public UsuarioEN ReadOIDDefault(int id
-                                         )
-        {
-            UsuarioEN usuarioEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                usuarioEN = (UsuarioEN)session.Get(typeof(UsuarioEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in UsuarioCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return usuarioEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<UsuarioEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<UsuarioEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return usuarioEN;
+}
+
+public System.Collections.Generic.IList<UsuarioEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<UsuarioEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(UsuarioEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<UsuarioEN>();
-                    else
-                        result = session.CreateCriteria(typeof(UsuarioEN)).List<UsuarioEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(UsuarioEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<UsuarioEN>();
+                        else
+                                result = session.CreateCriteria (typeof(UsuarioEN)).List<UsuarioEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in UsuarioCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
 
-        public void ModifyDefault(UsuarioEN usuario)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (UsuarioEN usuario)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load(typeof(UsuarioEN), usuario.Id);
+                SessionInitializeTransaction ();
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
 
                 usuarioEN.CreatedAt = usuario.CreatedAt;
 
@@ -107,59 +105,57 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 usuarioEN.Password = usuario.Password;
 
-                session.Update(usuarioEN);
-                SessionCommit();
-            }
+                session.Update (usuarioEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in UsuarioCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
         }
 
 
-        public int NewUser(UsuarioEN usuario)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-
-                session.Save(usuario);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in UsuarioCAD.", ex);
-            }
+                SessionClose ();
+        }
+}
 
 
-            finally
-            {
-                SessionClose();
-            }
+public int NewUser (UsuarioEN usuario)
+{
+        try
+        {
+                SessionInitializeTransaction ();
 
-            return usuario.Id;
+                session.Save (usuario);
+                SessionCommit ();
         }
 
-        public void ModifyUser(UsuarioEN usuario)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load(typeof(UsuarioEN), usuario.Id);
+                SessionClose ();
+        }
+
+        return usuario.Id;
+}
+
+public void ModifyUser (UsuarioEN usuario)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
 
                 usuarioEN.CreatedAt = usuario.CreatedAt;
 
@@ -175,110 +171,106 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 usuarioEN.Password = usuario.Password;
 
-                session.Update(usuarioEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in UsuarioCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-        }
-        public void DeleteUser(int id
-                                )
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load(typeof(UsuarioEN), id);
-                session.Delete(usuarioEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in UsuarioCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (usuarioEN);
+                SessionCommit ();
         }
 
-        //Sin e: GetUserById
-        //Con e: UsuarioEN
-        public UsuarioEN GetUserById(int id
-                                      )
-        {
-            UsuarioEN usuarioEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                usuarioEN = (UsuarioEN)session.Get(typeof(UsuarioEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in UsuarioCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return usuarioEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<UsuarioEN> GetAllUsers(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<UsuarioEN> result = null;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+public void DeleteUser (int id
+                        )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), id);
+                session.Delete (usuarioEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+//Sin e: GetUserById
+//Con e: UsuarioEN
+public UsuarioEN GetUserById (int id
+                              )
+{
+        UsuarioEN usuarioEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return usuarioEN;
+}
+
+public System.Collections.Generic.IList<UsuarioEN> GetAllUsers (int first, int size)
+{
+        System.Collections.Generic.IList<UsuarioEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
                 if (size > 0)
-                    result = session.CreateCriteria(typeof(UsuarioEN)).
-                             SetFirstResult(first).SetMaxResults(size).List<UsuarioEN>();
+                        result = session.CreateCriteria (typeof(UsuarioEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<UsuarioEN>();
                 else
-                    result = session.CreateCriteria(typeof(UsuarioEN)).List<UsuarioEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in UsuarioCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                        result = session.CreateCriteria (typeof(UsuarioEN)).List<UsuarioEN>();
+                SessionCommit ();
         }
-    }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+}
 }

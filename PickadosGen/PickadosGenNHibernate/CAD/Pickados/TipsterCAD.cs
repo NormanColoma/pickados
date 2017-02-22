@@ -17,81 +17,79 @@ using PickadosGenNHibernate.Exceptions;
 
 namespace PickadosGenNHibernate.CAD.Pickados
 {
-    public partial class TipsterCAD : BasicCAD, ITipsterCAD
-    {
-        public TipsterCAD() : base()
+public partial class TipsterCAD : BasicCAD, ITipsterCAD
+{
+public TipsterCAD() : base ()
+{
+}
+
+public TipsterCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public TipsterEN ReadOIDDefault (int id
+                                 )
+{
+        TipsterEN tipsterEN = null;
+
+        try
         {
+                SessionInitializeTransaction ();
+                tipsterEN = (TipsterEN)session.Get (typeof(TipsterEN), id);
+                SessionCommit ();
         }
 
-        public TipsterCAD(ISession sessionAux) : base(sessionAux)
-        {
-        }
-
-
-
-        public TipsterEN ReadOIDDefault(int id
-                                         )
-        {
-            TipsterEN tipsterEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                tipsterEN = (TipsterEN)session.Get(typeof(TipsterEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return tipsterEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<TipsterEN> ReadAllDefault(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<TipsterEN> result = null;
-            try
-            {
-                using (ITransaction tx = session.BeginTransaction())
+                SessionClose ();
+        }
+
+        return tipsterEN;
+}
+
+public System.Collections.Generic.IList<TipsterEN> ReadAllDefault (int first, int size)
+{
+        System.Collections.Generic.IList<TipsterEN> result = null;
+        try
+        {
+                using (ITransaction tx = session.BeginTransaction ())
                 {
-                    if (size > 0)
-                        result = session.CreateCriteria(typeof(TipsterEN)).
-                                 SetFirstResult(first).SetMaxResults(size).List<TipsterEN>();
-                    else
-                        result = session.CreateCriteria(typeof(TipsterEN)).List<TipsterEN>();
+                        if (size > 0)
+                                result = session.CreateCriteria (typeof(TipsterEN)).
+                                         SetFirstResult (first).SetMaxResults (size).List<TipsterEN>();
+                        else
+                                result = session.CreateCriteria (typeof(TipsterEN)).List<TipsterEN>();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-            return result;
         }
 
-        // Modify default (Update all attributes of the class)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
 
-        public void ModifyDefault(TipsterEN tipster)
+        return result;
+}
+
+// Modify default (Update all attributes of the class)
+
+public void ModifyDefault (TipsterEN tipster)
+{
+        try
         {
-            try
-            {
-                SessionInitializeTransaction();
-                TipsterEN tipsterEN = (TipsterEN)session.Load(typeof(TipsterEN), tipster.Id);
+                SessionInitializeTransaction ();
+                TipsterEN tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), tipster.Id);
 
 
 
@@ -102,59 +100,57 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 tipsterEN.Subscription_fee = tipster.Subscription_fee;
 
-                session.Update(tipsterEN);
-                SessionCommit();
-            }
+                session.Update (tipsterEN);
+                SessionCommit ();
+        }
 
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
         }
 
 
-        public int NewTipster(TipsterEN tipster)
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-
-                session.Save(tipster);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
+                SessionClose ();
+        }
+}
 
 
-            finally
-            {
-                SessionClose();
-            }
+public int NewTipster (TipsterEN tipster)
+{
+        try
+        {
+                SessionInitializeTransaction ();
 
-            return tipster.Id;
+                session.Save (tipster);
+                SessionCommit ();
         }
 
-        public void ModifyTipster(TipsterEN tipster)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
-                TipsterEN tipsterEN = (TipsterEN)session.Load(typeof(TipsterEN), tipster.Id);
+                SessionClose ();
+        }
+
+        return tipster.Id;
+}
+
+public void ModifyTipster (TipsterEN tipster)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                TipsterEN tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), tipster.Id);
 
                 tipsterEN.CreatedAt = tipster.CreatedAt;
 
@@ -176,389 +172,371 @@ namespace PickadosGenNHibernate.CAD.Pickados
 
                 tipsterEN.Subscription_fee = tipster.Subscription_fee;
 
-                session.Update(tipsterEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-        }
-        public void DeleteTipster(int id
-                                   )
-        {
-            try
-            {
-                SessionInitializeTransaction();
-                TipsterEN tipsterEN = (TipsterEN)session.Load(typeof(TipsterEN), id);
-                session.Delete(tipsterEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (tipsterEN);
+                SessionCommit ();
         }
 
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers(int oid)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+public void DeleteTipster (int id
+                           )
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                TipsterEN tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), id);
+                session.Delete (tipsterEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers (int ? p_oid)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
                 //String sql = @"FROM TipsterEN self where select followed_by FROM TipsterEN";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery("TipsterENgetFollowersHQL");
-                query.SetParameter("id", oid);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowersHQL");
+                query.SetParameter ("p_oid", p_oid);
+
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                SessionCommit ();
         }
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPosts()
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> result;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPosts ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
                 //String sql = @"FROM TipsterEN self where SELECT post FROM PostEN as post, TipsterEN as tipster WHERE post.Tipster.Id = tipster.Id ";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery("TipsterENgetPostsHQL");
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetPostsHQL");
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.PostEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                SessionCommit ();
         }
-        public void AddFollower(int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs)
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            PickadosGenNHibernate.EN.Pickados.TipsterEN tipsterEN = null;
-            try
-            {
-                SessionInitializeTransaction();
-                tipsterEN = (TipsterEN)session.Load(typeof(TipsterEN), p_Tipster_OID);
+                SessionClose ();
+        }
+
+        return result;
+}
+public void AddFollower (int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs)
+{
+        PickadosGenNHibernate.EN.Pickados.TipsterEN tipsterEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), p_Tipster_OID);
                 PickadosGenNHibernate.EN.Pickados.TipsterEN followed_byENAux = null;
-                if (tipsterEN.Followed_by == null)
-                {
-                    tipsterEN.Followed_by = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                if (tipsterEN.Followed_by == null) {
+                        tipsterEN.Followed_by = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 }
 
-                foreach (int item in p_followed_by_OIDs)
-                {
-                    followed_byENAux = new PickadosGenNHibernate.EN.Pickados.TipsterEN();
-                    followed_byENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
-                    followed_byENAux.Follow_to.Add(tipsterEN);
+                foreach (int item in p_followed_by_OIDs) {
+                        followed_byENAux = new PickadosGenNHibernate.EN.Pickados.TipsterEN ();
+                        followed_byENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
+                        followed_byENAux.Follow_to.Add (tipsterEN);
 
-                    tipsterEN.Followed_by.Add(followed_byENAux);
+                        tipsterEN.Followed_by.Add (followed_byENAux);
                 }
 
 
-                session.Update(tipsterEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (tipsterEN);
+                SessionCommit ();
         }
 
-        //Sin e: GetTipsterById
-        //Con e: TipsterEN
-        public TipsterEN GetTipsterById(int id
-                                         )
-        {
-            TipsterEN tipsterEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                tipsterEN = (TipsterEN)session.Get(typeof(TipsterEN), id);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex) {
+                SessionRollBack ();
                 if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return tipsterEN;
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
         }
 
-        public System.Collections.Generic.IList<TipsterEN> GetAllTipsters(int first, int size)
+
+        finally
         {
-            System.Collections.Generic.IList<TipsterEN> result = null;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+
+//Sin e: GetTipsterById
+//Con e: TipsterEN
+public TipsterEN GetTipsterById (int id
+                                 )
+{
+        TipsterEN tipsterEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                tipsterEN = (TipsterEN)session.Get (typeof(TipsterEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return tipsterEN;
+}
+
+public System.Collections.Generic.IList<TipsterEN> GetAllTipsters (int first, int size)
+{
+        System.Collections.Generic.IList<TipsterEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
                 if (size > 0)
-                    result = session.CreateCriteria(typeof(TipsterEN)).
-                             SetFirstResult(first).SetMaxResults(size).List<TipsterEN>();
+                        result = session.CreateCriteria (typeof(TipsterEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<TipsterEN>();
                 else
-                    result = session.CreateCriteria(typeof(TipsterEN)).List<TipsterEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                        result = session.CreateCriteria (typeof(TipsterEN)).List<TipsterEN>();
+                SessionCommit ();
         }
 
-        public void AddFollow(int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            PickadosGenNHibernate.EN.Pickados.TipsterEN tipsterEN = null;
-            try
-            {
-                SessionInitializeTransaction();
-                tipsterEN = (TipsterEN)session.Load(typeof(TipsterEN), p_Tipster_OID);
+                SessionClose ();
+        }
+
+        return result;
+}
+
+public void AddFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)
+{
+        PickadosGenNHibernate.EN.Pickados.TipsterEN tipsterEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), p_Tipster_OID);
                 PickadosGenNHibernate.EN.Pickados.TipsterEN follow_toENAux = null;
-                if (tipsterEN.Follow_to == null)
-                {
-                    tipsterEN.Follow_to = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                if (tipsterEN.Follow_to == null) {
+                        tipsterEN.Follow_to = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 }
 
-                foreach (int item in p_follow_to_OIDs)
-                {
-                    follow_toENAux = new PickadosGenNHibernate.EN.Pickados.TipsterEN();
-                    follow_toENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
-                    follow_toENAux.Followed_by.Add(tipsterEN);
+                foreach (int item in p_follow_to_OIDs) {
+                        follow_toENAux = new PickadosGenNHibernate.EN.Pickados.TipsterEN ();
+                        follow_toENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
+                        follow_toENAux.Followed_by.Add (tipsterEN);
 
-                    tipsterEN.Follow_to.Add(follow_toENAux);
+                        tipsterEN.Follow_to.Add (follow_toENAux);
                 }
 
 
-                session.Update(tipsterEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (tipsterEN);
+                SessionCommit ();
         }
 
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows(int oid)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
-            try
-            {
-                SessionInitializeTransaction();
-                //String sql = @"FROM TipsterEN self where FROM TipsterEN";
+                SessionClose ();
+        }
+}
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows (int ? p_oid)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TipsterEN self where select follow_to FROM TipsterEN where id=:id";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery("TipsterENgetFollowsHQL");
-                query.SetParameter("id", oid);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowsHQL");
+                query.SetParameter ("p_oid", p_oid);
+
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                SessionCommit ();
         }
-        public void DeleteFollow(int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+
+        return result;
+}
+public void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
                 PickadosGenNHibernate.EN.Pickados.TipsterEN tipsterEN = null;
-                tipsterEN = (TipsterEN)session.Load(typeof(TipsterEN), p_Tipster_OID);
+                tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), p_Tipster_OID);
 
                 PickadosGenNHibernate.EN.Pickados.TipsterEN follow_toENAux = null;
-                if (tipsterEN.Follow_to != null)
-                {
-                    foreach (int item in p_follow_to_OIDs)
-                    {
-                        follow_toENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load(typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
-                        if (tipsterEN.Follow_to.Contains(follow_toENAux) == true)
-                        {
-                            tipsterEN.Follow_to.Remove(follow_toENAux);
-                            follow_toENAux.Followed_by.Remove(tipsterEN);
+                if (tipsterEN.Follow_to != null) {
+                        foreach (int item in p_follow_to_OIDs) {
+                                follow_toENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
+                                if (tipsterEN.Follow_to.Contains (follow_toENAux) == true) {
+                                        tipsterEN.Follow_to.Remove (follow_toENAux);
+                                        follow_toENAux.Followed_by.Remove (tipsterEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_follow_to_OIDs you are trying to unrelationer, doesn't exist in TipsterEN");
                         }
-                        else
-                            throw new ModelException("The identifier " + item + " in p_follow_to_OIDs you are trying to unrelationer, doesn't exist in TipsterEN");
-                    }
                 }
 
-                session.Update(tipsterEN);
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
+                session.Update (tipsterEN);
+                SessionCommit ();
         }
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersWithBenefit()
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersWithBenefit ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
                 //String sql = @"FROM TipsterEN self where FROM TipsterEN";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery("TipsterENgetTipstersWithBenefitHQL");
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetTipstersWithBenefitHQL");
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                SessionCommit ();
         }
 
-        public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByMonth(DateTime p_date)
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
         {
-            System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> result;
-            try
-            {
-                SessionInitializeTransaction();
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
                 //String sql = @"FROM TipsterEN self where SELECT tip FROM TipsterEN as tip, StatsEN as stat WHERE tip.id = stat.Tipster.id AND MONTH(stat.initialDate) = MONTH(:p_date)";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery("TipsterENgetStatsByMonthHQL");
-                query.SetParameter("p_date", p_date);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetStatsByMonthHQL");
+                query.SetParameter ("p_date", p_date);
 
-                result = query.List<PickadosGenNHibernate.EN.Pickados.StatsEN>();
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                    throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException("Error in TipsterCAD.", ex);
-            }
-
-
-            finally
-            {
-                SessionClose();
-            }
-
-            return result;
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                SessionCommit ();
         }
-    }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+}
 }
