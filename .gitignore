@@ -8,6 +8,8 @@ Pickados/.project
 Pickados/META-INF/
 Pickados/build.properties
 Pickados/.settings/
+Pickados/resources/
+Pickados/project.properties
 *launch
 # User-specific files
 *.suo
