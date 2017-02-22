@@ -5,6 +5,10 @@
 Pickados/.classpath
 Pickados/templates/
 Pickados/.project
+Pickados/META-INF/
+Pickados/build.properties
+Pickados/.settings/
+*launch
 # User-specific files
 *.suo
 *.user
