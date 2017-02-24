@@ -21,6 +21,7 @@ namespace PickadosGenNHibernate.CEN.Pickados
 {
 public partial class PostCEN
 {
+
         /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_verifyPost) ENABLED START*/
         public void VerifyPost (int p_oid, PostCEN postCEN, TipsterCEN tipsterCEN, StatsCEN statsCEN)
         {
@@ -131,3 +132,4 @@ public partial class PostCEN
         /*PROTECTED REGION END*/
 }
 }
+

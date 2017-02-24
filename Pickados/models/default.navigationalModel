@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:es.ua.dlsi.ooh="http://www.dlsi.ua.es/ooh/conceptualView/1.0.0" xmlns:es.ua.dlsi.ooh.navigationalView="http://www.dlsi.ua.es/ooh/navigationalView" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
   <es.ua.dlsi.ooh.navigationalView:NavigationalModel xmi:id="_4DeIkPkpEeaJ3OyWNoTy5w" name="Pickados" applicationFacade="RESTCloud">
-    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalClass" xmi:id="_5GZlMPkpEeaJ3OyWNoTy5w" name="Tipster" isEntryPoint="true">
-      <referToClass xmi:type="es.ua.dlsi.ooh:Class" href="default.domainModel#_dCCDkNNuEeaZBpN3xqTI2g"/>
+    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalClass" xmi:id="_VzhpIPq4EeawSe5rKoEsKw" name="Sport" isEntryPoint="true">
+      <referToClass xmi:type="es.ua.dlsi.ooh:Class" href="default.domainModel#_qZ3h8NkBEeaUt9gXjU7aig"/>
     </navigationalElem>
     <conceptualModel xmi:type="es.ua.dlsi.ooh:ConceptualModel" href="default.domainModel#_cbbssNNlEeaZBpN3xqTI2g"/>
   </es.ua.dlsi.ooh.navigationalView:NavigationalModel>
   <notation:Diagram xmi:id="_4DeIkfkpEeaJ3OyWNoTy5w" type="NavigationalView" element="_4DeIkPkpEeaJ3OyWNoTy5w" name="default.navigationalModel" measurementUnit="Pixel">
-    <children xmi:type="notation:Node" xmi:id="_5GjWMPkpEeaJ3OyWNoTy5w" type="2004" element="_5GZlMPkpEeaJ3OyWNoTy5w">
-      <children xmi:type="notation:DecorationNode" xmi:id="_5Gj9QPkpEeaJ3OyWNoTy5w" type="5004"/>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_5Gj9QfkpEeaJ3OyWNoTy5w" type="7003">
-        <styles xmi:type="notation:SortingStyle" xmi:id="_5Gj9QvkpEeaJ3OyWNoTy5w"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_5Gj9Q_kpEeaJ3OyWNoTy5w"/>
+    <children xmi:type="notation:Node" xmi:id="_V0jj4Pq4EeawSe5rKoEsKw" type="2004" element="_VzhpIPq4EeawSe5rKoEsKw">
+      <children xmi:type="notation:DecorationNode" xmi:id="_V0lZEPq4EeawSe5rKoEsKw" type="5004"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_V0lZEfq4EeawSe5rKoEsKw" type="7003">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_V0lZEvq4EeawSe5rKoEsKw"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_V0lZE_q4EeawSe5rKoEsKw"/>
       </children>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_5Gj9RPkpEeaJ3OyWNoTy5w" type="7004">
-        <styles xmi:type="notation:SortingStyle" xmi:id="_5Gj9RfkpEeaJ3OyWNoTy5w"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_5Gj9RvkpEeaJ3OyWNoTy5w"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_V0lZFPq4EeawSe5rKoEsKw" type="7004">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_V0lZFfq4EeawSe5rKoEsKw"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_V0lZFvq4EeawSe5rKoEsKw"/>
       </children>
-      <styles xmi:type="notation:DescriptionStyle" xmi:id="_5GjWMfkpEeaJ3OyWNoTy5w"/>
-      <styles xmi:type="notation:FontStyle" xmi:id="_5GjWMvkpEeaJ3OyWNoTy5w" fontName="Segoe UI"/>
-      <styles xmi:type="notation:FillStyle" xmi:id="_5GjWM_kpEeaJ3OyWNoTy5w" fillColor="12761756"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5GjWNPkpEeaJ3OyWNoTy5w" x="317" y="76"/>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_V0jj4fq4EeawSe5rKoEsKw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_V0jj4vq4EeawSe5rKoEsKw" fontName="Segoe UI"/>
+      <styles xmi:type="notation:FillStyle" xmi:id="_V0jj4_q4EeawSe5rKoEsKw" fillColor="12761756"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V0jj5Pq4EeawSe5rKoEsKw" x="310" y="70" width="131" height="131"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_4DeIkvkpEeaJ3OyWNoTy5w"/>
   </notation:Diagram>

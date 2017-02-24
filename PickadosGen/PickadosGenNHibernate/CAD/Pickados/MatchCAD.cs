@@ -274,7 +274,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchE
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM MatchEN self where FROM MatchEN m WHERE m.home := team or m.away := team";
+                //String sql = @"FROM MatchEN self where FROM MatchEN m WHERE Home = :team or Away = :team";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("MatchENgetMatchByTeamHQL");
                 query.SetParameter ("team", team);

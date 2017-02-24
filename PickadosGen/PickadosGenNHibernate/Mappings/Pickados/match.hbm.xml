@@ -34,13 +34,9 @@
 											 					
 			
 					
-					
-					
-		
- 	  
 		 </joined-subclass>
 		  
 		  <query name="MatchENReadAllHQL">from MatchEN</query>
-		  <query name="MatchENgetMatchByTeamHQL"><![CDATA[FROM MatchEN m WHERE m.home := team or m.away := team]]></query>
+		  <query name="MatchENgetMatchByTeamHQL">From MatchEN</query>
 		</hibernate-mapping>
 	

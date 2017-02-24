@@ -200,10 +200,10 @@
 	
 	<Compile Include="Controllers\BasicController.cs" />
 	
-		<Compile Include="CAD\TipsterRESTCAD.cs" />
-		<Compile Include="DTOA\TipsterDTOA.cs" />
-		<Compile Include="Assemblers\TipsterAssembler.cs" />
-		<Compile Include="Controllers\TipsterController.cs" />
+		<Compile Include="CAD\SportRESTCAD.cs" />
+		<Compile Include="DTOA\SportDTOA.cs" />
+		<Compile Include="Assemblers\SportAssembler.cs" />
+		<Compile Include="Controllers\SportController.cs" />
 		
 	
 	

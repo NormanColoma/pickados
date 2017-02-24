@@ -220,7 +220,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where select followed_by FROM TipsterEN";
+                //String sql = @"FROM TipsterEN self where select followed_by FROM TipsterEN where id=:p_oid";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowersHQL");
                 query.SetParameter ("p_oid", p_oid);
@@ -417,7 +417,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where select follow_to FROM TipsterEN where id=:id";
+                //String sql = @"FROM TipsterEN self where select follow_to FROM TipsterEN where id=:p_oid";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowsHQL");
                 query.SetParameter ("p_oid", p_oid);
