@@ -268,16 +268,76 @@ public System.Collections.Generic.IList<MatchEN> GetAllMatches (int first, int s
         return result;
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByTeam (string team)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition (int id)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM MatchEN self where FROM MatchEN";
+                //String sql = @"FROM MatchEN self where select m FROM MatchEN as m INNER JOIN m.Competition as c where c.Id=:id";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("MatchENgetMatchByTeamHQL");
-                query.SetParameter ("team", team);
+                IQuery query = (IQuery)session.GetNamedQuery ("MatchENgetMatchByCompetitionHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.MatchEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByLocalTeam (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM MatchEN self where select m FROM MatchEN as m INNER JOIN m.Home as t where t.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("MatchENgetMatchByLocalTeamHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.MatchEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByVisistantTeam (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM MatchEN self where select m FROM MatchEN as m INNER JOIN m.Away as t where t.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("MatchENgetMatchByVisistantTeamHQL");
+                query.SetParameter ("id", id);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.MatchEN>();
                 SessionCommit ();

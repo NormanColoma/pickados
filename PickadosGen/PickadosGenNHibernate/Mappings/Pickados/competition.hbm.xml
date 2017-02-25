@@ -48,6 +48,6 @@
 		 </class>	
 		  
 		  <query name="CompetitionENReadAllHQL">from CompetitionEN</query>
-		  <query name="CompetitionENgetCompetitionsByPlaceHQL"><![CDATA[FROM CompetitionEN WHERE place = :place]]></query>
+		  <query name="CompetitionENgetCompetitionsByPlaceHQL"><![CDATA[FROM CompetitionEN WHERE Place = :place]]></query>
 		</hibernate-mapping>
 	

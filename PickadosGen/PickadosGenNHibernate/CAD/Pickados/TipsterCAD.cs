@@ -541,5 +541,34 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
 
         return result;
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TipsterEN self where FROM TipsterEN where Premium=true";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetTipstersPremiumHQL");
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

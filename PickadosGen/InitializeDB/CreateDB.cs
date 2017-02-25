@@ -156,11 +156,10 @@ public static void InitializeData ()
                 Console.WriteLine ("Tipster 1 has: " + totalFollowers7.Count + " followers");
 
                 IList<TipsterEN> totalFollowers8 = nuevo.GetFollows (lastTipster.Id);
-                Console.WriteLine("Tipster 4 has: " + totalFollowers8.Count + " followeds");
+                Console.WriteLine ("Tipster 4 has: " + totalFollowers8.Count + " followeds");
 
                 Console.WriteLine ("User montoro could login: " + user.Login ("montoro", "montoroPro").Id);
                 Console.WriteLine ("User montoro couldn't login: " + user.Login ("montoro", "montoroCola"));
-
                 Console.WriteLine("Converting tipster 1 to premium");
                 nuevo.BecomePremium(originalTipster.Id, 2.8);
 
@@ -229,6 +228,60 @@ public static void InitializeData ()
 
                 playerCAD.UnlinkClubTeam(player5, team2);
 
+                Console.WriteLine ("Converting tipster 1 to premium");
+                nuevo.BecomePremium (originalTipster.Id, 2.8);
+
+                Console.WriteLine ("There are " + nuevo.GetTipstersPremium ().Count + " premium tipsters");
+
+                // Añadimos datos a Equipos
+                Console.WriteLine ("------------- Creating new teams -------------");
+                TeamCEN teams = new TeamCEN ();
+                team1 = teams.NewTeam ("Barcelona", "Catalunya");
+                TeamEN equipo1 = teams.GetTeamById (team1);
+                Console.WriteLine ("New team: " + equipo1.Name);
+                team2 = teams.NewTeam ("Madrid", "Spain");
+                TeamEN equipo2 = teams.GetTeamById (team2);
+                Console.WriteLine ("New team: " + equipo2.Name);
+                int team3 = teams.NewTeam ("Juventus", "Italy");
+                TeamEN equipo3 = teams.GetTeamById (team3);
+                Console.WriteLine ("New team: " + equipo3.Name);
+
+                // Añdimos datos a Partidos
+                Console.WriteLine ("------------- Creating new Matches -------------");
+                MatchCEN match = new MatchCEN ();
+                int match1 = match.NewMatch (new DateTime (2017, 4, 2), team2, team1, "Camp Nou");
+                MatchEN partido1 = match.GetMatchById (match1);
+                Console.WriteLine ("New match in: " + partido1.Stadium);
+                int match2 = match.NewMatch (new DateTime (2017, 3, 17), team1, team3, "Juventus Stadium");
+                MatchEN partido2 = match.GetMatchById (match2);
+                Console.WriteLine ("New match in: " + partido2.Stadium);
+
+                Console.WriteLine ("Local and Visistant matches");
+                IList<MatchEN> totalMatch = match.GetMatchByLocalTeam (team1);
+                Console.WriteLine ("Barcelona has played: " + totalMatch.Count + " matches as local");
+                IList<MatchEN> totalMatch1 = match.GetMatchByVisistantTeam (team1);
+                Console.WriteLine ("Barcelona has played: " + totalMatch1.Count + " matches as visitant");
+                IList<MatchEN> totalMatch2 = match.GetMatchByVisistantTeam (team2);
+                Console.WriteLine ("Madrid has played: " + totalMatch2.Count + " matches as visistant");
+
+                IList<MatchEN> total = match.GetTotalMatchesByTeam (team1);
+                Console.WriteLine ("Barcelona has played: " + total.Count + " matches");
+
+                Console.WriteLine ("--------------- Creating new Sport -------------");
+                SportCEN sport = new SportCEN ();
+                int newSport = sport.NewSport ("Football");
+                Console.WriteLine ("Football created");
+
+                Console.WriteLine ("--------------- Creating new Competition -------------");
+                CompetitionCEN competi = new CompetitionCEN ();
+                int competition = competi.NewCompetition ("Santander League", newSport, "Spain");
+                Console.WriteLine ("Santander League created");
+                Console.WriteLine ("There are " + competi.GetCompetitionsByPlace ("Spain").Count + " competitions in Spain");
+
+                Console.WriteLine ("Joining Barcelona-Madrid to Santander League");
+                Event_CEN evento = new Event_CEN ();
+                evento.JoinCompetition (match1, competition);
+                Console.WriteLine ("There are " + match.GetMatchByCompetition (competition).Count + " matches in Santander League");
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)
