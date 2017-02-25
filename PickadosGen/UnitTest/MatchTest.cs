@@ -17,87 +17,150 @@ namespace UnitTest
     public class MatchTest
     {
         [TestMethod]
-        public void GetMatchByTeamOkTest()
+        public void GetMatchByLocalTeamOkTest()
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByTeam(It.IsAny<string>())).Returns(It.IsAny<List<MatchEN>>());
+            matchMock.Setup(mock => mock.GetMatchByLocalTeam(It.IsAny<int>())).Returns(It.IsAny<List<MatchEN>>());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
             
             try
             {
-                matchCEN.GetMatchByTeam("Eibar");
+                matchCEN.GetMatchByLocalTeam(12345);
             }
             catch (Exception ex)
             {
                 Assert.Fail("Should not throw exception");
             }
 
-            matchMock.Verify(mock => mock.GetMatchByTeam(It.IsAny<string>()), Times.Once);
+            matchMock.Verify(mock => mock.GetMatchByLocalTeam(It.IsAny<int>()), Times.Once);
         }
 
         [TestMethod]
-        public void GetMatchByTeamModelExceptionTest()
+        public void GetMatchByLocalTeamModelExceptionTest()
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByTeam(It.IsAny<string>())).Throws(new ModelException());
+            matchMock.Setup(mock => mock.GetMatchByLocalTeam(It.IsAny<int>())).Throws(new ModelException());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
 
             try
             {
-                matchCEN.GetMatchByTeam("Eibar");
+                matchCEN.GetMatchByLocalTeam(123456);
             }
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(ModelException));
             }
 
-            matchMock.Verify(mock => mock.GetMatchByTeam(It.IsAny<string>()), Times.Once);
+            matchMock.Verify(mock => mock.GetMatchByLocalTeam(It.IsAny<int>()), Times.Once);
         }
 
         [TestMethod]
-        public void GetMatchByTeamDataLayerExceptionTest()
+        public void GetMatchByLocalTeamDataLayerExceptionTest()
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByTeam(It.IsAny<string>())).Throws(new DataLayerException());
+            matchMock.Setup(mock => mock.GetMatchByLocalTeam(It.IsAny<int>())).Throws(new DataLayerException());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
 
             try
             {
-                matchCEN.GetMatchByTeam("Eibar");
+                matchCEN.GetMatchByLocalTeam(123456);
             }
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(DataLayerException));
             }
 
-            matchMock.Verify(mock => mock.GetMatchByTeam(It.IsAny<string>()), Times.Once);
+            matchMock.Verify(mock => mock.GetMatchByLocalTeam(It.IsAny<int>()), Times.Once);
         }
 
-       /** [TestMethod]
-        public void GetMatchByCompetitionOkTest()
+        [TestMethod]
+        public void GetMatchByVisitantTeamOkTest()
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<string>())).Returns(It.IsAny<List<MatchEN>>());
+            matchMock.Setup(mock => mock.GetMatchByVisistantTeam(It.IsAny<int>())).Returns(It.IsAny<List<MatchEN>>());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
 
             try
             {
-                matchCEN.GetMatchByCompetition("Champions League");
+                matchCEN.GetMatchByVisistantTeam(12345);
             }
             catch (Exception ex)
             {
                 Assert.Fail("Should not throw exception");
             }
 
-            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<string>()), Times.Once);
+            matchMock.Verify(mock => mock.GetMatchByVisistantTeam(It.IsAny<int>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetMatchByVisistantTeamModelExceptionTest()
+        {
+            var matchMock = new Mock<IMatchCAD>();
+
+            matchMock.Setup(mock => mock.GetMatchByVisistantTeam(It.IsAny<int>())).Throws(new ModelException());
+
+            MatchCEN matchCEN = new MatchCEN(matchMock.Object);
+
+            try
+            {
+                matchCEN.GetMatchByVisistantTeam(123456);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(ModelException));
+            }
+
+            matchMock.Verify(mock => mock.GetMatchByVisistantTeam(It.IsAny<int>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetMatchByVisistantTeamDataLayerExceptionTest()
+        {
+            var matchMock = new Mock<IMatchCAD>();
+
+            matchMock.Setup(mock => mock.GetMatchByVisistantTeam(It.IsAny<int>())).Throws(new DataLayerException());
+
+            MatchCEN matchCEN = new MatchCEN(matchMock.Object);
+
+            try
+            {
+                matchCEN.GetMatchByVisistantTeam(123456);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(DataLayerException));
+            }
+
+            matchMock.Verify(mock => mock.GetMatchByVisistantTeam(It.IsAny<int>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetMatchByCompetitionOkTest()
+        {
+            var matchMock = new Mock<IMatchCAD>();
+
+            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>())).Returns(It.IsAny<List<MatchEN>>());
+
+            MatchCEN matchCEN = new MatchCEN(matchMock.Object);
+
+            try
+            {
+                matchCEN.GetMatchByCompetition(14725);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Should not throw exception");
+            }
+
+            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>()), Times.Once);
         }
 
         [TestMethod]
@@ -105,20 +168,20 @@ namespace UnitTest
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<string>())).Throws(new ModelException());
+            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>())).Throws(new ModelException());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
 
             try
             {
-                matchCEN.GetMatchByCompetition("Champions League");
+                matchCEN.GetMatchByCompetition(14725);
             }
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(ModelException));
             }
 
-            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<string>()), Times.Once);
+            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>()), Times.Once);
         }
 
         [TestMethod]
@@ -126,20 +189,20 @@ namespace UnitTest
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<string>())).Throws(new DataLayerException());
+            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>())).Throws(new DataLayerException());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
 
             try
             {
-                matchCEN.GetMatchByCompetition("Champions League");
+                matchCEN.GetMatchByCompetition(14725);
             }
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(DataLayerException));
             }
 
-            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<string>()), Times.Once);
-        }**/
+            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>()), Times.Once);
+        }
     }
 }
