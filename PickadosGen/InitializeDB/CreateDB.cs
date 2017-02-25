@@ -123,6 +123,19 @@ public static void InitializeData ()
 
                 postCP.VerifyPost (id_post);
 
+                int team1 = teamCEN.NewTeam("SD Eibar", "Spain");
+                int team2 = teamCEN.NewTeam("Manchester united", "England");
+
+                int seleccion1 = teamCEN.NewTeam("Selección Española", "Spain");
+
+                PlayerCEN playerCEN = new PlayerCEN();
+                int player1 = playerCEN.NewPlayer("Yoel Rodríguez");
+                int player2 = playerCEN.NewPlayer("Gonzalo Escalante");
+                int player3 = playerCEN.NewPlayer("Fran Rico");
+
+                int player4 = playerCEN.NewPlayer("Ander Herrera");
+                int player5 = playerCEN.NewPlayer("Juan Mata");
+
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)
