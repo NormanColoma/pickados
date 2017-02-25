@@ -205,6 +205,21 @@
 		<Compile Include="Assemblers\SportAssembler.cs" />
 		<Compile Include="Controllers\SportController.cs" />
 		
+		<Compile Include="CAD\CompetitionRESTCAD.cs" />
+		<Compile Include="DTOA\CompetitionDTOA.cs" />
+		<Compile Include="Assemblers\CompetitionAssembler.cs" />
+		<Compile Include="Controllers\CompetitionController.cs" />
+		
+		<Compile Include="CAD\MatchRESTCAD.cs" />
+		<Compile Include="DTOA\MatchDTOA.cs" />
+		<Compile Include="Assemblers\MatchAssembler.cs" />
+		<Compile Include="Controllers\MatchController.cs" />
+		
+		<Compile Include="CAD\TeamRESTCAD.cs" />
+		<Compile Include="DTOA\TeamDTOA.cs" />
+		<Compile Include="Assemblers\TeamAssembler.cs" />
+		<Compile Include="Controllers\TeamController.cs" />
+		
 	
 	
 	

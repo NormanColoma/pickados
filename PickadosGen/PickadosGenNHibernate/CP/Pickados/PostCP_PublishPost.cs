@@ -38,26 +38,23 @@ public int PublishPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_mo
                 SessionInitializeTransaction ();
                 postCAD = new PostCAD (session);
                 postCEN = new  PostCEN (postCAD);
-                pickCAD = new PickCAD(session);
-                pickCEN = new PickCEN(pickCAD);
+                pickCAD = new PickCAD (session);
+                pickCEN = new PickCEN (pickCAD);
 
                 List<int> picks_id = new List<int>();
-                foreach (int id_pick in p_pick)
-                {
-                    PickEN pick = pickCEN.GetPickById(id_pick);
-                    if (DateTime.Now <= pick.Event_rel.Date)
-                    {
-                        picks_id.Add(id_pick);
-                    }
+                foreach (int id_pick in p_pick) {
+                        PickEN pick = pickCEN.GetPickById (id_pick);
+                        if (DateTime.Now <= pick.Event_rel.Date) {
+                                picks_id.Add (id_pick);
+                        }
                 }
 
-                if (picks_id.Count > 0)
-                {
-                    postId = postCEN.NewPost(p_created_at, p_modified_at, p_stake, p_description, p_private, picks_id, p_tipster, 0, p_postResult);
-                    double totalOdd = postCEN.GetTotalOdd(postId);
-                    PostEN post = postCEN.GetPostById(postId);
-                    postCAD.ModifyPost(post);
-                    post.TotalOdd = totalOdd;
+                if (picks_id.Count > 0) {
+                        postId = postCEN.NewPost (p_created_at, p_modified_at, p_stake, p_description, p_private, picks_id, p_tipster, 0, p_postResult);
+                        double totalOdd = postCEN.GetTotalOdd (postId);
+                        PostEN post = postCEN.GetPostById (postId);
+                        postCAD.ModifyPost (post);
+                        post.TotalOdd = totalOdd;
                 }
 
                 SessionCommit ();
