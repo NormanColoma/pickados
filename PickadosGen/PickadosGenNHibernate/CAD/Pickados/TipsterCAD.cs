@@ -161,6 +161,12 @@ public void ModifyTipster (TipsterEN tipster)
                 tipsterEN.Password = tipster.Password;
 
 
+                tipsterEN.Created_at = tipster.Created_at;
+
+
+                tipsterEN.Updated_at = tipster.Updated_at;
+
+
                 tipsterEN.Premium = tipster.Premium;
 
 

@@ -38,7 +38,7 @@ public ITipsterCAD get_ITipsterCAD ()
         return this._ITipsterCAD;
 }
 
-public int NewTipster (string p_alias, string p_email, String p_password, bool p_premium, double p_subscription_fee)
+public int NewTipster (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, bool p_premium, double p_subscription_fee)
 {
         TipsterEN tipsterEN = null;
         int oid;
@@ -51,6 +51,10 @@ public int NewTipster (string p_alias, string p_email, String p_password, bool p
 
         tipsterEN.Password = Utils.Util.GetEncondeMD5 (p_password);
 
+        tipsterEN.Created_at = p_created_at;
+
+        tipsterEN.Updated_at = p_updated_at;
+
         tipsterEN.Premium = p_premium;
 
         tipsterEN.Subscription_fee = p_subscription_fee;
@@ -61,7 +65,7 @@ public int NewTipster (string p_alias, string p_email, String p_password, bool p
         return oid;
 }
 
-public void ModifyTipster (int p_Tipster_OID, string p_alias, string p_email, String p_password, bool p_premium, double p_subscription_fee)
+public void ModifyTipster (int p_Tipster_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, bool p_premium, double p_subscription_fee)
 {
         TipsterEN tipsterEN = null;
 
@@ -71,6 +75,8 @@ public void ModifyTipster (int p_Tipster_OID, string p_alias, string p_email, St
         tipsterEN.Alias = p_alias;
         tipsterEN.Email = p_email;
         tipsterEN.Password = Utils.Util.GetEncondeMD5 (p_password);
+        tipsterEN.Created_at = p_created_at;
+        tipsterEN.Updated_at = p_updated_at;
         tipsterEN.Premium = p_premium;
         tipsterEN.Subscription_fee = p_subscription_fee;
         //Call to TipsterCAD

@@ -22,5 +22,13 @@ private String password;
 public String Password {
         get { return password; } set { password = value;  }
 }
+private Nullable<DateTime> created_at;
+public Nullable<DateTime> Created_at {
+        get { return created_at; } set { created_at = value;  }
+}
+private Nullable<DateTime> updated_at;
+public Nullable<DateTime> Updated_at {
+        get { return updated_at; } set { updated_at = value;  }
+}
 }
 }

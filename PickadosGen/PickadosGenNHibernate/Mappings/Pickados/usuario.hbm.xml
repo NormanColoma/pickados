@@ -21,11 +21,21 @@
 					<property name="Password" type="string"> 
 						<column name="password"  not-null="true"/>
 					</property>
+					<property name="Created_at" type="timestamp"> 
+						<column name="created_at"  not-null="true"/>
+					</property>
+					<property name="Updated_at" type="timestamp"> 
+						<column name="updated_at"  not-null="true"/>
+					</property>
 			
 			
 			
 			
 			
+			
+			
+					
+					
 					
 					
 					

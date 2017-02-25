@@ -15,14 +15,14 @@ private int id;
 /**
  *	Atributo created_at
  */
-private TimeSpan created_at;
+private Nullable<DateTime> created_at;
 
 
 
 /**
  *	Atributo modified_at
  */
-private TimeSpan modified_at;
+private Nullable<DateTime> modified_at;
 
 
 
@@ -84,13 +84,13 @@ public virtual int Id {
 
 
 
-public virtual TimeSpan Created_at {
+public virtual Nullable<DateTime> Created_at {
         get { return created_at; } set { created_at = value;  }
 }
 
 
 
-public virtual TimeSpan Modified_at {
+public virtual Nullable<DateTime> Modified_at {
         get { return modified_at; } set { modified_at = value;  }
 }
 
@@ -147,7 +147,7 @@ public PostEN()
 
 
 
-public PostEN(int id, TimeSpan created_at, TimeSpan modified_at, double stake, string description, bool private_, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult
+public PostEN(int id, Nullable<DateTime> created_at, Nullable<DateTime> modified_at, double stake, string description, bool private_, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult
               )
 {
         this.init (Id, created_at, modified_at, stake, description, private_, pick, tipster, totalOdd, postResult);
@@ -160,7 +160,7 @@ public PostEN(PostEN post)
 }
 
 private void init (int id
-                   , TimeSpan created_at, TimeSpan modified_at, double stake, string description, bool private_, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult)
+                   , Nullable<DateTime> created_at, Nullable<DateTime> modified_at, double stake, string description, bool private_, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult)
 {
         this.Id = id;
 

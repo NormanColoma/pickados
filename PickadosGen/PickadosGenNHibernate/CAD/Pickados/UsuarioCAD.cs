@@ -99,6 +99,12 @@ public void ModifyDefault (UsuarioEN usuario)
 
                 usuarioEN.Password = usuario.Password;
 
+
+                usuarioEN.Created_at = usuario.Created_at;
+
+
+                usuarioEN.Updated_at = usuario.Updated_at;
+
                 session.Update (usuarioEN);
                 SessionCommit ();
         }
@@ -158,6 +164,12 @@ public void ModifyUser (UsuarioEN usuario)
 
 
                 usuarioEN.Password = usuario.Password;
+
+
+                usuarioEN.Created_at = usuario.Created_at;
+
+
+                usuarioEN.Updated_at = usuario.Updated_at;
 
                 session.Update (usuarioEN);
                 SessionCommit ();

@@ -38,7 +38,7 @@ public IAdminCAD get_IAdminCAD ()
         return this._IAdminCAD;
 }
 
-public int NewAdmin (string p_alias, string p_email, String p_password)
+public int NewAdmin (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at)
 {
         AdminEN adminEN = null;
         int oid;
@@ -51,13 +51,17 @@ public int NewAdmin (string p_alias, string p_email, String p_password)
 
         adminEN.Password = Utils.Util.GetEncondeMD5 (p_password);
 
+        adminEN.Created_at = p_created_at;
+
+        adminEN.Updated_at = p_updated_at;
+
         //Call to AdminCAD
 
         oid = _IAdminCAD.NewAdmin (adminEN);
         return oid;
 }
 
-public void ModifyAdmin (int p_Admin_OID, string p_alias, string p_email, String p_password)
+public void ModifyAdmin (int p_Admin_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at)
 {
         AdminEN adminEN = null;
 
@@ -67,6 +71,8 @@ public void ModifyAdmin (int p_Admin_OID, string p_alias, string p_email, String
         adminEN.Alias = p_alias;
         adminEN.Email = p_email;
         adminEN.Password = Utils.Util.GetEncondeMD5 (p_password);
+        adminEN.Created_at = p_created_at;
+        adminEN.Updated_at = p_updated_at;
         //Call to AdminCAD
 
         _IAdminCAD.ModifyAdmin (adminEN);

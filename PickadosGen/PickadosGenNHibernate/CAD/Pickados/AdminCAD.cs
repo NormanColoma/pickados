@@ -150,6 +150,12 @@ public void ModifyAdmin (AdminEN admin)
 
                 adminEN.Password = admin.Password;
 
+
+                adminEN.Created_at = admin.Created_at;
+
+
+                adminEN.Updated_at = admin.Updated_at;
+
                 session.Update (adminEN);
                 SessionCommit ();
         }

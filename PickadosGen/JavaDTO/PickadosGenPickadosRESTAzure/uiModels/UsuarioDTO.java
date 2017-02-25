@@ -33,6 +33,14 @@
 				public String getPassword () { return password; } 
 				public void setPassword  (String value) { password = value;  } 
 				    	 
+				private java.util.Date created_at;
+				public java.util.Date getCreated_at () { return created_at; } 
+				public void setCreated_at  (java.util.Date value) { created_at = value;  } 
+				    	 
+				private java.util.Date updated_at;
+				public java.util.Date getUpdated_at () { return updated_at; } 
+				public void setUpdated_at  (java.util.Date value) { updated_at = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -51,6 +59,12 @@
 				
 				
 						  json.put("Password", this.password);
+				
+				
+						  json.put("Created_at", DateUtils.dateToFormatString(this.created_at));
+				
+				
+						  json.put("Updated_at", DateUtils.dateToFormatString(this.updated_at));
 				
 						
 					}

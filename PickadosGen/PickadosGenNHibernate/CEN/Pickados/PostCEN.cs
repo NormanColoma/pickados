@@ -38,7 +38,7 @@ public IPostCAD get_IPostCAD ()
         return this._IPostCAD;
 }
 
-public void ModifyPost (int p_Post_OID, TimeSpan p_created_at, TimeSpan p_modified_at, double p_stake, string p_description, bool p_private, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
+public void ModifyPost (int p_Post_OID, Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
 {
         PostEN postEN = null;
 
@@ -79,7 +79,7 @@ public System.Collections.Generic.IList<PostEN> GetAllPosts (int first, int size
         list = _IPostCAD.GetAllPosts (first, size);
         return list;
 }
-public int NewPost (TimeSpan p_created_at, TimeSpan p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
+public int NewPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
 {
         PostEN postEN = null;
         int oid;

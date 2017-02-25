@@ -10,12 +10,12 @@ private int id;
 public int Id {
         get { return id; } set { id = value;  }
 }
-private TimeSpan created_at;
-public TimeSpan Created_at {
+private Nullable<DateTime> created_at;
+public Nullable<DateTime> Created_at {
         get { return created_at; } set { created_at = value;  }
 }
-private TimeSpan modified_at;
-public TimeSpan Modified_at {
+private Nullable<DateTime> modified_at;
+public Nullable<DateTime> Modified_at {
         get { return modified_at; } set { modified_at = value;  }
 }
 private double stake;

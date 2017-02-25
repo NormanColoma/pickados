@@ -38,7 +38,7 @@ public IUsuarioCAD get_IUsuarioCAD ()
         return this._IUsuarioCAD;
 }
 
-public int NewUser (string p_alias, string p_email, String p_password)
+public int NewUser (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at)
 {
         UsuarioEN usuarioEN = null;
         int oid;
@@ -51,13 +51,17 @@ public int NewUser (string p_alias, string p_email, String p_password)
 
         usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_password);
 
+        usuarioEN.Created_at = p_created_at;
+
+        usuarioEN.Updated_at = p_updated_at;
+
         //Call to UsuarioCAD
 
         oid = _IUsuarioCAD.NewUser (usuarioEN);
         return oid;
 }
 
-public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, String p_password)
+public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at)
 {
         UsuarioEN usuarioEN = null;
 
@@ -67,6 +71,8 @@ public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, Strin
         usuarioEN.Alias = p_alias;
         usuarioEN.Email = p_email;
         usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_password);
+        usuarioEN.Created_at = p_created_at;
+        usuarioEN.Updated_at = p_updated_at;
         //Call to UsuarioCAD
 
         _IUsuarioCAD.ModifyUser (usuarioEN);

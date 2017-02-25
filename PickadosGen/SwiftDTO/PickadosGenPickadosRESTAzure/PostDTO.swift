@@ -13,10 +13,10 @@
 				var id: Int?;
 				    	 
 		 
-				var created_at: NSTimeInterval?;
+				var created_at: NSDate?;
 				    	 
 		 
-				var modified_at: NSTimeInterval?;
+				var modified_at: NSDate?;
 				    	 
 		 
 				var stake: Double?;
@@ -62,11 +62,11 @@
 				
 
 				
-					dictionary["created_at"] = self.created_at;
+					dictionary["created_at"] = self.created_at?.toString();
 				
 
 				
-					dictionary["modified_at"] = self.modified_at;
+					dictionary["modified_at"] = self.modified_at?.toString();
 				
 
 				

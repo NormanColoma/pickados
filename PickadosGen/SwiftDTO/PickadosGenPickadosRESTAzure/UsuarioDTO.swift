@@ -21,6 +21,12 @@
 		 
 				var password: String?;
 				    	 
+		 
+				var created_at: NSDate?;
+				    	 
+		 
+				var updated_at: NSDate?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -53,6 +59,14 @@
 
 				
 					dictionary["password"] = self.password;
+				
+
+				
+					dictionary["created_at"] = self.created_at?.toString();
+				
+
+				
+					dictionary["updated_at"] = self.updated_at?.toString();
 				
 						
 				return dictionary;

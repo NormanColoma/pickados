@@ -21,13 +21,13 @@
 				public Integer getId () { return id; } 
 				public void setId  (Integer value) { id = value;  } 
 				    	 
-				private java.security.Timestamp created_at;
-				public java.security.Timestamp getCreated_at () { return created_at; } 
-				public void setCreated_at  (java.security.Timestamp value) { created_at = value;  } 
+				private java.util.Date created_at;
+				public java.util.Date getCreated_at () { return created_at; } 
+				public void setCreated_at  (java.util.Date value) { created_at = value;  } 
 				    	 
-				private java.security.Timestamp modified_at;
-				public java.security.Timestamp getModified_at () { return modified_at; } 
-				public void setModified_at  (java.security.Timestamp value) { modified_at = value;  } 
+				private java.util.Date modified_at;
+				public java.util.Date getModified_at () { return modified_at; } 
+				public void setModified_at  (java.util.Date value) { modified_at = value;  } 
 				    	 
 				private Double stake;
 				public Double getStake () { return stake; } 
@@ -68,10 +68,10 @@
 						  json.put("Id", this.id.intValue());
 				
 				
-						  json.put("Created_at", this.created_at);
+						  json.put("Created_at", DateUtils.dateToFormatString(this.created_at));
 				
 				
-						  json.put("Modified_at", this.modified_at);
+						  json.put("Modified_at", DateUtils.dateToFormatString(this.modified_at));
 				
 				
 						  json.put("Stake", this.stake);
