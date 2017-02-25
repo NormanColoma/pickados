@@ -300,7 +300,7 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_-YkbINj4EeaUt9gXjU7aig" name="getTotalOdd" type="Double">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_-YkbIdj4EeaUt9gXjU7aig" name="p_oid" type="OID" typeObject="_gc4PQNNtEeaZBpN3xqTI2g"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_mu1hINnyEeai6sRUN34LlA" name="verifyPost" type="Void">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_mu1hINnyEeai6sRUN34LlA" name="verifyPost" operationType="CustomTransaction" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_mu2vQNnyEeai6sRUN34LlA" name="p_oid" type="OID" typeObject="_gc4PQNNtEeaZBpN3xqTI2g"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_a87E8NqEEeal1_VhIwjIzQ" name="newPost" operationType="New" type="Object" typeObject="_gc4PQNNtEeaZBpN3xqTI2g">

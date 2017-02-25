@@ -87,6 +87,7 @@ public static void InitializeData ()
                         "josearuol@gmail.com", "prueba", new DateTime (2017, 2, 25, 11, 0, 0),
                         new DateTime (2017, 2, 25, 11, 0, 0), false, 0);
 
+
                 //Publishing new post
                 PostCEN postCEN = new PostCEN();
                 PostCP postCP = new PostCP();
@@ -97,6 +98,24 @@ public static void InitializeData ()
                 List<int> picks_id = new List<int>();
                 picks_id.Add(pickId);
                 postCP.PublishPost(new DateTime(2017, 2, 25, 11, 0, 0), new DateTime(2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, createdTipster, PickResultEnum.unfinished);
+
+                TeamCEN teamCEN = new TeamCEN();
+                int id_away = teamCEN.NewTeam("Leganes", "Spain");
+                int id_home = teamCEN.NewTeam("F.C.Barcelona", "Spain");
+
+                MatchCEN matchCEN = new MatchCEN();
+                int id_match = matchCEN.NewMatch(new DateTime(2017, 2, 20), id_away, id_home, "Camp Nou");
+                
+                CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN();
+                int id_correctScore = correctScoreCEN.NewCorrectScore(10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
+                    "Bet365", id_match, 2, 1);
+                IList<int> picks = new List<int>();
+                picks.Add(id_correctScore);
+                
+                int id_post = postCEN.NewPost(new DateTime(2017, 2, 19), new DateTime(2017, 2, 19), 1, "Va a ser un partido sufrido",
+                    false,picks,createdTipster,10,PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
+                
+                postCP.VerifyPost(id_post);
 
                 /*PROTECTED REGION END*/
         }

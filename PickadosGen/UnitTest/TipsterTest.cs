@@ -93,7 +93,8 @@ namespace UnitTest
             {
                 tipster.ModifyTipster(1, "Macareno", "hola@gmail.com", "Adios12345", new DateTime(), new DateTime(), false, 0);
                 Assert.Fail("Should throw Datalayer Exception");
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Assert.IsInstanceOfType(e, typeof(DataLayerException));
                 Assert.AreEqual("Error in TipsterCAD", e.Message);
@@ -152,7 +153,8 @@ namespace UnitTest
             {
                 tipster.BecomePremium(1, 1.5);
                 Assert.Fail("Should throw Datalayer Exception");
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Assert.IsInstanceOfType(e, typeof(DataLayerException));
                 Assert.AreEqual("Error in TipsterCAD", e.Message);
