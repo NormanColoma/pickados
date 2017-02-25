@@ -20,7 +20,7 @@ namespace PickadosGenNHibernate.CEN.Pickados
 public partial class PostCEN
 {
         /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_publishPost) ENABLED START*/
-        public PickadosGenNHibernate.EN.Pickados.PostEN PublishPost (DateTime p_created_at, DateTime p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult, PickCEN pickCEN)
+        public int PublishPost (DateTime p_created_at, DateTime p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult, PickCEN pickCEN)
         {
                 // Write here your custom code...
 
@@ -34,9 +34,10 @@ public partial class PostCEN
                         }
                 }
 
-                if (picks_id.Count > 0) {
-                        int post_id = NewPost (p_created_at, p_modified_at, p_stake, p_description, p_private, picks_id, p_tipster, p_totalOdd, p_postResult);
-                        post = GetPostById (post_id);
+                if (picks_id.Count > 0) {  
+                    int post_id = NewPost (p_created_at, p_modified_at, p_stake, p_description, p_private, picks_id, p_tipster, 0, p_postResult);
+                    double total_odd = GetTotalOdd(post_id);
+                    post = GetPostById (post_id);
                 }
 
                 return post;

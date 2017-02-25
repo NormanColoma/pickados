@@ -68,7 +68,7 @@ namespace UnitTest
             userCADMock.Setup(mock => mock.GetTipsterById(It.IsAny<int>())).Returns(nuevo);
 
             TipsterCEN tipster = new TipsterCEN(userCADMock.Object);
-            tipster.ModifyTipster(1, new TimeSpan(), new TimeSpan(), "Macareno", "hola@gmail.com", "Adios12345", false, 0);
+            tipster.ModifyTipster(1, "Macareno", "hola@gmail.com", "Adios12345", new DateTime(), new DateTime(), false, 0);
             TipsterEN actual = tipster.GetTipsterById(1);
 
             Assert.AreEqual(actual.Alias, "Macareno");
@@ -91,7 +91,7 @@ namespace UnitTest
             TipsterCEN tipster = new TipsterCEN(userCADMock.Object);
             try
             {
-                tipster.ModifyTipster(1, new TimeSpan(), new TimeSpan(), "Macareno", "hola@gmail.com", "Adios12345", false, 0);
+                tipster.ModifyTipster(1, "Macareno", "hola@gmail.com", "Adios12345", new DateTime(), new DateTime(), false, 0);
                 Assert.Fail("Should throw Datalayer Exception");
             } catch(Exception e)
             {
@@ -109,8 +109,8 @@ namespace UnitTest
             var userCADMock = new Mock<ITipsterCAD>();
 
             TipsterEN nuevo = new TipsterEN();
-            nuevo.CreatedAt = new TimeSpan();
-            nuevo.ModifiedAt = new TimeSpan();
+            nuevo.Created_at = new DateTime();
+            nuevo.Updated_at = new DateTime();
             nuevo.Alias = "Macareno";
             nuevo.Email = "hola@gmail.com";
             nuevo.Password = "Hola12345";
@@ -136,8 +136,8 @@ namespace UnitTest
             var userCADMock = new Mock<ITipsterCAD>();
 
             TipsterEN nuevo = new TipsterEN();
-            nuevo.CreatedAt = new TimeSpan();
-            nuevo.ModifiedAt = new TimeSpan();
+            nuevo.Created_at = new DateTime();
+            nuevo.Updated_at = new DateTime();
             nuevo.Alias = "Macareno";
             nuevo.Email = "hola@gmail.com";
             nuevo.Password = "Hola12345";
