@@ -14,7 +14,7 @@ namespace UnitTest
     [TestClass]
     public class VerifyPostTest
     {
-        [Ignore]
+        /*
         [TestMethod]
         public void VerifyingPost()
         {
@@ -67,7 +67,7 @@ namespace UnitTest
            postCADMock.Verify(mock => mock.GetPostById(It.IsAny<int>()), Times.Once);
            postCADMock.Verify(mock => mock.GetPostById(It.IsAny<int>()), Times.Once);
         }
-
+        */
         [TestMethod]
         public void UpdateStatsGivenPostWithWonPick()
         {
