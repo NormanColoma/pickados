@@ -101,20 +101,20 @@ public TipsterEN() : base ()
 
 
 public TipsterEN(int id, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee
-                 , TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password
+                 , string alias, string email, String password
                  )
 {
-        this.init (Id, monthlyStats, post, follow_to, followed_by, premium, subscription_fee, createdAt, modifiedAt, alias, email, password);
+        this.init (Id, monthlyStats, post, follow_to, followed_by, premium, subscription_fee, alias, email, password);
 }
 
 
 public TipsterEN(TipsterEN tipster)
 {
-        this.init (Id, tipster.MonthlyStats, tipster.Post, tipster.Follow_to, tipster.Followed_by, tipster.Premium, tipster.Subscription_fee, tipster.CreatedAt, tipster.ModifiedAt, tipster.Alias, tipster.Email, tipster.Password);
+        this.init (Id, tipster.MonthlyStats, tipster.Post, tipster.Follow_to, tipster.Followed_by, tipster.Premium, tipster.Subscription_fee, tipster.Alias, tipster.Email, tipster.Password);
 }
 
 private void init (int id
-                   , System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee, TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password)
+                   , System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee, string alias, string email, String password)
 {
         this.Id = id;
 
@@ -130,10 +130,6 @@ private void init (int id
         this.Premium = premium;
 
         this.Subscription_fee = subscription_fee;
-
-        this.CreatedAt = createdAt;
-
-        this.ModifiedAt = modifiedAt;
 
         this.Alias = alias;
 

@@ -28,8 +28,6 @@ public static AdminEN Convert (AdminDTO dto)
 
 
                         newinstance.Id = dto.Id;
-                        newinstance.CreatedAt = dto.CreatedAt;
-                        newinstance.ModifiedAt = dto.ModifiedAt;
                         newinstance.Alias = dto.Alias;
                         newinstance.Email = dto.Email;
                         newinstance.Password = dto.Password;

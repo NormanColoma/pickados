@@ -10,14 +10,6 @@ private int id;
 public int Id {
         get { return id; } set { id = value;  }
 }
-private TimeSpan createdAt;
-public TimeSpan CreatedAt {
-        get { return createdAt; } set { createdAt = value;  }
-}
-private TimeSpan modifiedAt;
-public TimeSpan ModifiedAt {
-        get { return modifiedAt; } set { modifiedAt = value;  }
-}
 private string alias;
 public string Alias {
         get { return alias; } set { alias = value;  }

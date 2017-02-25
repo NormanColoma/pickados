@@ -91,12 +91,6 @@ public void ModifyDefault (UsuarioEN usuario)
                 SessionInitializeTransaction ();
                 UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
 
-                usuarioEN.CreatedAt = usuario.CreatedAt;
-
-
-                usuarioEN.ModifiedAt = usuario.ModifiedAt;
-
-
                 usuarioEN.Alias = usuario.Alias;
 
 
@@ -156,12 +150,6 @@ public void ModifyUser (UsuarioEN usuario)
         {
                 SessionInitializeTransaction ();
                 UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
-
-                usuarioEN.CreatedAt = usuario.CreatedAt;
-
-
-                usuarioEN.ModifiedAt = usuario.ModifiedAt;
-
 
                 usuarioEN.Alias = usuario.Alias;
 

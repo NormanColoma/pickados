@@ -27,7 +27,7 @@ public void BecomePremium (int p_oid, double fee)
 
         TipsterEN cambio = GetTipsterById (p_oid);
 
-        ModifyTipster (p_oid, cambio.CreatedAt, cambio.ModifiedAt, cambio.Alias, cambio.Email, cambio.Password, true, fee);
+        ModifyTipster (p_oid, cambio.Alias, cambio.Email, cambio.Password, true, fee);
 
         /*PROTECTED REGION END*/
 }

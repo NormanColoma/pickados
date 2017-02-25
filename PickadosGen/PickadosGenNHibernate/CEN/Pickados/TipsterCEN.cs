@@ -38,17 +38,13 @@ public ITipsterCAD get_ITipsterCAD ()
         return this._ITipsterCAD;
 }
 
-public int NewTipster (TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password, bool p_premium, double p_subscription_fee)
+public int NewTipster (string p_alias, string p_email, String p_password, bool p_premium, double p_subscription_fee)
 {
         TipsterEN tipsterEN = null;
         int oid;
 
         //Initialized TipsterEN
         tipsterEN = new TipsterEN ();
-        tipsterEN.CreatedAt = p_createdAt;
-
-        tipsterEN.ModifiedAt = p_modifiedAt;
-
         tipsterEN.Alias = p_alias;
 
         tipsterEN.Email = p_email;
@@ -65,15 +61,13 @@ public int NewTipster (TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_ali
         return oid;
 }
 
-public void ModifyTipster (int p_Tipster_OID, TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password, bool p_premium, double p_subscription_fee)
+public void ModifyTipster (int p_Tipster_OID, string p_alias, string p_email, String p_password, bool p_premium, double p_subscription_fee)
 {
         TipsterEN tipsterEN = null;
 
         //Initialized TipsterEN
         tipsterEN = new TipsterEN ();
         tipsterEN.Id = p_Tipster_OID;
-        tipsterEN.CreatedAt = p_createdAt;
-        tipsterEN.ModifiedAt = p_modifiedAt;
         tipsterEN.Alias = p_alias;
         tipsterEN.Email = p_email;
         tipsterEN.Password = Utils.Util.GetEncondeMD5 (p_password);

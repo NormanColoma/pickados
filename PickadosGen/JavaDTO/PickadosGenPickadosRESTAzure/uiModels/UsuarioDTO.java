@@ -21,14 +21,6 @@
 				public Integer getId () { return id; } 
 				public void setId  (Integer value) { id = value;  } 
 				    	 
-				private java.security.Timestamp createdAt;
-				public java.security.Timestamp getCreatedAt () { return createdAt; } 
-				public void setCreatedAt  (java.security.Timestamp value) { createdAt = value;  } 
-				    	 
-				private java.security.Timestamp modifiedAt;
-				public java.security.Timestamp getModifiedAt () { return modifiedAt; } 
-				public void setModifiedAt  (java.security.Timestamp value) { modifiedAt = value;  } 
-				    	 
 				private String alias;
 				public String getAlias () { return alias; } 
 				public void setAlias  (String value) { alias = value;  } 
@@ -50,12 +42,6 @@
 					{
 				
 						  json.put("Id", this.id.intValue());
-				
-				
-						  json.put("CreatedAt", this.createdAt);
-				
-				
-						  json.put("ModifiedAt", this.modifiedAt);
 				
 				
 						  json.put("Alias", this.alias);

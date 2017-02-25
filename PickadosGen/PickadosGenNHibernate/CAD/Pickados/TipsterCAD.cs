@@ -152,12 +152,6 @@ public void ModifyTipster (TipsterEN tipster)
                 SessionInitializeTransaction ();
                 TipsterEN tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), tipster.Id);
 
-                tipsterEN.CreatedAt = tipster.CreatedAt;
-
-
-                tipsterEN.ModifiedAt = tipster.ModifiedAt;
-
-
                 tipsterEN.Alias = tipster.Alias;
 
 
@@ -220,10 +214,9 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where select followed_by FROM TipsterEN where id=:p_oid";
+                //String sql = @"FROM TipsterEN self ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowersHQL");
-                query.SetParameter ("p_oid", p_oid);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();
@@ -417,10 +410,9 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where select follow_to FROM TipsterEN where id=:p_oid";
+                //String sql = @"FROM TipsterEN self ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowsHQL");
-                query.SetParameter ("p_oid", p_oid);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();

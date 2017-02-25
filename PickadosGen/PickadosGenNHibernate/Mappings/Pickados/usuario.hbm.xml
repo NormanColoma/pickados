@@ -12,12 +12,6 @@
 						</id>
 			
 					
-					<property name="CreatedAt" type="timestamp"> 
-						<column name="createdAt"  not-null="true"/>
-					</property>
-					<property name="ModifiedAt" type="timestamp"> 
-						<column name="modifiedAt"  not-null="true"/>
-					</property>
 					<property name="Alias" type="string"> 
 						<column name="alias"  not-null="true"/>
 					</property>
@@ -32,10 +26,6 @@
 			
 			
 			
-			
-			
-					
-					
 					
 					
 					

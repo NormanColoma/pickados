@@ -38,17 +38,13 @@ public IUsuarioCAD get_IUsuarioCAD ()
         return this._IUsuarioCAD;
 }
 
-public int NewUser (TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password)
+public int NewUser (string p_alias, string p_email, String p_password)
 {
         UsuarioEN usuarioEN = null;
         int oid;
 
         //Initialized UsuarioEN
         usuarioEN = new UsuarioEN ();
-        usuarioEN.CreatedAt = p_createdAt;
-
-        usuarioEN.ModifiedAt = p_modifiedAt;
-
         usuarioEN.Alias = p_alias;
 
         usuarioEN.Email = p_email;
@@ -61,15 +57,13 @@ public int NewUser (TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias,
         return oid;
 }
 
-public void ModifyUser (int p_Usuario_OID, TimeSpan p_createdAt, TimeSpan p_modifiedAt, string p_alias, string p_email, String p_password)
+public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, String p_password)
 {
         UsuarioEN usuarioEN = null;
 
         //Initialized UsuarioEN
         usuarioEN = new UsuarioEN ();
         usuarioEN.Id = p_Usuario_OID;
-        usuarioEN.CreatedAt = p_createdAt;
-        usuarioEN.ModifiedAt = p_modifiedAt;
         usuarioEN.Alias = p_alias;
         usuarioEN.Email = p_email;
         usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_password);

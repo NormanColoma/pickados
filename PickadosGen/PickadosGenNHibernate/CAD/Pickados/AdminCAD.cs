@@ -142,12 +142,6 @@ public void ModifyAdmin (AdminEN admin)
                 SessionInitializeTransaction ();
                 AdminEN adminEN = (AdminEN)session.Load (typeof(AdminEN), admin.Id);
 
-                adminEN.CreatedAt = admin.CreatedAt;
-
-
-                adminEN.ModifiedAt = admin.ModifiedAt;
-
-
                 adminEN.Alias = admin.Alias;
 
 

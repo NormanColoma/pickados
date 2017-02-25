@@ -81,19 +81,21 @@ public static void InitializeData ()
 
 
                 TipsterCEN tipsterCEN = new TipsterCEN ();
-                int id= tipsterCEN.NewTipster (new TimeSpan (), new TimeSpan (), "rushverde",
+                int id = tipsterCEN.NewTipster ("rushverde",
                         "josearuol@gmail.com", "prueba", false, 0);
-               int id2= tipsterCEN.NewTipster(new TimeSpan(), new TimeSpan(), "andrea",
-        "andrea@gmail.com", "prueba", false, 0);
+                /**    int id2 = tipsterCEN.NewTipster (new TimeSpan (), new TimeSpan (), "andrea",
+                 *     "andrea@gmail.com", "prueba", false, 0);**/
+
                 /** IList<int> list = new List<int>();
-                 list.Add(id2);
-                 tipsterCEN.AddFollow(id, list);**/
+                 * list.Add(id2);
+                 * tipsterCEN.AddFollow(id, list);**/
 
-                SportCEN sportCEN = new SportCEN();
-                CompetitionCEN competitionCEN = new CompetitionCEN();
+                /**  SportCEN sportCEN = new SportCEN ();
+                 * CompetitionCEN competitionCEN = new CompetitionCEN ();
+                 *
+                 * int id_sport1 = sportCEN.NewSport ("Football");
+                 * competitionCEN.NewCompetition ("La Liga", id_sport1, "Spain");**/
 
-                int id_sport1 = sportCEN.NewSport("Football");
-                competitionCEN.NewCompetition("La Liga", id_sport1, "Spain");
 
 
                 // p.e. CustomerCEN customer = new CustomerCEN();

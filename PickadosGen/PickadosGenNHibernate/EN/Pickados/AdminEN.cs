@@ -14,27 +14,23 @@ public AdminEN() : base ()
 
 
 public AdminEN(int id,
-               TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password
+               string alias, string email, String password
                )
 {
-        this.init (Id, createdAt, modifiedAt, alias, email, password);
+        this.init (Id, alias, email, password);
 }
 
 
 public AdminEN(AdminEN admin)
 {
-        this.init (Id, admin.CreatedAt, admin.ModifiedAt, admin.Alias, admin.Email, admin.Password);
+        this.init (Id, admin.Alias, admin.Email, admin.Password);
 }
 
 private void init (int id
-                   , TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password)
+                   , string alias, string email, String password)
 {
         this.Id = id;
 
-
-        this.CreatedAt = createdAt;
-
-        this.ModifiedAt = modifiedAt;
 
         this.Alias = alias;
 

@@ -13,12 +13,6 @@
 				var id: Int?;
 				    	 
 		 
-				var createdAt: NSTimeInterval?;
-				    	 
-		 
-				var modifiedAt: NSTimeInterval?;
-				    	 
-		 
 				var alias: String?;
 				    	 
 		 
@@ -47,14 +41,6 @@
 
 				
 					dictionary["id"] = self.id;
-				
-
-				
-					dictionary["createdAt"] = self.createdAt;
-				
-
-				
-					dictionary["modifiedAt"] = self.modifiedAt;
 				
 
 				

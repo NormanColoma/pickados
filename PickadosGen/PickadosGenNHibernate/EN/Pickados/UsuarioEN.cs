@@ -13,20 +13,6 @@ private int id;
 
 
 /**
- *	Atributo createdAt
- */
-private TimeSpan createdAt;
-
-
-
-/**
- *	Atributo modifiedAt
- */
-private TimeSpan modifiedAt;
-
-
-
-/**
  *	Atributo alias
  */
 private string alias;
@@ -52,18 +38,6 @@ private String password;
 
 public virtual int Id {
         get { return id; } set { id = value;  }
-}
-
-
-
-public virtual TimeSpan CreatedAt {
-        get { return createdAt; } set { createdAt = value;  }
-}
-
-
-
-public virtual TimeSpan ModifiedAt {
-        get { return modifiedAt; } set { modifiedAt = value;  }
 }
 
 
@@ -94,27 +68,23 @@ public UsuarioEN()
 
 
 
-public UsuarioEN(int id, TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password
+public UsuarioEN(int id, string alias, string email, String password
                  )
 {
-        this.init (Id, createdAt, modifiedAt, alias, email, password);
+        this.init (Id, alias, email, password);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (Id, usuario.CreatedAt, usuario.ModifiedAt, usuario.Alias, usuario.Email, usuario.Password);
+        this.init (Id, usuario.Alias, usuario.Email, usuario.Password);
 }
 
 private void init (int id
-                   , TimeSpan createdAt, TimeSpan modifiedAt, string alias, string email, String password)
+                   , string alias, string email, String password)
 {
         this.Id = id;
 
-
-        this.CreatedAt = createdAt;
-
-        this.ModifiedAt = modifiedAt;
 
         this.Alias = alias;
 
