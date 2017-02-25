@@ -136,6 +136,19 @@ public static void InitializeData ()
                 int player4 = playerCEN.NewPlayer("Ander Herrera");
                 int player5 = playerCEN.NewPlayer("Juan Mata");
 
+                PlayerCAD playerCAD = new PlayerCAD();
+                playerCAD.JoinClubTeam(player1, team1);
+                playerCAD.JoinClubTeam(player2, team1);
+                playerCAD.JoinClubTeam(player3, team1);
+
+                playerCAD.JoinClubTeam(player4, team2);
+                playerCAD.JoinClubTeam(player5, team2);
+
+                playerCAD.JoinNationalTeam(player4, seleccion1);
+                playerCAD.JoinNationalTeam(player5, seleccion1);
+
+                playerCAD.UnlinkClubTeam(player5, team2);
+
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)
