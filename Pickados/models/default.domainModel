@@ -270,7 +270,7 @@
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Inheritance" xmi:id="_TkVPgNNtEeaZBpN3xqTI2g" name="inheritance5" son="_M_FZ0NNtEeaZBpN3xqTI2g" father="_d6azMNNlEeaZBpN3xqTI2g"/>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_gc4PQNNtEeaZBpN3xqTI2g" name="Post" alias="Post" asociationTarget="_k_YBsNN7Eeadlco1x1sS6g" associationOrigin="_4s1MINNtEeaZBpN3xqTI2g">
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_wOGsUNNtEeaZBpN3xqTI2g" name="publishPost" type="Object" typeObject="_gc4PQNNtEeaZBpN3xqTI2g">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_wOGsUNNtEeaZBpN3xqTI2g" name="publishPost" operationType="CustomTransaction" type="OID" typeObject="_gc4PQNNtEeaZBpN3xqTI2g">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h0FJQNnwEeai6sRUN34LlA" name="p_created_at" type="Time"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h0FJQdnwEeai6sRUN34LlA" name="p_modified_at" type="Time"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h0FJQtnwEeai6sRUN34LlA" name="p_stake" type="Double"/>
@@ -278,7 +278,6 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h0FwUdnwEeai6sRUN34LlA" name="p_private" type="Boolean"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h0FwUtnwEeai6sRUN34LlA" name="p_pick" type="OID" collectionType="List" typeObject="_d6azMNNlEeaZBpN3xqTI2g"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h0FwU9nwEeai6sRUN34LlA" name="p_tipster" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h0FwVNnwEeai6sRUN34LlA" name="p_totalOdd" type="Double"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h0FwVdnwEeai6sRUN34LlA" name="p_postResult" type="Enum" typeEnum="_r2sg0NNlEeaZBpN3xqTI2g"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_wOGsVtNtEeaZBpN3xqTI2g" name="modifyPost" operationType="Modifier" type="Void">

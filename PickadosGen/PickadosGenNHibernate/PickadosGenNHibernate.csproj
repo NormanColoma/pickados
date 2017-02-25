@@ -192,7 +192,7 @@
 	<Compile Include="CAD\Pickados\IPostCAD.cs" />
 	<Compile Include="CAD\Pickados\PostCAD.cs" />
 	<Compile Include="CP\Pickados\PostCP.cs" />
-			<Compile Include="CEN\Pickados\PostCEN_PublishPost.cs" />
+			<Compile Include="CP\Pickados\PostCP_PublishPost.cs" />
 			
 			
 			
