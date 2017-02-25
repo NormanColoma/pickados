@@ -80,17 +80,89 @@ public static void InitializeData ()
         try
         {
                 // Insert the initilizations of entities using the CEN classes
+
+                //Creating competition
                 SportCEN sportCEN = new SportCEN ();
                 int sportId = sportCEN.NewSport ("Football");
 
                 CompetitionCEN competitionCEN = new CompetitionCEN ();
                 int competitionId = competitionCEN.NewCompetition ("La Liga", sportId, "Spain");
 
+                //Creating tipsters
+                Console.WriteLine ("------------ Creating new users ------------");
+                TipsterCEN nuevo = new TipsterCEN ();
+                AdminCEN admin = new AdminCEN ();
+                UsuarioCEN user = new UsuarioCEN ();
+
+                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "12345678B", false, 0);
+                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "25836914C", false, 0);
+                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "36924518Z", false, 0);
+                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "56478912P", false, 0);
 
                 TipsterCEN tipsterCEN = new TipsterCEN ();
                 int createdTipster = tipsterCEN.NewTipster ("rushverde",
                         "josearuol@gmail.com", "prueba", new DateTime (2017, 2, 25, 11, 0, 0),
-                        new DateTime (2017, 2, 25, 11, 0, 0), false, 0);
+                        new DateTime (2017, 2, 25, 11, 0, 0), "12345678Z", false, 0);
+                admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N");
+
+                TipsterEN originalTipster = nuevo.GetTipsterById (tipster);
+                TipsterEN newTipster = nuevo.GetTipsterById (tipster1);
+                TipsterEN otherTipster = nuevo.GetTipsterById (tipster2);
+                TipsterEN lastTipster = nuevo.GetTipsterById (tipster3);
+
+                // Seguidores
+                IList<int> followers = new List<int>();
+                IList<int> unfollows = new List<int>();
+
+                // Creamos seguidores
+                followers.Add (newTipster.Id);
+                followers.Add (otherTipster.Id);
+
+                // Añadidos dos seguidores para el tipster 1
+                Console.WriteLine ("Adding two new followers for tipster 1");
+                nuevo.AddFollower (originalTipster.Id, followers);
+
+                IList<TipsterEN> totalFollowers = nuevo.GetFollowers (originalTipster.Id);
+                Console.WriteLine ("Tipster 1 has: " + totalFollowers.Count + " followers");
+
+                IList<TipsterEN> totalFollows1 = nuevo.GetFollows (originalTipster.Id);
+                Console.WriteLine ("Tipster 1 has: " + totalFollows1.Count + " followeds");
+
+                IList<TipsterEN> totalFollows2 = nuevo.GetFollows (newTipster.Id);
+                Console.WriteLine ("Tipster 2 has: " + totalFollows2.Count + " followers");
+
+                // Añadir otro seguidor al tipster 1
+                Console.WriteLine ("Added one more follower for tipster 1");
+                followers.Clear ();
+                followers.Add (lastTipster.Id);
+
+                nuevo.AddFollower (originalTipster.Id, followers);
+
+                IList<TipsterEN> totalFollowers4 = nuevo.GetFollowers (originalTipster.Id);
+                Console.WriteLine ("Tipster 1 has: " + totalFollowers4.Count + " followers");
+
+                IList<TipsterEN> totalFollows6 = nuevo.GetFollows (originalTipster.Id);
+                Console.WriteLine ("Tipster 1 has: " + totalFollows6.Count + " followeds");
+
+                IList<TipsterEN> totalFollows5 = nuevo.GetFollows (lastTipster.Id);
+                Console.WriteLine ("Tipster 4 has: " + totalFollows5.Count + " followeds");
+
+                // Eliminar seguidores al tipster 1
+                Console.WriteLine ("Added one unfollow for tipster 1");
+                unfollows.Add (lastTipster.Id);
+                nuevo.DeleteFollow (originalTipster.Id, unfollows);
+
+                IList<TipsterEN> totalFollowers7 = nuevo.GetFollowers (originalTipster.Id);
+                Console.WriteLine ("Tipster 1 has: " + totalFollowers7.Count + " followers");
+
+                IList<TipsterEN> totalFollowers8 = nuevo.GetFollows (lastTipster.Id);
+                Console.WriteLine("Tipster 4 has: " + totalFollowers8.Count + " followeds");
+
+                Console.WriteLine ("User montoro could login: " + user.Login ("montoro", "montoroPro").Id);
+                Console.WriteLine ("User montoro couldn't login: " + user.Login ("montoro", "montoroCola"));
+
+                Console.WriteLine("Converting tipster 1 to premium");
+                nuevo.BecomePremium(originalTipster.Id, 2.8);
 
 
                 //Publishing new post
@@ -104,30 +176,37 @@ public static void InitializeData ()
                 picks_id.Add (pickId);
                 postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, createdTipster, PickResultEnum.unfinished);
 
+                //Creating teams for including them into picks
                 TeamCEN teamCEN = new TeamCEN ();
                 int id_away = teamCEN.NewTeam ("Leganes", "Spain");
                 int id_home = teamCEN.NewTeam ("F.C.Barcelona", "Spain");
 
+                //Creating matchs  for including them into picks
                 MatchCEN matchCEN = new MatchCEN ();
                 int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), id_away, id_home, "Camp Nou");
                 eventCEN.JoinCompetition (id_match, competitionId);
 
+                //Creating picks
                 CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
                 int id_correctScore = correctScoreCEN.NewCorrectScore (10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
                         "Bet365", id_match, 2, 1);
                 IList<int> picks = new List<int>();
                 picks.Add (id_correctScore);
 
+                //Creating new post for verify it later
                 int id_post = postCEN.NewPost (new DateTime (2017, 2, 19), new DateTime (2017, 2, 19), 1, "Va a ser un partido sufrido",
                         false, picks, createdTipster, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
 
+                //Verifying post
                 postCP.VerifyPost (id_post);
 
+                //Creatning teams 
                 int team1 = teamCEN.NewTeam("SD Eibar", "Spain");
                 int team2 = teamCEN.NewTeam("Manchester united", "England");
 
                 int seleccion1 = teamCEN.NewTeam("Selección Española", "Spain");
 
+                //Creating players
                 PlayerCEN playerCEN = new PlayerCEN();
                 int player1 = playerCEN.NewPlayer("Yoel Rodríguez");
                 int player2 = playerCEN.NewPlayer("Gonzalo Escalante");
@@ -136,6 +215,7 @@ public static void InitializeData ()
                 int player4 = playerCEN.NewPlayer("Ander Herrera");
                 int player5 = playerCEN.NewPlayer("Juan Mata");
 
+                //Associating players to clubs and nationals teams
                 PlayerCAD playerCAD = new PlayerCAD();
                 playerCAD.JoinClubTeam(player1, team1);
                 playerCAD.JoinClubTeam(player2, team1);

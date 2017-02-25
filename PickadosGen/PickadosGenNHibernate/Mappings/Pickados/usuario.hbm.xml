@@ -13,10 +13,10 @@
 			
 					
 					<property name="Alias" type="string"> 
-						<column name="alias"  not-null="true"/>
+						<column name="alias"  unique="true" not-null="true"/>
 					</property>
 					<property name="Email" type="string"> 
-						<column name="email"  not-null="true"/>
+						<column name="email"  unique="true" not-null="true"/>
 					</property>
 					<property name="Password" type="string"> 
 						<column name="password"  not-null="true"/>
@@ -27,6 +27,9 @@
 					<property name="Updated_at" type="timestamp"> 
 						<column name="updated_at"  not-null="true"/>
 					</property>
+					<property name="Nif" type="string"> 
+						<column name="nif"  unique="true" not-null="true"/>
+					</property>
 			
 			
 			
@@ -34,6 +37,8 @@
 			
 			
 			
+			
+					
 					
 					
 					
@@ -44,5 +49,6 @@
 		 </class>	
 		  
 		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENfindByUserHQL"><![CDATA[FROM UsuarioEN where Alias=:user]]></query>
 		</hibernate-mapping>
 	

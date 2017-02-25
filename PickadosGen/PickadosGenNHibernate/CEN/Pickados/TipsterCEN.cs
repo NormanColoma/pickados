@@ -38,7 +38,7 @@ public ITipsterCAD get_ITipsterCAD ()
         return this._ITipsterCAD;
 }
 
-public int NewTipster (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, bool p_premium, double p_subscription_fee)
+public int NewTipster (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif, bool p_premium, double p_subscription_fee)
 {
         TipsterEN tipsterEN = null;
         int oid;
@@ -55,6 +55,8 @@ public int NewTipster (string p_alias, string p_email, String p_password, Nullab
 
         tipsterEN.Updated_at = p_updated_at;
 
+        tipsterEN.Nif = p_nif;
+
         tipsterEN.Premium = p_premium;
 
         tipsterEN.Subscription_fee = p_subscription_fee;
@@ -65,7 +67,7 @@ public int NewTipster (string p_alias, string p_email, String p_password, Nullab
         return oid;
 }
 
-public void ModifyTipster (int p_Tipster_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, bool p_premium, double p_subscription_fee)
+public void ModifyTipster (int p_Tipster_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif, bool p_premium, double p_subscription_fee)
 {
         TipsterEN tipsterEN = null;
 
@@ -77,6 +79,7 @@ public void ModifyTipster (int p_Tipster_OID, string p_alias, string p_email, St
         tipsterEN.Password = Utils.Util.GetEncondeMD5 (p_password);
         tipsterEN.Created_at = p_created_at;
         tipsterEN.Updated_at = p_updated_at;
+        tipsterEN.Nif = p_nif;
         tipsterEN.Premium = p_premium;
         tipsterEN.Subscription_fee = p_subscription_fee;
         //Call to TipsterCAD
@@ -90,9 +93,9 @@ public void DeleteTipster (int id
         _ITipsterCAD.DeleteTipster (id);
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers (int ? p_oid)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers (int id)
 {
-        return _ITipsterCAD.GetFollowers (p_oid);
+        return _ITipsterCAD.GetFollowers (id);
 }
 public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPosts ()
 {
@@ -126,15 +129,15 @@ public void AddFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> 
 
         _ITipsterCAD.AddFollow (p_Tipster_OID, p_follow_to_OIDs);
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows (int ? p_oid)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows (int ? id)
 {
-        return _ITipsterCAD.GetFollows (p_oid);
+        return _ITipsterCAD.GetFollows (id);
 }
-public void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)
+public void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs)
 {
         //Call to TipsterCAD
 
-        _ITipsterCAD.DeleteFollow (p_Tipster_OID, p_follow_to_OIDs);
+        _ITipsterCAD.DeleteFollow (p_Tipster_OID, p_followed_by_OIDs);
 }
 public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersWithBenefit ()
 {

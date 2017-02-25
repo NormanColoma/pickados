@@ -14,20 +14,20 @@ public AdminEN() : base ()
 
 
 public AdminEN(int id,
-               string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at
+               string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at, string nif
                )
 {
-        this.init (Id, alias, email, password, created_at, updated_at);
+        this.init (Id, alias, email, password, created_at, updated_at, nif);
 }
 
 
 public AdminEN(AdminEN admin)
 {
-        this.init (Id, admin.Alias, admin.Email, admin.Password, admin.Created_at, admin.Updated_at);
+        this.init (Id, admin.Alias, admin.Email, admin.Password, admin.Created_at, admin.Updated_at, admin.Nif);
 }
 
 private void init (int id
-                   , string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at)
+                   , string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at, string nif)
 {
         this.Id = id;
 
@@ -41,6 +41,8 @@ private void init (int id
         this.Created_at = created_at;
 
         this.Updated_at = updated_at;
+
+        this.Nif = nif;
 }
 
 public override bool Equals (object obj)

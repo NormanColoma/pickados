@@ -41,6 +41,10 @@
 				public java.util.Date getUpdated_at () { return updated_at; } 
 				public void setUpdated_at  (java.util.Date value) { updated_at = value;  } 
 				    	 
+				private String nif;
+				public String getNif () { return nif; } 
+				public void setNif  (String value) { nif = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -65,6 +69,9 @@
 				
 				
 						  json.put("Updated_at", DateUtils.dateToFormatString(this.updated_at));
+				
+				
+						  json.put("Nif", this.nif);
 				
 						
 					}

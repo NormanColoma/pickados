@@ -38,7 +38,7 @@ public IUsuarioCAD get_IUsuarioCAD ()
         return this._IUsuarioCAD;
 }
 
-public int NewUser (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at)
+public int NewUser (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif)
 {
         UsuarioEN usuarioEN = null;
         int oid;
@@ -55,13 +55,15 @@ public int NewUser (string p_alias, string p_email, String p_password, Nullable<
 
         usuarioEN.Updated_at = p_updated_at;
 
+        usuarioEN.Nif = p_nif;
+
         //Call to UsuarioCAD
 
         oid = _IUsuarioCAD.NewUser (usuarioEN);
         return oid;
 }
 
-public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at)
+public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif)
 {
         UsuarioEN usuarioEN = null;
 
@@ -73,6 +75,7 @@ public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, Strin
         usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_password);
         usuarioEN.Created_at = p_created_at;
         usuarioEN.Updated_at = p_updated_at;
+        usuarioEN.Nif = p_nif;
         //Call to UsuarioCAD
 
         _IUsuarioCAD.ModifyUser (usuarioEN);
@@ -99,6 +102,10 @@ public System.Collections.Generic.IList<UsuarioEN> GetAllUsers (int first, int s
 
         list = _IUsuarioCAD.GetAllUsers (first, size);
         return list;
+}
+public PickadosGenNHibernate.EN.Pickados.UsuarioEN FindByUser (string user)
+{
+        return _IUsuarioCAD.FindByUser (user);
 }
 }
 }

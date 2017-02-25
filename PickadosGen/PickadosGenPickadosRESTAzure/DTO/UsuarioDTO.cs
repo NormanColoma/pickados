@@ -30,5 +30,9 @@ private Nullable<DateTime> updated_at;
 public Nullable<DateTime> Updated_at {
         get { return updated_at; } set { updated_at = value;  }
 }
+private string nif;
+public string Nif {
+        get { return nif; } set { nif = value;  }
+}
 }
 }

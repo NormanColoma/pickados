@@ -156,6 +156,9 @@ public void ModifyAdmin (AdminEN admin)
 
                 adminEN.Updated_at = admin.Updated_at;
 
+
+                adminEN.Nif = admin.Nif;
+
                 session.Update (adminEN);
                 SessionCommit ();
         }
