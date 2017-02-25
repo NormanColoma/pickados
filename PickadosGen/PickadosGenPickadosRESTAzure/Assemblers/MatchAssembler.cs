@@ -12,27 +12,28 @@ using PickadosGenNHibernate.CP.Pickados;
 
 namespace PickadosGenPickadosRESTAzure.Assemblers
 {
-public static class SportAssembler
+public static class MatchAssembler
 {
-public static SportDTOA Convert (SportEN en, NHibernate.ISession session = null)
+public static MatchDTOA Convert (MatchEN en, NHibernate.ISession session = null)
 {
-        SportDTOA dto = null;
-        SportRESTCAD sportRESTCAD = null;
-        SportCEN sportCEN = null;
-        SportCP sportCP = null;
+        MatchDTOA dto = null;
+        MatchRESTCAD matchRESTCAD = null;
+        MatchCEN matchCEN = null;
+        MatchCP matchCP = null;
 
         if (en != null) {
-                dto = new SportDTOA ();
-                sportRESTCAD = new SportRESTCAD (session);
-                sportCEN = new SportCEN (sportRESTCAD);
-                sportCP = new SportCP (session);
+                dto = new MatchDTOA ();
+                matchRESTCAD = new MatchRESTCAD (session);
+                matchCEN = new MatchCEN (matchRESTCAD);
+                matchCP = new MatchCP (session);
 
 
                 //
                 // Attributes
 
                 dto.Id = en.Id;
-                dto.Name = en.Name;
+                dto.Stadium = en.Stadium;
+                dto.Date = en.Date;
 
                 //
                 // TravesalLink

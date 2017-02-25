@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace PickadosGenPickadosRESTAzure.DTOA
 {
-public class SportDTOA
+public class TeamDTOA
 {
 private int id;
 public int Id

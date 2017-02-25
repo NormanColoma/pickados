@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace PickadosGenPickadosRESTAzure.DTOA
 {
-public class SportDTOA
+public class CompetitionDTOA
 {
 private int id;
 public int Id
@@ -21,6 +21,13 @@ public string Name
 {
         get { return name; }
         set { name = value; }
+}
+
+private string place;
+public string Place
+{
+        get { return place; }
+        set { place = value; }
 }
 }
 }

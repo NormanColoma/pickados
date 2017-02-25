@@ -80,6 +80,11 @@ public static void InitializeData ()
         try
         {
                 // Insert the initilizations of entities using the CEN classes
+                SportCEN sportCEN = new SportCEN ();
+                int sportId = sportCEN.NewSport ("Football");
+
+                CompetitionCEN competitionCEN = new CompetitionCEN ();
+                int competitionId = competitionCEN.NewCompetition ("La Liga", sportId, "Spain");
 
 
                 TipsterCEN tipsterCEN = new TipsterCEN ();
@@ -89,33 +94,34 @@ public static void InitializeData ()
 
 
                 //Publishing new post
-                PostCEN postCEN = new PostCEN();
-                PostCP postCP = new PostCP();
-                PickCEN pickCEN = new PickCEN();
-                Event_CEN eventCEN = new Event_CEN();
-                int eventId = eventCEN.NewEvent(new DateTime(2017, 10, 25, 11, 0, 0));
-                int pickId = pickCEN.NewPick(0, "desc", PickResultEnum.unstarted, "bookie", eventId);
+                PostCEN postCEN = new PostCEN ();
+                PostCP postCP = new PostCP ();
+                PickCEN pickCEN = new PickCEN ();
+                Event_CEN eventCEN = new Event_CEN ();
+                int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0));
+                int pickId = pickCEN.NewPick (0, "desc", PickResultEnum.unstarted, "bookie", eventId);
                 List<int> picks_id = new List<int>();
-                picks_id.Add(pickId);
-                postCP.PublishPost(new DateTime(2017, 2, 25, 11, 0, 0), new DateTime(2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, createdTipster, PickResultEnum.unfinished);
+                picks_id.Add (pickId);
+                postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, createdTipster, PickResultEnum.unfinished);
 
-                TeamCEN teamCEN = new TeamCEN();
-                int id_away = teamCEN.NewTeam("Leganes", "Spain");
-                int id_home = teamCEN.NewTeam("F.C.Barcelona", "Spain");
+                TeamCEN teamCEN = new TeamCEN ();
+                int id_away = teamCEN.NewTeam ("Leganes", "Spain");
+                int id_home = teamCEN.NewTeam ("F.C.Barcelona", "Spain");
 
-                MatchCEN matchCEN = new MatchCEN();
-                int id_match = matchCEN.NewMatch(new DateTime(2017, 2, 20), id_away, id_home, "Camp Nou");
-                
-                CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN();
-                int id_correctScore = correctScoreCEN.NewCorrectScore(10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
-                    "Bet365", id_match, 2, 1);
+                MatchCEN matchCEN = new MatchCEN ();
+                int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), id_away, id_home, "Camp Nou");
+                eventCEN.JoinCompetition (id_match, competitionId);
+
+                CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
+                int id_correctScore = correctScoreCEN.NewCorrectScore (10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
+                        "Bet365", id_match, 2, 1);
                 IList<int> picks = new List<int>();
-                picks.Add(id_correctScore);
-                
-                int id_post = postCEN.NewPost(new DateTime(2017, 2, 19), new DateTime(2017, 2, 19), 1, "Va a ser un partido sufrido",
-                    false,picks,createdTipster,10,PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
-                
-                postCP.VerifyPost(id_post);
+                picks.Add (id_correctScore);
+
+                int id_post = postCEN.NewPost (new DateTime (2017, 2, 19), new DateTime (2017, 2, 19), 1, "Va a ser un partido sufrido",
+                        false, picks, createdTipster, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
+
+                postCP.VerifyPost (id_post);
 
                 /*PROTECTED REGION END*/
         }

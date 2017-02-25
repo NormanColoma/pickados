@@ -12,20 +12,20 @@ using PickadosGenNHibernate.CP.Pickados;
 
 namespace PickadosGenPickadosRESTAzure.Assemblers
 {
-public static class SportAssembler
+public static class TeamAssembler
 {
-public static SportDTOA Convert (SportEN en, NHibernate.ISession session = null)
+public static TeamDTOA Convert (TeamEN en, NHibernate.ISession session = null)
 {
-        SportDTOA dto = null;
-        SportRESTCAD sportRESTCAD = null;
-        SportCEN sportCEN = null;
-        SportCP sportCP = null;
+        TeamDTOA dto = null;
+        TeamRESTCAD teamRESTCAD = null;
+        TeamCEN teamCEN = null;
+        TeamCP teamCP = null;
 
         if (en != null) {
-                dto = new SportDTOA ();
-                sportRESTCAD = new SportRESTCAD (session);
-                sportCEN = new SportCEN (sportRESTCAD);
-                sportCP = new SportCP (session);
+                dto = new TeamDTOA ();
+                teamRESTCAD = new TeamRESTCAD (session);
+                teamCEN = new TeamCEN (teamRESTCAD);
+                teamCP = new TeamCP (session);
 
 
                 //

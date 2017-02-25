@@ -15,7 +15,7 @@ using PickadosGenNHibernate.CEN.Pickados;
 using PickadosGenNHibernate.CP.Pickados;
 
 
-/*PROTECTED REGION ID(usingPickadosGenPickadosRESTAzure_SportControllerAzure) ENABLED START*/
+/*PROTECTED REGION ID(usingPickadosGenPickadosRESTAzure_TeamControllerAzure) ENABLED START*/
 // Meter las referencias para las operaciones que invoquen a las CPs
 /*PROTECTED REGION END*/
 
@@ -23,114 +23,53 @@ using PickadosGenNHibernate.CP.Pickados;
 
 namespace PickadosGenPickadosRESTAzure.Controllers
 {
-[RoutePrefix ("~/api/Sport")]
-public class SportController : BasicController
+[RoutePrefix ("~/api/Team")]
+public class TeamController : BasicController
 {
 // Voy a generar el readAll
-// Pasa el slEnables
 
 
-//Pasa el serviceLinkValid
 
-// ReadAll Generado a partir del serviceLink
+
+
+
+
 [HttpGet]
-[Route ("~/api/Sport/Index")]
 
-public HttpResponseMessage Index ()
+
+
+[Route ("~/api/Team/{idTeam}/GetHomeOfEvent_home/")]
+
+public HttpResponseMessage GetHomeOfEvent_home (int idMatch)
 {
-        // CAD, CEN, EN, returnValue
-        SportRESTCAD sportRESTCAD = null;
-        SportCEN sportCEN = null;
+        // CAD, EN
+        MatchRESTCAD matchRESTCAD = null;
+        MatchEN matchEN = null;
 
-        List<SportEN> sportEN = null;
-        List<SportDTOA> returnValue = null;
+        // returnValue
+        TeamEN en = null;
+        TeamDTOA returnValue = null;
 
         try
         {
                 SessionInitializeWithoutTransaction ();
-                sportRESTCAD = new SportRESTCAD (session);
-                sportCEN = new SportCEN (sportRESTCAD);
+                matchRESTCAD = new MatchRESTCAD (session);
 
-                // Data
-                // paginación
+                // Exists Match
+                matchEN = matchRESTCAD.ReadOIDDefault (idMatch);
+                if (matchEN == null) throw new HttpResponseException (this.Request.CreateResponse (HttpStatusCode.NotFound, "Match#" + idMatch + " not found"));
 
-                sportEN = sportCEN.GetAllSports (0, -1).ToList ();
-
-
-
-                // Convert return
-                if (sportEN != null) {
-                        returnValue = new List<SportDTOA>();
-                        foreach (SportEN entry in sportEN)
-                                returnValue.Add (SportAssembler.Convert (entry, session));
-                }
-        }
-
-        catch (Exception e)
-        {
-                if (e.GetType () == typeof(HttpResponseException)) throw e;
-                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
-                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
-        }
-        finally
-        {
-                SessionClose ();
-        }
-
-        // Return 204 - Empty
-        if (returnValue == null || returnValue.Count == 0)
-                return this.Request.CreateResponse (HttpStatusCode.NoContent);
-        // Return 200 - OK
-        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
-}
-
-
-
-
-
-
-
-
-
-// ReadAll Generado a partir de un traversal link
-[HttpGet]
-
-
-public HttpResponseMessage getAllCompetition ()
-{
-        // CAD, CEN, EN, returnValue
-        SportRESTCAD sportRESTCAD = null;
-
-        List<SportEN> sportEN = null;
-        List<CompetitionDTOA> returnValue = null;
-
-        try
-        {
-                SessionInitializeWithoutTransaction ();
-                sportRESTCAD = new SportRESTCAD (session);
-
-                // Data
+                // Rol
                 // TODO: paginación
 
 
-
-                sportEN = sportRESTCAD.ReadAllDefault (0, -1).ToList ();
-
-
+                en = matchRESTCAD.GetHomeOfEvent_home (idMatch);
 
                 // Convert return
-                if (sportEN != null)
-                {
-                    returnValue = new List<CompetitionDTOA>();
-                    foreach (SportEN entry in sportEN)
-                    {
-                        foreach (CompetitionEN competition in entry.Competition)
-                        {
-                            returnValue.Add(CompetitionAssembler.Convert(competition, session));
-                        }
-                    }
+                if (en != null) {
+                        returnValue = TeamAssembler.Convert (en, session);
                 }
-            }
+        }
 
         catch (Exception e)
         {
@@ -144,7 +83,64 @@ public HttpResponseMessage getAllCompetition ()
         }
 
         // Return 204 - Empty
-        if (returnValue == null || returnValue.Count == 0)
+        if (returnValue == null)
+                return this.Request.CreateResponse (HttpStatusCode.NoContent);
+        // Return 200 - OK
+        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+}
+
+
+
+[HttpGet]
+
+
+
+[Route ("~/api/Team/{idTeam}/GetAwayOfEvent_away/")]
+
+public HttpResponseMessage GetAwayOfEvent_away (int idMatch)
+{
+        // CAD, EN
+        MatchRESTCAD matchRESTCAD = null;
+        MatchEN matchEN = null;
+
+        // returnValue
+        TeamEN en = null;
+        TeamDTOA returnValue = null;
+
+        try
+        {
+                SessionInitializeWithoutTransaction ();
+                matchRESTCAD = new MatchRESTCAD (session);
+
+                // Exists Match
+                matchEN = matchRESTCAD.ReadOIDDefault (idMatch);
+                if (matchEN == null) throw new HttpResponseException (this.Request.CreateResponse (HttpStatusCode.NotFound, "Match#" + idMatch + " not found"));
+
+                // Rol
+                // TODO: paginación
+
+
+                en = matchRESTCAD.GetAwayOfEvent_away (idMatch);
+
+                // Convert return
+                if (en != null) {
+                        returnValue = TeamAssembler.Convert (en, session);
+                }
+        }
+
+        catch (Exception e)
+        {
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 204 - Empty
+        if (returnValue == null)
                 return this.Request.CreateResponse (HttpStatusCode.NoContent);
         // Return 200 - OK
         else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
@@ -171,7 +167,8 @@ public HttpResponseMessage getAllCompetition ()
 
 
 
-/*PROTECTED REGION ID(PickadosGenPickadosRESTAzure_SportControllerAzure) ENABLED START*/
+
+/*PROTECTED REGION ID(PickadosGenPickadosRESTAzure_TeamControllerAzure) ENABLED START*/
 // Meter las operaciones que invoquen a las CPs
 /*PROTECTED REGION END*/
 }
