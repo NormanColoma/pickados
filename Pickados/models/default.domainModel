@@ -81,7 +81,7 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_zFd_MNNmEeaZBpN3xqTI2g" name="deleteCompetition" operationType="Destroy" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_eGNVddpVEeaRm9CNUEVRDg" name="p_Competition_OID" type="OID" typeObject="_mmPeYNNmEeaZBpN3xqTI2g"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_fox7cNpVEeaRm9CNUEVRDg" name="getCompetitionsByPlace" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_mmPeYNNmEeaZBpN3xqTI2g" filter="FROM CompetitionEN WHERE place = :place" automaticSynchronize="false">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_fox7cNpVEeaRm9CNUEVRDg" name="getCompetitionsByPlace" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_mmPeYNNmEeaZBpN3xqTI2g" filter="FROM CompetitionEN WHERE Place = :place" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_KD2fsNssEeahOsW2-HnbyQ" name="place"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_-3olANvSEeaH16oqCgSP8Q" name="getCompetitionById" operationType="ReadOID" type="Object" typeObject="_mmPeYNNmEeaZBpN3xqTI2g">
@@ -428,6 +428,7 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_REXMoPlKEea4BMBLrnI2Ow" name="getStatsByMonth" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="FROM TipsterEN" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_c2xDsPlKEea4BMBLrnI2Ow" name="p_date" type="Date"/>
       </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_C6Bq8PtlEea3Y6_aXsHiNQ" name="getTipstersPremium" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="FROM TipsterEN where Premium=true" automaticSynchronize="false"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_bgvkEdN7Eeadlco1x1sS6g" alias="idMonthlyStats" aggregation="Composite" lower="0" upper="*" associationOrigin="_bgvkENN7Eeadlco1x1sS6g" name="monthlyStats" type="Object" collectionType="List"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_k_YBsdN7Eeadlco1x1sS6g" alias="idPost" aggregation="Composite" lower="0" upper="*" associationOrigin="_k_YBsNN7Eeadlco1x1sS6g" name="post" type="Object" collectionType="List"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_6o_qsNQZEearPKYnvwakQw" alias="idTipster" lower="0" upper="*" associationOrigin="_6ojl0NQZEearPKYnvwakQw" name="follow_to" type="Object"/>
@@ -584,11 +585,17 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_uJhB4dvSEeaH16oqCgSP8Q" name="p_Match_OID" type="OID" typeObject="_0RRr8NkBEeaUt9gXjU7aig"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_uJiQANvSEeaH16oqCgSP8Q" name="getAllMatches" operationType="ReadAll" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig"/>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_BxxioNwaEea1d9AB9WaAwQ" name="getMatchByTeam" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="FROM MatchEN" automaticSynchronize="false">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_F657MNwaEea1d9AB9WaAwQ" name="team"/>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_BxxioNwaEea1d9AB9WaAwQ" name="getTotalMatchesByTeam" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="FROM MatchEN" automaticSynchronize="false">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_F657MNwaEea1d9AB9WaAwQ" name="id" type="OID" typeObject="_N1IYYNNqEeaZBpN3xqTI2g"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_WYjVAPlIEea4BMBLrnI2Ow" name="getMatchByCompetition" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_WZM1QPlIEea4BMBLrnI2Ow" name="p_competition"/>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_WYjVAPlIEea4BMBLrnI2Ow" name="getMatchByCompetition" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="select m FROM MatchEN as m INNER JOIN m.Competition as c where c.Id=:id" automaticSynchronize="false">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_bvB0oPtwEea3Y6_aXsHiNQ" name="id" type="OID" typeObject="_mmPeYNNmEeaZBpN3xqTI2g"/>
+      </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_07Mw4PtqEea3Y6_aXsHiNQ" name="getMatchByLocalTeam" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="select m FROM MatchEN as m INNER JOIN m.Home as t where t.Id=:id" automaticSynchronize="false">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__r1B4PtqEea3Y6_aXsHiNQ" name="id" type="OID" typeObject="_N1IYYNNqEeaZBpN3xqTI2g"/>
+      </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_hHQ24PtrEea3Y6_aXsHiNQ" name="getMatchByVisistantTeam" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="select m FROM MatchEN as m INNER JOIN m.Away as t where t.Id=:id" automaticSynchronize="false">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_rp5IIPtrEea3Y6_aXsHiNQ" name="id" type="OID" typeObject="_N1IYYNNqEeaZBpN3xqTI2g"/>
       </operations>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_6kI8wdgzEeaQu-KnU_rUbg" alias="idAway" associationOrigin="_6kI8wNgzEeaQu-KnU_rUbg" name="away" type="Object"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_02VscNgzEeaQu-KnU_rUbg" alias="idLocal" associationOrigin="_02CKcNgzEeaQu-KnU_rUbg" name="home" type="Object"/>
@@ -1477,6 +1484,13 @@
           <styles xmi:type="notation:FillStyle" xmi:id="_REcFI_lKEea4BMBLrnI2Ow"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_REcFJPlKEea4BMBLrnI2Ow"/>
         </children>
+        <children xmi:type="notation:Node" xmi:id="_C6F8YPtlEea3Y6_aXsHiNQ" type="3004" element="_C6Bq8PtlEea3Y6_aXsHiNQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_C6GjcPtlEea3Y6_aXsHiNQ" type="5004"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_C6F8YftlEea3Y6_aXsHiNQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_C6F8YvtlEea3Y6_aXsHiNQ" fontName="Segoe UI"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_C6F8Y_tlEea3Y6_aXsHiNQ"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C6F8ZPtlEea3Y6_aXsHiNQ"/>
+        </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_dCD4wdNuEeaZBpN3xqTI2g"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_dCD4wtNuEeaZBpN3xqTI2g"/>
       </children>
@@ -1750,6 +1764,20 @@
           <styles xmi:type="notation:FontStyle" xmi:id="_WaJQcvlIEea4BMBLrnI2Ow" fontName="Segoe UI"/>
           <styles xmi:type="notation:FillStyle" xmi:id="_WaJQc_lIEea4BMBLrnI2Ow"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WaJQdPlIEea4BMBLrnI2Ow"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_07UFoPtqEea3Y6_aXsHiNQ" type="3004" element="_07Mw4PtqEea3Y6_aXsHiNQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_07Uss_tqEea3Y6_aXsHiNQ" type="5004"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_07UFoftqEea3Y6_aXsHiNQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_07UssPtqEea3Y6_aXsHiNQ" fontName="Segoe UI"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_07UssftqEea3Y6_aXsHiNQ"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_07UssvtqEea3Y6_aXsHiNQ"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_hHVIUPtrEea3Y6_aXsHiNQ" type="3004" element="_hHQ24PtrEea3Y6_aXsHiNQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_hHVIVftrEea3Y6_aXsHiNQ" type="5004"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_hHVIUftrEea3Y6_aXsHiNQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_hHVIUvtrEea3Y6_aXsHiNQ" fontName="Segoe UI"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_hHVIU_trEea3Y6_aXsHiNQ"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hHVIVPtrEea3Y6_aXsHiNQ"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_0Ra16tkBEeaUt9gXjU7aig"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_0Ra169kBEeaUt9gXjU7aig"/>

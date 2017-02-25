@@ -52,5 +52,8 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> Ge
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium ();
 }
 }
