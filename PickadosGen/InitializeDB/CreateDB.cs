@@ -8,6 +8,8 @@ using System.Data;
 using PickadosGenNHibernate.EN.Pickados;
 using PickadosGenNHibernate.CEN.Pickados;
 using PickadosGenNHibernate.CAD.Pickados;
+using PickadosGenNHibernate.CP.Pickados;
+using PickadosGenNHibernate.Enumerated.Pickados;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -81,9 +83,20 @@ public static void InitializeData ()
 
 
                 TipsterCEN tipsterCEN = new TipsterCEN ();
-                int id = tipsterCEN.NewTipster ("rushverde",
+                int createdTipster = tipsterCEN.NewTipster ("rushverde",
                         "josearuol@gmail.com", "prueba", new DateTime (2017, 2, 25, 11, 0, 0),
                         new DateTime (2017, 2, 25, 11, 0, 0), false, 0);
+
+                //Publishing new post
+                PostCEN postCEN = new PostCEN();
+                PostCP postCP = new PostCP();
+                PickCEN pickCEN = new PickCEN();
+                Event_CEN eventCEN = new Event_CEN();
+                int eventId = eventCEN.NewEvent(new DateTime(2017, 10, 25, 11, 0, 0));
+                int pickId = pickCEN.NewPick(0, "desc", PickResultEnum.unstarted, "bookie", eventId);
+                List<int> picks_id = new List<int>();
+                picks_id.Add(pickId);
+                postCP.PublishPost(new DateTime(2017, 2, 25, 11, 0, 0), new DateTime(2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, createdTipster, PickResultEnum.unfinished);
 
                 /*PROTECTED REGION END*/
         }
