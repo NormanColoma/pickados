@@ -69,6 +69,7 @@ public static TipsterEN Convert (TipsterDTO dto)
                         newinstance.Password = dto.Password;
                         newinstance.Created_at = dto.Created_at;
                         newinstance.Updated_at = dto.Updated_at;
+                        newinstance.Nif = dto.Nif;
                 }
         }
         catch (Exception ex)

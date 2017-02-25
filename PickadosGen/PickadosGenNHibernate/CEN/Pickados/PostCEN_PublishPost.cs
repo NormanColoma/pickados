@@ -19,6 +19,8 @@ namespace PickadosGenNHibernate.CEN.Pickados
 {
 public partial class PostCEN
 {
+/*public PickadosGenNHibernate.EN.Pickados.PostEN PublishPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
+{*/
         /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_publishPost) ENABLED START*/
         public PickadosGenNHibernate.EN.Pickados.PostEN PublishPost (DateTime p_created_at, DateTime p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult, PickCEN pickCEN)
         {
@@ -44,3 +46,4 @@ public partial class PostCEN
         /*PROTECTED REGION END*/
 }
 }
+//}
