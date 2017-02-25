@@ -82,7 +82,7 @@ public static void InitializeData ()
 
                 TipsterCEN tipsterCEN = new TipsterCEN ();
                 int id = tipsterCEN.NewTipster ("rushverde",
-                        "josearuol@gmail.com", "prueba", new DateTime (2017,2,25,11,0,0), 
+                        "josearuol@gmail.com", "prueba", new DateTime (2017, 2, 25, 11, 0, 0),
                         new DateTime (2017, 2, 25, 11, 0, 0), false, 0);
 
                 /*PROTECTED REGION END*/
