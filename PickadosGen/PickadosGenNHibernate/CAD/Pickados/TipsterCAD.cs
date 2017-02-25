@@ -220,9 +220,10 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self ";
+                //String sql = @"FROM TipsterEN self where FROM TipsterEN";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowersHQL");
+                query.SetParameter ("p_oid", p_oid);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();
@@ -416,9 +417,10 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self ";
+                //String sql = @"FROM TipsterEN self where FROM TipsterEN";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowsHQL");
+                query.SetParameter ("p_oid", p_oid);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();
@@ -512,7 +514,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where SELECT tip FROM TipsterEN as tip, StatsEN as stat WHERE tip.id = stat.Tipster.id AND MONTH(stat.initialDate) = MONTH(:p_date)";
+                //String sql = @"FROM TipsterEN self where FROM TipsterEN";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetStatsByMonthHQL");
                 query.SetParameter ("p_date", p_date);

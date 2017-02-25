@@ -282,7 +282,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM PickEN self where FROM PickEN where pickResult := p_pickResult";
+                //String sql = @"FROM PickEN self where FROM PickEN where pickResult = :p_pickResult";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("PickENgetPicksByResultHQL");
 
