@@ -167,6 +167,9 @@ public void ModifyTipster (TipsterEN tipster)
                 tipsterEN.Updated_at = tipster.Updated_at;
 
 
+                tipsterEN.Nif = tipster.Nif;
+
+
                 tipsterEN.Premium = tipster.Premium;
 
 
@@ -214,16 +217,16 @@ public void DeleteTipster (int id
         }
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers (int ? p_oid)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers (int id)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where FROM TipsterEN";
+                //String sql = @"FROM TipsterEN self where select t1 FROM TipsterEN as t INNER JOIN t.Followed_by as t1 where t.Id=:id";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowersHQL");
-                query.SetParameter ("p_oid", p_oid);
+                query.SetParameter ("id", id);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();
@@ -411,16 +414,16 @@ public void AddFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> 
         }
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows (int ? p_oid)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows (int ? id)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where FROM TipsterEN";
+                //String sql = @"FROM TipsterEN self where select t1 FROM TipsterEN as t INNER JOIN t.Follow_to as t1 where t.Id=:id";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetFollowsHQL");
-                query.SetParameter ("p_oid", p_oid);
+                query.SetParameter ("id", id);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();
@@ -441,7 +444,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
 
         return result;
 }
-public void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs)
+public void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs)
 {
         try
         {
@@ -449,16 +452,16 @@ public void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<in
                 PickadosGenNHibernate.EN.Pickados.TipsterEN tipsterEN = null;
                 tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), p_Tipster_OID);
 
-                PickadosGenNHibernate.EN.Pickados.TipsterEN follow_toENAux = null;
-                if (tipsterEN.Follow_to != null) {
-                        foreach (int item in p_follow_to_OIDs) {
-                                follow_toENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
-                                if (tipsterEN.Follow_to.Contains (follow_toENAux) == true) {
-                                        tipsterEN.Follow_to.Remove (follow_toENAux);
-                                        follow_toENAux.Followed_by.Remove (tipsterEN);
+                PickadosGenNHibernate.EN.Pickados.TipsterEN followed_byENAux = null;
+                if (tipsterEN.Followed_by != null) {
+                        foreach (int item in p_followed_by_OIDs) {
+                                followed_byENAux = (PickadosGenNHibernate.EN.Pickados.TipsterEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TipsterEN), item);
+                                if (tipsterEN.Followed_by.Contains (followed_byENAux) == true) {
+                                        tipsterEN.Followed_by.Remove (followed_byENAux);
+                                        followed_byENAux.Follow_to.Remove (tipsterEN);
                                 }
                                 else
-                                        throw new ModelException ("The identifier " + item + " in p_follow_to_OIDs you are trying to unrelationer, doesn't exist in TipsterEN");
+                                        throw new ModelException ("The identifier " + item + " in p_followed_by_OIDs you are trying to unrelationer, doesn't exist in TipsterEN");
                         }
                 }
 
@@ -518,6 +521,35 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetStatsByMonthHQL");
                 query.SetParameter ("p_date", p_date);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TipsterEN self where FROM TipsterEN where Premium=true";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetTipstersPremiumHQL");
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();

@@ -47,6 +47,13 @@ private Nullable<DateTime> updated_at;
 
 
 
+/**
+ *	Atributo nif
+ */
+private string nif;
+
+
+
 
 
 
@@ -86,6 +93,12 @@ public virtual Nullable<DateTime> Updated_at {
 
 
 
+public virtual string Nif {
+        get { return nif; } set { nif = value;  }
+}
+
+
+
 
 
 public UsuarioEN()
@@ -94,20 +107,20 @@ public UsuarioEN()
 
 
 
-public UsuarioEN(int id, string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at
+public UsuarioEN(int id, string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at, string nif
                  )
 {
-        this.init (Id, alias, email, password, created_at, updated_at);
+        this.init (Id, alias, email, password, created_at, updated_at, nif);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (Id, usuario.Alias, usuario.Email, usuario.Password, usuario.Created_at, usuario.Updated_at);
+        this.init (Id, usuario.Alias, usuario.Email, usuario.Password, usuario.Created_at, usuario.Updated_at, usuario.Nif);
 }
 
 private void init (int id
-                   , string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at)
+                   , string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at, string nif)
 {
         this.Id = id;
 
@@ -121,6 +134,8 @@ private void init (int id
         this.Created_at = created_at;
 
         this.Updated_at = updated_at;
+
+        this.Nif = nif;
 }
 
 public override bool Equals (object obj)

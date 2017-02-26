@@ -213,6 +213,9 @@
 			
 			
 			
+			
+			<Compile Include="CEN\Pickados\UsuarioCEN_Login.cs" />
+			
 	<Compile Include="EN\Pickados\TipsterEN.cs" />
 	<Compile Include="CEN\Pickados\TipsterCEN.cs" />
 	<Compile Include="CAD\Pickados\ITipsterCAD.cs" />
@@ -233,6 +236,7 @@
 			
 			
 			<Compile Include="CEN\Pickados\TipsterCEN_BecomePremium.cs" />
+			
 			
 			
 	<Compile Include="EN\Pickados\AdminEN.cs" />
@@ -287,8 +291,10 @@
 			
 			
 			
+			<Compile Include="CEN\Pickados\MatchCEN_GetTotalMatchesByTeam.cs" />
 			
-			<Compile Include="CEN\Pickados\MatchCEN_GetMatchByCompetition.cs" />
+			
+			
 			
 	<Compile Include="EN\Pickados\ScorerEN.cs" />
 	<Compile Include="CEN\Pickados\ScorerCEN.cs" />

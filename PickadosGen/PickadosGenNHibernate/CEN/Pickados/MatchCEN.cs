@@ -107,9 +107,17 @@ public System.Collections.Generic.IList<MatchEN> GetAllMatches (int first, int s
         list = _IMatchCAD.GetAllMatches (first, size);
         return list;
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByTeam (string team)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition (int id)
 {
-        return _IMatchCAD.GetMatchByTeam (team);
+        return _IMatchCAD.GetMatchByCompetition (id);
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByLocalTeam (int id)
+{
+        return _IMatchCAD.GetMatchByLocalTeam (id);
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByVisistantTeam (int id)
+{
+        return _IMatchCAD.GetMatchByVisistantTeam (id);
 }
 }
 }

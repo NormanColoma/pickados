@@ -27,6 +27,9 @@
 		 
 				var updated_at: NSDate?;
 				    	 
+		 
+				var nif: String?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -67,6 +70,10 @@
 
 				
 					dictionary["updated_at"] = self.updated_at?.toString();
+				
+
+				
+					dictionary["nif"] = self.nif;
 				
 						
 				return dictionary;

@@ -31,6 +31,13 @@ MatchEN GetMatchById (int id
 System.Collections.Generic.IList<MatchEN> GetAllMatches (int first, int size);
 
 
-System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByTeam (string team);
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition (int id);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByLocalTeam (int id);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByVisistantTeam (int id);
 }
 }

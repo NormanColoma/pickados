@@ -210,7 +210,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Compet
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM CompetitionEN self where FROM CompetitionEN WHERE place = :place";
+                //String sql = @"FROM CompetitionEN self where FROM CompetitionEN WHERE Place = :place";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetCompetitionsByPlaceHQL");
                 query.SetParameter ("place", place);

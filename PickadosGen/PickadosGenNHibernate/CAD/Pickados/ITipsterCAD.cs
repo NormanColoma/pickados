@@ -24,7 +24,7 @@ void DeleteTipster (int id
                     );
 
 
-System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers (int ? p_oid);
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollowers (int id);
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPosts ();
@@ -41,10 +41,10 @@ System.Collections.Generic.IList<TipsterEN> GetAllTipsters (int first, int size)
 
 void AddFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
 
-System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows (int ? p_oid);
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetFollows (int ? id);
 
 
-void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_follow_to_OIDs);
+void DeleteFollow (int p_Tipster_OID, System.Collections.Generic.IList<int> p_followed_by_OIDs);
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersWithBenefit ();
@@ -52,5 +52,8 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> Ge
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium ();
 }
 }

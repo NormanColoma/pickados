@@ -80,10 +80,11 @@
 		 </joined-subclass>
 		  
 		  <query name="TipsterENReadAllHQL">from TipsterEN</query>
-		  <query name="TipsterENgetFollowersHQL"><![CDATA[FROM TipsterEN]]></query>
+		  <query name="TipsterENgetFollowersHQL"><![CDATA[select t1 FROM TipsterEN as t INNER JOIN t.Followed_by as t1 where t.Id=:id]]></query>
 		  <query name="TipsterENgetPostsHQL"><![CDATA[SELECT post FROM PostEN as post, TipsterEN as tipster WHERE post.Tipster.Id = tipster.Id ]]></query>
-		  <query name="TipsterENgetFollowsHQL"><![CDATA[FROM TipsterEN]]></query>
+		  <query name="TipsterENgetFollowsHQL"><![CDATA[select t1 FROM TipsterEN as t INNER JOIN t.Follow_to as t1 where t.Id=:id]]></query>
 		  <query name="TipsterENgetTipstersWithBenefitHQL"><![CDATA[FROM TipsterEN]]></query>
 		  <query name="TipsterENgetStatsByMonthHQL"><![CDATA[FROM TipsterEN]]></query>
+		  <query name="TipsterENgetTipstersPremiumHQL"><![CDATA[FROM TipsterEN where Premium=true]]></query>
 		</hibernate-mapping>
 	
