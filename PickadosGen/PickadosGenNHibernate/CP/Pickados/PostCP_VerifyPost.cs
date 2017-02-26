@@ -22,6 +22,7 @@ namespace PickadosGenNHibernate.CP.Pickados
 {
 public partial class PostCP : BasicCP
 {
+<<<<<<< HEAD:PickadosGen/PickadosGenNHibernate/CP/Pickados/PostCP_VerifyPost.cs
 public void VerifyPost (int p_oid)
 {
         /*PROTECTED REGION ID(PickadosGenNHibernate.CP.Pickados_Post_verifyPost) ENABLED START*/
@@ -35,6 +36,12 @@ public void VerifyPost (int p_oid)
 
 
         try
+=======
+/*public void VerifyPost (int p_oid)
+{*/
+        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_verifyPost) ENABLED START*/
+        public void VerifyPost (int p_oid, PostCEN postCEN, TipsterCEN tipsterCEN, StatsCEN statsCEN)
+>>>>>>> 6dc980770db69c50689fdfdba4b5fd29832270f0:PickadosGen/PickadosGenNHibernate/CEN/Pickados/PostCEN_VerifyPost.cs
         {
                 SessionInitializeTransaction ();
                 postCAD = new PostCAD (session);
@@ -164,4 +171,8 @@ public StatsEN updateStats (StatsEN stats, PostEN post)
 /*PROTECTED REGION END*/
 }
 }
+<<<<<<< HEAD:PickadosGen/PickadosGenNHibernate/CP/Pickados/PostCP_VerifyPost.cs
 
+=======
+//}
+>>>>>>> 6dc980770db69c50689fdfdba4b5fd29832270f0:PickadosGen/PickadosGenNHibernate/CEN/Pickados/PostCEN_VerifyPost.cs

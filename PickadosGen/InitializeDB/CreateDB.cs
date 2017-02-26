@@ -8,8 +8,6 @@ using System.Data;
 using PickadosGenNHibernate.EN.Pickados;
 using PickadosGenNHibernate.CEN.Pickados;
 using PickadosGenNHibernate.CAD.Pickados;
-using PickadosGenNHibernate.CP.Pickados;
-using PickadosGenNHibernate.Enumerated.Pickados;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -80,15 +78,6 @@ public static void InitializeData ()
         try
         {
                 // Insert the initilizations of entities using the CEN classes
-
-                //Creating competition
-                SportCEN sportCEN = new SportCEN ();
-                int sportId = sportCEN.NewSport ("Football");
-
-                CompetitionCEN competitionCEN = new CompetitionCEN ();
-                int competitionId = competitionCEN.NewCompetition ("La Liga", sportId, "Spain");
-
-                //Creating tipsters
                 Console.WriteLine ("------------ Creating new users ------------");
                 TipsterCEN nuevo = new TipsterCEN ();
                 AdminCEN admin = new AdminCEN ();
@@ -99,10 +88,6 @@ public static void InitializeData ()
                 int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "36924518Z", false, 0);
                 int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "56478912P", false, 0);
 
-                TipsterCEN tipsterCEN = new TipsterCEN ();
-                int createdTipster = tipsterCEN.NewTipster ("rushverde",
-                        "josearuol@gmail.com", "prueba", new DateTime (2017, 2, 25, 11, 0, 0),
-                        new DateTime (2017, 2, 25, 11, 0, 0), "12345678Z", false, 0);
                 admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N");
 
                 TipsterEN originalTipster = nuevo.GetTipsterById (tipster);
@@ -118,7 +103,7 @@ public static void InitializeData ()
                 followers.Add (newTipster.Id);
                 followers.Add (otherTipster.Id);
 
-                // Añadidos dos seguidores para el tipster 1
+                // Aï¿½adidos dos seguidores para el tipster 1
                 Console.WriteLine ("Adding two new followers for tipster 1");
                 nuevo.AddFollower (originalTipster.Id, followers);
 
@@ -131,7 +116,7 @@ public static void InitializeData ()
                 IList<TipsterEN> totalFollows2 = nuevo.GetFollows (newTipster.Id);
                 Console.WriteLine ("Tipster 2 has: " + totalFollows2.Count + " followers");
 
-                // Añadir otro seguidor al tipster 1
+                // Aï¿½adir otro seguidor al tipster 1
                 Console.WriteLine ("Added one more follower for tipster 1");
                 followers.Clear ();
                 followers.Add (lastTipster.Id);
@@ -160,93 +145,26 @@ public static void InitializeData ()
 
                 Console.WriteLine ("User montoro could login: " + user.Login ("montoro", "montoroPro").Id);
                 Console.WriteLine ("User montoro couldn't login: " + user.Login ("montoro", "montoroCola"));
-                Console.WriteLine("Converting tipster 1 to premium");
-                nuevo.BecomePremium(originalTipster.Id, 2.8);
-
-
-                //Publishing new post
-                PostCEN postCEN = new PostCEN ();
-                PostCP postCP = new PostCP ();
-                PickCEN pickCEN = new PickCEN ();
-                Event_CEN eventCEN = new Event_CEN ();
-                int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0));
-                int pickId = pickCEN.NewPick (0, "desc", PickResultEnum.unstarted, "bookie", eventId);
-                List<int> picks_id = new List<int>();
-                picks_id.Add (pickId);
-                postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, createdTipster, PickResultEnum.unfinished);
-
-                //Creating teams for including them into picks
-                TeamCEN teamCEN = new TeamCEN ();
-                int id_away = teamCEN.NewTeam ("Leganes", "Spain");
-                int id_home = teamCEN.NewTeam ("F.C.Barcelona", "Spain");
-
-                //Creating matchs  for including them into picks
-                MatchCEN matchCEN = new MatchCEN ();
-                int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), id_away, id_home, "Camp Nou");
-                eventCEN.JoinCompetition (id_match, competitionId);
-
-                //Creating picks
-                CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
-                int id_correctScore = correctScoreCEN.NewCorrectScore (10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
-                        "Bet365", id_match, 2, 1);
-                IList<int> picks = new List<int>();
-                picks.Add (id_correctScore);
-
-                //Creating new post for verify it later
-                int id_post = postCEN.NewPost (new DateTime (2017, 2, 19), new DateTime (2017, 2, 19), 1, "Va a ser un partido sufrido",
-                        false, picks, createdTipster, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
-
-                //Verifying post
-                postCP.VerifyPost (id_post);
-
-                //Creatning teams 
-                int team1 = teamCEN.NewTeam("SD Eibar", "Spain");
-                int team2 = teamCEN.NewTeam("Manchester united", "England");
-
-                int seleccion1 = teamCEN.NewTeam("Selección Española", "Spain");
-
-                //Creating players
-                PlayerCEN playerCEN = new PlayerCEN();
-                int player1 = playerCEN.NewPlayer("Yoel Rodríguez");
-                int player2 = playerCEN.NewPlayer("Gonzalo Escalante");
-                int player3 = playerCEN.NewPlayer("Fran Rico");
-
-                int player4 = playerCEN.NewPlayer("Ander Herrera");
-                int player5 = playerCEN.NewPlayer("Juan Mata");
-
-                //Associating players to clubs and nationals teams
-                PlayerCAD playerCAD = new PlayerCAD();
-                playerCAD.JoinClubTeam(player1, team1);
-                playerCAD.JoinClubTeam(player2, team1);
-                playerCAD.JoinClubTeam(player3, team1);
-
-                playerCAD.JoinClubTeam(player4, team2);
-                playerCAD.JoinClubTeam(player5, team2);
-
-                playerCAD.JoinNationalTeam(player4, seleccion1);
-                playerCAD.JoinNationalTeam(player5, seleccion1);
-
-                playerCAD.UnlinkClubTeam(player5, team2);
 
                 Console.WriteLine ("Converting tipster 1 to premium");
                 nuevo.BecomePremium (originalTipster.Id, 2.8);
 
                 Console.WriteLine ("There are " + nuevo.GetTipstersPremium ().Count + " premium tipsters");
 
-                // Añadimos datos a Equipos
+                // AÃ±adimos datos a Equipos
                 Console.WriteLine ("------------- Creating new teams -------------");
                 TeamCEN teams = new TeamCEN ();
-                team1 = teams.NewTeam ("Barcelona", "Catalunya");
+                int team1 = teams.NewTeam ("Barcelona", "Catalunya");
                 TeamEN equipo1 = teams.GetTeamById (team1);
                 Console.WriteLine ("New team: " + equipo1.Name);
-                team2 = teams.NewTeam ("Madrid", "Spain");
+                int team2 = teams.NewTeam ("Madrid", "Spain");
                 TeamEN equipo2 = teams.GetTeamById (team2);
                 Console.WriteLine ("New team: " + equipo2.Name);
                 int team3 = teams.NewTeam ("Juventus", "Italy");
                 TeamEN equipo3 = teams.GetTeamById (team3);
                 Console.WriteLine ("New team: " + equipo3.Name);
 
-                // Añdimos datos a Partidos
+                // AÃ±adimos datos a Partidos
                 Console.WriteLine ("------------- Creating new Matches -------------");
                 MatchCEN match = new MatchCEN ();
                 int match1 = match.NewMatch (new DateTime (2017, 4, 2), team2, team1, "Camp Nou");
