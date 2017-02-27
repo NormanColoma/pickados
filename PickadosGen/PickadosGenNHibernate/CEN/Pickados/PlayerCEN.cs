@@ -112,5 +112,9 @@ public System.Collections.Generic.IList<PlayerEN> GetAllPlayers (int first, int 
         list = _IPlayerCAD.GetAllPlayers (first, size);
         return list;
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByClubTeam (string p_ClubTeam_Name)
+{
+        return _IPlayerCAD.GetPlayersByClubTeam (p_ClubTeam_Name);
+}
 }
 }
