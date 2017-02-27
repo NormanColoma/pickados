@@ -375,5 +375,36 @@ public System.Collections.Generic.IList<PlayerEN> GetAllPlayers (int first, int 
 
         return result;
 }
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByClubTeam (string p_ClubTeam_Name)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PlayerEN self where SELECT p FROM PlayerEN as p INNER JOIN p.Club_team as t WHERE t.Name = :p_ClubTeam_Name";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PlayerENgetPlayersByClubTeamHQL");
+                query.SetParameter ("p_ClubTeam_Name", p_ClubTeam_Name);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PlayerEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

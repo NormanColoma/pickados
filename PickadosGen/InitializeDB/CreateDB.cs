@@ -21,7 +21,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -153,16 +153,30 @@ public static void InitializeData ()
 
                 // Añadimos datos a Equipos
                 Console.WriteLine ("------------- Creating new teams -------------");
-                TeamCEN teams = new TeamCEN ();
-                int team1 = teams.NewTeam ("Barcelona", "Catalunya");
-                TeamEN equipo1 = teams.GetTeamById (team1);
+                TeamCEN teamCEN = new TeamCEN ();
+                int team1 = teamCEN.NewTeam ("Barcelona", "Catalunya");
+                TeamEN equipo1 = teamCEN.GetTeamById (team1);
                 Console.WriteLine ("New team: " + equipo1.Name);
-                int team2 = teams.NewTeam ("Madrid", "Spain");
-                TeamEN equipo2 = teams.GetTeamById (team2);
+
+                int team2 = teamCEN.NewTeam ("Madrid", "Spain");
+                TeamEN equipo2 = teamCEN.GetTeamById (team2);
                 Console.WriteLine ("New team: " + equipo2.Name);
-                int team3 = teams.NewTeam ("Juventus", "Italy");
-                TeamEN equipo3 = teams.GetTeamById (team3);
+
+                int team3 = teamCEN.NewTeam ("Juventus", "Italy");
+                TeamEN equipo3 = teamCEN.GetTeamById (team3);
                 Console.WriteLine ("New team: " + equipo3.Name);
+
+                int team4 = teamCEN.NewTeam ("SD Eibar", "Spain");
+                TeamEN equipo4 = teamCEN.GetTeamById (team4);
+                Console.WriteLine ("New team: " + equipo4.Name);
+
+                int team5 = teamCEN.NewTeam ("Manchester united", "England");
+                TeamEN equipo5 = teamCEN.GetTeamById (team5);
+                Console.WriteLine ("New team: " + equipo5.Name);
+
+                int selection1 = teamCEN.NewTeam ("Selección Española", "Spain");
+                TeamEN seleccion1 = teamCEN.GetTeamById (selection1);
+                Console.WriteLine ("New team: " + seleccion1.Name);
 
                 // Añadimos datos a Partidos
                 Console.WriteLine ("------------- Creating new Matches -------------");
@@ -200,6 +214,60 @@ public static void InitializeData ()
                 Event_CEN evento = new Event_CEN ();
                 evento.JoinCompetition (match1, competition);
                 Console.WriteLine ("There are " + match.GetMatchByCompetition (competition).Count + " matches in Santander League");
+
+                Console.WriteLine ("--------------- Creating new Players -------------");
+                PlayerCEN playerCEN = new PlayerCEN ();
+                int player1 = playerCEN.NewPlayer ("Yoel Rodríguez");
+                PlayerEN jugador1 = playerCEN.GetPlayerById (player1);
+                Console.WriteLine ("New player: " + jugador1.Name);
+
+                int player2 = playerCEN.NewPlayer ("Gonzalo Escalante");
+                PlayerEN jugador2 = playerCEN.GetPlayerById (player2);
+                Console.WriteLine ("New player: " + jugador2.Name);
+
+                int player3 = playerCEN.NewPlayer ("Fran Rico");
+                PlayerEN jugador3 = playerCEN.GetPlayerById (player3);
+                Console.WriteLine ("New player: " + jugador3.Name);
+
+                int player4 = playerCEN.NewPlayer ("Ander Herrera");
+                PlayerEN jugador4 = playerCEN.GetPlayerById (player4);
+                Console.WriteLine ("New player: " + jugador4.Name);
+
+                int player5 = playerCEN.NewPlayer ("Juan Mata");
+                PlayerEN jugador5 = playerCEN.GetPlayerById (player5);
+                Console.WriteLine ("New player: " + jugador5.Name);
+
+                Console.WriteLine ("--------------- Join Player with Teams -------------");
+                PlayerCAD playerCAD = new PlayerCAD ();
+                playerCAD.JoinClubTeam (player1, team4);
+                Console.WriteLine ("The player " + jugador1.Name + " plays in " + equipo4.Name);
+
+                playerCAD.JoinClubTeam (player2, team4);
+                Console.WriteLine ("The player " + jugador2.Name + " plays in " + equipo4.Name);
+
+                playerCAD.JoinClubTeam (player3, team4);
+                Console.WriteLine ("The player " + jugador3.Name + " plays in " + equipo4.Name);
+
+                playerCAD.JoinClubTeam (player4, team5);
+                Console.WriteLine ("The player " + jugador4.Name + " plays in " + equipo5.Name);
+
+                playerCAD.JoinClubTeam (player5, team5);
+                Console.WriteLine ("The player " + jugador5.Name + " plays in " + equipo5.Name);
+
+                playerCAD.JoinNationalTeam (player4, selection1);
+                Console.WriteLine ("The player " + jugador2.Name + " plays in " + seleccion1.Name);
+
+                playerCAD.JoinNationalTeam (player5, selection1);
+                Console.WriteLine ("The player " + jugador5.Name + " plays in " + seleccion1.Name);
+
+                playerCAD.UnlinkClubTeam (player5, team5);
+                Console.WriteLine ("The player " + jugador5.Name + " doesn't play in " + equipo5.Name);
+
+                IList<PlayerEN> players1 = playerCAD.GetPlayersByClubTeam (equipo4.Name);
+                Console.WriteLine ("Players in " + equipo4.Name + ":");
+                foreach (var p in players1)
+                        Console.WriteLine ("- " + p.Name);
+
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)
