@@ -37,5 +37,8 @@ PlayerEN GetPlayerById (int id
 
 
 System.Collections.Generic.IList<PlayerEN> GetAllPlayers (int first, int size);
+
+
+System.Collections.Generic.IList<string> GetPlayersByClubTeam (string p_ClubTeam_Name);
 }
 }
