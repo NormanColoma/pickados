@@ -37,8 +37,5 @@ PlayerEN GetPlayerById (int id
 
 
 System.Collections.Generic.IList<PlayerEN> GetAllPlayers (int first, int size);
-
-
-System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByClubTeam (string p_ClubTeam_Name);
 }
 }

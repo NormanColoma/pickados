@@ -50,6 +50,5 @@
 		 </class>	
 		  
 		  <query name="PlayerENReadAllHQL">from PlayerEN</query>
-		  <query name="PlayerENgetPlayersByClubTeamHQL"><![CDATA[SELECT p FROM PlayerEN as p INNER JOIN p.Club_team as t WHERE t.Name = :p_ClubTeam_Name]]></query>
 		</hibernate-mapping>
 	

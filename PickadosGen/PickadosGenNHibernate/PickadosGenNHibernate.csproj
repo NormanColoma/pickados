@@ -271,7 +271,6 @@
 			
 			
 			
-			
 	<Compile Include="EN\Pickados\SportEN.cs" />
 	<Compile Include="CEN\Pickados\SportCEN.cs" />
 	<Compile Include="CAD\Pickados\ISportCAD.cs" />

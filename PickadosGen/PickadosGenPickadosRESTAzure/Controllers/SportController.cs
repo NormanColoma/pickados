@@ -119,12 +119,18 @@ public HttpResponseMessage getAllCompetition ()
 
 
                 // Convert return
-                if (sportEN != null) {
-                        returnValue = new List<CompetitionDTOA>();
-                        foreach (SportEN entry in sportEN)
-                                returnValue.Add (CompetitionAssembler.Convert (entry, session));
+                if (sportEN != null)
+                {
+                    returnValue = new List<CompetitionDTOA>();
+                    foreach (SportEN entry in sportEN)
+                    {
+                        foreach (CompetitionEN competition in entry.Competition)
+                        {
+                            returnValue.Add(CompetitionAssembler.Convert(competition, session));
+                        }
+                    }
                 }
-        }
+            }
 
         catch (Exception e)
         {
