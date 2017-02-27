@@ -116,5 +116,9 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Player
 {
         return _IPlayerCAD.GetPlayersByClubTeam (p_ClubTeam_Name);
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByNationalTeam (string p_NationalTeam_Name)
+{
+        return _IPlayerCAD.GetPlayersByNationalTeam (p_NationalTeam_Name);
+}
 }
 }
