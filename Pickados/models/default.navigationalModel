@@ -28,20 +28,20 @@
       </navAttribute>
       <referToClass xmi:type="es.ua.dlsi.ooh:Class" href="default.domainModel#_0RRr8NkBEeaUt9gXjU7aig"/>
     </navigationalElem>
-    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:TravesalLink" xmi:id="_7_z78PuSEeaFSooO_bwG1A" name="getAllCompetition" nodeOrigin="_VzhpIPq4EeawSe5rKoEsKw" nodeTarget="_w9Kt4PuSEeaFSooO_bwG1A"/>
+    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:TravesalLink" xmi:id="_7_z78PuSEeaFSooO_bwG1A" name="getAllCompetition" activationMode="Automatic" nodeOrigin="_VzhpIPq4EeawSe5rKoEsKw" nodeTarget="_w9Kt4PuSEeaFSooO_bwG1A"/>
     <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalClass" xmi:id="_FHrfYPuTEeaFSooO_bwG1A" name="Team" targetEnd="_IZfOYPuTEeaFSooO_bwG1A _JGBkQPuTEeaFSooO_bwG1A">
       <navAttribute xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalAttribute" xmi:id="_GBD-cPuTEeaFSooO_bwG1A" name="name">
         <referToAttribute xmi:type="es.ua.dlsi.ooh:Attribute" href="default.domainModel#_TbJlsNNqEeaZBpN3xqTI2g"/>
       </navAttribute>
       <referToClass xmi:type="es.ua.dlsi.ooh:Class" href="default.domainModel#_N1IYYNNqEeaZBpN3xqTI2g"/>
     </navigationalElem>
-    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:TravesalLink" xmi:id="_HKwKYPuTEeaFSooO_bwG1A" name="getAllEventOfCompetition" nodeOrigin="_w9Kt4PuSEeaFSooO_bwG1A" nodeTarget="_2mrUEPuSEeaFSooO_bwG1A">
+    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:TravesalLink" xmi:id="_HKwKYPuTEeaFSooO_bwG1A" name="getAllEventOfCompetition" activationMode="Automatic" nodeOrigin="_w9Kt4PuSEeaFSooO_bwG1A" nodeTarget="_2mrUEPuSEeaFSooO_bwG1A">
       <associationRol xmi:type="es.ua.dlsi.ooh:Attribute" href="default.domainModel#_TCHQEtNpEeaZBpN3xqTI2g"/>
     </navigationalElem>
-    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:TravesalLink" xmi:id="_IZfOYPuTEeaFSooO_bwG1A" name="getHomeOfEvent_home" nodeOrigin="_2mrUEPuSEeaFSooO_bwG1A" nodeTarget="_FHrfYPuTEeaFSooO_bwG1A">
+    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:TravesalLink" xmi:id="_IZfOYPuTEeaFSooO_bwG1A" name="getHomeOfEvent_home" activationMode="Automatic" nodeOrigin="_2mrUEPuSEeaFSooO_bwG1A" nodeTarget="_FHrfYPuTEeaFSooO_bwG1A">
       <associationRol xmi:type="es.ua.dlsi.ooh:Attribute" href="default.domainModel#_02VscNgzEeaQu-KnU_rUbg"/>
     </navigationalElem>
-    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:TravesalLink" xmi:id="_JGBkQPuTEeaFSooO_bwG1A" name="getAwayOfEvent_away" nodeOrigin="_2mrUEPuSEeaFSooO_bwG1A" nodeTarget="_FHrfYPuTEeaFSooO_bwG1A">
+    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:TravesalLink" xmi:id="_JGBkQPuTEeaFSooO_bwG1A" name="getAwayOfEvent_away" activationMode="Automatic" nodeOrigin="_2mrUEPuSEeaFSooO_bwG1A" nodeTarget="_FHrfYPuTEeaFSooO_bwG1A">
       <associationRol xmi:type="es.ua.dlsi.ooh:Attribute" href="default.domainModel#_6kI8wdgzEeaQu-KnU_rUbg"/>
     </navigationalElem>
     <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:ServiceLink" xmi:id="_ypK1UPuVEeaFSooO_bwG1A" name="index" nodeOrigin="_VzhpIPq4EeawSe5rKoEsKw" nodeTarget="_VzhpIPq4EeawSe5rKoEsKw" navOperation="_6t5oIPuSEeaFSooO_bwG1A" expectedReturnValue="index" operationName="getAllSports"/>

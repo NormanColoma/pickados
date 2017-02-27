@@ -28,6 +28,11 @@ public class SportDTOA extends DTOA
 	public void setName (String name) { this.name = name; }
 	
 	
+	/* GetAll: Competition */
+	private ArrayList<CompetitionDTOA> getAllCompetition;
+	public ArrayList<CompetitionDTOA> getGetAllCompetition () { return getAllCompetition; }
+	public void setGetAllCompetition (ArrayList<CompetitionDTOA> getAllCompetition) { this.getAllCompetition = getAllCompetition; }
+
 	
 	
 	// endregion
@@ -59,6 +64,20 @@ public class SportDTOA extends DTOA
 			 
 			}
 			
+
+			JSONArray arrayGetAllCompetition = json.optJSONArray("GetAllCompetition");
+			if (arrayGetAllCompetition != null)
+			{
+				this.getAllCompetition = new ArrayList<CompetitionDTOA>();
+				for (int i = 0; i < arrayGetAllCompetition.length(); ++i)
+				{
+					JSONObject subJson = (JSONObject) arrayGetAllCompetition.opt(i);
+					CompetitionDTOA tmp = new CompetitionDTOA();
+					tmp.setFromJSON(subJson);
+					this.getAllCompetition.add(tmp);
+				}
+			}
+
 			
 		}
 		catch (Exception e)
@@ -82,6 +101,17 @@ public class SportDTOA extends DTOA
 			json.put("Name", this.name);
 		
 			
+
+			if (this.getAllCompetition != null)
+			{
+				JSONArray jsonArray = new JSONArray();
+				for (int i = 0; i < this.getAllCompetition.size(); ++i)
+				{
+					jsonArray.put(this.getAllCompetition.get(i).toJSON());
+				}
+				json.put("GetAllCompetition", jsonArray);
+			}
+
 			
 		}
 		catch (JSONException e)

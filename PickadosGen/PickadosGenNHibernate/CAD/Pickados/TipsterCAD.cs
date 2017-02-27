@@ -511,16 +511,17 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
 
         return result;
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date, int ? p_oid)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where FROM TipsterEN";
+                //String sql = @"FROM TipsterEN self where select s FROM StatsEN as s INNER JOIN s.Tipster as t where t.Id = :p_oid and month(s.InitialDate) = month(:p_date)";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetStatsByMonthHQL");
                 query.SetParameter ("p_date", p_date);
+                query.SetParameter ("p_oid", p_oid);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();

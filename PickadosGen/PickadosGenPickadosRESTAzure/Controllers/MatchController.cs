@@ -34,64 +34,6 @@ public class MatchController : BasicController
 
 
 
-[HttpGet]
-
-
-
-[Route ("~/api/Match/{idMatch}/GetAllEventOfCompetition/")]
-
-public HttpResponseMessage GetAllEventOfCompetition (int idCompetition)
-{
-        // CAD, EN
-        CompetitionRESTCAD competitionRESTCAD = null;
-        CompetitionEN competitionEN = null;
-
-        // returnValue
-        List<MatchEN> en = null;
-        List<MatchDTOA> returnValue = null;
-
-        try
-        {
-                SessionInitializeWithoutTransaction ();
-                competitionRESTCAD = new CompetitionRESTCAD (session);
-
-                // Exists Competition
-                competitionEN = competitionRESTCAD.ReadOIDDefault (idCompetition);
-                if (competitionEN == null) throw new HttpResponseException (this.Request.CreateResponse (HttpStatusCode.NotFound, "Competition#" + idCompetition + " not found"));
-
-                // Rol
-                // TODO: paginación
-
-
-                en = competitionRESTCAD.GetAllEventOfCompetition (idCompetition).ToList ();
-
-                // Convert return
-                if (en != null) {
-                        returnValue = new List<MatchDTOA>();
-                        foreach (MatchEN entry in en)
-                                returnValue.Add (MatchAssembler.Convert (entry, session));
-                }
-        }
-
-        catch (Exception e)
-        {
-                if (e.GetType () == typeof(HttpResponseException)) throw e;
-                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
-                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
-        }
-        finally
-        {
-                SessionClose ();
-        }
-
-        // Return 204 - Empty
-        if (returnValue == null || returnValue.Count == 0)
-                return this.Request.CreateResponse (HttpStatusCode.NoContent);
-        // Return 200 - OK
-        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
-}
-
-
 
 
 

@@ -424,8 +424,9 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_z0PE8NpREeaRm9CNUEVRDg" name="p_oid" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4guCMNpREeaRm9CNUEVRDg" name="fee" type="Double"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_REXMoPlKEea4BMBLrnI2Ow" name="getStatsByMonth" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="FROM TipsterEN" automaticSynchronize="false">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_REXMoPlKEea4BMBLrnI2Ow" name="getStatsByMonth" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="select s FROM StatsEN as s INNER JOIN s.Tipster as t where t.Id = :p_oid and month(s.InitialDate) = month(:p_date)" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_c2xDsPlKEea4BMBLrnI2Ow" name="p_date" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_FPOGIP0lEeaPse79Ou_vjA" name="p_oid" type="Integer"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_C6Bq8PtlEea3Y6_aXsHiNQ" name="getTipstersPremium" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="FROM TipsterEN where Premium=true" automaticSynchronize="false"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_bgvkEdN7Eeadlco1x1sS6g" alias="idMonthlyStats" aggregation="Composite" lower="0" upper="*" associationOrigin="_bgvkENN7Eeadlco1x1sS6g" name="monthlyStats" type="Object" collectionType="List"/>

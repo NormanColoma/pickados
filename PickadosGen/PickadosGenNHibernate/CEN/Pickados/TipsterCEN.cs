@@ -143,9 +143,9 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
 {
         return _ITipsterCAD.GetTipstersWithBenefit ();
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date, int ? p_oid)
 {
-        return _ITipsterCAD.GetStatsByMonth (p_date);
+        return _ITipsterCAD.GetStatsByMonth (p_date, p_oid);
 }
 public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium ()
 {

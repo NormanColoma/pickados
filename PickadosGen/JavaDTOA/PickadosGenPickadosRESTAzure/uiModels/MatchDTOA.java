@@ -32,6 +32,16 @@ public class MatchDTOA extends DTOA
 	public void setDate (java.util.Date date) { this.date = date; }
 	
 	
+	/* Rol: Match o--> Team */
+	private TeamDTOA getHomeOfEvent_home;
+	public TeamDTOA getGetHomeOfEvent_home () { return getHomeOfEvent_home; }
+	public void setGetHomeOfEvent_home (TeamDTOA getHomeOfEvent_home) { this.getHomeOfEvent_home = getHomeOfEvent_home; }
+
+	/* Rol: Match o--> Team */
+	private TeamDTOA getAwayOfEvent_away;
+	public TeamDTOA getGetAwayOfEvent_away () { return getAwayOfEvent_away; }
+	public void setGetAwayOfEvent_away (TeamDTOA getAwayOfEvent_away) { this.getAwayOfEvent_away = getAwayOfEvent_away; }
+
 	
 	
 	// endregion
@@ -71,6 +81,24 @@ public class MatchDTOA extends DTOA
 			 
 			}
 			
+
+			JSONObject jsonGetHomeOfEvent_home = json.optJSONObject("GetHomeOfEvent_home");
+			if (jsonGetHomeOfEvent_home != null)
+			{
+				TeamDTOA tmp = new TeamDTOA();
+				tmp.setFromJSON(jsonGetHomeOfEvent_home);
+				this.getHomeOfEvent_home = tmp;
+			}
+
+
+			JSONObject jsonGetAwayOfEvent_away = json.optJSONObject("GetAwayOfEvent_away");
+			if (jsonGetAwayOfEvent_away != null)
+			{
+				TeamDTOA tmp = new TeamDTOA();
+				tmp.setFromJSON(jsonGetAwayOfEvent_away);
+				this.getAwayOfEvent_away = tmp;
+			}
+
 			
 		}
 		catch (Exception e)
@@ -98,6 +126,18 @@ public class MatchDTOA extends DTOA
 			json.put("Date", DateUtils.dateToFormatString(this.date));
 		
 			
+
+			if (this.getHomeOfEvent_home != null)
+			{
+				json.put("GetHomeOfEvent_home", this.getHomeOfEvent_home.toJSON());
+			}
+
+
+			if (this.getAwayOfEvent_away != null)
+			{
+				json.put("GetAwayOfEvent_away", this.getAwayOfEvent_away.toJSON());
+			}
+
 			
 		}
 		catch (JSONException e)
@@ -125,6 +165,8 @@ public class MatchDTOA extends DTOA
 		
 		
 		// Roles
+					// TODO: from DTOA [ GetHomeOfEvent_home ] (dataType : TeamDTOA) to DTO [ Home ]
+					// TODO: from DTOA [ GetAwayOfEvent_away ] (dataType : TeamDTOA) to DTO [ Away ]
 		
 		
 		return dto;

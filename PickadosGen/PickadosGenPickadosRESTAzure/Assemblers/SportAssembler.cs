@@ -37,6 +37,15 @@ public static SportDTOA Convert (SportEN en, NHibernate.ISession session = null)
                 //
                 // TravesalLink
 
+                /* GetAll: Competition */
+                dto.GetAllCompetition = null;
+                List<CompetitionEN> getAllCompetition_list = new CompetitionCAD (session).ReadAllDefault (0, -1).ToList ();
+                if (getAllCompetition_list != null) {
+                        dto.GetAllCompetition = new List<CompetitionDTOA>();
+                        foreach (CompetitionEN entry in getAllCompetition_list)
+                                dto.GetAllCompetition.Add (CompetitionAssembler.Convert (entry, session));
+                }
+
 
                 //
                 // Service

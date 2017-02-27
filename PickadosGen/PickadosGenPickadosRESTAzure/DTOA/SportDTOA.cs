@@ -22,5 +22,14 @@ public string Name
         get { return name; }
         set { name = value; }
 }
+
+
+/* GetAll: Competition */
+private IList<CompetitionDTOA> getAllCompetition;
+public IList<CompetitionDTOA> GetAllCompetition
+{
+        get { return getAllCompetition; }
+        set { getAllCompetition = value; }
+}
 }
 }
