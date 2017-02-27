@@ -15,6 +15,9 @@ class SportDTOA : DTOA
 	
 	var name: String?;
 	
+	/* GetAll: Competition */
+	var getAllCompetition: [CompetitionDTOA]?;
+
 	
 	
 	
@@ -37,6 +40,15 @@ class SportDTOA : DTOA
 	
 		self.name = json["Name"].object as? String;
 		
+		if (json["GetAllCompetition"] != JSON.null)
+		{
+			self.getAllCompetition = [];
+			for subJson in json["GetAllCompetition"].arrayValue
+			{
+				self.getAllCompetition!.append(CompetitionDTOA(fromJSONObject: subJson));
+			}
+		}
+
 		
 	}
 	
@@ -53,6 +65,18 @@ class SportDTOA : DTOA
 	
 	
 		
+		dictionary["GetAllCompetition"] = NSNull();
+		if (self.getAllCompetition != nil)
+		{
+			var arrayOfDictionary: [[String : AnyObject]] = [];
+			for item in self.getAllCompetition!
+			{
+				arrayOfDictionary.append(item.toDictionary());
+			}
+			
+			dictionary["GetAllCompetition"] = arrayOfDictionary;
+		}
+
 		
 		
 		return dictionary;

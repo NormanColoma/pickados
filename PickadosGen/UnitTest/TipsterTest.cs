@@ -363,12 +363,12 @@ namespace UnitTest
         {
             var mockCADtipster = new Mock<ITipsterCAD>();
 
-            mockCADtipster.Setup(mock => mock.GetStatsByMonth(It.IsAny<DateTime>())).Throws(new ModelException());
+            mockCADtipster.Setup(mock => mock.GetStatsByMonth(It.IsAny<DateTime>(), It.IsAny<int>())).Throws(new ModelException());
 
             TipsterCEN tipsterCEN = new TipsterCEN(mockCADtipster.Object);
             try
             {
-                tipsterCEN.GetStatsByMonth(It.IsAny<DateTime>());
+                tipsterCEN.GetStatsByMonth(It.IsAny<DateTime>(), It.IsAny<int>());
                 Assert.Fail("Should throw model exception");
             }
             catch (Exception actualException)

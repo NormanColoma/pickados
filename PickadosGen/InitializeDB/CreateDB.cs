@@ -8,6 +8,8 @@ using System.Data;
 using PickadosGenNHibernate.EN.Pickados;
 using PickadosGenNHibernate.CEN.Pickados;
 using PickadosGenNHibernate.CAD.Pickados;
+using PickadosGenNHibernate.CP.Pickados;
+using PickadosGenNHibernate.Enumerated.Pickados;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -21,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -260,7 +262,7 @@ public static void InitializeData ()
                 playerCAD.JoinNationalTeam (player5, selection1);
                 Console.WriteLine ("The player " + jugador5.Name + " plays in " + seleccion1.Name);
 
-                Console.WriteLine("--------------- Unlink Player with Teams -------------");
+                Console.WriteLine ("--------------- Unlink Player with Teams -------------");
                 playerCAD.UnlinkClubTeam (player5, team5);
                 Console.WriteLine ("The player " + jugador5.Name + " doesn't play in " + equipo5.Name);
 
@@ -276,6 +278,33 @@ public static void InitializeData ()
                 Console.WriteLine ("Players in " + seleccion1.Name + ":");
                 foreach (var p in players2)
                         Console.WriteLine ("- " + p.Name);
+
+                //Publishing new post
+                PostCEN postCEN = new PostCEN ();
+                PostCP postCP = new PostCP ();
+                PickCEN pickCEN = new PickCEN ();
+                Event_CEN eventCEN = new Event_CEN ();
+                int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0));
+                int pickId = pickCEN.NewPick (0, "desc", PickResultEnum.unstarted, "bookie", eventId);
+                List < int > picks_id = new List<int>();
+                picks_id.Add (pickId);
+                postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster2, PickResultEnum.unfinished);
+
+
+                MatchCEN matchCEN = new MatchCEN ();
+                int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), team1, team5, "Camp Nou");
+                eventCEN.JoinCompetition (id_match, competition);
+
+                CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
+                int id_correctScore = correctScoreCEN.NewCorrectScore (10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
+                        "Bet365", id_match, 2, 1);
+                IList < int > picks = new List<int>();
+                picks.Add (id_correctScore);
+
+                int id_post = postCEN.NewPost (new DateTime (2017, 2, 19), new DateTime (2017, 2, 19), 1, "Va a ser un partido sufrido",
+                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
+
+                postCP.VerifyPost (id_post);
 
                 /*PROTECTED REGION END*/
         }

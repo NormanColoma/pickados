@@ -92,66 +92,6 @@ public HttpResponseMessage Index ()
 
 
 
-// ReadAll Generado a partir de un traversal link
-[HttpGet]
-
-
-public HttpResponseMessage getAllCompetition ()
-{
-        // CAD, CEN, EN, returnValue
-        SportRESTCAD sportRESTCAD = null;
-
-        List<SportEN> sportEN = null;
-        List<CompetitionDTOA> returnValue = null;
-
-        try
-        {
-                SessionInitializeWithoutTransaction ();
-                sportRESTCAD = new SportRESTCAD (session);
-
-                // Data
-                // TODO: paginación
-
-
-
-                sportEN = sportRESTCAD.ReadAllDefault (0, -1).ToList ();
-
-
-
-                // Convert return
-                if (sportEN != null)
-                {
-                    returnValue = new List<CompetitionDTOA>();
-                    foreach (SportEN entry in sportEN)
-                    {
-                        foreach (CompetitionEN competition in entry.Competition)
-                        {
-                            returnValue.Add(CompetitionAssembler.Convert(competition, session));
-                        }
-                    }
-                }
-            }
-
-        catch (Exception e)
-        {
-                if (e.GetType () == typeof(HttpResponseException)) throw e;
-                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
-                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
-        }
-        finally
-        {
-                SessionClose ();
-        }
-
-        // Return 204 - Empty
-        if (returnValue == null || returnValue.Count == 0)
-                return this.Request.CreateResponse (HttpStatusCode.NoContent);
-        // Return 200 - OK
-        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
-}
-
-
-
 
 
 

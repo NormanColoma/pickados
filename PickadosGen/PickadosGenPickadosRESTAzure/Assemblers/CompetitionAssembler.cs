@@ -38,6 +38,15 @@ public static CompetitionDTOA Convert (CompetitionEN en, NHibernate.ISession ses
                 //
                 // TravesalLink
 
+                /* Rol: Competition o--> Match */
+                dto.GetAllEventOfCompetition = null;
+                List<MatchEN> GetAllEventOfCompetition = competitionRESTCAD.GetAllEventOfCompetition (en.Id).ToList ();
+                if (GetAllEventOfCompetition != null) {
+                        dto.GetAllEventOfCompetition = new List<MatchDTOA>();
+                        foreach (MatchEN entry in GetAllEventOfCompetition)
+                                dto.GetAllEventOfCompetition.Add (MatchAssembler.Convert (entry, session));
+                }
+
 
                 //
                 // Service

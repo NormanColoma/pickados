@@ -29,5 +29,22 @@ public Nullable<DateTime> Date
         get { return date; }
         set { date = value; }
 }
+
+
+/* Rol: Match o--> Team */
+private TeamDTOA getHomeOfEvent_home;
+public TeamDTOA GetHomeOfEvent_home
+{
+        get { return getHomeOfEvent_home; }
+        set { getHomeOfEvent_home = value; }
+}
+
+/* Rol: Match o--> Team */
+private TeamDTOA getAwayOfEvent_away;
+public TeamDTOA GetAwayOfEvent_away
+{
+        get { return getAwayOfEvent_away; }
+        set { getAwayOfEvent_away = value; }
+}
 }
 }

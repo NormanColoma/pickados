@@ -29,5 +29,14 @@ public string Place
         get { return place; }
         set { place = value; }
 }
+
+
+/* Rol: Competition o--> Match */
+private IList<MatchDTOA> getAllEventOfCompetition;
+public IList<MatchDTOA> GetAllEventOfCompetition
+{
+        get { return getAllEventOfCompetition; }
+        set { getAllEventOfCompetition = value; }
+}
 }
 }

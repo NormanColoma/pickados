@@ -16,6 +16,12 @@ class MatchDTOA : DTOA
 	var stadium: String?;
 	var date: NSDate?;
 	
+	/* Rol: Match o--> Team */
+	var getHomeOfEvent_home: TeamDTOA?;
+
+	/* Rol: Match o--> Team */
+	var getAwayOfEvent_away: TeamDTOA?;
+
 	
 	
 	
@@ -40,6 +46,16 @@ class MatchDTOA : DTOA
 	
 		self.date = NSDate.initFromString(json["Date"].object as? String);
 		
+		if (json["GetHomeOfEvent_home"] != JSON.null)
+		{
+			self.getHomeOfEvent_home = TeamDTOA(fromJSONObject: json["GetHomeOfEvent_home"]);
+		}
+
+		if (json["GetAwayOfEvent_away"] != JSON.null)
+		{
+			self.getAwayOfEvent_away = TeamDTOA(fromJSONObject: json["GetAwayOfEvent_away"]);
+		}
+
 		
 	}
 	
@@ -61,6 +77,10 @@ class MatchDTOA : DTOA
 	
 	
 		
+		dictionary["GetHomeOfEvent_home"] = self.getHomeOfEvent_home?.toDictionary() ?? NSNull();
+
+		dictionary["GetAwayOfEvent_away"] = self.getAwayOfEvent_away?.toDictionary() ?? NSNull();
+
 		
 		
 		return dictionary;

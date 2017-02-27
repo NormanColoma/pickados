@@ -38,6 +38,12 @@ public static MatchDTOA Convert (MatchEN en, NHibernate.ISession session = null)
                 //
                 // TravesalLink
 
+                /* Rol: Match o--> Team */
+                dto.GetHomeOfEvent_home = TeamAssembler.Convert (en.Home, session);
+
+                /* Rol: Match o--> Team */
+                dto.GetAwayOfEvent_away = TeamAssembler.Convert (en.Away, session);
+
 
                 //
                 // Service
