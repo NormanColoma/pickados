@@ -220,6 +220,11 @@
 		<Compile Include="Assemblers\TeamAssembler.cs" />
 		<Compile Include="Controllers\TeamController.cs" />
 		
+		<Compile Include="CAD\PostRESTCAD.cs" />
+		<Compile Include="DTOA\PostDTOA.cs" />
+		<Compile Include="Assemblers\PostAssembler.cs" />
+		<Compile Include="Controllers\PostController.cs" />
+		
 	
 	
 	
@@ -240,7 +245,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">

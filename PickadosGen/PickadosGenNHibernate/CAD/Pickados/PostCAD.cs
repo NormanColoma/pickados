@@ -299,5 +299,36 @@ public int NewPost (PostEN post)
 
         return post.Id;
 }
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetAllPostsByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? postResult)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PostEN self where FROM PostEN where postResult = :postResult";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PostENgetAllPostsByResultHQL");
+                query.SetParameter ("postResult", postResult);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PostEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PostCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

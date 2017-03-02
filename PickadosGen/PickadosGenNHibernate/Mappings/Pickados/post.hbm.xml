@@ -73,5 +73,6 @@
 		 </class>	
 		  
 		  <query name="PostENReadAllHQL">from PostEN</query>
+		  <query name="PostENgetAllPostsByResultHQL"><![CDATA[FROM PostEN where postResult = :postResult]]></query>
 		</hibernate-mapping>
 	

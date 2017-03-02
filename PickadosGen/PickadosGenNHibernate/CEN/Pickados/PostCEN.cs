@@ -127,5 +127,10 @@ public int NewPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modifi
         oid = _IPostCAD.NewPost (postEN);
         return oid;
 }
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetAllPostsByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? postResult)
+{
+        return _IPostCAD.GetAllPostsByResult (postResult);
+}
 }
 }

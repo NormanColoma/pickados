@@ -33,5 +33,7 @@ System.Collections.Generic.IList<PostEN> GetAllPosts (int first, int size);
 
 
 int NewPost (PostEN post);
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetAllPostsByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? postResult);
 }
 }
