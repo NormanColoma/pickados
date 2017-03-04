@@ -230,6 +230,11 @@
 		<Compile Include="Assemblers\PostAssembler.cs" />
 		<Compile Include="Controllers\PostController.cs" />
 		
+		<Compile Include="CAD\PlayerRESTCAD.cs" />
+		<Compile Include="DTOA\PlayerDTOA.cs" />
+		<Compile Include="Assemblers\PlayerAssembler.cs" />
+		<Compile Include="Controllers\PlayerController.cs" />
+		
 	
 	
 	

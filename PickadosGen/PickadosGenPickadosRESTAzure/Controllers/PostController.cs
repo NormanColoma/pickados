@@ -38,9 +38,7 @@ public class PostController : BasicController
 
 
 
-
-
-[Route ("~/api/Post/GetAllPostOfTipster")]
+[Route ("~/api/Post/{idPost}/GetAllPostOfTipster/")]
 
 public HttpResponseMessage GetAllPostOfTipster (int idTipster)
 {
