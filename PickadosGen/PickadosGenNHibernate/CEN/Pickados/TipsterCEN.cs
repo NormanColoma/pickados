@@ -151,5 +151,17 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
 {
         return _ITipsterCAD.GetTipstersPremium ();
 }
+public PickadosGenNHibernate.EN.Pickados.TipsterEN FindByUser (string alias)
+{
+        return _ITipsterCAD.FindByUser (alias);
+}
+public PickadosGenNHibernate.EN.Pickados.TipsterEN FindByMail (string email)
+{
+        return _ITipsterCAD.FindByMail (email);
+}
+public PickadosGenNHibernate.EN.Pickados.TipsterEN FindByNIF (string nif)
+{
+        return _ITipsterCAD.FindByNIF (nif);
+}
 }
 }

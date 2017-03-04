@@ -11,18 +11,18 @@ using PickadosGenNHibernate.EN.Pickados;
 using PickadosGenNHibernate.CAD.Pickados;
 
 
-/*PROTECTED REGION ID(usingPickadosGenNHibernate.CEN.Pickados_Usuario_Login) ENABLED START*/
+/*PROTECTED REGION ID(usingPickadosGenNHibernate.CEN.Pickados_Tipster_login) ENABLED START*/
 //  references to other libraries
 using System.Security.Cryptography;
 /*PROTECTED REGION END*/
 
 namespace PickadosGenNHibernate.CEN.Pickados
 {
-public partial class UsuarioCEN
+public partial class TipsterCEN
 {
-public PickadosGenNHibernate.EN.Pickados.UsuarioEN Login (string user, string pass)
+public PickadosGenNHibernate.EN.Pickados.TipsterEN Login (string user, string pass)
 {
-        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Usuario_Login) ENABLED START*/
+        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_login) ENABLED START*/
 
         // Write here your custom code...
         string codedPass;
@@ -43,6 +43,7 @@ public PickadosGenNHibernate.EN.Pickados.UsuarioEN Login (string user, string pa
                 }
         }
         return null;
+
         //throw new NotImplementedException ("Method Login() not yet implemented.");
 
         /*PROTECTED REGION END*/

@@ -278,37 +278,5 @@ public System.Collections.Generic.IList<UsuarioEN> GetAllUsers (int first, int s
 
         return result;
 }
-
-public PickadosGenNHibernate.EN.Pickados.UsuarioEN FindByUser (string user)
-{
-        PickadosGenNHibernate.EN.Pickados.UsuarioEN result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM UsuarioEN self where FROM UsuarioEN where Alias=:user";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENfindByUserHQL");
-                query.SetParameter ("user", user);
-
-
-                result = query.UniqueResult<PickadosGenNHibernate.EN.Pickados.UsuarioEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
 }
 }

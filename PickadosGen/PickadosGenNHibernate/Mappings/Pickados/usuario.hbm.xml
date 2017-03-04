@@ -49,6 +49,5 @@
 		 </class>	
 		  
 		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
-		  <query name="UsuarioENfindByUserHQL"><![CDATA[FROM UsuarioEN where Alias=:user]]></query>
 		</hibernate-mapping>
 	

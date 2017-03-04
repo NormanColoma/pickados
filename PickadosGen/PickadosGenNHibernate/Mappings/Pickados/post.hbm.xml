@@ -73,5 +73,6 @@
 		 </class>	
 		  
 		  <query name="PostENReadAllHQL">from PostEN</query>
+		  <query name="PostENfindPostsByTipsterHQL"><![CDATA[select p FROM PostEN as p INNER JOIN p.Tipster t where t.Id = :id]]></query>
 		</hibernate-mapping>
 	

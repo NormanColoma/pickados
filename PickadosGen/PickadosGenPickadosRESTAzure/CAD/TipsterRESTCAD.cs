@@ -25,5 +25,40 @@ public TipsterRESTCAD(ISession sessionAux)
         : base (sessionAux)
 {
 }
+
+
+
+public IList<PostEN> GetAllPostOfTipster (int id)
+{
+        IList<PostEN> result = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+
+                String sql = @"select self.Post FROM TipsterEN self " +
+                             "where self.Id = :p_Id";
+                IQuery query = session.CreateQuery (sql).SetParameter ("p_Id", id);
+
+
+                result = query.List<PostEN>();
+
+                SessionCommit ();
+        }
+
+        catch (Exception ex)
+        {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException) throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterRESTCAD.", ex);
+        }
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

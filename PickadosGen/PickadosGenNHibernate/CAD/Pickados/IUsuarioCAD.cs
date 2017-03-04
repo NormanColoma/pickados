@@ -29,8 +29,5 @@ UsuarioEN GetUserById (int id
 
 
 System.Collections.Generic.IList<UsuarioEN> GetAllUsers (int first, int size);
-
-
-PickadosGenNHibernate.EN.Pickados.UsuarioEN FindByUser (string user);
 }
 }
