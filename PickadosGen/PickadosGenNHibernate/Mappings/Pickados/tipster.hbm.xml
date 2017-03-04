@@ -90,4 +90,3 @@
 		  <query name="TipsterENfindByMailHQL"><![CDATA[select t FROM TipsterEN as t where email = :email]]></query>
 		  <query name="TipsterENfindByNIFHQL"><![CDATA[select t FROM TipsterEN as t where nif= :nif]]></query>
 		</hibernate-mapping>
-	

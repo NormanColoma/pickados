@@ -51,6 +51,7 @@ public class UsuarioController : BasicController
 
 
 
+<<<<<<< HEAD
 [HttpPost]
 
 [Route ("~/api/Usuario/Login")]
@@ -98,6 +99,8 @@ public HttpResponseMessage Login (string user, string pass)
 
 
 
+=======
+>>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
 
 
 

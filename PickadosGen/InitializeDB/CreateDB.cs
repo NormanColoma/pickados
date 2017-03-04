@@ -23,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -176,6 +176,14 @@ public static void InitializeData ()
                 TeamEN equipo5 = teamCEN.GetTeamById (team5);
                 Console.WriteLine ("New team: " + equipo5.Name);
 
+                int team6 = teamCEN.NewTeam ("Barça Basket", "Spain");
+                TeamEN equipo6 = teamCEN.GetTeamById (team6);
+                Console.WriteLine ("New team: " + equipo6.Name);
+
+                int team7 = teamCEN.NewTeam ("Gran Canaria Basket", "Spain");
+                TeamEN equipo7 = teamCEN.GetTeamById (team7);
+                Console.WriteLine ("New team: " + equipo7.Name);
+
                 int selection1 = teamCEN.NewTeam ("Selección Española", "Spain");
                 TeamEN seleccion1 = teamCEN.GetTeamById (selection1);
                 Console.WriteLine ("New team: " + seleccion1.Name);
@@ -188,6 +196,9 @@ public static void InitializeData ()
                 Console.WriteLine ("New match in: " + partido1.Stadium);
                 int match2 = match.NewMatch (new DateTime (2017, 3, 17), team1, team3, "Juventus Stadium");
                 MatchEN partido2 = match.GetMatchById (match2);
+                Console.WriteLine ("New match in: " + partido2.Stadium);
+                int match3 = match.NewMatch (new DateTime (2017, 3, 30), team6, team7, "Palau");
+                MatchEN partido3 = match.GetMatchById (match3);
                 Console.WriteLine ("New match in: " + partido2.Stadium);
 
                 Console.WriteLine ("Local and Visistant matches");
@@ -205,17 +216,23 @@ public static void InitializeData ()
                 SportCEN sport = new SportCEN ();
                 int newSport = sport.NewSport ("Football");
                 Console.WriteLine ("Football created");
+                int newSport2 = sport.NewSport ("Basketball");
+                Console.WriteLine ("Basketball created");
 
                 Console.WriteLine ("--------------- Creating new Competition -------------");
                 CompetitionCEN competi = new CompetitionCEN ();
                 int competition = competi.NewCompetition ("Santander League", newSport, "Spain");
                 Console.WriteLine ("Santander League created");
                 Console.WriteLine ("There are " + competi.GetCompetitionsByPlace ("Spain").Count + " competitions in Spain");
+                int competition2 = competi.NewCompetition ("ACB", newSport2, "Spain");
 
                 Console.WriteLine ("Joining Barcelona-Madrid to Santander League");
                 Event_CEN evento = new Event_CEN ();
                 evento.JoinCompetition (match1, competition);
                 Console.WriteLine ("There are " + match.GetMatchByCompetition (competition).Count + " matches in Santander League");
+
+                evento.JoinCompetition (match3, competition2);
+                Console.WriteLine ("There are " + match.GetMatchByCompetition (competition2).Count + " matches in ACB");
 
                 Console.WriteLine ("--------------- Creating new Players -------------");
                 PlayerCEN playerCEN = new PlayerCEN ();

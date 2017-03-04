@@ -15,7 +15,7 @@ using PickadosGenNHibernate.CEN.Pickados;
 using PickadosGenNHibernate.CP.Pickados;
 
 
-/*PROTECTED REGION ID(usingPickadosGenPickadosRESTAzure_SportControllerAzure) ENABLED START*/
+/*PROTECTED REGION ID(usingPickadosGenPickadosRESTAzure_Sport_2ControllerAzure) ENABLED START*/
 // Meter las referencias para las operaciones que invoquen a las CPs
 /*PROTECTED REGION END*/
 
@@ -23,8 +23,8 @@ using PickadosGenNHibernate.CP.Pickados;
 
 namespace PickadosGenPickadosRESTAzure.Controllers
 {
-[RoutePrefix ("~/api/Sport")]
-public class SportController : BasicController
+[RoutePrefix ("~/api/Sport_2")]
+public class Sport_2Controller : BasicController
 {
 // Voy a generar el readAll
 
@@ -33,21 +33,21 @@ public class SportController : BasicController
 // ReadAll Generado a partir del NavigationalOperation
 [HttpGet]
 
-[Route ("~/api/Sport/GetAllSports")]
+[Route ("~/api/Sport_2/GetAllSports")]
 public HttpResponseMessage GetAllSports ()
 {
         // CAD, CEN, EN, returnValue
-        SportRESTCAD sportRESTCAD = null;
+        Sport_2RESTCAD sport_2RESTCAD = null;
         SportCEN sportCEN = null;
 
         List<SportEN> sportEN = null;
-        List<SportDTOA> returnValue = null;
+        List<Sport_2DTOA> returnValue = null;
 
         try
         {
                 SessionInitializeWithoutTransaction ();
-                sportRESTCAD = new SportRESTCAD (session);
-                sportCEN = new SportCEN (sportRESTCAD);
+                sport_2RESTCAD = new Sport_2RESTCAD (session);
+                sportCEN = new SportCEN (sport_2RESTCAD);
 
                 // Data
                 // TODO: paginación
@@ -56,9 +56,9 @@ public HttpResponseMessage GetAllSports ()
 
                 // Convert return
                 if (sportEN != null) {
-                        returnValue = new List<SportDTOA>();
+                        returnValue = new List<Sport_2DTOA>();
                         foreach (SportEN entry in sportEN)
-                                returnValue.Add (SportAssembler.Convert (entry, session));
+                                returnValue.Add (Sport_2Assembler.Convert (entry, session));
                 }
         }
 
@@ -104,7 +104,7 @@ public HttpResponseMessage GetAllSports ()
 
 
 
-/*PROTECTED REGION ID(PickadosGenPickadosRESTAzure_SportControllerAzure) ENABLED START*/
+/*PROTECTED REGION ID(PickadosGenPickadosRESTAzure_Sport_2ControllerAzure) ENABLED START*/
 // Meter las operaciones que invoquen a las CPs
 /*PROTECTED REGION END*/
 }
