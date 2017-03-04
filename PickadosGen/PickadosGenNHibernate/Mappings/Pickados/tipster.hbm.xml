@@ -86,5 +86,8 @@
 		  <query name="TipsterENgetTipstersWithBenefitHQL"><![CDATA[FROM TipsterEN]]></query>
 		  <query name="TipsterENgetStatsByMonthHQL"><![CDATA[select s FROM StatsEN as s INNER JOIN s.Tipster as t where t.Id = :p_oid and month(s.InitialDate) = month(:p_date)]]></query>
 		  <query name="TipsterENgetTipstersPremiumHQL"><![CDATA[FROM TipsterEN where Premium=true]]></query>
+		  <query name="TipsterENfindByUserHQL"><![CDATA[select t FROM TipsterEN as t where alias = :alias]]></query>
+		  <query name="TipsterENfindByMailHQL"><![CDATA[select t FROM TipsterEN as t where email = :email]]></query>
+		  <query name="TipsterENfindByNIFHQL"><![CDATA[select t FROM TipsterEN as t where nif= :nif]]></query>
 		</hibernate-mapping>
 	

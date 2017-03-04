@@ -103,9 +103,5 @@ public System.Collections.Generic.IList<UsuarioEN> GetAllUsers (int first, int s
         list = _IUsuarioCAD.GetAllUsers (first, size);
         return list;
 }
-public PickadosGenNHibernate.EN.Pickados.UsuarioEN FindByUser (string user)
-{
-        return _IUsuarioCAD.FindByUser (user);
-}
 }
 }

@@ -23,6 +23,30 @@ public class TipsterDTOA extends DTOA
 	public void setId (Integer id) { this.id = id; }
 
 	
+	private String alias;
+	public String getAlias () { return alias; }
+	public void setAlias (String alias) { this.alias = alias; }
+	
+	private String email;
+	public String getEmail () { return email; }
+	public void setEmail (String email) { this.email = email; }
+	
+	private java.util.Date created_at;
+	public java.util.Date getCreated_at () { return created_at; }
+	public void setCreated_at (java.util.Date created_at) { this.created_at = created_at; }
+	
+	private Boolean premium;
+	public Boolean getPremium () { return premium; }
+	public void setPremium (Boolean premium) { this.premium = premium; }
+	
+	private Double subscription_fee;
+	public Double getSubscription_fee () { return subscription_fee; }
+	public void setSubscription_fee (Double subscription_fee) { this.subscription_fee = subscription_fee; }
+	
+	private String nif;
+	public String getNif () { return nif; }
+	public void setNif (String nif) { this.nif = nif; }
+	
 	
 	
 	
@@ -47,6 +71,50 @@ public class TipsterDTOA extends DTOA
 				this.id = (Integer) json.opt("Id");
 			}
 			
+
+			if (!JSONObject.NULL.equals(json.opt("Alias")))
+			{
+			 
+				this.alias = (String) json.opt("Alias");
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Email")))
+			{
+			 
+				this.email = (String) json.opt("Email");
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Created_at")))
+			{
+			 
+			 	String stringDate = (String) json.opt("Created_at");
+				this.created_at = DateUtils.stringToDateFormat(stringDate);
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Premium")))
+			{
+			 
+				this.premium = (Boolean) json.opt("Premium");
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Subscription_fee")))
+			{
+			 
+			 	String stringDouble = String.valueOf(json.opt("Subscription_fee"));
+ 				this.subscription_fee = Double.parseDouble(stringDouble);
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Nif")))
+			{
+			 
+				this.nif = (String) json.opt("Nif");
+			 
+			}
 			
 			
 		}
@@ -66,6 +134,30 @@ public class TipsterDTOA extends DTOA
 				json.put("Id", this.id);
 			}
 			
+		
+		  if (this.alias != null)
+			json.put("Alias", this.alias);
+		
+		
+		  if (this.email != null)
+			json.put("Email", this.email);
+		
+		
+		  if (this.created_at != null)
+			json.put("Created_at", DateUtils.dateToFormatString(this.created_at));
+		
+		
+		  if (this.premium != null)
+			json.put("Premium", this.premium);
+		
+		
+		  if (this.subscription_fee != null)
+			json.put("Subscription_fee", this.subscription_fee);
+		
+		
+		  if (this.nif != null)
+			json.put("Nif", this.nif);
+		
 			
 			
 		}
@@ -87,6 +179,18 @@ public class TipsterDTOA extends DTOA
 	dto.setId (this.getId());
 
 		
+	dto.setAlias (this.getAlias());
+
+	dto.setEmail (this.getEmail());
+
+	dto.setCreated_at (this.getCreated_at());
+
+	dto.setPremium (this.getPremium());
+
+	dto.setSubscription_fee (this.getSubscription_fee());
+
+	dto.setNif (this.getNif());
+
 		
 		
 		// Roles

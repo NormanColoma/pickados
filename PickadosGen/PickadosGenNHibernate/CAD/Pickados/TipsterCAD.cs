@@ -571,5 +571,98 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
 
         return result;
 }
+public PickadosGenNHibernate.EN.Pickados.TipsterEN FindByUser (string alias)
+{
+        PickadosGenNHibernate.EN.Pickados.TipsterEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TipsterEN self where select t FROM TipsterEN as t where alias = :alias";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENfindByUserHQL");
+                query.SetParameter ("alias", alias);
+
+
+                result = query.UniqueResult<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public PickadosGenNHibernate.EN.Pickados.TipsterEN FindByMail (string email)
+{
+        PickadosGenNHibernate.EN.Pickados.TipsterEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TipsterEN self where select t FROM TipsterEN as t where email = :email";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENfindByMailHQL");
+                query.SetParameter ("email", email);
+
+
+                result = query.UniqueResult<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public PickadosGenNHibernate.EN.Pickados.TipsterEN FindByNIF (string nif)
+{
+        PickadosGenNHibernate.EN.Pickados.TipsterEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TipsterEN self where select t FROM TipsterEN as t where nif= :nif";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENfindByNIFHQL");
+                query.SetParameter ("nif", nif);
+
+
+                result = query.UniqueResult<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

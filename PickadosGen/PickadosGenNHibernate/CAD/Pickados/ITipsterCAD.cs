@@ -55,5 +55,16 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> Ge
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium ();
+
+
+PickadosGenNHibernate.EN.Pickados.TipsterEN FindByUser (string alias);
+
+
+
+
+PickadosGenNHibernate.EN.Pickados.TipsterEN FindByMail (string email);
+
+
+PickadosGenNHibernate.EN.Pickados.TipsterEN FindByNIF (string nif);
 }
 }
