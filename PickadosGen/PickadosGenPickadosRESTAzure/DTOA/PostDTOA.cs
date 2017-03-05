@@ -50,5 +50,14 @@ public double TotalOdd
         get { return totalOdd; }
         set { totalOdd = value; }
 }
+
+
+/* Rol: Post o--> Pick */
+private IList<PickDTOA> getAllPickOfPost;
+public IList<PickDTOA> GetAllPickOfPost
+{
+        get { return getAllPickOfPost; }
+        set { getAllPickOfPost = value; }
+}
 }
 }

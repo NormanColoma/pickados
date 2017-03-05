@@ -41,6 +41,15 @@ public static PostDTOA Convert (PostEN en, NHibernate.ISession session = null)
                 //
                 // TravesalLink
 
+                /* Rol: Post o--> Pick */
+                dto.GetAllPickOfPost = null;
+                List<PickEN> GetAllPickOfPost = postRESTCAD.GetAllPickOfPost (en.Id).ToList ();
+                if (GetAllPickOfPost != null) {
+                        dto.GetAllPickOfPost = new List<PickDTOA>();
+                        foreach (PickEN entry in GetAllPickOfPost)
+                                dto.GetAllPickOfPost.Add (PickAssembler.Convert (entry, session));
+                }
+
 
                 //
                 // Service

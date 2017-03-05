@@ -299,10 +299,10 @@ public static void InitializeData ()
                 //Publishing new post
                 PostCEN postCEN = new PostCEN ();
                 PostCP postCP = new PostCP ();
-                PickCEN pickCEN = new PickCEN ();
+                ResultCEN resultCEN = new ResultCEN();
                 Event_CEN eventCEN = new Event_CEN ();
                 int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0));
-                int pickId = pickCEN.NewPick (0, "desc", PickResultEnum.unstarted, "bookie", eventId);
+                int pickId = resultCEN.NewResult (2,"Gana Local",PickResultEnum.unstarted,"Kirolbet",match1,ResultEnum.home,TimeEnum.fulltime);
                 List < int > picks_id = new List<int>();
                 picks_id.Add (pickId);
                 postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster2, PickResultEnum.unfinished);

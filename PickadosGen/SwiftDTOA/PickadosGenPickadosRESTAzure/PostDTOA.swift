@@ -19,6 +19,9 @@ class PostDTOA : DTOA
 	var stake: Double?;
 	var totalOdd: Double?;
 	
+	/* Rol: Post o--> Pick */
+	var getAllPickOfPost: [PickDTOA]?;
+
 	
 	
 	
@@ -49,6 +52,15 @@ class PostDTOA : DTOA
 		self.stake = json["Stake"].object as? Double;
 		self.totalOdd = json["TotalOdd"].object as? Double;
 		
+		if (json["GetAllPickOfPost"] != JSON.null)
+		{
+			self.getAllPickOfPost = [];
+			for subJson in json["GetAllPickOfPost"].arrayValue
+			{
+				self.getAllPickOfPost!.append(PickDTOA(fromJSONObject: subJson));
+			}
+		}
+
 		
 	}
 	
@@ -85,6 +97,18 @@ class PostDTOA : DTOA
 	
 	
 		
+		dictionary["GetAllPickOfPost"] = NSNull();
+		if (self.getAllPickOfPost != nil)
+		{
+			var arrayOfDictionary: [[String : AnyObject]] = [];
+			for item in self.getAllPickOfPost!
+			{
+				arrayOfDictionary.append(item.toDictionary());
+			}
+			
+			dictionary["GetAllPickOfPost"] = arrayOfDictionary;
+		}
+
 		
 		
 		return dictionary;
