@@ -106,7 +106,7 @@
       <HintPath>..\ServiceLib\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
-
+        
   <ItemGroup>
     <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
 		<SpecificVersion>False</SpecificVersion>
@@ -151,7 +151,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-
+    
 	<Compile Include="DTO\PickDTO.cs" />
 	<Compile Include="AssemblersDTO\PickAssemblerDTO.cs" />
 	<Compile Include="DTO\Event_DTO.cs" />
@@ -192,54 +192,54 @@
 	<Compile Include="AssemblersDTO\WincastAssemblerDTO.cs" />
 	<Compile Include="DTO\TimecastDTO.cs" />
 	<Compile Include="AssemblersDTO\TimecastAssemblerDTO.cs" />
+	
 
-
-
-
-
-
+    
+	
+	
+	
 	<Compile Include="Controllers\BasicController.cs" />
-
-		<Compile Include="CAD\SportRESTCAD.cs" />
-		<Compile Include="DTOA\SportDTOA.cs" />
-		<Compile Include="Assemblers\SportAssembler.cs" />
-		<Compile Include="Controllers\SportController.cs" />
-
+	
 		<Compile Include="CAD\CompetitionRESTCAD.cs" />
 		<Compile Include="DTOA\CompetitionDTOA.cs" />
 		<Compile Include="Assemblers\CompetitionAssembler.cs" />
 		<Compile Include="Controllers\CompetitionController.cs" />
-
+		
 		<Compile Include="CAD\MatchRESTCAD.cs" />
 		<Compile Include="DTOA\MatchDTOA.cs" />
 		<Compile Include="Assemblers\MatchAssembler.cs" />
 		<Compile Include="Controllers\MatchController.cs" />
-
+		
 		<Compile Include="CAD\TeamRESTCAD.cs" />
 		<Compile Include="DTOA\TeamDTOA.cs" />
 		<Compile Include="Assemblers\TeamAssembler.cs" />
 		<Compile Include="Controllers\TeamController.cs" />
-
+		
 		<Compile Include="CAD\TipsterRESTCAD.cs" />
 		<Compile Include="DTOA\TipsterDTOA.cs" />
 		<Compile Include="Assemblers\TipsterAssembler.cs" />
 		<Compile Include="Controllers\TipsterController.cs" />
-
+		
 		<Compile Include="CAD\PostRESTCAD.cs" />
 		<Compile Include="DTOA\PostDTOA.cs" />
 		<Compile Include="Assemblers\PostAssembler.cs" />
 		<Compile Include="Controllers\PostController.cs" />
-
+		
 		<Compile Include="CAD\PlayerRESTCAD.cs" />
 		<Compile Include="DTOA\PlayerDTOA.cs" />
 		<Compile Include="Assemblers\PlayerAssembler.cs" />
 		<Compile Include="Controllers\PlayerController.cs" />
+		
+		<Compile Include="CAD\SportRESTCAD.cs" />
+		<Compile Include="DTOA\SportDTOA.cs" />
+		<Compile Include="Assemblers\SportAssembler.cs" />
+		<Compile Include="Controllers\SportController.cs" />
+		
+	
+	
+	
 
-
-
-
-
-
+    
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -254,8 +254,8 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" />
+  
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
@@ -274,7 +274,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

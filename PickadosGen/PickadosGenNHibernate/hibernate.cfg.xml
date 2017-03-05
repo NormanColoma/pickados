@@ -14,4 +14,4 @@
 			    
 			    <property name="show_sql">false</property>
 			  </session-factory>
-</hibernate-configuration>
+			</hibernate-configuration>
