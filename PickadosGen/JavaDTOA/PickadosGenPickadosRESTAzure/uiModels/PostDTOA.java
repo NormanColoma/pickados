@@ -44,6 +44,11 @@ public class PostDTOA extends DTOA
 	public void setTotalOdd (Double totalOdd) { this.totalOdd = totalOdd; }
 	
 	
+	/* Rol: Post o--> Pick */
+	private ArrayList<PickDTOA> getAllPickOfPost;
+	public ArrayList<PickDTOA> getGetAllPickOfPost () { return getAllPickOfPost; }
+	public void setGetAllPickOfPost (ArrayList<PickDTOA> getAllPickOfPost) { this.getAllPickOfPost = getAllPickOfPost; }
+
 	
 	
 	// endregion
@@ -106,6 +111,20 @@ public class PostDTOA extends DTOA
 			 
 			}
 			
+
+			JSONArray arrayGetAllPickOfPost = json.optJSONArray("GetAllPickOfPost");
+			if (arrayGetAllPickOfPost != null)
+			{
+				this.getAllPickOfPost = new ArrayList<PickDTOA>();
+				for (int i = 0; i < arrayGetAllPickOfPost.length(); ++i)
+				{
+					JSONObject subJson = (JSONObject) arrayGetAllPickOfPost.opt(i);
+					PickDTOA tmp = new PickDTOA();
+					tmp.setFromJSON(subJson);
+					this.getAllPickOfPost.add(tmp);
+				}
+			}
+
 			
 		}
 		catch (Exception e)
@@ -145,6 +164,17 @@ public class PostDTOA extends DTOA
 			json.put("TotalOdd", this.totalOdd);
 		
 			
+
+			if (this.getAllPickOfPost != null)
+			{
+				JSONArray jsonArray = new JSONArray();
+				for (int i = 0; i < this.getAllPickOfPost.size(); ++i)
+				{
+					jsonArray.put(this.getAllPickOfPost.get(i).toJSON());
+				}
+				json.put("GetAllPickOfPost", jsonArray);
+			}
+
 			
 		}
 		catch (JSONException e)
@@ -178,6 +208,7 @@ public class PostDTOA extends DTOA
 		
 		
 		// Roles
+					// TODO: from DTOA [ GetAllPickOfPost ] (dataType : ArrayList<PickDTOA>) to DTO [ Pick ]
 		
 		
 		return dto;

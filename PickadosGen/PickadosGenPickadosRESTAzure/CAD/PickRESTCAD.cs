@@ -14,14 +14,14 @@ using PickadosGenNHibernate.CEN.Pickados;
 
 namespace PickadosGenPickadosRESTAzure.CAD
 {
-public class TipsterRESTCAD : TipsterCAD
+public class PickRESTCAD : PickCAD
 {
-public TipsterRESTCAD()
+public PickRESTCAD()
         : base ()
 {
 }
 
-public TipsterRESTCAD(ISession sessionAux)
+public PickRESTCAD(ISession sessionAux)
         : base (sessionAux)
 {
 }

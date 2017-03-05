@@ -235,6 +235,11 @@
 		<Compile Include="Assemblers\SportAssembler.cs" />
 		<Compile Include="Controllers\SportController.cs" />
 		
+		<Compile Include="CAD\PickRESTCAD.cs" />
+		<Compile Include="DTOA\PickDTOA.cs" />
+		<Compile Include="Assemblers\PickAssembler.cs" />
+		<Compile Include="Controllers\PickController.cs" />
+		
 	
 	
 	

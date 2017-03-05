@@ -34,40 +34,49 @@ public class PostController : BasicController
 
 
 
+
+
+
+
+
+
+// No pasa el slEnables: findPostsByTipster
+
 [HttpGet]
 
+[Route ("~/api/Post/FindPostsByTipster")]
 
-
-[Route ("~/api/Post/{idPost}/GetAllPostOfTipster/")]
-
-public HttpResponseMessage GetAllPostOfTipster (int idTipster)
+public HttpResponseMessage FindPostsByTipster (int id)
 {
-        // CAD, EN
-        TipsterRESTCAD tipsterRESTCAD = null;
-        TipsterEN tipsterEN = null;
+        // CAD, CEN, EN, returnValue
 
-        // returnValue
-        List<PostEN> en = null;
-        List<PostDTOA> returnValue = null;
+        PostRESTCAD postRESTCAD = null;
+        PostCEN postCEN = null;
+
+
+        System.Collections.Generic.List<PostEN> en;
+
+        System.Collections.Generic.List<PostDTOA> returnValue = null;
 
         try
         {
                 SessionInitializeWithoutTransaction ();
-                tipsterRESTCAD = new TipsterRESTCAD (session);
 
-                // Exists Tipster
-                tipsterEN = tipsterRESTCAD.ReadOIDDefault (idTipster);
-                if (tipsterEN == null) throw new HttpResponseException (this.Request.CreateResponse (HttpStatusCode.NotFound, "Tipster#" + idTipster + " not found"));
+                postRESTCAD = new PostRESTCAD (session);
+                postCEN = new PostCEN (postRESTCAD);
 
-                // Rol
-                // TODO: paginación
+                // CEN return
 
 
-                en = tipsterRESTCAD.GetAllPostOfTipster (idTipster).ToList ();
+
+                en = postCEN.FindPostsByTipster (id).ToList ();
+
+
+
 
                 // Convert return
                 if (en != null) {
-                        returnValue = new List<PostDTOA>();
+                        returnValue = new System.Collections.Generic.List<PostDTOA>();
                         foreach (PostEN entry in en)
                                 returnValue.Add (PostAssembler.Convert (entry, session));
                 }
@@ -90,13 +99,6 @@ public HttpResponseMessage GetAllPostOfTipster (int idTipster)
         // Return 200 - OK
         else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
 }
-
-
-
-
-
-
-
 
 
 
