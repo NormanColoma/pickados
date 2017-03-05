@@ -23,10 +23,13 @@ public class UsuarioDTOA extends DTOA
 	public void setId (Integer id) { this.id = id; }
 
 	
+<<<<<<< HEAD
 	private String nif;
 	public String getNif () { return nif; }
 	public void setNif (String nif) { this.nif = nif; }
 	
+=======
+>>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
 	
 	
 	
@@ -51,6 +54,7 @@ public class UsuarioDTOA extends DTOA
 				this.id = (Integer) json.opt("Id");
 			}
 			
+<<<<<<< HEAD
 
 			if (!JSONObject.NULL.equals(json.opt("Nif")))
 			{
@@ -58,6 +62,8 @@ public class UsuarioDTOA extends DTOA
 				this.nif = (String) json.opt("Nif");
 			 
 			}
+=======
+>>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
 			
 			
 		}
@@ -77,10 +83,13 @@ public class UsuarioDTOA extends DTOA
 				json.put("Id", this.id);
 			}
 			
+<<<<<<< HEAD
 		
 		  if (this.nif != null)
 			json.put("Nif", this.nif);
 		
+=======
+>>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
 			
 			
 		}
@@ -102,8 +111,11 @@ public class UsuarioDTOA extends DTOA
 	dto.setId (this.getId());
 
 		
+<<<<<<< HEAD
 	dto.setNif (this.getNif());
 
+=======
+>>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
 		
 		
 		// Roles

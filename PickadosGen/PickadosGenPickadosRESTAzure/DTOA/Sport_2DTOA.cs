@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace PickadosGenPickadosRESTAzure.DTOA
 {
-public class SportDTOA
+public class Sport_2DTOA
 {
 private int id;
 public int Id
@@ -24,7 +24,7 @@ public string Name
 }
 
 
-/* Rol: Sport o--> Competition */
+/* Rol: Sport_2 o--> Competition */
 private IList<CompetitionDTOA> getAllCompetitionOfSport;
 public IList<CompetitionDTOA> GetAllCompetitionOfSport
 {

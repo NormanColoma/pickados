@@ -54,6 +54,7 @@ public class CompetitionController : BasicController
 
 
 
+
 /*PROTECTED REGION ID(PickadosGenPickadosRESTAzure_CompetitionControllerAzure) ENABLED START*/
 // Meter las operaciones que invoquen a las CPs
 /*PROTECTED REGION END*/

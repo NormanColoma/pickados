@@ -200,11 +200,6 @@
 	
 	<Compile Include="Controllers\BasicController.cs" />
 	
-		<Compile Include="CAD\SportRESTCAD.cs" />
-		<Compile Include="DTOA\SportDTOA.cs" />
-		<Compile Include="Assemblers\SportAssembler.cs" />
-		<Compile Include="Controllers\SportController.cs" />
-		
 		<Compile Include="CAD\CompetitionRESTCAD.cs" />
 		<Compile Include="DTOA\CompetitionDTOA.cs" />
 		<Compile Include="Assemblers\CompetitionAssembler.cs" />
@@ -235,6 +230,11 @@
 		<Compile Include="Assemblers\PlayerAssembler.cs" />
 		<Compile Include="Controllers\PlayerController.cs" />
 		
+		<Compile Include="CAD\SportRESTCAD.cs" />
+		<Compile Include="DTOA\SportDTOA.cs" />
+		<Compile Include="Assemblers\SportAssembler.cs" />
+		<Compile Include="Controllers\SportController.cs" />
+		
 	
 	
 	
@@ -255,7 +255,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
