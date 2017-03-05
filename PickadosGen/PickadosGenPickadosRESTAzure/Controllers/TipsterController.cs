@@ -233,82 +233,6 @@ public HttpResponseMessage GetTipstersPremium (  )
 
 
 
-[HttpPut]
-[Route ("~/api/Tipster/AddFollower")]
-public HttpResponseMessage AddFollower (int p_tipster_oid, System.Collections.Generic.IList<int> p_followed_by_oids)
-{
-        // CAD, CEN, returnValue
-        TipsterRESTCAD tipsterRESTCAD = null;
-        TipsterCEN tipsterCEN = null;
-
-        try
-        {
-                SessionInitializeTransaction ();
-                tipsterRESTCAD = new TipsterRESTCAD (session);
-                tipsterCEN = new TipsterCEN (tipsterRESTCAD);
-
-                // Relationer
-                tipsterCEN.AddFollower (p_tipster_oid, p_followed_by_oids);
-                SessionCommit ();
-        }
-
-        catch (Exception e)
-        {
-                SessionRollBack ();
-
-                if (e.GetType () == typeof(HttpResponseException)) throw e;
-                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
-                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
-        }
-        finally
-        {
-                SessionClose ();
-        }
-
-        // Return 200 - OK
-        return this.Request.CreateResponse (HttpStatusCode.OK);
-}
-
-
-
-[HttpPut]
-[Route ("~/api/Tipster/DeleteFollow")]
-public HttpResponseMessage DeleteFollow (int p_tipster_oid, System.Collections.Generic.IList<int> p_followed_by_oids)
-{
-        // CAD, CEN, returnValue
-        TipsterRESTCAD tipsterRESTCAD = null;
-        TipsterCEN tipsterCEN = null;
-
-        try
-        {
-                SessionInitializeTransaction ();
-                tipsterRESTCAD = new TipsterRESTCAD (session);
-                tipsterCEN = new TipsterCEN (tipsterRESTCAD);
-
-                // UnRelationer
-                tipsterCEN.DeleteFollow (p_tipster_oid, p_followed_by_oids);
-                SessionCommit ();
-        }
-
-        catch (Exception e)
-        {
-                SessionRollBack ();
-
-                if (e.GetType () == typeof(HttpResponseException)) throw e;
-                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
-                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
-        }
-        finally
-        {
-                SessionClose ();
-        }
-
-        // Return 200 - OK
-        return this.Request.CreateResponse (HttpStatusCode.OK);
-}
-
-
-
 
 [HttpPost]
 
@@ -420,6 +344,92 @@ public HttpResponseMessage Registration (string alias, string nif, string email,
 
                 // Operation
                 returnValue = tipsterCEN.Registration (alias, nif, email, pass);
+                SessionCommit ();
+        }
+
+        catch (Exception e)
+        {
+                SessionRollBack ();
+
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 200 - OK
+        return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+}
+
+
+
+[HttpPost]
+
+[Route ("~/api/Tipster/AddingFollower")]
+
+
+public HttpResponseMessage AddingFollower (int idtipster, int idnewfollower)
+{
+        // CAD, CEN, returnValue
+        TipsterRESTCAD tipsterRESTCAD = null;
+        TipsterCEN tipsterCEN = null;
+        bool returnValue;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                tipsterRESTCAD = new TipsterRESTCAD (session);
+                tipsterCEN = new TipsterCEN (tipsterRESTCAD);
+
+
+                // Operation
+                returnValue = tipsterCEN.AddingFollower (idtipster, idnewfollower);
+                SessionCommit ();
+        }
+
+        catch (Exception e)
+        {
+                SessionRollBack ();
+
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 200 - OK
+        return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+}
+
+
+
+[HttpPost]
+
+[Route ("~/api/Tipster/DeletingFollower")]
+
+
+public HttpResponseMessage DeletingFollower (int idtipster, int idunfollower)
+{
+        // CAD, CEN, returnValue
+        TipsterRESTCAD tipsterRESTCAD = null;
+        TipsterCEN tipsterCEN = null;
+        bool returnValue;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                tipsterRESTCAD = new TipsterRESTCAD (session);
+                tipsterCEN = new TipsterCEN (tipsterRESTCAD);
+
+
+                // Operation
+                returnValue = tipsterCEN.DeletingFollower (idtipster, idunfollower);
                 SessionCommit ();
         }
 

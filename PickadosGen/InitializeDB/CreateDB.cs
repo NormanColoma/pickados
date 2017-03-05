@@ -107,7 +107,9 @@ public static void InitializeData ()
 
                 // A�adidos dos seguidores para el tipster 1
                 Console.WriteLine ("Adding two new followers for tipster 1");
-                nuevo.AddFollower (originalTipster.Id, followers);
+                //nuevo.AddFollower (originalTipster.Id, followers);
+                nuevo.AddingFollower (originalTipster.Id, newTipster.Id);
+                nuevo.AddingFollower (originalTipster.Id, otherTipster.Id);
 
                 IList<TipsterEN> totalFollowers = nuevo.GetFollowers (originalTipster.Id);
                 Console.WriteLine ("Tipster 1 has: " + totalFollowers.Count + " followers");
@@ -123,7 +125,8 @@ public static void InitializeData ()
                 followers.Clear ();
                 followers.Add (lastTipster.Id);
 
-                nuevo.AddFollower (originalTipster.Id, followers);
+                //nuevo.AddFollower (originalTipster.Id, followers);
+                nuevo.AddingFollower (originalTipster.Id, lastTipster.Id);
 
                 IList<TipsterEN> totalFollowers4 = nuevo.GetFollowers (originalTipster.Id);
                 Console.WriteLine ("Tipster 1 has: " + totalFollowers4.Count + " followers");
@@ -137,7 +140,8 @@ public static void InitializeData ()
                 // Eliminar seguidores al tipster 1
                 Console.WriteLine ("Added one unfollow for tipster 1");
                 unfollows.Add (lastTipster.Id);
-                nuevo.DeleteFollow (originalTipster.Id, unfollows);
+                //nuevo.DeleteFollow (originalTipster.Id, unfollows);
+                nuevo.DeletingFollower (originalTipster.Id, lastTipster.Id);
 
                 IList<TipsterEN> totalFollowers7 = nuevo.GetFollowers (originalTipster.Id);
                 Console.WriteLine ("Tipster 1 has: " + totalFollowers7.Count + " followers");
@@ -299,10 +303,10 @@ public static void InitializeData ()
                 //Publishing new post
                 PostCEN postCEN = new PostCEN ();
                 PostCP postCP = new PostCP ();
-                ResultCEN resultCEN = new ResultCEN();
+                ResultCEN resultCEN = new ResultCEN ();
                 Event_CEN eventCEN = new Event_CEN ();
                 int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0));
-                int pickId = resultCEN.NewResult (2,"Gana Local",PickResultEnum.unstarted,"Kirolbet",match1,ResultEnum.home,TimeEnum.fulltime);
+                int pickId = resultCEN.NewResult (2, "Gana Local", PickResultEnum.unstarted, "Kirolbet", match1, ResultEnum.home, TimeEnum.fulltime);
                 List < int > picks_id = new List<int>();
                 picks_id.Add (pickId);
                 postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster2, PickResultEnum.unfinished);

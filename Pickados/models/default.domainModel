@@ -444,6 +444,14 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_RSHCAADPEeeIc4bGxe66Bw" name="findByNIF" operationType="ReadFilter" type="Object" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="select t FROM TipsterEN as t where nif= :nif" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_30VxsADPEeeIc4bGxe66Bw" name="nif"/>
       </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_5gwmoAHUEeeiFNTTg73Glw" name="addingFollower" type="Boolean">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_5hb8EAHUEeeiFNTTg73Glw" name="idTipster" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__GsUYAHUEeeiFNTTg73Glw" name="idNewFollower" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
+      </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_GYMMEAHVEeeiFNTTg73Glw" name="deletingFollower" type="Boolean">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GYNaMAHVEeeiFNTTg73Glw" name="idTipster" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_JwdvcAHVEeeiFNTTg73Glw" name="idUnfollower" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
+      </operations>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_bgvkEdN7Eeadlco1x1sS6g" alias="idMonthlyStats" aggregation="Composite" lower="0" upper="*" associationOrigin="_bgvkENN7Eeadlco1x1sS6g" name="monthlyStats" type="Object" collectionType="List"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_k_YBsdN7Eeadlco1x1sS6g" alias="idPost" aggregation="Composite" lower="0" upper="*" associationOrigin="_k_YBsNN7Eeadlco1x1sS6g" name="post" type="Object" collectionType="List"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_6o_qsNQZEearPKYnvwakQw" alias="idTipster" lower="0" upper="*" associationOrigin="_6ojl0NQZEearPKYnvwakQw" name="follow_to" type="Object"/>
@@ -1539,6 +1547,20 @@
           <styles xmi:type="notation:FontStyle" xmi:id="_RSI3MgDPEeeIc4bGxe66Bw" fontName="Segoe UI"/>
           <styles xmi:type="notation:FillStyle" xmi:id="_RSI3MwDPEeeIc4bGxe66Bw"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RSI3NADPEeeIc4bGxe66Bw"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_5hwFIAHUEeeiFNTTg73Glw" type="3004" element="_5gwmoAHUEeeiFNTTg73Glw">
+          <children xmi:type="notation:DecorationNode" xmi:id="_5hwsMAHUEeeiFNTTg73Glw" type="5004"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_5hwFIQHUEeeiFNTTg73Glw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_5hwFIgHUEeeiFNTTg73Glw" fontName="Segoe UI"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_5hwFIwHUEeeiFNTTg73Glw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5hwFJAHUEeeiFNTTg73Glw"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_GYPPYAHVEeeiFNTTg73Glw" type="3004" element="_GYMMEAHVEeeiFNTTg73Glw">
+          <children xmi:type="notation:DecorationNode" xmi:id="_GYP2cAHVEeeiFNTTg73Glw" type="5004"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_GYPPYQHVEeeiFNTTg73Glw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_GYPPYgHVEeeiFNTTg73Glw" fontName="Segoe UI"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_GYPPYwHVEeeiFNTTg73Glw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GYPPZAHVEeeiFNTTg73Glw"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_dCD4wdNuEeaZBpN3xqTI2g"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_dCD4wtNuEeaZBpN3xqTI2g"/>

@@ -41,23 +41,23 @@
       <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_97x78ADNEeeIc4bGxe66Bw" name="login">
         <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_idc-kADNEeeIc4bGxe66Bw"/>
       </navOperation>
-      <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_MkM94ADOEeeIc4bGxe66Bw" name="addFollower">
-        <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_KfL_8NQdEearPKYnvwakQw"/>
-      </navOperation>
       <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_OjIvwADOEeeIc4bGxe66Bw" name="getFollows">
         <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_MVVi4Nj3EeaUt9gXjU7aig"/>
       </navOperation>
       <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_Qlu5oADOEeeIc4bGxe66Bw" name="becomePremium">
         <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_z0LakNpREeaRm9CNUEVRDg"/>
       </navOperation>
-      <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_WfI9AADOEeeIc4bGxe66Bw" name="deleteFollow">
-        <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_SXwYUNj3EeaUt9gXjU7aig"/>
-      </navOperation>
       <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_Xwl90ADOEeeIc4bGxe66Bw" name="getTipstersPremium">
         <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_C6Bq8PtlEea3Y6_aXsHiNQ"/>
       </navOperation>
       <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_LUuysADREeeIc4bGxe66Bw" name="registration">
         <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_qH1a4ADOEeeIc4bGxe66Bw"/>
+      </navOperation>
+      <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_89KfQAHYEeeiFNTTg73Glw" name="addingFollower">
+        <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_5gwmoAHUEeeiFNTTg73Glw"/>
+      </navOperation>
+      <navOperation xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalOperation" xmi:id="_9pQJMAHYEeeiFNTTg73Glw" name="deletingFollower">
+        <referToOperation xmi:type="es.ua.dlsi.ooh:Operation" href="default.domainModel#_GYMMEAHVEeeiFNTTg73Glw"/>
       </navOperation>
       <navAttribute xmi:type="es.ua.dlsi.ooh.navigationalView:NavigationalAttribute" xmi:id="_--aXQADFEeeW_Z66ZhZ5IA" name="alias">
         <referToAttribute xmi:type="es.ua.dlsi.ooh:Attribute" href="default.domainModel#_Kq238NNuEeaZBpN3xqTI2g"/>
@@ -273,13 +273,6 @@
           <styles xmi:type="notation:LineStyle" xmi:id="_97_XUwDNEeeIc4bGxe66Bw"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_97_XVADNEeeIc4bGxe66Bw"/>
         </children>
-        <children xmi:type="notation:Node" xmi:id="_MkR2YADOEeeIc4bGxe66Bw" type="3004" element="_MkM94ADOEeeIc4bGxe66Bw">
-          <children xmi:type="notation:DecorationNode" xmi:id="_MkR2ZQDOEeeIc4bGxe66Bw" type="5008"/>
-          <styles xmi:type="notation:DescriptionStyle" xmi:id="_MkR2YQDOEeeIc4bGxe66Bw"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_MkR2YgDOEeeIc4bGxe66Bw" fontName="Segoe UI"/>
-          <styles xmi:type="notation:LineStyle" xmi:id="_MkR2YwDOEeeIc4bGxe66Bw"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MkR2ZADOEeeIc4bGxe66Bw"/>
-        </children>
         <children xmi:type="notation:Node" xmi:id="_OjJ94ADOEeeIc4bGxe66Bw" type="3004" element="_OjIvwADOEeeIc4bGxe66Bw">
           <children xmi:type="notation:DecorationNode" xmi:id="_OjJ95QDOEeeIc4bGxe66Bw" type="5008"/>
           <styles xmi:type="notation:DescriptionStyle" xmi:id="_OjJ94QDOEeeIc4bGxe66Bw"/>
@@ -294,13 +287,6 @@
           <styles xmi:type="notation:LineStyle" xmi:id="_QlwHwwDOEeeIc4bGxe66Bw"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QlwHxADOEeeIc4bGxe66Bw"/>
         </children>
-        <children xmi:type="notation:Node" xmi:id="_WfKLIADOEeeIc4bGxe66Bw" type="3004" element="_WfI9AADOEeeIc4bGxe66Bw">
-          <children xmi:type="notation:DecorationNode" xmi:id="_WfKyMADOEeeIc4bGxe66Bw" type="5008"/>
-          <styles xmi:type="notation:DescriptionStyle" xmi:id="_WfKLIQDOEeeIc4bGxe66Bw"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_WfKLIgDOEeeIc4bGxe66Bw" fontName="Segoe UI"/>
-          <styles xmi:type="notation:LineStyle" xmi:id="_WfKLIwDOEeeIc4bGxe66Bw"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WfKLJADOEeeIc4bGxe66Bw"/>
-        </children>
         <children xmi:type="notation:Node" xmi:id="_Xwmk4ADOEeeIc4bGxe66Bw" type="3004" element="_Xwl90ADOEeeIc4bGxe66Bw">
           <children xmi:type="notation:DecorationNode" xmi:id="_XwnL8ADOEeeIc4bGxe66Bw" type="5008"/>
           <styles xmi:type="notation:DescriptionStyle" xmi:id="_Xwmk4QDOEeeIc4bGxe66Bw"/>
@@ -314,6 +300,20 @@
           <styles xmi:type="notation:FontStyle" xmi:id="_LUzrMgDREeeIc4bGxe66Bw" fontName="Segoe UI"/>
           <styles xmi:type="notation:LineStyle" xmi:id="_LUzrMwDREeeIc4bGxe66Bw"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LUzrNADREeeIc4bGxe66Bw"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_89RM8AHYEeeiFNTTg73Glw" type="3004" element="_89KfQAHYEeeiFNTTg73Glw">
+          <children xmi:type="notation:DecorationNode" xmi:id="_89UQQAHYEeeiFNTTg73Glw" type="5008"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_89RM8QHYEeeiFNTTg73Glw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_89RM8gHYEeeiFNTTg73Glw" fontName="Segoe UI"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_89RM8wHYEeeiFNTTg73Glw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_89RM9AHYEeeiFNTTg73Glw"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_9pRXUAHYEeeiFNTTg73Glw" type="3004" element="_9pQJMAHYEeeiFNTTg73Glw">
+          <children xmi:type="notation:DecorationNode" xmi:id="_9pR-YAHYEeeiFNTTg73Glw" type="5008"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_9pRXUQHYEeeiFNTTg73Glw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_9pRXUgHYEeeiFNTTg73Glw" fontName="Segoe UI"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_9pRXUwHYEeeiFNTTg73Glw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9pRXVAHYEeeiFNTTg73Glw"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_nsJKoQDFEeeW_Z66ZhZ5IA"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_nsJKogDFEeeW_Z66ZhZ5IA"/>

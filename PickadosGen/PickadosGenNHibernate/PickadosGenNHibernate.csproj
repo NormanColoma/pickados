@@ -244,6 +244,10 @@
 			
 			
 			
+			<Compile Include="CEN\Pickados\TipsterCEN_AddingFollower.cs" />
+			
+			<Compile Include="CEN\Pickados\TipsterCEN_DeletingFollower.cs" />
+			
 	<Compile Include="EN\Pickados\AdminEN.cs" />
 	<Compile Include="CEN\Pickados\AdminCEN.cs" />
 	<Compile Include="CAD\Pickados\IAdminCAD.cs" />
