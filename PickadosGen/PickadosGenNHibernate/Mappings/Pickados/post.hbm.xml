@@ -59,6 +59,18 @@
 											 					
 			
 			
+			
+		  			
+						<bag name="Request" >
+							<key>
+							
+								
+								<column name="FK_id_idPost"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.RequestEN"/>
+					    </bag>
+					
+					
 					
 					
 					

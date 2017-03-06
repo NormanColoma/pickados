@@ -113,6 +113,7 @@ public void ModifyDefault (PostEN post)
 
                 postEN.PostResult = post.PostResult;
 
+
                 session.Update (postEN);
                 SessionCommit ();
         }

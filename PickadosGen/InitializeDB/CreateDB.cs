@@ -327,6 +327,11 @@ public static void InitializeData ()
 
                 postCP.VerifyPost (id_post);
 
+                // Creating requests
+
+                RequestCEN requestCEN = new RequestCEN ();
+                requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime(2017, 2, 20));
+
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)

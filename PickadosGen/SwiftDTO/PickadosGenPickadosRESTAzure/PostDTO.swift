@@ -39,6 +39,9 @@
 		 
 				var postResult: PickResult?;
 				    	 
+		 
+				var request_oid: [Int]?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -94,6 +97,9 @@
 				
 					dictionary["postResult"] = self.postResult?.rawValue;
 				
+
+					dictionary["request_oid"] = self.request_oid;
+			
 						
 				return dictionary;
 			}
