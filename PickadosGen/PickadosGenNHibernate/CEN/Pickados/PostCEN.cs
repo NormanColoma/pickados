@@ -132,5 +132,9 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN
 {
         return _IPostCAD.FindPostsByTipster (id);
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? p_postResult)
+{
+        return _IPostCAD.GetByResult (p_postResult);
+}
 }
 }
