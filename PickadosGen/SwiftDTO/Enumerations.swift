@@ -35,4 +35,18 @@ enum Time: Int
 	case Halftime = 2
 }
 
+enum RequestType: Int
+{
+	case Modify = 1
+	case Delete = 2
+}
+
+enum RequestState: Int
+{
+	case Open = 1
+	case Accepted = 2
+	case Denied = 3
+	case InReview = 4
+}
+
 	

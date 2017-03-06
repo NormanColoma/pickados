@@ -75,6 +75,13 @@ private PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult;
 
 
 
+/**
+ *	Atributo request
+ */
+private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.RequestEN> request;
+
+
+
 
 
 
@@ -138,29 +145,36 @@ public virtual PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum PostResu
 
 
 
+public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.RequestEN> Request {
+        get { return request; } set { request = value;  }
+}
+
+
+
 
 
 public PostEN()
 {
         pick = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
+        request = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.RequestEN>();
 }
 
 
 
-public PostEN(int id, Nullable<DateTime> created_at, Nullable<DateTime> modified_at, double stake, string description, bool private_, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult
+public PostEN(int id, Nullable<DateTime> created_at, Nullable<DateTime> modified_at, double stake, string description, bool private_, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.RequestEN> request
               )
 {
-        this.init (Id, created_at, modified_at, stake, description, private_, pick, tipster, totalOdd, postResult);
+        this.init (Id, created_at, modified_at, stake, description, private_, pick, tipster, totalOdd, postResult, request);
 }
 
 
 public PostEN(PostEN post)
 {
-        this.init (Id, post.Created_at, post.Modified_at, post.Stake, post.Description, post.Private_, post.Pick, post.Tipster, post.TotalOdd, post.PostResult);
+        this.init (Id, post.Created_at, post.Modified_at, post.Stake, post.Description, post.Private_, post.Pick, post.Tipster, post.TotalOdd, post.PostResult, post.Request);
 }
 
 private void init (int id
-                   , Nullable<DateTime> created_at, Nullable<DateTime> modified_at, double stake, string description, bool private_, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult)
+                   , Nullable<DateTime> created_at, Nullable<DateTime> modified_at, double stake, string description, bool private_, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.RequestEN> request)
 {
         this.Id = id;
 
@@ -182,6 +196,8 @@ private void init (int id
         this.TotalOdd = totalOdd;
 
         this.PostResult = postResult;
+
+        this.Request = request;
 }
 
 public override bool Equals (object obj)

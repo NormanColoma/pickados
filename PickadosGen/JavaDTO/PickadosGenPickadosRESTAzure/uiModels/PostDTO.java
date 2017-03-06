@@ -57,6 +57,10 @@
 				public PickResult getPostResult () { return postResult; } 
 				public void setPostResult  (PickResult value) { postResult = value;  } 
 				    	 
+				private ArrayList<Integer> request_oid;
+				public ArrayList<Integer>  getRequest_oid () { return request_oid; } 
+				public void setRequest_oid (ArrayList<Integer> value) { request_oid = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -104,6 +108,17 @@
 				
 						  json.put("PostResult", this.postResult.getRawValue());
 				
+
+						if (this.request_oid != null)
+						{
+							JSONArray jsonArray = new JSONArray();
+							for (int i = 0; i < this.request_oid.size(); ++i)
+							{
+								jsonArray.put(this.request_oid.get(i));
+							}
+							json.put("Request_oid", jsonArray);
+						}
+		
 						
 					}
 					catch (JSONException e)
