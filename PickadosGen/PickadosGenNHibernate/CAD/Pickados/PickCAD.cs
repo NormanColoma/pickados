@@ -276,7 +276,7 @@ public System.Collections.Generic.IList<PickEN> GetAllPicks (int first, int size
         return result;
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult ()
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? p_pickResult)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> result;
         try
@@ -285,6 +285,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN
                 //String sql = @"FROM PickEN self where FROM PickEN where pickResult = :p_pickResult";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("PickENgetPicksByResultHQL");
+                query.SetParameter ("p_pickResult", p_pickResult);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
                 SessionCommit ();

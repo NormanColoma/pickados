@@ -147,6 +147,67 @@ public HttpResponseMessage FindPostsByTipster (int id)
 }
 
 
+// No pasa el slEnables: getByResult
+
+[HttpGet]
+
+[Route ("~/api/Post/GetByResult")]
+
+public HttpResponseMessage GetByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postresult)
+{
+        // CAD, CEN, EN, returnValue
+
+        PostRESTCAD postRESTCAD = null;
+        PostCEN postCEN = null;
+
+
+        System.Collections.Generic.List<PostEN> en;
+
+        System.Collections.Generic.List<PostDTOA> returnValue = null;
+
+        try
+        {
+                SessionInitializeWithoutTransaction ();
+
+                postRESTCAD = new PostRESTCAD (session);
+                postCEN = new PostCEN (postRESTCAD);
+
+                // CEN return
+
+
+
+                en = postCEN.GetByResult (p_postresult).ToList ();
+
+
+
+
+                // Convert return
+                if (en != null) {
+                        returnValue = new System.Collections.Generic.List<PostDTOA>();
+                        foreach (PostEN entry in en)
+                                returnValue.Add (PostAssembler.Convert (entry, session));
+                }
+        }
+
+        catch (Exception e)
+        {
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 204 - Empty
+        if (returnValue == null || returnValue.Count == 0)
+                return this.Request.CreateResponse (HttpStatusCode.NoContent);
+        // Return 200 - OK
+        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+}
+
+
 
 
 

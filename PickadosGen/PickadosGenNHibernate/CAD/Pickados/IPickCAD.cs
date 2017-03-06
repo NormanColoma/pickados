@@ -31,6 +31,6 @@ PickEN GetPickById (int id
 System.Collections.Generic.IList<PickEN> GetAllPicks (int first, int size);
 
 
-System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult ();
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? p_pickResult);
 }
 }
