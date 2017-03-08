@@ -40,7 +40,7 @@ public bool AddingFollower (int idTipster, int idNewFollower)
                 }
                 //tipsters.Add (p.Id);
         }
-        tipsters.Add(idNewFollower);
+        tipsters.Add (idNewFollower);
         tipster.AddFollower (idTipster, tipsters);
         return true;
 

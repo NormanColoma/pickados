@@ -37,7 +37,7 @@ public bool DeletingFollower (int idTipster, int idUnfollower)
         foreach (var p in followers) {
                 if (idUnfollower == p.Id) {
                         exists = true;
-                    tipsters.Add(idUnfollower);
+                        tipsters.Add (idUnfollower);
                 }
                 //tipsters.Add (p.Id);
         }

@@ -23,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -293,7 +293,6 @@ public static void InitializeData ()
                 foreach (var p in players1)
                         Console.WriteLine ("- " + p.Name);
 
-
                 Console.WriteLine ("--------------- Get Player by national team -------------");
                 IList<PlayerEN> players2 = playerCAD.GetPlayersByNationalTeam (seleccion1.Name);
                 Console.WriteLine ("Players in " + seleccion1.Name + ":");
@@ -311,6 +310,11 @@ public static void InitializeData ()
                 picks_id.Add (pickId);
                 postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster2, PickResultEnum.unfinished);
 
+                Console.WriteLine ("--------------- Get Post by Tipster -------------");
+                PostCAD postCAD = new PostCAD ();
+                IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2);
+                foreach (var p in posts)
+                        Console.WriteLine ("- " + p.Description);
 
                 MatchCEN matchCEN = new MatchCEN ();
                 int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), team1, team5, "Camp Nou");
@@ -326,6 +330,30 @@ public static void InitializeData ()
                         false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
 
                 postCP.VerifyPost (id_post);
+
+                DateTime d = new DateTime (08, 03, 2017);
+
+                StatsCEN statCEN = new StatsCEN ();
+                statCEN.NewMonthlyStats (1, 1, 1, 1, 1, d, tipster2, 1, 1);
+                statCEN.NewMonthlyStats (2, 2, 2, 2, 2, d.AddDays (2), tipster2, 2, 2);
+                statCEN.NewMonthlyStats (3, 3, 3, 3, 3, d.AddMonths (2), tipster2, 3, 3);
+                statCEN.NewMonthlyStats (4, 4, 4, 4, 4, d.AddMonths (4), tipster2, 4, 4);
+
+                Console.WriteLine ("--------------- Get Stats by Tipster -------------");
+                StatsCAD statCAD = new StatsCAD ();
+                IList<StatsEN> stats = statCAD.GetStatsByTipster (otherTipster.Alias);
+                foreach (var s in stats)
+                        Console.WriteLine ("- " + s.Benefit);
+
+                Console.WriteLine ("--------- Get March's Stats by Tipster -------");
+                IList<StatsEN> statsMarch = statCAD.GetStatsByMonthTipster (otherTipster.Alias, 3);
+                foreach (var s in statsMarch)
+                        Console.WriteLine ("- " + s.InitialDate);
+
+                Console.WriteLine ("--------- Get May's Stats by Tipster -------");
+                IList<StatsEN> statsMay = statCAD.GetStatsByMonthTipster (otherTipster.Alias, 5);
+                foreach (var s in statsMay)
+                        Console.WriteLine ("- " + s.InitialDate);
 
                 /*PROTECTED REGION END*/
         }

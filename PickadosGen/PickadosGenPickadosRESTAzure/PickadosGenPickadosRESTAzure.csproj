@@ -240,6 +240,11 @@
 		<Compile Include="Assemblers\PickAssembler.cs" />
 		<Compile Include="Controllers\PickController.cs" />
 		
+		<Compile Include="CAD\StatsRESTCAD.cs" />
+		<Compile Include="DTOA\StatsDTOA.cs" />
+		<Compile Include="Assemblers\StatsAssembler.cs" />
+		<Compile Include="Controllers\StatsController.cs" />
+		
 	
 	
 	

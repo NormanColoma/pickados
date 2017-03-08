@@ -266,6 +266,8 @@
 			
 			
 			
+			
+			
 	<Compile Include="EN\Pickados\PlayerEN.cs" />
 	<Compile Include="CEN\Pickados\PlayerCEN.cs" />
 	<Compile Include="CAD\Pickados\IPlayerCAD.cs" />

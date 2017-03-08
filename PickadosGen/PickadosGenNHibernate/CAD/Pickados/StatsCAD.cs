@@ -298,5 +298,67 @@ public System.Collections.Generic.IList<StatsEN> GetAllStats (int first, int siz
 
         return result;
 }
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByTipster (string p_Tipster_Name)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM StatsEN self where select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("StatsENgetStatsByTipsterHQL");
+                query.SetParameter ("p_Tipster_Name", p_Tipster_Name);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.StatsEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByMonthTipster (string p_Tipster_Name, int ? p_Stats_Month)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM StatsEN self where select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND MONTH(initialDate) = :p_Stats_Month";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("StatsENgetStatsByMonthTipsterHQL");
+                query.SetParameter ("p_Tipster_Name", p_Tipster_Name);
+                query.SetParameter ("p_Stats_Month", p_Stats_Month);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.StatsEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in StatsCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }
