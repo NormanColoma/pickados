@@ -121,9 +121,9 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsE
 {
         return _IStatsCAD.GetStatsByTipster (p_Tipster_Name);
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByMonthTipster (string p_Tipster_Name, int ? p_Stats_Month)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> GetStatsByMonthTipster (string p_Tipster_Name, PickadosGenNHibernate.Enumerated.Pickados.MonthsEnum? p_Stats_Month, int ? p_Stats_Year)
 {
-        return _IStatsCAD.GetStatsByMonthTipster (p_Tipster_Name, p_Stats_Month);
+        return _IStatsCAD.GetStatsByMonthTipster (p_Tipster_Name, p_Stats_Month, p_Stats_Year);
 }
 }
 }

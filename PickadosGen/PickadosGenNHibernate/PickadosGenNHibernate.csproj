@@ -337,6 +337,7 @@
 	<Compile Include="Enumerated\Pickados\ResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\LineEnum.cs" />
 	<Compile Include="Enumerated\Pickados\TimeEnum.cs" />
+	<Compile Include="Enumerated\Pickados\MonthsEnum.cs" />
 	
 	
 

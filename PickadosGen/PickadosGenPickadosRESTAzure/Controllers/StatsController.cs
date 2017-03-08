@@ -107,7 +107,7 @@ public HttpResponseMessage GetStatsByTipster (string p_tipster_name)
 
 [Route ("~/api/Stats/GetStatsByMonthTipster")]
 
-public HttpResponseMessage GetStatsByMonthTipster (string p_tipster_name, int p_stats_month)
+public HttpResponseMessage GetStatsByMonthTipster (string p_tipster_name, PickadosGenNHibernate.Enumerated.Pickados.MonthsEnum p_stats_month, int p_stats_year)
 {
         // CAD, CEN, EN, returnValue
 
@@ -130,7 +130,7 @@ public HttpResponseMessage GetStatsByMonthTipster (string p_tipster_name, int p_
 
 
 
-                en = statsCEN.GetStatsByMonthTipster (p_tipster_name, p_stats_month).ToList ();
+                en = statsCEN.GetStatsByMonthTipster (p_tipster_name, p_stats_month, p_stats_year).ToList ();
 
 
 

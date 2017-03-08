@@ -67,6 +67,6 @@
 		  
 		  <query name="StatsENReadAllHQL">from StatsEN</query>
 		  <query name="StatsENgetStatsByTipsterHQL"><![CDATA[select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name]]></query>
-		  <query name="StatsENgetStatsByMonthTipsterHQL"><![CDATA[select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND MONTH(initialDate) = :p_Stats_Month]]></query>
+		  <query name="StatsENgetStatsByMonthTipsterHQL"><![CDATA[select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND month(initialDate) = :p_Stats_Month AND year(initialDate) = :p_Stats_Year]]></query>
 		</hibernate-mapping>
 	

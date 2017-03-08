@@ -331,7 +331,7 @@ public static void InitializeData ()
 
                 postCP.VerifyPost (id_post);
 
-                DateTime d = new DateTime (08, 03, 2017);
+                DateTime d = new DateTime (2017, 3, 8);
 
                 StatsCEN statCEN = new StatsCEN ();
                 statCEN.NewMonthlyStats (1, 1, 1, 1, 1, d, tipster2, 1, 1);
@@ -345,13 +345,13 @@ public static void InitializeData ()
                 foreach (var s in stats)
                         Console.WriteLine ("- " + s.Benefit);
 
-                Console.WriteLine ("--------- Get March's Stats by Tipster -------");
-                IList<StatsEN> statsMarch = statCAD.GetStatsByMonthTipster (otherTipster.Alias, 3);
+                Console.WriteLine ("--------- Get March's 2017 Stats by Tipster -------");
+                IList<StatsEN> statsMarch = statCAD.GetStatsByMonthTipster (otherTipster.Alias, MonthsEnum.March, 2017);
                 foreach (var s in statsMarch)
                         Console.WriteLine ("- " + s.InitialDate);
 
-                Console.WriteLine ("--------- Get May's Stats by Tipster -------");
-                IList<StatsEN> statsMay = statCAD.GetStatsByMonthTipster (otherTipster.Alias, 5);
+                Console.WriteLine ("--------- Get May's 2018 tats by Tipster (empty) -------");
+                IList<StatsEN> statsMay = statCAD.GetStatsByMonthTipster (otherTipster.Alias, MonthsEnum.May, 2018);
                 foreach (var s in statsMay)
                         Console.WriteLine ("- " + s.InitialDate);
 
