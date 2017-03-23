@@ -373,15 +373,15 @@
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_dCCDkNNuEeaZBpN3xqTI2g" name="Tipster" alias="Tipster" inheritFathers="_-nCYYNN7Eeadlco1x1sS6g" asociationTarget="_6ojl0NQZEearPKYnvwakQw" associationOrigin="_bgvkENN7Eeadlco1x1sS6g _k_YBsNN7Eeadlco1x1sS6g _6ojl0NQZEearPKYnvwakQw">
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_haAwcNNuEeaZBpN3xqTI2g" name="newTipster" operationType="New" type="Object" typeObject="_dCCDkNNuEeaZBpN3xqTI2g">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLREAdFEeenU-wdeoiIyw" name="p_alias"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLREQdFEeenU-wdeoiIyw" name="p_email"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLREgdFEeenU-wdeoiIyw" name="p_password" type="Password"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLREwdFEeenU-wdeoiIyw" name="p_created_at" type="Time"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLRFAdFEeenU-wdeoiIyw" name="p_updated_at" type="Time"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLRFQdFEeenU-wdeoiIyw" name="p_nif"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLRFgdFEeenU-wdeoiIyw" name="p_admin" type="Boolean"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLRFwdFEeenU-wdeoiIyw" name="p_premium" type="Boolean"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zLRGAdFEeenU-wdeoiIyw" name="p_subscription_fee" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h5BMoA_zEeeBos3U3Hcyfw" name="p_alias"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h5IhYA_zEeeBos3U3Hcyfw" name="p_email"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h5OoAA_zEeeBos3U3Hcyfw" name="p_password" type="Password"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h5VVsA_zEeeBos3U3Hcyfw" name="p_created_at" type="Time"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h5cqcA_zEeeBos3U3Hcyfw" name="p_updated_at" type="Time"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h5l0YA_zEeeBos3U3Hcyfw" name="p_nif"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h5uXQA_zEeeBos3U3Hcyfw" name="p_admin" type="Boolean"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h50d4A_zEeeBos3U3Hcyfw" name="p_premium" type="Boolean"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_h59AwA_zEeeBos3U3Hcyfw" name="p_subscription_fee" type="Double"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_haAwdtNuEeaZBpN3xqTI2g" name="modifyTipster" operationType="Modifier" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zNGQAdFEeenU-wdeoiIyw" name="p_Tipster_OID" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>

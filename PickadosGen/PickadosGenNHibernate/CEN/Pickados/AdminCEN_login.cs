@@ -11,23 +11,21 @@ using PickadosGenNHibernate.EN.Pickados;
 using PickadosGenNHibernate.CAD.Pickados;
 
 
-/*PROTECTED REGION ID(usingPickadosGenNHibernate.CEN.Pickados_Tipster_becomePremium) ENABLED START*/
+/*PROTECTED REGION ID(usingPickadosGenNHibernate.CEN.Pickados_Admin_login) ENABLED START*/
 //  references to other libraries
 /*PROTECTED REGION END*/
 
 namespace PickadosGenNHibernate.CEN.Pickados
 {
-public partial class TipsterCEN
+public partial class AdminCEN
 {
-public void BecomePremium (int p_oid, double fee)
+public void Login (string email, string password)
 {
-        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_becomePremium) ENABLED START*/
+        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Admin_login) ENABLED START*/
 
         // Write here your custom code...
 
-        TipsterEN cambio = GetTipsterById (p_oid);
-
-        ModifyTipster (p_oid, cambio.Alias, cambio.Email, cambio.Password, cambio.Created_at, cambio.Updated_at, cambio.Nif, false, true, fee);
+        throw new NotImplementedException ("Method Login() not yet implemented.");
 
         /*PROTECTED REGION END*/
 }

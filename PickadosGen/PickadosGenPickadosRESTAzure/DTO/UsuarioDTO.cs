@@ -34,5 +34,9 @@ private string nif;
 public string Nif {
         get { return nif; } set { nif = value;  }
 }
+private bool admin;
+public bool Admin {
+        get { return admin; } set { admin = value;  }
+}
 }
 }

@@ -330,7 +330,7 @@ public static void InitializeData ()
                 // Creating requests
 
                 RequestCEN requestCEN = new RequestCEN ();
-                requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime(2017, 2, 20));
+                requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
 
                 /*PROTECTED REGION END*/
         }
