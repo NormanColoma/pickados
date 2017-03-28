@@ -215,6 +215,9 @@
 			
 			
 			
+			<Compile Include="CEN\Pickados\UsuarioCEN_Login.cs" />
+			
+			
 	<Compile Include="EN\Pickados\TipsterEN.cs" />
 	<Compile Include="CEN\Pickados\TipsterCEN.cs" />
 	<Compile Include="CAD\Pickados\ITipsterCAD.cs" />

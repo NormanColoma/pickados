@@ -149,8 +149,8 @@ public static void InitializeData ()
                 IList<TipsterEN> totalFollowers8 = nuevo.GetFollows (lastTipster.Id);
                 Console.WriteLine ("Tipster 4 has: " + totalFollowers8.Count + " followeds");
 
-                Console.WriteLine ("User montoro could login: " + nuevo.Login ("montoro", "montoroPro").Id);
-                Console.WriteLine ("User montoro couldn't login: " + nuevo.Login ("montoro", "montoroCola"));
+                Console.WriteLine ("User montoro could login: " + user.Login ("montoro", "montoroPro").Id);
+                Console.WriteLine ("User montoro couldn't login: " + user.Login ("montoro", "montoroCola"));
 
                 Console.WriteLine ("Converting tipster 1 to premium");
                 nuevo.BecomePremium (originalTipster.Id, 2.8);
@@ -330,7 +330,7 @@ public static void InitializeData ()
                 // Creating requests
 
                 RequestCEN requestCEN = new RequestCEN ();
-                requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime(2017, 2, 20));
+                requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
 
                 /*PROTECTED REGION END*/
         }
