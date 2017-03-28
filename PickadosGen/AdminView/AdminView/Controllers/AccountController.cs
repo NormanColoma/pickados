@@ -9,48 +9,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AdminView.Models;
+using Microsoft.Owin;
+using PickadosGenNHibernate.EN.Pickados;
 
 namespace AdminView.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
 
         //
         // GET: /Account/Login
@@ -66,69 +32,39 @@ namespace AdminView.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            // No cuenta los errores de inicio de sesión para el bloqueo de la cuenta
-            // Para permitir que los errores de contraseña desencadenen el bloqueo de la cuenta, cambie a shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
-                    return View(model);
-            }
-        }
-
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
+            /*
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                // TODO call UsarioCEN.Login here
+                if ()
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Enviar correo electrónico con este vínculo
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+                    var identity = new ClaimsIdentity(new[] {
+                            new Claim(ClaimTypes.Name, model.Email),
+                        },
+                        DefaultAuthenticationTypes.ApplicationCookie,
+                        ClaimTypes.Name, ClaimTypes.Role);
 
-                    return RedirectToAction("Index", "Home");
+                    //Necesario crear el interfaz para poder tener acceso a la operación SignIn
+                    IOwinContext owinContext = HttpContext.GetOwinContext();
+                    IAuthenticationManager authenticationManager = owinContext.Authentication;
+                    authenticationManager.SignIn(new AuthenticationProperties
+                    {
+                        IsPersistent = model.RememberMe
+                    }, identity);
+                    return RedirectToAction("index", "home");
                 }
-                AddErrors(result);
-            }
+                else
+                {
+                    ModelState.AddModelError("", "Nombre de usuario o contraseña no válidos.");
+                }
+            }*/
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
+            
         }
-
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -137,27 +73,6 @@ namespace AdminView.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
-        }
-
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_userManager != null)
-                {
-                    _userManager.Dispose();
-                    _userManager = null;
-                }
-
-                if (_signInManager != null)
-                {
-                    _signInManager.Dispose();
-                    _signInManager = null;
-                }
-            }
-
-            base.Dispose(disposing);
         }
 
         #region Aplicaciones auxiliares
@@ -187,35 +102,6 @@ namespace AdminView.Controllers
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "Home");
-        }
-
-        internal class ChallengeResult : HttpUnauthorizedResult
-        {
-            public ChallengeResult(string provider, string redirectUri)
-                : this(provider, redirectUri, null)
-            {
-            }
-
-            public ChallengeResult(string provider, string redirectUri, string userId)
-            {
-                LoginProvider = provider;
-                RedirectUri = redirectUri;
-                UserId = userId;
-            }
-
-            public string LoginProvider { get; set; }
-            public string RedirectUri { get; set; }
-            public string UserId { get; set; }
-
-            public override void ExecuteResult(ControllerContext context)
-            {
-                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
-                if (UserId != null)
-                {
-                    properties.Dictionary[XsrfKey] = UserId;
-                }
-                context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
-            }
         }
         #endregion
     }
