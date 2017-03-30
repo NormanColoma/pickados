@@ -54,5 +54,6 @@
 		 </class>	
 		  
 		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENfindByUserHQL"><![CDATA[select u FROM UsuarioEN as u where alias = :name]]></query>
 		</hibernate-mapping>
 	

@@ -11,7 +11,7 @@ using PickadosGenNHibernate.EN.Pickados;
 using PickadosGenNHibernate.CAD.Pickados;
 
 
-/*PROTECTED REGION ID(usingPickadosGenNHibernate.CEN.Pickados_Usuario_Login) ENABLED START*/
+/*PROTECTED REGION ID(usingPickadosGenNHibernate.CEN.Pickados_Usuario_login) ENABLED START*/
 //  references to other libraries
 using System.Security.Cryptography;
 /*PROTECTED REGION END*/
@@ -20,14 +20,15 @@ namespace PickadosGenNHibernate.CEN.Pickados
 {
 public partial class UsuarioCEN
 {
-public PickadosGenNHibernate.EN.Pickados.UsuarioEN Login (string user, string pass)
+public PickadosGenNHibernate.EN.Pickados.UsuarioEN Login (string name, string pass)
 {
-        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Usuario_Login) ENABLED START*/
+        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Usuario_login) ENABLED START*/
 
         // Write here your custom code...
+
         string codedPass;
-        TipsterCEN usuario = new TipsterCEN ();
-        TipsterEN us = usuario.FindByUser (user);
+        UsuarioCEN usuario = new UsuarioCEN ();
+        UsuarioEN us = usuario.FindByUser(name);
 
         if (us != null) {
                 StringBuilder hash = new StringBuilder ();
@@ -43,7 +44,6 @@ public PickadosGenNHibernate.EN.Pickados.UsuarioEN Login (string user, string pa
                 }
         }
         return null;
-        //throw new NotImplementedException ("Method Login() not yet implemented.");
 
         /*PROTECTED REGION END*/
 }
