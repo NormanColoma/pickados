@@ -18,14 +18,14 @@ public class TeamDTOA extends DTOA
 {
 	// region - Members, getters and setters
 
-	private Integer id;
-	public Integer getId () { return id; }
-	public void setId (Integer id) { this.id = id; }
-
 	
 	private String name;
 	public String getName () { return name; }
 	public void setName (String name) { this.name = name; }
+	
+	private Integer id;
+	public Integer getId () { return id; }
+	public void setId (Integer id) { this.id = id; }
 	
 	
 	
@@ -46,16 +46,19 @@ public class TeamDTOA extends DTOA
 	{
 		try
 		{
-			if (!JSONObject.NULL.equals(json.opt("Id")))
-			{
-				this.id = (Integer) json.opt("Id");
-			}
 			
 
 			if (!JSONObject.NULL.equals(json.opt("Name")))
 			{
 			 
 				this.name = (String) json.opt("Name");
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Id")))
+			{
+			 
+				this.id = (Integer) json.opt("Id");
 			 
 			}
 			
@@ -73,13 +76,14 @@ public class TeamDTOA extends DTOA
 		
 		try
 		{
-			if (this.id != null){
-				json.put("Id", this.id);
-			}
 			
 		
 		  if (this.name != null)
 			json.put("Name", this.name);
+		
+		
+		  if (this.id != null)
+			json.put("Id", this.id.intValue());
 		
 			
 			
@@ -99,10 +103,10 @@ public class TeamDTOA extends DTOA
 		
 		// Attributes
 		
-	dto.setId (this.getId());
-
 		
 	dto.setName (this.getName());
+
+	dto.setId (this.getId());
 
 		
 		

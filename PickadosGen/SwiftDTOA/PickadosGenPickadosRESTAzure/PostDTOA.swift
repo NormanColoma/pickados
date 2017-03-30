@@ -11,13 +11,13 @@ class PostDTOA : DTOA
 {
 	// MARK: - Properties
 
-	var id: Int?;
 	
+	var stake: Double?;
+	var modified_at: NSDate?;
 	var created_at: NSDate?;
 	var description: String?;
 	var postResult: PickResult?;
-	var stake: Double?;
-	var totalOdd: Double?;
+	var id: Int?;
 	
 	/* Rol: Post o--> Pick */
 	var getAllPickOfPost: [PickDTOA]?;
@@ -39,9 +39,11 @@ class PostDTOA : DTOA
 	
 	required init (fromJSONObject json: JSON)
 	{
-		self.id = json["Id"].object as? Int
 		
 	
+		self.stake = json["Stake"].object as? Double;
+	
+		self.modified_at = NSDate.initFromString(json["Modified_at"].object as? String);
 	
 		self.created_at = NSDate.initFromString(json["Created_at"].object as? String);
 		self.description = json["Description"].object as? String;
@@ -49,8 +51,7 @@ class PostDTOA : DTOA
 		{
 			self.postResult = PickResult(rawValue: enumValue);
 		}
-		self.stake = json["Stake"].object as? Double;
-		self.totalOdd = json["TotalOdd"].object as? Double;
+		self.id = json["Id"].object as? Int;
 		
 		if (json["GetAllPickOfPost"] != JSON.null)
 		{
@@ -68,8 +69,17 @@ class PostDTOA : DTOA
 	{
 		var dictionary: [String : AnyObject] = [:];
 		
-		dictionary["Id"] = self.id;
 		
+	
+
+	
+		dictionary["Stake"] = self.stake;
+	
+	
+
+	
+		dictionary["Modified_at"] = self.modified_at?.toString();
+	
 	
 
 	
@@ -88,12 +98,7 @@ class PostDTOA : DTOA
 	
 
 	
-		dictionary["Stake"] = self.stake;
-	
-	
-
-	
-		dictionary["TotalOdd"] = self.totalOdd;
+		dictionary["Id"] = self.id;
 	
 	
 		

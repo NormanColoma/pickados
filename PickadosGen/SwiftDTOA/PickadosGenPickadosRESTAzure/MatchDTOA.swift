@@ -11,10 +11,10 @@ class MatchDTOA : DTOA
 {
 	// MARK: - Properties
 
-	var id: Int?;
 	
-	var stadium: String?;
 	var date: NSDate?;
+	var stadium: String?;
+	var id: Int?;
 	
 	/* Rol: Match o--> Team */
 	var getHomeOfEvent_home: TeamDTOA?;
@@ -39,12 +39,12 @@ class MatchDTOA : DTOA
 	
 	required init (fromJSONObject json: JSON)
 	{
-		self.id = json["Id"].object as? Int
 		
 	
-		self.stadium = json["Stadium"].object as? String;
 	
 		self.date = NSDate.initFromString(json["Date"].object as? String);
+		self.stadium = json["Stadium"].object as? String;
+		self.id = json["Id"].object as? Int;
 		
 		if (json["GetHomeOfEvent_home"] != JSON.null)
 		{
@@ -63,8 +63,12 @@ class MatchDTOA : DTOA
 	{
 		var dictionary: [String : AnyObject] = [:];
 		
-		dictionary["Id"] = self.id;
 		
+	
+
+	
+		dictionary["Date"] = self.date?.toString();
+	
 	
 
 	
@@ -73,7 +77,7 @@ class MatchDTOA : DTOA
 	
 
 	
-		dictionary["Date"] = self.date?.toString();
+		dictionary["Id"] = self.id;
 	
 	
 		

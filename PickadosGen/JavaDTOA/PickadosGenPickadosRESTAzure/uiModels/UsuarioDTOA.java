@@ -23,13 +23,18 @@ public class UsuarioDTOA extends DTOA
 	public void setId (Integer id) { this.id = id; }
 
 	
-<<<<<<< HEAD
 	private String nif;
 	public String getNif () { return nif; }
 	public void setNif (String nif) { this.nif = nif; }
 	
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+	private String email;
+	public String getEmail () { return email; }
+	public void setEmail (String email) { this.email = email; }
+	
+	private String alias;
+	public String getAlias () { return alias; }
+	public void setAlias (String alias) { this.alias = alias; }
+	
 	
 	
 	
@@ -54,7 +59,6 @@ public class UsuarioDTOA extends DTOA
 				this.id = (Integer) json.opt("Id");
 			}
 			
-<<<<<<< HEAD
 
 			if (!JSONObject.NULL.equals(json.opt("Nif")))
 			{
@@ -62,8 +66,20 @@ public class UsuarioDTOA extends DTOA
 				this.nif = (String) json.opt("Nif");
 			 
 			}
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+
+			if (!JSONObject.NULL.equals(json.opt("Email")))
+			{
+			 
+				this.email = (String) json.opt("Email");
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Alias")))
+			{
+			 
+				this.alias = (String) json.opt("Alias");
+			 
+			}
 			
 			
 		}
@@ -83,13 +99,18 @@ public class UsuarioDTOA extends DTOA
 				json.put("Id", this.id);
 			}
 			
-<<<<<<< HEAD
 		
 		  if (this.nif != null)
 			json.put("Nif", this.nif);
 		
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+		
+		  if (this.email != null)
+			json.put("Email", this.email);
+		
+		
+		  if (this.alias != null)
+			json.put("Alias", this.alias);
+		
 			
 			
 		}
@@ -111,11 +132,12 @@ public class UsuarioDTOA extends DTOA
 	dto.setId (this.getId());
 
 		
-<<<<<<< HEAD
 	dto.setNif (this.getNif());
 
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+	dto.setEmail (this.getEmail());
+
+	dto.setAlias (this.getAlias());
+
 		
 		
 		// Roles

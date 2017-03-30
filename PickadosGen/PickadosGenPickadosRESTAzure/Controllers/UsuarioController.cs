@@ -27,6 +27,62 @@ namespace PickadosGenPickadosRESTAzure.Controllers
 public class UsuarioController : BasicController
 {
 // Voy a generar el readAll
+// Pasa el slEnables
+
+
+//Pasa el serviceLinkValid
+
+// ReadAll Generado a partir del serviceLink
+[HttpGet]
+[Route ("~/api/Usuario/Usuario_getAllUsers")]
+
+public HttpResponseMessage Usuario_getAllUsers (int first)
+{
+        // CAD, CEN, EN, returnValue
+        UsuarioRESTCAD usuarioRESTCAD = null;
+        UsuarioCEN usuarioCEN = null;
+
+        List<UsuarioEN> usuarioEN = null;
+        List<UsuarioDTOA> returnValue = null;
+
+        try
+        {
+                SessionInitializeWithoutTransaction ();
+                usuarioRESTCAD = new UsuarioRESTCAD (session);
+                usuarioCEN = new UsuarioCEN (usuarioRESTCAD);
+
+                // Data
+                // paginación
+
+                usuarioEN = usuarioCEN.GetAllUsers (first, 10).ToList ();
+
+
+
+                // Convert return
+                if (usuarioEN != null) {
+                        returnValue = new List<UsuarioDTOA>();
+                        foreach (UsuarioEN entry in usuarioEN)
+                                returnValue.Add (UsuarioAssembler.Convert (entry, session));
+                }
+        }
+
+        catch (Exception e)
+        {
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 204 - Empty
+        if (returnValue == null || returnValue.Count == 0)
+                return this.Request.CreateResponse (HttpStatusCode.NoContent);
+        // Return 200 - OK
+        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+}
 
 
 
@@ -38,6 +94,51 @@ public class UsuarioController : BasicController
 
 
 
+[HttpGet]
+// [Route("{idUsuario}", Name="GetOIDUsuario")]
+
+[Route ("~/api/Usuario/{idUsuario}")]
+
+public HttpResponseMessage Usuario_getUserById (int idUsuario)
+{
+        // CAD, CEN, EN, returnValue
+        UsuarioRESTCAD usuarioRESTCAD = null;
+        UsuarioCEN usuarioCEN = null;
+        UsuarioEN usuarioEN = null;
+        UsuarioDTOA returnValue = null;
+
+        try
+        {
+                SessionInitializeWithoutTransaction ();
+                usuarioRESTCAD = new UsuarioRESTCAD (session);
+                usuarioCEN = new UsuarioCEN (usuarioRESTCAD);
+
+                // Data
+                usuarioEN = usuarioCEN.GetUserById (idUsuario);
+
+                // Convert return
+                if (usuarioEN != null) {
+                        returnValue = UsuarioAssembler.Convert (usuarioEN, session);
+                }
+        }
+
+        catch (Exception e)
+        {
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 404 - Not found
+        if (returnValue == null)
+                return this.Request.CreateResponse (HttpStatusCode.NotFound);
+        // Return 200 - OK
+        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+}
 
 
 
@@ -46,24 +147,20 @@ public class UsuarioController : BasicController
 
 
 
+[HttpPut]
 
+[Route ("~/api/Usuario/{idUsuario}/")]
 
-
-
-
-<<<<<<< HEAD
-[HttpPost]
-
-[Route ("~/api/Usuario/Login")]
-
-
-public HttpResponseMessage Login (string user, string pass)
+public HttpResponseMessage ModifyUser (int idUsuario, [FromBody] UsuarioDTO dto)
 {
         // CAD, CEN, returnValue
         UsuarioRESTCAD usuarioRESTCAD = null;
         UsuarioCEN usuarioCEN = null;
-        UsuarioDTOA returnValue;
-        UsuarioEN en;
+        UsuarioDTOA returnValue = null;
+
+        // HTTP response
+        HttpResponseMessage response = null;
+        string uri = null;
 
         try
         {
@@ -71,13 +168,27 @@ public HttpResponseMessage Login (string user, string pass)
                 usuarioRESTCAD = new UsuarioRESTCAD (session);
                 usuarioCEN = new UsuarioCEN (usuarioRESTCAD);
 
+                // Modify
+                usuarioCEN.ModifyUser (idUsuario,
+                        dto.Alias
+                        ,
+                        dto.Email
+                        ,
+                        dto.Password
+                        ,
+                        dto.Created_at
+                        ,
+                        dto.Updated_at
+                        ,
+                        dto.Nif
+                        ,
+                        dto.Admin
+                        );
 
-                // Operation
-                en = usuarioCEN.Login (user, pass);
+                // Return modified object
+                returnValue = UsuarioAssembler.Convert (usuarioRESTCAD.ReadOIDDefault (idUsuario), session);
+
                 SessionCommit ();
-
-                // Convert return
-                returnValue = UsuarioAssembler.Convert (en, session);
         }
 
         catch (Exception e)
@@ -93,14 +204,60 @@ public HttpResponseMessage Login (string user, string pass)
                 SessionClose ();
         }
 
+        // Return 404 - Not found
+        if (returnValue == null)
+                return this.Request.CreateResponse (HttpStatusCode.NotFound);
         // Return 200 - OK
-        return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+        else{
+                response = this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+
+                return response;
+        }
 }
 
 
 
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+
+
+[HttpDelete]
+
+[Route ("~/api/Usuario/{idUsuario}/")]
+
+public HttpResponseMessage DeleteUser (int idUsuario)
+{
+        // CAD, CEN
+        UsuarioRESTCAD usuarioRESTCAD = null;
+        UsuarioCEN usuarioCEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                usuarioRESTCAD = new UsuarioRESTCAD (session);
+                usuarioCEN = new UsuarioCEN (usuarioRESTCAD);
+
+                usuarioCEN.DeleteUser (idUsuario);
+                SessionCommit ();
+        }
+
+        catch (Exception e)
+        {
+                SessionRollBack ();
+
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 204 - No Content
+        return this.Request.CreateResponse (HttpStatusCode.NoContent);
+}
+
+
+
 
 
 
