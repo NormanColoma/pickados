@@ -32,10 +32,9 @@ public static UsuarioDTOA Convert (UsuarioEN en, NHibernate.ISession session = n
                 // Attributes
 
                 dto.Id = en.Id;
-<<<<<<< HEAD
                 dto.Nif = en.Nif;
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+                dto.Email = en.Email;
+                dto.Alias = en.Alias;
 
                 //
                 // TravesalLink

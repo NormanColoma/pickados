@@ -30,6 +30,9 @@
 		 
 				var nif: String?;
 				    	 
+		 
+				var admin: Bool?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -74,6 +77,10 @@
 
 				
 					dictionary["nif"] = self.nif;
+				
+
+				
+					dictionary["admin"] = self.admin;
 				
 						
 				return dictionary;

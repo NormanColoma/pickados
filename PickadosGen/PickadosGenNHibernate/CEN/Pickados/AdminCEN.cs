@@ -38,7 +38,7 @@ public IAdminCAD get_IAdminCAD ()
         return this._IAdminCAD;
 }
 
-public int NewAdmin (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif)
+public int NewAdmin (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif, bool p_admin)
 {
         AdminEN adminEN = null;
         int oid;
@@ -57,13 +57,15 @@ public int NewAdmin (string p_alias, string p_email, String p_password, Nullable
 
         adminEN.Nif = p_nif;
 
+        adminEN.Admin = p_admin;
+
         //Call to AdminCAD
 
         oid = _IAdminCAD.NewAdmin (adminEN);
         return oid;
 }
 
-public void ModifyAdmin (int p_Admin_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif)
+public void ModifyAdmin (int p_Admin_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif, bool p_admin)
 {
         AdminEN adminEN = null;
 
@@ -76,6 +78,7 @@ public void ModifyAdmin (int p_Admin_OID, string p_alias, string p_email, String
         adminEN.Created_at = p_created_at;
         adminEN.Updated_at = p_updated_at;
         adminEN.Nif = p_nif;
+        adminEN.Admin = p_admin;
         //Call to AdminCAD
 
         _IAdminCAD.ModifyAdmin (adminEN);

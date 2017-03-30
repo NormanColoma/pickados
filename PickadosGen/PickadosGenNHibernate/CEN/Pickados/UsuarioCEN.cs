@@ -38,7 +38,7 @@ public IUsuarioCAD get_IUsuarioCAD ()
         return this._IUsuarioCAD;
 }
 
-public int NewUser (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif)
+public int NewUser (string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif, bool p_admin)
 {
         UsuarioEN usuarioEN = null;
         int oid;
@@ -57,13 +57,15 @@ public int NewUser (string p_alias, string p_email, String p_password, Nullable<
 
         usuarioEN.Nif = p_nif;
 
+        usuarioEN.Admin = p_admin;
+
         //Call to UsuarioCAD
 
         oid = _IUsuarioCAD.NewUser (usuarioEN);
         return oid;
 }
 
-public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif)
+public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, String p_password, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif, bool p_admin)
 {
         UsuarioEN usuarioEN = null;
 
@@ -76,6 +78,7 @@ public void ModifyUser (int p_Usuario_OID, string p_alias, string p_email, Strin
         usuarioEN.Created_at = p_created_at;
         usuarioEN.Updated_at = p_updated_at;
         usuarioEN.Nif = p_nif;
+        usuarioEN.Admin = p_admin;
         //Call to UsuarioCAD
 
         _IUsuarioCAD.ModifyUser (usuarioEN);

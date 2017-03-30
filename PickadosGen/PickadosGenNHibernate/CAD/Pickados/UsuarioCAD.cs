@@ -108,6 +108,9 @@ public void ModifyDefault (UsuarioEN usuario)
 
                 usuarioEN.Nif = usuario.Nif;
 
+
+                usuarioEN.Admin = usuario.Admin;
+
                 session.Update (usuarioEN);
                 SessionCommit ();
         }
@@ -176,6 +179,9 @@ public void ModifyUser (UsuarioEN usuario)
 
 
                 usuarioEN.Nif = usuario.Nif;
+
+
+                usuarioEN.Admin = usuario.Admin;
 
                 session.Update (usuarioEN);
                 SessionCommit ();

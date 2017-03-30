@@ -70,6 +70,7 @@ public static TipsterEN Convert (TipsterDTO dto)
                         newinstance.Created_at = dto.Created_at;
                         newinstance.Updated_at = dto.Updated_at;
                         newinstance.Nif = dto.Nif;
+                        newinstance.Admin = dto.Admin;
                 }
         }
         catch (Exception ex)

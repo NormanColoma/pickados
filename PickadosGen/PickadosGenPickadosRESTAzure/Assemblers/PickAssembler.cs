@@ -33,9 +33,8 @@ public static PickDTOA Convert (PickEN en, NHibernate.ISession session = null)
 
                 dto.Id = en.Id;
                 dto.Odd = en.Odd;
-                dto.Description = en.Description;
-                dto.Bookie = en.Bookie;
                 dto.PickResult = en.PickResult;
+                dto.Bookie = en.Bookie;
 
                 //
                 // TravesalLink

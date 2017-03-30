@@ -27,6 +27,62 @@ namespace PickadosGenPickadosRESTAzure.Controllers
 public class PostController : BasicController
 {
 // Voy a generar el readAll
+// Pasa el slEnables
+
+
+//Pasa el serviceLinkValid
+
+// ReadAll Generado a partir del serviceLink
+[HttpGet]
+[Route ("~/api/Post/Post_getAllPosts")]
+
+public HttpResponseMessage Post_getAllPosts (int first)
+{
+        // CAD, CEN, EN, returnValue
+        PostRESTCAD postRESTCAD = null;
+        PostCEN postCEN = null;
+
+        List<PostEN> postEN = null;
+        List<PostDTOA> returnValue = null;
+
+        try
+        {
+                SessionInitializeWithoutTransaction ();
+                postRESTCAD = new PostRESTCAD (session);
+                postCEN = new PostCEN (postRESTCAD);
+
+                // Data
+                // paginación
+
+                postEN = postCEN.GetAllPosts (first, 10).ToList ();
+
+
+
+                // Convert return
+                if (postEN != null) {
+                        returnValue = new List<PostDTOA>();
+                        foreach (PostEN entry in postEN)
+                                returnValue.Add (PostAssembler.Convert (entry, session));
+                }
+        }
+
+        catch (Exception e)
+        {
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 204 - Empty
+        if (returnValue == null || returnValue.Count == 0)
+                return this.Request.CreateResponse (HttpStatusCode.NoContent);
+        // Return 200 - OK
+        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+}
 
 
 
@@ -43,7 +99,7 @@ public class PostController : BasicController
 
 [Route ("~/api/Post/{idPost}")]
 
-public HttpResponseMessage GetPostById (int idPost)
+public HttpResponseMessage Post_getPostById (int idPost)
 {
         // CAD, CEN, EN, returnValue
         PostRESTCAD postRESTCAD = null;
@@ -85,24 +141,26 @@ public HttpResponseMessage GetPostById (int idPost)
 }
 
 
+// Pasa el slEnables
 
-// No pasa el slEnables: findPostsByTipster
+
+//Pasa el serviceLinkValid
+
+// ReadFilter Generado a partir del serviceLink
 
 [HttpGet]
 
-[Route ("~/api/Post/FindPostsByTipster")]
+[Route ("~/api/Post/Post_findPostsByTipster")]
 
-public HttpResponseMessage FindPostsByTipster (int id)
+public HttpResponseMessage Post_findPostsByTipster (int id, int first)
 {
         // CAD, CEN, EN, returnValue
 
         PostRESTCAD postRESTCAD = null;
         PostCEN postCEN = null;
 
-
         System.Collections.Generic.List<PostEN> en;
-
-        System.Collections.Generic.List<PostDTOA> returnValue = null;
+        List<PostDTOA> returnValue = null;
 
         try
         {
@@ -111,18 +169,19 @@ public HttpResponseMessage FindPostsByTipster (int id)
                 postRESTCAD = new PostRESTCAD (session);
                 postCEN = new PostCEN (postRESTCAD);
 
+
                 // CEN return
 
 
+                // paginación
 
                 en = postCEN.FindPostsByTipster (id).ToList ();
 
 
 
-
                 // Convert return
                 if (en != null) {
-                        returnValue = new System.Collections.Generic.List<PostDTOA>();
+                        returnValue = new List<PostDTOA>();
                         foreach (PostEN entry in en)
                                 returnValue.Add (PostAssembler.Convert (entry, session));
                 }
@@ -147,96 +206,55 @@ public HttpResponseMessage FindPostsByTipster (int id)
 }
 
 
-// No pasa el slEnables: getByResult
 
-[HttpGet]
 
-[Route ("~/api/Post/GetByResult")]
 
-public HttpResponseMessage GetByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postresult)
+
+
+
+
+
+[HttpPut]
+
+[Route ("~/api/Post/{idPost}/")]
+
+public HttpResponseMessage ModifyPost (int idPost, [FromBody] PostDTO dto)
 {
-        // CAD, CEN, EN, returnValue
-
+        // CAD, CEN, returnValue
         PostRESTCAD postRESTCAD = null;
         PostCEN postCEN = null;
+        PostDTOA returnValue = null;
 
-
-        System.Collections.Generic.List<PostEN> en;
-
-        System.Collections.Generic.List<PostDTOA> returnValue = null;
+        // HTTP response
+        HttpResponseMessage response = null;
+        string uri = null;
 
         try
         {
-                SessionInitializeWithoutTransaction ();
-
+                SessionInitializeTransaction ();
                 postRESTCAD = new PostRESTCAD (session);
                 postCEN = new PostCEN (postRESTCAD);
 
-                // CEN return
+                // Modify
+                postCEN.ModifyPost (idPost,
+                        dto.Created_at
+                        ,
+                        dto.Modified_at
+                        ,
+                        dto.Stake
+                        ,
+                        dto.Description
+                        ,
+                        dto.Private_
+                        ,
+                        dto.TotalOdd
+                        ,
+                        dto.PostResult
+                        );
 
+                // Return modified object
+                returnValue = PostAssembler.Convert (postRESTCAD.ReadOIDDefault (idPost), session);
 
-
-                en = postCEN.GetByResult (p_postresult).ToList ();
-
-
-
-
-                // Convert return
-                if (en != null) {
-                        returnValue = new System.Collections.Generic.List<PostDTOA>();
-                        foreach (PostEN entry in en)
-                                returnValue.Add (PostAssembler.Convert (entry, session));
-                }
-        }
-
-        catch (Exception e)
-        {
-                if (e.GetType () == typeof(HttpResponseException)) throw e;
-                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
-                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
-        }
-        finally
-        {
-                SessionClose ();
-        }
-
-        // Return 204 - Empty
-        if (returnValue == null || returnValue.Count == 0)
-                return this.Request.CreateResponse (HttpStatusCode.NoContent);
-        // Return 200 - OK
-        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[HttpPost]
-
-[Route ("~/api/Post/VerifyPost")]
-
-public HttpResponseMessage VerifyPost (int p_oid)
-{
-        // CP, returnValue
-        PostCP postCP = null;
-
-
-        try
-        {
-                SessionInitializeTransaction ();
-                postCP = new PostCP (session);
-
-                // Operation
-                postCP.VerifyPost (p_oid);
                 SessionCommit ();
         }
 
@@ -253,30 +271,38 @@ public HttpResponseMessage VerifyPost (int p_oid)
                 SessionClose ();
         }
 
+        // Return 404 - Not found
+        if (returnValue == null)
+                return this.Request.CreateResponse (HttpStatusCode.NotFound);
         // Return 200 - OK
-        return this.Request.CreateResponse (HttpStatusCode.OK);
+        else{
+                response = this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+
+                return response;
+        }
 }
 
 
 
-[HttpPost]
 
-[Route ("~/api/Post/PublishPost")]
 
-public HttpResponseMessage PublishPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postresult)
+[HttpDelete]
+
+[Route ("~/api/Post/{idPost}/")]
+
+public HttpResponseMessage DeletePost (int idPost)
 {
-        // CP, returnValue
-        PostCP postCP = null;
-
-        int returnValue;
+        // CAD, CEN
+        PostRESTCAD postRESTCAD = null;
+        PostCEN postCEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                postCP = new PostCP (session);
+                postRESTCAD = new PostRESTCAD (session);
+                postCEN = new PostCEN (postRESTCAD);
 
-                // Operation
-                returnValue = postCP.PublishPost (p_created_at, p_modified_at, p_stake, p_description, p_private, p_pick, p_tipster, p_postresult);
+                postCEN.DeletePost (idPost);
                 SessionCommit ();
         }
 
@@ -293,9 +319,10 @@ public HttpResponseMessage PublishPost (Nullable<DateTime> p_created_at, Nullabl
                 SessionClose ();
         }
 
-        // Return 200 - OK
-        return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+        // Return 204 - No Content
+        return this.Request.CreateResponse (HttpStatusCode.NoContent);
 }
+
 
 
 

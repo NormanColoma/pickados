@@ -32,8 +32,8 @@ public static MatchDTOA Convert (MatchEN en, NHibernate.ISession session = null)
                 // Attributes
 
                 dto.Id = en.Id;
-                dto.Stadium = en.Stadium;
                 dto.Date = en.Date;
+                dto.Stadium = en.Stadium;
 
                 //
                 // TravesalLink

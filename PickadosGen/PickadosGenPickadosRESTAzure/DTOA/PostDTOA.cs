@@ -8,13 +8,19 @@ namespace PickadosGenPickadosRESTAzure.DTOA
 {
 public class PostDTOA
 {
-private int id;
-public int Id
+private double stake;
+public double Stake
 {
-        get { return id; }
-        set { id = value; }
+        get { return stake; }
+        set { stake = value; }
 }
 
+private Nullable<DateTime> modified_at;
+public Nullable<DateTime> Modified_at
+{
+        get { return modified_at; }
+        set { modified_at = value; }
+}
 
 private Nullable<DateTime> created_at;
 public Nullable<DateTime> Created_at
@@ -37,18 +43,11 @@ public PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum PostResult
         set { postResult = value; }
 }
 
-private double stake;
-public double Stake
+private int id;
+public int Id
 {
-        get { return stake; }
-        set { stake = value; }
-}
-
-private double totalOdd;
-public double TotalOdd
-{
-        get { return totalOdd; }
-        set { totalOdd = value; }
+        get { return id; }
+        set { id = value; }
 }
 
 

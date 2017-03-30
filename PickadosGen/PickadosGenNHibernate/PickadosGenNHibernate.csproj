@@ -260,6 +260,8 @@
 			
 			
 			
+			<Compile Include="CEN\Pickados\AdminCEN_Login.cs" />
+			
 	<Compile Include="EN\Pickados\StatsEN.cs" />
 	<Compile Include="CEN\Pickados\StatsCEN.cs" />
 	<Compile Include="CAD\Pickados\IStatsCAD.cs" />
