@@ -27,17 +27,13 @@ public class PickDTOA extends DTOA
 	public Double getOdd () { return odd; }
 	public void setOdd (Double odd) { this.odd = odd; }
 	
-	private String description;
-	public String getDescription () { return description; }
-	public void setDescription (String description) { this.description = description; }
+	private PickResult pickResult;
+	public PickResult getPickResult () { return pickResult; }
+	public void setPickResult (PickResult pickResult) { this.pickResult = pickResult; }
 	
 	private String bookie;
 	public String getBookie () { return bookie; }
 	public void setBookie (String bookie) { this.bookie = bookie; }
-	
-	private PickResult pickResult;
-	public PickResult getPickResult () { return pickResult; }
-	public void setPickResult (PickResult pickResult) { this.pickResult = pickResult; }
 	
 	
 	
@@ -72,10 +68,10 @@ public class PickDTOA extends DTOA
 			 
 			}
 
-			if (!JSONObject.NULL.equals(json.opt("Description")))
+			if (!JSONObject.NULL.equals(json.opt("PickResult")))
 			{
-			 
-				this.description = (String) json.opt("Description");
+				int enumRawValue = (int) json.opt("PickResult");
+				this.pickResult = PickResult.fromRawValue(enumRawValue);
 			 
 			}
 
@@ -83,13 +79,6 @@ public class PickDTOA extends DTOA
 			{
 			 
 				this.bookie = (String) json.opt("Bookie");
-			 
-			}
-
-			if (!JSONObject.NULL.equals(json.opt("PickResult")))
-			{
-				int enumRawValue = (int) json.opt("PickResult");
-				this.pickResult = PickResult.fromRawValue(enumRawValue);
 			 
 			}
 			
@@ -116,16 +105,12 @@ public class PickDTOA extends DTOA
 			json.put("Odd", this.odd);
 		
 		
-		  if (this.description != null)
-			json.put("Description", this.description);
+		  if (this.pickResult != null)
+			json.put("PickResult", this.pickResult.getRawValue());
 		
 		
 		  if (this.bookie != null)
 			json.put("Bookie", this.bookie);
-		
-		
-		  if (this.pickResult != null)
-			json.put("PickResult", this.pickResult.getRawValue());
 		
 			
 			
@@ -150,11 +135,9 @@ public class PickDTOA extends DTOA
 		
 	dto.setOdd (this.getOdd());
 
-	dto.setDescription (this.getDescription());
+	dto.setPickResult (this.getPickResult());
 
 	dto.setBookie (this.getBookie());
-
-	dto.setPickResult (this.getPickResult());
 
 		
 		

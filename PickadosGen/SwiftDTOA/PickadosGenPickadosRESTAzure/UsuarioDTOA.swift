@@ -13,10 +13,9 @@ class UsuarioDTOA : DTOA
 
 	var id: Int?;
 	
-<<<<<<< HEAD
 	var nif: String?;
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+	var email: String?;
+	var alias: String?;
 	
 	
 	
@@ -38,10 +37,9 @@ class UsuarioDTOA : DTOA
 		self.id = json["Id"].object as? Int
 		
 	
-<<<<<<< HEAD
 		self.nif = json["Nif"].object as? String;
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+		self.email = json["Email"].object as? String;
+		self.alias = json["Alias"].object as? String;
 		
 		
 	}
@@ -53,14 +51,21 @@ class UsuarioDTOA : DTOA
 		dictionary["Id"] = self.id;
 		
 	
-<<<<<<< HEAD
 
 	
 		dictionary["Nif"] = self.nif;
 	
 	
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+
+	
+		dictionary["Email"] = self.email;
+	
+	
+
+	
+		dictionary["Alias"] = self.alias;
+	
+	
 		
 		
 		

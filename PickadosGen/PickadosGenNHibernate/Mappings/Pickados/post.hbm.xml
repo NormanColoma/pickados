@@ -59,6 +59,18 @@
 											 					
 			
 			
+			
+		  			
+						<bag name="Request" >
+							<key>
+							
+								
+								<column name="FK_id_idPost"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.RequestEN"/>
+					    </bag>
+					
+					
 					
 					
 					
@@ -74,5 +86,6 @@
 		  
 		  <query name="PostENReadAllHQL">from PostEN</query>
 		  <query name="PostENfindPostsByTipsterHQL"><![CDATA[select p FROM PostEN as p INNER JOIN p.Tipster t where t.Id = :id]]></query>
+		  <query name="PostENgetByResultHQL"><![CDATA[FROM PostEN  where postResult = :p_postResult]]></query>
 		</hibernate-mapping>
 	

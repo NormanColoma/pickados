@@ -108,6 +108,9 @@ public void ModifyDefault (UsuarioEN usuario)
 
                 usuarioEN.Nif = usuario.Nif;
 
+
+                usuarioEN.Admin = usuario.Admin;
+
                 session.Update (usuarioEN);
                 SessionCommit ();
         }
@@ -176,6 +179,9 @@ public void ModifyUser (UsuarioEN usuario)
 
 
                 usuarioEN.Nif = usuario.Nif;
+
+
+                usuarioEN.Admin = usuario.Admin;
 
                 session.Update (usuarioEN);
                 SessionCommit ();
@@ -260,6 +266,38 @@ public System.Collections.Generic.IList<UsuarioEN> GetAllUsers (int first, int s
                                  SetFirstResult (first).SetMaxResults (size).List<UsuarioEN>();
                 else
                         result = session.CreateCriteria (typeof(UsuarioEN)).List<UsuarioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+
+public PickadosGenNHibernate.EN.Pickados.UsuarioEN FindByUser (string name)
+{
+        PickadosGenNHibernate.EN.Pickados.UsuarioEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM UsuarioEN self where select u FROM UsuarioEN as u where alias = :name";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENfindByUserHQL");
+                query.SetParameter ("name", name);
+
+
+                result = query.UniqueResult<PickadosGenNHibernate.EN.Pickados.UsuarioEN>();
                 SessionCommit ();
         }
 

@@ -23,20 +23,7 @@ public class CompetitionDTOA extends DTOA
 	public void setId (Integer id) { this.id = id; }
 
 	
-	private String name;
-	public String getName () { return name; }
-	public void setName (String name) { this.name = name; }
 	
-	private String place;
-	public String getPlace () { return place; }
-	public void setPlace (String place) { this.place = place; }
-	
-	
-	/* Rol: Competition o--> Match */
-	private ArrayList<MatchDTOA> getAllEventOfCompetition;
-	public ArrayList<MatchDTOA> getGetAllEventOfCompetition () { return getAllEventOfCompetition; }
-	public void setGetAllEventOfCompetition (ArrayList<MatchDTOA> getAllEventOfCompetition) { this.getAllEventOfCompetition = getAllEventOfCompetition; }
-
 	
 	
 	// endregion
@@ -60,30 +47,7 @@ public class CompetitionDTOA extends DTOA
 				this.id = (Integer) json.opt("Id");
 			}
 			
-
-			if (!JSONObject.NULL.equals(json.opt("Name")))
-			{
-			 
-				this.name = (String) json.opt("Name");
-			 
-			}
-
-			if (!JSONObject.NULL.equals(json.opt("Place")))
-			{
-			 
-				this.place = (String) json.opt("Place");
-			 
-			}
 			
-
-			JSONObject jsonGetAllEventOfCompetition = json.optJSONObject("GetAllEventOfCompetition");
-			if (jsonGetAllEventOfCompetition != null)
-			{
-				MatchDTOA tmp = new MatchDTOA();
-				tmp.setFromJSON(jsonGetAllEventOfCompetition);
-				this.getAllEventOfCompetition = tmp;
-			}
-
 			
 		}
 		catch (Exception e)
@@ -102,21 +66,7 @@ public class CompetitionDTOA extends DTOA
 				json.put("Id", this.id);
 			}
 			
-		
-		  if (this.name != null)
-			json.put("Name", this.name);
-		
-		
-		  if (this.place != null)
-			json.put("Place", this.place);
-		
 			
-
-			if (this.getAllEventOfCompetition != null)
-			{
-				json.put("GetAllEventOfCompetition", this.getAllEventOfCompetition.toJSON());
-			}
-
 			
 		}
 		catch (JSONException e)
@@ -137,14 +87,9 @@ public class CompetitionDTOA extends DTOA
 	dto.setId (this.getId());
 
 		
-	dto.setName (this.getName());
-
-	dto.setPlace (this.getPlace());
-
 		
 		
 		// Roles
-					// TODO: from DTOA [ GetAllEventOfCompetition ] (dataType : ArrayList<MatchDTOA>) to DTO [ Event_ ]
 		
 		
 		return dto;

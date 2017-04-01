@@ -48,6 +48,14 @@ public static PostEN Convert (PostDTO dto)
                         }
                         newinstance.TotalOdd = dto.TotalOdd;
                         newinstance.PostResult = dto.PostResult;
+                        if (dto.Request_oid != null) {
+                                PickadosGenNHibernate.CAD.Pickados.IRequestCAD requestCAD = new PickadosGenNHibernate.CAD.Pickados.RequestCAD ();
+
+                                newinstance.Request = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.RequestEN>();
+                                foreach (int entry in dto.Request_oid) {
+                                        newinstance.Request.Add (requestCAD.ReadOIDDefault (entry));
+                                }
+                        }
                 }
         }
         catch (Exception ex)

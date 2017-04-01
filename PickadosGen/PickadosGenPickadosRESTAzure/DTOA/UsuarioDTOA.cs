@@ -14,7 +14,6 @@ public int Id
         get { return id; }
         set { id = value; }
 }
-<<<<<<< HEAD
 
 
 private string nif;
@@ -23,7 +22,19 @@ public string Nif
         get { return nif; }
         set { nif = value; }
 }
-=======
->>>>>>> Fixed get all sports api method. Now showing each competition in their own sport.
+
+private string email;
+public string Email
+{
+        get { return email; }
+        set { email = value; }
+}
+
+private string alias;
+public string Alias
+{
+        get { return alias; }
+        set { alias = value; }
+}
 }
 }

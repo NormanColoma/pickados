@@ -25,40 +25,5 @@ public CompetitionRESTCAD(ISession sessionAux)
         : base (sessionAux)
 {
 }
-
-
-
-public IList<MatchEN> GetAllEventOfCompetition (int id)
-{
-        IList<MatchEN> result = null;
-
-        try
-        {
-                SessionInitializeTransaction ();
-
-                String sql = @"select self.Event_ FROM CompetitionEN self " +
-                             "where self.Id = :p_Id";
-                IQuery query = session.CreateQuery (sql).SetParameter ("p_Id", id);
-
-
-                result = query.List<MatchEN>();
-
-                SessionCommit ();
-        }
-
-        catch (Exception ex)
-        {
-                SessionRollBack ();
-                if (ex is PickadosGenNHibernate.Exceptions.ModelException) throw ex;
-                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionRESTCAD.", ex);
-        }
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
 }
 }

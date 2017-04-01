@@ -49,6 +49,18 @@ enum Months: Int
 	case October = 10
 	case November = 11
 	case December = 12
+enum RequestType: Int
+{
+	case Modify = 1
+	case Delete = 2
+}
+
+enum RequestState: Int
+{
+	case Open = 1
+	case Accepted = 2
+	case Denied = 3
+	case InReview = 4
 }
 
 	

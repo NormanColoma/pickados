@@ -85,12 +85,12 @@ public static void InitializeData ()
                 AdminCEN admin = new AdminCEN ();
                 UsuarioCEN user = new UsuarioCEN ();
 
-                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "12345678B", false, 0);
-                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "25836914C", false, 0);
-                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "36924518Z", false, 0);
-                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "56478912P", false, 0);
+                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "12345678B", false, false, 0);
+                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "25836914C", false, false, 0);
+                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "36924518Z", false, false, 0);
+                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "56478912P", false, false, 0);
 
-                admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N");
+                admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N", true);
 
                 TipsterEN originalTipster = nuevo.GetTipsterById (tipster);
                 TipsterEN newTipster = nuevo.GetTipsterById (tipster1);
@@ -149,8 +149,8 @@ public static void InitializeData ()
                 IList<TipsterEN> totalFollowers8 = nuevo.GetFollows (lastTipster.Id);
                 Console.WriteLine ("Tipster 4 has: " + totalFollowers8.Count + " followeds");
 
-                Console.WriteLine ("User montoro could login: " + nuevo.Login ("montoro", "montoroPro").Id);
-                Console.WriteLine ("User montoro couldn't login: " + nuevo.Login ("montoro", "montoroCola"));
+                Console.WriteLine ("User montoro could login: " + user.Login ("montoro", "montoroPro").Id);
+                Console.WriteLine ("User montoro couldn't login: " + user.Login ("montoro", "montoroCola"));
 
                 Console.WriteLine ("Converting tipster 1 to premium");
                 nuevo.BecomePremium (originalTipster.Id, 2.8);
@@ -354,6 +354,10 @@ public static void InitializeData ()
                 IList<StatsEN> statsMay = statCAD.GetStatsByMonthTipster (otherTipster.Alias, MonthsEnum.May, 2018);
                 foreach (var s in statsMay)
                         Console.WriteLine ("- " + s.InitialDate);
+                // Creating requests
+
+                RequestCEN requestCEN = new RequestCEN ();
+                requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
 
                 /*PROTECTED REGION END*/
         }

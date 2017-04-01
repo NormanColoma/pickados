@@ -45,6 +45,10 @@
 				public String getNif () { return nif; } 
 				public void setNif  (String value) { nif = value;  } 
 				    	 
+				private Boolean admin;
+				public Boolean getAdmin () { return admin; } 
+				public void setAdmin  (Boolean value) { admin = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -72,6 +76,9 @@
 				
 				
 						  json.put("Nif", this.nif);
+				
+				
+						  json.put("Admin", this.admin);
 				
 						
 					}

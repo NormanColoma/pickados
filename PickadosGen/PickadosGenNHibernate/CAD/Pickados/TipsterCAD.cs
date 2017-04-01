@@ -170,6 +170,9 @@ public void ModifyTipster (TipsterEN tipster)
                 tipsterEN.Nif = tipster.Nif;
 
 
+                tipsterEN.Admin = tipster.Admin;
+
+
                 tipsterEN.Premium = tipster.Premium;
 
 

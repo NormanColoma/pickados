@@ -11,9 +11,9 @@ class TeamDTOA : DTOA
 {
 	// MARK: - Properties
 
-	var id: Int?;
 	
 	var name: String?;
+	var id: Int?;
 	
 	
 	
@@ -32,10 +32,10 @@ class TeamDTOA : DTOA
 	
 	required init (fromJSONObject json: JSON)
 	{
-		self.id = json["Id"].object as? Int
 		
 	
 		self.name = json["Name"].object as? String;
+		self.id = json["Id"].object as? Int;
 		
 		
 	}
@@ -44,12 +44,16 @@ class TeamDTOA : DTOA
 	{
 		var dictionary: [String : AnyObject] = [:];
 		
-		dictionary["Id"] = self.id;
 		
 	
 
 	
 		dictionary["Name"] = self.name;
+	
+	
+
+	
+		dictionary["Id"] = self.id;
 	
 	
 		

@@ -30,6 +30,9 @@
 					<property name="Nif" type="string"> 
 						<column name="nif"  unique="true" not-null="true"/>
 					</property>
+					<property name="Admin" type="boolean"> 
+						<column name="admin"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -38,6 +41,8 @@
 			
 			
 			
+			
+					
 					
 					
 					
@@ -49,5 +54,6 @@
 		 </class>	
 		  
 		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENfindByUserHQL"><![CDATA[select u FROM UsuarioEN as u where alias = :name]]></query>
 		</hibernate-mapping>
 	

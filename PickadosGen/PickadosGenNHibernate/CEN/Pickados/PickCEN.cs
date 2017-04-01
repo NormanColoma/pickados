@@ -105,9 +105,9 @@ public System.Collections.Generic.IList<PickEN> GetAllPicks (int first, int size
         list = _IPickCAD.GetAllPicks (first, size);
         return list;
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult ()
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? p_pickResult)
 {
-        return _IPickCAD.GetPicksByResult ();
+        return _IPickCAD.GetPicksByResult (p_pickResult);
 }
 }
 }

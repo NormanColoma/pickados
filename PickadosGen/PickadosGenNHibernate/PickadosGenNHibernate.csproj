@@ -204,6 +204,7 @@
 			
 			
 			
+			
 	<Compile Include="EN\Pickados\UsuarioEN.cs" />
 	<Compile Include="CEN\Pickados\UsuarioCEN.cs" />
 	<Compile Include="CAD\Pickados\IUsuarioCAD.cs" />
@@ -212,6 +213,9 @@
 			
 			
 			
+			
+			
+			<Compile Include="CEN\Pickados\UsuarioCEN_Login.cs" />
 			
 			
 	<Compile Include="EN\Pickados\TipsterEN.cs" />
@@ -255,6 +259,8 @@
 	<Compile Include="CP\Pickados\AdminCP.cs" />
 			
 			
+			
+			<Compile Include="CEN\Pickados\AdminCEN_Login.cs" />
 			
 	<Compile Include="EN\Pickados\StatsEN.cs" />
 	<Compile Include="CEN\Pickados\StatsCEN.cs" />
@@ -333,11 +339,24 @@
 			
 			
 			
+	<Compile Include="EN\Pickados\RequestEN.cs" />
+	<Compile Include="CEN\Pickados\RequestCEN.cs" />
+	<Compile Include="CAD\Pickados\IRequestCAD.cs" />
+	<Compile Include="CAD\Pickados\RequestCAD.cs" />
+	<Compile Include="CP\Pickados\RequestCP.cs" />
+			
+			
+			
+			
+			
+			
 	<Compile Include="Enumerated\Pickados\PickResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\ResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\LineEnum.cs" />
 	<Compile Include="Enumerated\Pickados\TimeEnum.cs" />
 	<Compile Include="Enumerated\Pickados\MonthsEnum.cs" />
+	<Compile Include="Enumerated\Pickados\RequestTypeEnum.cs" />
+	<Compile Include="Enumerated\Pickados\RequestStateEnum.cs" />
 	
 	
 
@@ -373,6 +392,7 @@
 	<EmbeddedResource Include="Mappings\Pickados\scorer.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\wincast.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\timecast.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\request.hbm.xml" />
 	
 	
 

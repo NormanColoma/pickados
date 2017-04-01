@@ -52,5 +52,11 @@ private PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum postResult;
 public PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum PostResult {
         get { return postResult; } set { postResult = value;  }
 }
+
+
+private System.Collections.Generic.IList<int> request_oid;
+public System.Collections.Generic.IList<int> Request_oid {
+        get { return request_oid; } set { request_oid = value;  }
+}
 }
 }
