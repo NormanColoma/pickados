@@ -19,14 +19,18 @@ namespace PickadosGenNHibernate.CEN.Pickados
 {
 public partial class AdminCEN
 {
-public void Login (string email, string password)
+public bool Login (string name, string password)
 {
         /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Admin_login) ENABLED START*/
 
         // Write here your custom code...
+        UsuarioCEN userCEN = new UsuarioCEN ();
+        UsuarioEN userFound = userCEN.Login (name, password);
 
-        throw new NotImplementedException ("Method Login() not yet implemented.");
-
+        if (userFound.Admin && userFound != null) {
+                return true;
+        }
+        return false;
         /*PROTECTED REGION END*/
 }
 }

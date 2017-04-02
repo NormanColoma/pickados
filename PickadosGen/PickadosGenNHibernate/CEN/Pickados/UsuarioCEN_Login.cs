@@ -28,7 +28,7 @@ public PickadosGenNHibernate.EN.Pickados.UsuarioEN Login (string name, string pa
 
         string codedPass;
         UsuarioCEN usuario = new UsuarioCEN ();
-        UsuarioEN us = usuario.FindByUser(name);
+        UsuarioEN us = usuario.FindByUser (name);
 
         if (us != null) {
                 StringBuilder hash = new StringBuilder ();

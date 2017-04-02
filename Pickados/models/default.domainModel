@@ -316,7 +316,7 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_0nQy9gKWEeexzcR6TysJ7w" name="p_totalOdd" type="Double"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_0nQy9wKWEeexzcR6TysJ7w" name="p_postResult" type="Enum" typeEnum="_r2sg0NNlEeaZBpN3xqTI2g"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_WW1PMADGEeeW_Z66ZhZ5IA" name="findPostsByTipster" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_gc4PQNNtEeaZBpN3xqTI2g" filter="select p FROM PostEN as p INNER JOIN p.Tipster t where t.Id = :id" automaticSynchronize="false">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_WW1PMADGEeeW_Z66ZhZ5IA" name="findPostsByTipster" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_gc4PQNNtEeaZBpN3xqTI2g" filter="select p FROM PostEN as p INNER JOIN p.Tipster t where t.Id = :id" automaticSynchronize="false" paging="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_eJesIADGEeeW_Z66ZhZ5IA" name="id" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_AbeksAKTEeexzcR6TysJ7w" name="getByResult" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_gc4PQNNtEeaZBpN3xqTI2g" filter="FROM PostEN  where postResult = :p_postResult" automaticSynchronize="false">
@@ -500,8 +500,8 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_ylkdjdNuEeaZBpN3xqTI2g" name="deleteAdmin" operationType="Destroy" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9zRXsAdFEeenU-wdeoiIyw" name="p_Admin_OID" type="OID" typeObject="_nnowUNNuEeaZBpN3xqTI2g"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_k_1TQAdFEeenU-wdeoiIyw" name="login" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qJ-c4AdFEeenU-wdeoiIyw" name="email"/>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_k_1TQAdFEeenU-wdeoiIyw" name="login" type="Boolean">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qJ-c4AdFEeenU-wdeoiIyw" name="name"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_wffNcAdFEeenU-wdeoiIyw" name="password"/>
       </operations>
     </elements>
@@ -593,7 +593,7 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_MVE3ANvSEeaH16oqCgSP8Q" name="p_Player_OID" type="OID" typeObject="_81MugNg1EeaQu-KnU_rUbg"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_MVGsMNvSEeaH16oqCgSP8Q" name="getAllPlayers" operationType="ReadAll" type="Object" collectionType="List" typeObject="_81MugNg1EeaQu-KnU_rUbg"/>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_t-2PMPzdEeafta5eIpkHxA" name="getPlayersByClubTeam" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_81MugNg1EeaQu-KnU_rUbg" filter="SELECT p FROM PlayerEN as p INNER JOIN p.Club_team as t WHERE t.Name = :p_ClubTeam_Name" automaticSynchronize="false">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_t-2PMPzdEeafta5eIpkHxA" name="getPlayersByClubTeam" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_81MugNg1EeaQu-KnU_rUbg" filter="SELECT p FROM PlayerEN as p INNER JOIN p.Club_team as t WHERE t.Name = :p_ClubTeam_Name" automaticSynchronize="false" paging="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_xjZUAPzdEeafta5eIpkHxA" name="p_ClubTeam_Name"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_kdS5EPzgEeasMbTOG_W19w" name="getPlayersByNationalTeam" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_81MugNg1EeaQu-KnU_rUbg" filter="SELECT p FROM PlayerEN as p INNER JOIN p.National_team as t WHERE t.Name = :p_NationalTeam_Name" automaticSynchronize="false">
@@ -649,7 +649,7 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_BxxioNwaEea1d9AB9WaAwQ" name="getTotalMatchesByTeam" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="FROM MatchEN" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_F657MNwaEea1d9AB9WaAwQ" name="id" type="OID" typeObject="_N1IYYNNqEeaZBpN3xqTI2g"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_WYjVAPlIEea4BMBLrnI2Ow" name="getMatchByCompetition" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="select m FROM MatchEN as m INNER JOIN m.Competition as c where c.Id=:id" automaticSynchronize="false">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_WYjVAPlIEea4BMBLrnI2Ow" name="getMatchByCompetition" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="select m FROM MatchEN as m INNER JOIN m.Competition as c where c.Id=:id" automaticSynchronize="false" paging="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_bvB0oPtwEea3Y6_aXsHiNQ" name="id" type="OID" typeObject="_mmPeYNNmEeaZBpN3xqTI2g"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_07Mw4PtqEea3Y6_aXsHiNQ" name="getMatchByLocalTeam" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_0RRr8NkBEeaUt9gXjU7aig" filter="select m FROM MatchEN as m INNER JOIN m.Home as t where t.Id=:id" automaticSynchronize="false">

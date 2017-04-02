@@ -147,20 +147,20 @@ namespace UnitTest
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>())).Returns(It.IsAny<List<MatchEN>>());
+            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>())).Returns(It.IsAny<List<MatchEN>>());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
 
             try
             {
-                matchCEN.GetMatchByCompetition(14725);
+                matchCEN.GetMatchByCompetition(14725, 1, 10);
             }
             catch (Exception ex)
             {
                 Assert.Fail("Should not throw exception");
             }
 
-            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>()), Times.Once);
+            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
         }
 
         [TestMethod]
@@ -168,20 +168,20 @@ namespace UnitTest
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>())).Throws(new ModelException());
+            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>())).Throws(new ModelException());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
 
             try
             {
-                matchCEN.GetMatchByCompetition(14725);
+                matchCEN.GetMatchByCompetition(14725,1,10);
             }
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(ModelException));
             }
 
-            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>()), Times.Once);
+            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
         }
 
         [TestMethod]
@@ -189,20 +189,20 @@ namespace UnitTest
         {
             var matchMock = new Mock<IMatchCAD>();
 
-            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>())).Throws(new DataLayerException());
+            matchMock.Setup(mock => mock.GetMatchByCompetition(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>())).Throws(new DataLayerException());
 
             MatchCEN matchCEN = new MatchCEN(matchMock.Object);
 
             try
             {
-                matchCEN.GetMatchByCompetition(14725);
+                matchCEN.GetMatchByCompetition(14725, 1, 10);
             }
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(DataLayerException));
             }
 
-            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>()), Times.Once);
+            matchMock.Verify(mock => mock.GetMatchByCompetition(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
         }
     }
 }

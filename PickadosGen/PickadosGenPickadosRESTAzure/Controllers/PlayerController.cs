@@ -121,7 +121,7 @@ public HttpResponseMessage Player_getPlayersByClubTeam (string p_clubteam_name, 
 
                 // paginación
 
-                en = playerCEN.GetPlayersByClubTeam (p_clubteam_name).ToList ();
+                en = playerCEN.GetPlayersByClubTeam (p_clubteam_name, first, 10).ToList ();
 
 
 

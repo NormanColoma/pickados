@@ -128,9 +128,9 @@ public int NewPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modifi
         return oid;
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> FindPostsByTipster (int id)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> FindPostsByTipster (int id, int first, int size)
 {
-        return _IPostCAD.FindPostsByTipster (id);
+        return _IPostCAD.FindPostsByTipster (id, first, size);
 }
 public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? p_postResult)
 {

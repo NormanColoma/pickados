@@ -301,7 +301,7 @@ public int NewPost (PostEN post)
         return post.Id;
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> FindPostsByTipster (int id)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> FindPostsByTipster (int id, int first, int size)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> result;
         try
@@ -311,6 +311,13 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("PostENfindPostsByTipsterHQL");
                 query.SetParameter ("id", id);
+
+                if (size > 0) {
+                        query.SetFirstResult (first).SetMaxResults (size);
+                }
+                else{
+                        query.SetFirstResult (first);
+                }
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.PostEN>();
                 SessionCommit ();
