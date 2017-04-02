@@ -272,6 +272,11 @@
 		<Compile Include="Assemblers\RequestAssembler.cs" />
 		<Compile Include="Controllers\RequestController.cs" />
 		
+		<Compile Include="CAD\StatsRESTCAD.cs" />
+		<Compile Include="DTOA\StatsDTOA.cs" />
+		<Compile Include="Assemblers\StatsAssembler.cs" />
+		<Compile Include="Controllers\StatsController.cs" />
+		
 	
 	
 	

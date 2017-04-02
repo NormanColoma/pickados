@@ -160,8 +160,8 @@ public StatsEN updateStats (StatsEN stats, PostEN post)
         stats.Yield = (float)(stats.Benefit / stats.TotalStaked * 100);
 
         return stats;
-}
+//}
 /*PROTECTED REGION END*/
 }
 }
-//}
+}

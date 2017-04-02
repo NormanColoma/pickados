@@ -272,6 +272,8 @@
 			
 			
 			
+			
+			
 	<Compile Include="EN\Pickados\PlayerEN.cs" />
 	<Compile Include="CEN\Pickados\PlayerCEN.cs" />
 	<Compile Include="CAD\Pickados\IPlayerCAD.cs" />
@@ -352,6 +354,7 @@
 	<Compile Include="Enumerated\Pickados\ResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\LineEnum.cs" />
 	<Compile Include="Enumerated\Pickados\TimeEnum.cs" />
+	<Compile Include="Enumerated\Pickados\MonthsEnum.cs" />
 	<Compile Include="Enumerated\Pickados\RequestTypeEnum.cs" />
 	<Compile Include="Enumerated\Pickados\RequestStateEnum.cs" />
 	
