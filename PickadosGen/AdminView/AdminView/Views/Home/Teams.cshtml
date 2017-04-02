@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Teams";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container-fluid">
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-2">
+
+            <!-- menu -->
+            <div id="MainMenu">
+                <div class="list-group panel">
+                    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">CLUB TEAMS <i class="fa fa-caret-down"></i></a>
+                    <div class="collapse" id="demo3">
+                        <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">LA LIGA SANTANDER <i class="fa fa-caret-down"></i></a>
+                        <div class="collapse list-group-submenu" id="SubMenu1">
+                            <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">ATLETICO DE MADRID</a>
+                            <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">REAL MADRID</a>
+                            @Html.ActionLink("FC BARCELONA", "DetailsTeam", "Home", new { id = 1 }, new { @class = "list-group-item"})
+                            <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">SEVILLA FC</a>
+                        </div>
+                        <a href="javascript:;" class="list-group-item">PREMIER LEAGUE</a>
+                        <a href="javascript:;" class="list-group-item">SERIE A</a>
+                        <a href="javascript:;" class="list-group-item">BUNDESLIGA</a>
+                        <a href="javascript:;" class="list-group-item">LIGUE 1</a>
+                    </div>
+                    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">NATIONAL TEAMS  <i class="fa fa-caret-down"></i></a>
+                    <div class="collapse" id="demo4">
+                        <a href="javascript:;" class="list-group-item">EUROPE</a>
+                        <a href="javascript:;" class="list-group-item">AMERICA</a>
+                        <a href="javascript:;" class="list-group-item">AFICA</a>
+                        <a href="javascript:;" class="list-group-item">ASIA</a>
+                        <a href="javascript:;" class="list-group-item">OCEANIA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="col-md-2">
+            <div id="SecondMenu">
+                <div class="list-group panel">
+                    <a href="#subDemo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#SecondMenu">PLAYERS <i class="fa fa-caret-down"></i></a>
+                    <div class="collapse" id="subDemo1">
+                        <a href="javascript:;" class="list-group-item">MARC-ANDRÉ TER STEGEN</a>
+                        <a href="javascript:;" class="list-group-item">GERARD PIQUÉ</a>
+                        <a href="javascript:;" class="list-group-item">SAMUEL UMTITI</a>
+                        <a href="javascript:;" class="list-group-item">ANDRES INIESTA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h3>Team Name: <span class="label label-default">Football Club Barcelona</span></h3>
+            <h3>Fundation Year: <span class="label label-default"> 29th November 1899</span></h3>
+            <h3>City: <span class="label label-default"> Barcelona</span></h3>
+            <h3>Country: <span class="label label-default"> Spain</span></h3>
+            <h3>Stadium: <span class="label label-default"> Camp Nou</span></h3>
+        </div>
+        <div class="col-md-8">
+            <h3>Player Name: <span class="label label-default">Marc-André Ter Stegen</span></h3>
+            <h3>Birth: <span class="label label-default"> 30th April 1992 </span></h3>
+            <h3>Height: <span class="label label-default"> 1.87m</span></h3>
+            <h3>Weigh: <span class="label label-default"> 85Kg</span></h3>
+            <h3>Country: <span class="label label-default"> Germany</span></h3>
+        </div>-->
+    </div>
+
+</div>
+
