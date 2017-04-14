@@ -376,7 +376,7 @@ public System.Collections.Generic.IList<PlayerEN> GetAllPlayers (int first, int 
         return result;
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByClubTeam (string p_ClubTeam_Name)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByClubTeam (string p_ClubTeam_Name, int first, int size)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> result;
         try
@@ -386,6 +386,13 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Player
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("PlayerENgetPlayersByClubTeamHQL");
                 query.SetParameter ("p_ClubTeam_Name", p_ClubTeam_Name);
+
+                if (size > 0) {
+                        query.SetFirstResult (first).SetMaxResults (size);
+                }
+                else{
+                        query.SetFirstResult (first);
+                }
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.PlayerEN>();
                 SessionCommit ();

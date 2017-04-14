@@ -152,12 +152,12 @@
       </navAttribute>
       <referToClass xmi:type="es.ua.dlsi.ooh:Class" href="default.domainModel#_dCCDkNNuEeaZBpN3xqTI2g"/>
     </navigationalElem>
-    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:ServiceLink" xmi:id="_vberYAdIEeenU-wdeoiIyw" name="Tipster_findByMail" nodeOrigin="_WSvsYAdIEeenU-wdeoiIyw" nodeTarget="_WSvsYAdIEeenU-wdeoiIyw" chunkSize="10" paging="true" navOperation="_seTIkAdIEeenU-wdeoiIyw" operationName="findByMail">
+    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:ServiceLink" xmi:id="_vberYAdIEeenU-wdeoiIyw" name="Tipster_findByMail" nodeOrigin="_WSvsYAdIEeenU-wdeoiIyw" nodeTarget="_WSvsYAdIEeenU-wdeoiIyw" navOperation="_seTIkAdIEeenU-wdeoiIyw" operationName="findByMail">
       <argumentLink xmi:type="es.ua.dlsi.ooh.navigationalView:ArgumentLink" xmi:id="_vberYQdIEeenU-wdeoiIyw" name="email">
         <argument xmi:type="es.ua.dlsi.ooh:Argument" href="default.domainModel#_17ZTEADPEeeIc4bGxe66Bw"/>
       </argumentLink>
     </navigationalElem>
-    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:ServiceLink" xmi:id="_w89sQAdIEeenU-wdeoiIyw" name="Tipster_findByNIF" nodeOrigin="_WSvsYAdIEeenU-wdeoiIyw" nodeTarget="_WSvsYAdIEeenU-wdeoiIyw" chunkSize="10" paging="true" navOperation="_tZnhUAdIEeenU-wdeoiIyw" operationName="findByNIF">
+    <navigationalElem xmi:type="es.ua.dlsi.ooh.navigationalView:ServiceLink" xmi:id="_w89sQAdIEeenU-wdeoiIyw" name="Tipster_findByNIF" nodeOrigin="_WSvsYAdIEeenU-wdeoiIyw" nodeTarget="_WSvsYAdIEeenU-wdeoiIyw" navOperation="_tZnhUAdIEeenU-wdeoiIyw" operationName="findByNIF">
       <argumentLink xmi:type="es.ua.dlsi.ooh.navigationalView:ArgumentLink" xmi:id="_w89sQQdIEeenU-wdeoiIyw" name="nif">
         <argument xmi:type="es.ua.dlsi.ooh:Argument" href="default.domainModel#_30VxsADPEeeIc4bGxe66Bw"/>
       </argumentLink>

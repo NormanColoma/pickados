@@ -50,16 +50,16 @@ public class TipsterController : BasicController
 
 [Route ("~/api/Tipster/Tipster_findByMail")]
 
-public HttpResponseMessage Tipster_findByMail (string email, int first)
+public HttpResponseMessage Tipster_findByMail (string email)
 {
         // CAD, CEN, EN, returnValue
 
         TipsterRESTCAD tipsterRESTCAD = null;
         TipsterCEN tipsterCEN = null;
 
-        TipsterEN en;
+        TipsterEN tipsterEN;
 
-        List<TipsterDTOA> returnValue = null;
+        TipsterDTOA returnValue = null;
 
         try
         {
@@ -74,15 +74,13 @@ public HttpResponseMessage Tipster_findByMail (string email, int first)
 
                 // paginación
 
-                en = tipsterCEN.FindByMail (email);
+                tipsterEN = tipsterCEN.FindByMail (email);
 
 
 
                 // Convert return
-                if (en != null) {
-                        returnValue = new List<TipsterDTOA>();
-                        
-                        returnValue.Add (TipsterAssembler.Convert (en, session));
+                if (tipsterEN != null) {
+                    returnValue = TipsterAssembler.Convert(tipsterEN, session);
                 }
         }
 
@@ -98,8 +96,8 @@ public HttpResponseMessage Tipster_findByMail (string email, int first)
         }
 
         // Return 204 - Empty
-        if (returnValue == null || returnValue.Count == 0)
-                return this.Request.CreateResponse (HttpStatusCode.NoContent);
+        if (returnValue == null)
+                return this.Request.CreateResponse (HttpStatusCode.NotFound);
         // Return 200 - OK
         else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
 }
@@ -118,16 +116,16 @@ public HttpResponseMessage Tipster_findByMail (string email, int first)
 
 [Route ("~/api/Tipster/Tipster_findByNIF")]
 
-public HttpResponseMessage Tipster_findByNIF (string nif, int first)
+public HttpResponseMessage Tipster_findByNIF (string nif)
 {
         // CAD, CEN, EN, returnValue
 
         TipsterRESTCAD tipsterRESTCAD = null;
         TipsterCEN tipsterCEN = null;
 
-        TipsterEN en;
+        TipsterEN tipsterEN;
 
-        List<TipsterDTOA> returnValue = null;
+        TipsterDTOA returnValue = null;
 
         try
         {
@@ -142,14 +140,13 @@ public HttpResponseMessage Tipster_findByNIF (string nif, int first)
 
                 // paginación
 
-                en = tipsterCEN.FindByNIF (nif);
+                tipsterEN = tipsterCEN.FindByNIF (nif);
 
 
 
                 // Convert return
-                if (en != null) {
-                        returnValue = new List<TipsterDTOA>();
-                        returnValue.Add (TipsterAssembler.Convert (en, session));
+                if (tipsterEN != null) {
+                    returnValue = TipsterAssembler.Convert(tipsterEN, session);
                 }
         }
 
@@ -165,8 +162,8 @@ public HttpResponseMessage Tipster_findByNIF (string nif, int first)
         }
 
         // Return 204 - Empty
-        if (returnValue == null || returnValue.Count == 0)
-                return this.Request.CreateResponse (HttpStatusCode.NoContent);
+        if (returnValue == null)
+                return this.Request.CreateResponse (HttpStatusCode.NotFound);
         // Return 200 - OK
         else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
 }

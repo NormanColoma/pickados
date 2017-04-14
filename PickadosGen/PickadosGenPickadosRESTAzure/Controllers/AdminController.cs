@@ -56,11 +56,12 @@ public class AdminController : BasicController
 [Route ("~/api/Admin/Admin_login")]
 
 
-public HttpResponseMessage Admin_login (string email, string password)
+public HttpResponseMessage Admin_login (string name, string password)
 {
         // CAD, CEN, returnValue
         AdminRESTCAD adminRESTCAD = null;
         AdminCEN adminCEN = null;
+        bool returnValue;
 
         try
         {
@@ -70,7 +71,7 @@ public HttpResponseMessage Admin_login (string email, string password)
 
 
                 // Operation
-                adminCEN.Login (email, password);
+                returnValue = adminCEN.Login (name, password);
                 SessionCommit ();
         }
 
@@ -88,7 +89,7 @@ public HttpResponseMessage Admin_login (string email, string password)
         }
 
         // Return 200 - OK
-        return this.Request.CreateResponse (HttpStatusCode.OK);
+        return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
 }
 
 

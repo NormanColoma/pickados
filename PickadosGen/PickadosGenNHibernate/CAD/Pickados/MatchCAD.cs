@@ -268,7 +268,7 @@ public System.Collections.Generic.IList<MatchEN> GetAllMatches (int first, int s
         return result;
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition (int id)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByCompetition (int id, int first, int size)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> result;
         try
@@ -278,6 +278,13 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchE
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("MatchENgetMatchByCompetitionHQL");
                 query.SetParameter ("id", id);
+
+                if (size > 0) {
+                        query.SetFirstResult (first).SetMaxResults (size);
+                }
+                else{
+                        query.SetFirstResult (first);
+                }
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.MatchEN>();
                 SessionCommit ();

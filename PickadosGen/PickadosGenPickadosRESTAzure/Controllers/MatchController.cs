@@ -119,7 +119,7 @@ public HttpResponseMessage Match_getMatchByCompetition (int id, int first)
 
                 // paginación
 
-                en = matchCEN.GetMatchByCompetition (id).ToList ();
+                en = matchCEN.GetMatchByCompetition (id, first, 10).ToList ();
 
 
 

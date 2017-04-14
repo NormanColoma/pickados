@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AdminView.Models;
 using Microsoft.Owin;
-using PickadosGenNHibernate.EN.Pickados;
+using PickadosGenNHibernate.CEN.Pickados;
 
 namespace AdminView.Controllers
 {
@@ -23,6 +23,10 @@ namespace AdminView.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToRoute("Dashboard");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -31,35 +35,42 @@ namespace AdminView.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
-            /*
             if (ModelState.IsValid)
             {
+                AdminCEN adminCEN = new AdminCEN();
                 // TODO call UsarioCEN.Login here
-                if ()
+                try
                 {
-                    var identity = new ClaimsIdentity(new[] {
-                            new Claim(ClaimTypes.Name, model.Email),
-                        },
-                        DefaultAuthenticationTypes.ApplicationCookie,
-                        ClaimTypes.Name, ClaimTypes.Role);
-
-                    //Necesario crear el interfaz para poder tener acceso a la operación SignIn
-                    IOwinContext owinContext = HttpContext.GetOwinContext();
-                    IAuthenticationManager authenticationManager = owinContext.Authentication;
-                    authenticationManager.SignIn(new AuthenticationProperties
+                    if (adminCEN.Login(model.UserName, model.Password))
                     {
-                        IsPersistent = model.RememberMe
-                    }, identity);
-                    return RedirectToAction("index", "home");
-                }
-                else
+                        var identity = new ClaimsIdentity(new[] {
+                            new Claim(ClaimTypes.Name, model.UserName),
+                        },
+                            DefaultAuthenticationTypes.ApplicationCookie,
+                            ClaimTypes.Name, ClaimTypes.Role);
+
+                        //Necesario crear el interfaz para poder tener acceso a la operación SignIn
+                        IOwinContext owinContext = HttpContext.GetOwinContext();
+                        IAuthenticationManager authenticationManager = owinContext.Authentication;
+                        authenticationManager.SignIn(new AuthenticationProperties
+                        {
+                            IsPersistent = model.RememberMe
+                        }, identity);
+                        return RedirectToAction("index", "home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Nombre de usuario o contraseña no válidos.");
+                    }
+                }catch(Exception ex)
                 {
-                    ModelState.AddModelError("", "Nombre de usuario o contraseña no válidos.");
+                    ModelState.AddModelError("", "Se produjo un error al iniciar sesión.");
+                    return View(model);
                 }
-            }*/
+               
+            }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
@@ -68,7 +79,6 @@ namespace AdminView.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

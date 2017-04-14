@@ -175,7 +175,7 @@ public HttpResponseMessage Post_findPostsByTipster (int id, int first)
 
                 // paginación
 
-                en = postCEN.FindPostsByTipster (id).ToList ();
+                en = postCEN.FindPostsByTipster (id, first, 10).ToList ();
 
 
 
