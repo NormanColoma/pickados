@@ -10,6 +10,10 @@ namespace AdminView.Controllers
     {
         public ActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToRoute("Login");
+            }
             return View();
         }
     }

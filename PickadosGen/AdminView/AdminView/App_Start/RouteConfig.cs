@@ -18,6 +18,16 @@ namespace AdminView
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "Dashboard",
+               url: "Home/Index/"
+           );
+
+            routes.MapRoute(
+              name: "Login",
+              url: "Account/Login/"
+          );
         }
     }
 }

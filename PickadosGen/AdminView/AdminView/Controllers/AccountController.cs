@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AdminView.Models;
 using Microsoft.Owin;
+using PickadosGenNHibernate.CEN.Pickados;
 
 namespace AdminView.Controllers
 {
@@ -22,6 +23,10 @@ namespace AdminView.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToRoute("Dashboard");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -30,10 +35,8 @@ namespace AdminView.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
-            /*
             if (ModelState.IsValid)
             {
                 AdminCEN adminCEN = new AdminCEN();
@@ -67,7 +70,7 @@ namespace AdminView.Controllers
                     return View(model);
                 }
                
-            }*/
+            }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
@@ -76,7 +79,6 @@ namespace AdminView.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

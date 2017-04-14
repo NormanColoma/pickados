@@ -233,10 +233,10 @@ public static void InitializeData ()
                 Console.WriteLine ("Joining Barcelona-Madrid to Santander League");
                 Event_CEN evento = new Event_CEN ();
                 evento.JoinCompetition (match1, competition);
-                Console.WriteLine ("There are " + match.GetMatchByCompetition (competition).Count + " matches in Santander League");
+                Console.WriteLine ("There are " + match.GetMatchByCompetition (competition, 0, 0).Count + " matches in Santander League");
 
                 evento.JoinCompetition (match3, competition2);
-                Console.WriteLine ("There are " + match.GetMatchByCompetition (competition2).Count + " matches in ACB");
+                Console.WriteLine ("There are " + match.GetMatchByCompetition (competition2, 0, 0).Count + " matches in ACB");
 
                 Console.WriteLine ("--------------- Creating new Players -------------");
                 PlayerCEN playerCEN = new PlayerCEN ();
@@ -288,7 +288,7 @@ public static void InitializeData ()
                 Console.WriteLine ("The player " + jugador5.Name + " doesn't play in " + equipo5.Name);
 
                 Console.WriteLine ("--------------- Get Player by club team -------------");
-                IList<PlayerEN> players1 = playerCAD.GetPlayersByClubTeam (equipo4.Name);
+                IList<PlayerEN> players1 = playerCAD.GetPlayersByClubTeam (equipo4.Name, 0, 0);
                 Console.WriteLine ("Players in " + equipo4.Name + ":");
                 foreach (var p in players1)
                         Console.WriteLine ("- " + p.Name);
