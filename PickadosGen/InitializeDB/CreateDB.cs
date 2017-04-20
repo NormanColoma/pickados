@@ -23,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -312,9 +312,9 @@ public static void InitializeData ()
 
                 Console.WriteLine ("--------------- Get Post by Tipster -------------");
                 PostCAD postCAD = new PostCAD ();
-                IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2);
+               /* IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2);
                 foreach (var p in posts)
-                        Console.WriteLine ("- " + p.Description);
+                        Console.WriteLine ("- " + p.Description);*/
 
                 MatchCEN matchCEN = new MatchCEN ();
                 int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), team1, team5, "Camp Nou");
