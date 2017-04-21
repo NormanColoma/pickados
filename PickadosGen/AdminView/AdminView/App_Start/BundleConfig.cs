@@ -23,9 +23,18 @@ namespace AdminView
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/sbadmin").Include(
+                      "~/Scripts/sb-admin-2.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/metismenu").Include(
+          "~/Scripts/metisMenu.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/sb-admin-2.css",
+                      "~/Content/metisMenu.css",
+                      "~/Content/site.css",
+                      "~/Content/font-awesome.css"));
         }
     }
 }

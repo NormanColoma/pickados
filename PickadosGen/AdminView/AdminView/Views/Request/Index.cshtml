@@ -1,0 +1,93 @@
+﻿﻿@model IEnumerable<PickadosGenNHibernate.EN.Pickados.RequestEN>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Solicitudes pendientes</h2>
+
+<!--<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+       -->
+<div class="row">
+    <div class="col-md-8">
+        @foreach (var item in Model)
+        {
+
+            <!--
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Accept", "Accept", new { id = item.Id }) |
+                        @Html.ActionLink("Open review", "Review", new { id = item.Id }) |
+                        @Html.ActionLink("Deny", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+                -->
+
+            if (@item.Type.ToString().Equals("delete"))
+            {
+                <div class="panel panel-warning">
+                    <div class="panel-heading">Borrado</div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <span class="fa fa-calendar"></span> Fecha solicitud: @Html.DisplayFor(modelItem => item.Date)<br />
+                                <span class="fa fa-calendar"></span> Inicio evento: @Html.DisplayFor(modelItem => item.Date)<br />
+                                <span class="fa fa-clock-o"></span> Evento: <br />
+                                <span class="fa fa-thumb-tack"></span>Razón: @Html.DisplayFor(modelItem => item.Reason)
+                            </div>
+                            <div class="col-md-5">
+                                @Html.ActionLink("Aceptar", "Accept", new { id = item.Id }, new { @class = "btn btn-outline btn-success" }) |
+                                @Html.ActionLink("Abrir disputa", "Review", new { id = item.Id }, new { @class = "btn btn-outline btn-info" }) |
+                                @Html.ActionLink("Denegar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline btn-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+            else
+            {
+                <div class="panel panel-primary" )">
+                    <div class="panel-heading">Modificación</div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <span class="fa fa-calendar"></span> Fecha solicitud: @Html.DisplayFor(modelItem => item.Date)<br />
+                                <span class="fa fa-calendar"></span> Inicio evento: @Html.DisplayFor(modelItem => item.Date)<br />
+                                <span class="fa fa-clock-o"></span> Evento: <br />
+                                <span class="fa fa-thumb-tack"></span>Razón: @Html.DisplayFor(modelItem => item.Reason)
+                            </div>
+                            <div class="col-md-5">
+                                @Html.ActionLink("Aceptar", "Accept", new { id = item.Id }, new { @class = "btn btn-outline btn-success" }) |
+                                @Html.ActionLink("Abrir disputa", "Review", new { id = item.Id }, new { @class = "btn btn-outline btn-info" }) |
+                                @Html.ActionLink("Denegar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline btn-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<!--</table>-->
