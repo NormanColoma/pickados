@@ -545,7 +545,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
 
         return result;
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium ()
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium (int? first, int ? size)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
         try
@@ -554,6 +554,8 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
                 //String sql = @"FROM TipsterEN self where FROM TipsterEN where Premium=true";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetTipstersPremiumHQL");
+                query.SetParameter ("first", first);
+                query.SetParameter ("size", size);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();
@@ -649,6 +651,37 @@ public PickadosGenNHibernate.EN.Pickados.TipsterEN FindByNIF (string nif)
 
 
                 result = query.UniqueResult<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersFree (int? first, int ? size)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TipsterEN self where FROM TipsterEN where Premium=false";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetTipstersFreeHQL");
+                query.SetParameter ("first", first);
+                query.SetParameter ("size", size);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TipsterEN>();
                 SessionCommit ();
         }
 

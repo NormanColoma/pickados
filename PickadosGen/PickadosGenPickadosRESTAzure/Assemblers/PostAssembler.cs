@@ -32,11 +32,11 @@ public static PostDTOA Convert (PostEN en, NHibernate.ISession session = null)
                 // Attributes
 
                 dto.Id = en.Id;
-                dto.Stake = en.Stake;
-                dto.Modified_at = en.Modified_at;
                 dto.Created_at = en.Created_at;
                 dto.Description = en.Description;
                 dto.PostResult = en.PostResult;
+                dto.Stake = en.Stake;
+                dto.TotalOdd = en.TotalOdd;
 
                 //
                 // TravesalLink

@@ -32,10 +32,11 @@ public static TipsterDTOA Convert (TipsterEN en, NHibernate.ISession session = n
                 // Attributes
 
                 dto.Id = en.Id;
+                dto.Alias = en.Alias;
+                dto.Email = en.Email;
+                dto.Created_at = en.Created_at;
                 dto.Premium = en.Premium;
                 dto.Subscription_fee = en.Subscription_fee;
-                dto.Email = en.Email;
-                dto.Alias = en.Alias;
                 dto.Nif = en.Nif;
 
                 //

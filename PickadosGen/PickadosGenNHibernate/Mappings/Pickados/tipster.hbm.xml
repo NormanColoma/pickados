@@ -89,5 +89,6 @@
 		  <query name="TipsterENfindByUserHQL"><![CDATA[select t FROM TipsterEN as t where alias = :alias]]></query>
 		  <query name="TipsterENfindByMailHQL"><![CDATA[select t FROM TipsterEN as t where email = :email]]></query>
 		  <query name="TipsterENfindByNIFHQL"><![CDATA[select t FROM TipsterEN as t where nif= :nif]]></query>
+		  <query name="TipsterENgetTipstersFreeHQL"><![CDATA[FROM TipsterEN where Premium=false]]></query>
 		</hibernate-mapping>
 	

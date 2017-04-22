@@ -8,12 +8,13 @@ namespace PickadosGenPickadosRESTAzure.DTOA
 {
 public class MatchDTOA
 {
-private Nullable<DateTime> date;
-public Nullable<DateTime> Date
+private int id;
+public int Id
 {
-        get { return date; }
-        set { date = value; }
+        get { return id; }
+        set { id = value; }
 }
+
 
 private string stadium;
 public string Stadium
@@ -22,11 +23,11 @@ public string Stadium
         set { stadium = value; }
 }
 
-private int id;
-public int Id
+private Nullable<DateTime> date;
+public Nullable<DateTime> Date
 {
-        get { return id; }
-        set { id = value; }
+        get { return date; }
+        set { date = value; }
 }
 
 

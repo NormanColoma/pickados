@@ -13,10 +13,11 @@ class TipsterDTOA : DTOA
 
 	var id: Int?;
 	
+	var alias: String?;
+	var email: String?;
+	var created_at: NSDate?;
 	var premium: Bool?;
 	var subscription_fee: Double?;
-	var email: String?;
-	var alias: String?;
 	var nif: String?;
 	
 	
@@ -39,10 +40,12 @@ class TipsterDTOA : DTOA
 		self.id = json["Id"].object as? Int
 		
 	
+		self.alias = json["Alias"].object as? String;
+		self.email = json["Email"].object as? String;
+	
+		self.created_at = NSDate.initFromString(json["Created_at"].object as? String);
 		self.premium = json["Premium"].object as? Bool;
 		self.subscription_fee = json["Subscription_fee"].object as? Double;
-		self.email = json["Email"].object as? String;
-		self.alias = json["Alias"].object as? String;
 		self.nif = json["Nif"].object as? String;
 		
 		
@@ -57,12 +60,7 @@ class TipsterDTOA : DTOA
 	
 
 	
-		dictionary["Premium"] = self.premium;
-	
-	
-
-	
-		dictionary["Subscription_fee"] = self.subscription_fee;
+		dictionary["Alias"] = self.alias;
 	
 	
 
@@ -72,7 +70,17 @@ class TipsterDTOA : DTOA
 	
 
 	
-		dictionary["Alias"] = self.alias;
+		dictionary["Created_at"] = self.created_at?.toString();
+	
+	
+
+	
+		dictionary["Premium"] = self.premium;
+	
+	
+
+	
+		dictionary["Subscription_fee"] = self.subscription_fee;
 	
 	
 

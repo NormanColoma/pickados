@@ -30,75 +30,40 @@ public class PickController : BasicController
 
 
 
+// ReadAll Generado a partir del NavigationalOperation
+[HttpGet]
 
-
-
-
-
-
-
-
-
-
-
-
-[HttpPost]
-
-
-[Route ("~/api/Pick/NewPick")]
-
-
-
-
-public HttpResponseMessage NewPick ( [FromBody] PickDTO dto)
+[Route ("~/api/Pick/GetAllPicks")]
+public HttpResponseMessage GetAllPicks ()
 {
-        // CAD, CEN, returnValue, returnOID
+        // CAD, CEN, EN, returnValue
         PickRESTCAD pickRESTCAD = null;
         PickCEN pickCEN = null;
-        PickDTOA returnValue = null;
-        int returnOID = -1;
 
-        // HTTP response
-        HttpResponseMessage response = null;
-        string uri = null;
+        List<PickEN> pickEN = null;
+        List<PickDTOA> returnValue = null;
 
         try
         {
-                SessionInitializeTransaction ();
+                SessionInitializeWithoutTransaction ();
                 pickRESTCAD = new PickRESTCAD (session);
                 pickCEN = new PickCEN (pickRESTCAD);
 
-                // Create
-                returnOID = pickCEN.NewPick (
+                // Data
+                // TODO: paginación
 
-                        dto.Odd
-
-                        ,
-
-                        dto.Description
-
-                        ,
-
-                        dto.PickResult
-
-                        ,
-
-                        dto.Bookie
-
-                        ,
-                        dto.Event_rel_oid                 // association role
-
-                        );
-                SessionCommit ();
+                pickEN = pickCEN.GetAllPicks (0, -1).ToList ();
 
                 // Convert return
-                returnValue = PickAssembler.Convert (pickRESTCAD.ReadOIDDefault (returnOID), session);
+                if (pickEN != null) {
+                        returnValue = new List<PickDTOA>();
+                        foreach (PickEN entry in pickEN)
+                                returnValue.Add (PickAssembler.Convert (entry, session));
+                }
         }
 
         catch (Exception e)
         {
-                SessionRollBack ();
-
                 if (e.GetType () == typeof(HttpResponseException)) throw e;
                 else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
                 else throw new HttpResponseException (HttpStatusCode.InternalServerError);
@@ -108,129 +73,32 @@ public HttpResponseMessage NewPick ( [FromBody] PickDTO dto)
                 SessionClose ();
         }
 
-        // Return 201 - Created
-        response = this.Request.CreateResponse (HttpStatusCode.Created, returnValue);
-
-        // Location Header
-        /*
-         * Dictionary<string, object> routeValues = new Dictionary<string, object>();
-         *
-         * // TODO: y rolPaths
-         * routeValues.Add("id", returnOID);
-         *
-         * uri = Url.Link("GetOIDPick", routeValues);
-         * response.Headers.Location = new Uri(uri);
-         */
-
-        return response;
-}
-
-
-
-
-
-[HttpPut]
-
-[Route ("~/api/Post/{idPost}/GetAllPickOfPost/{idPick}/")]
-
-public HttpResponseMessage ModifyPick (int idPick, [FromBody] PickDTO dto)
-{
-        // CAD, CEN, returnValue
-        PickRESTCAD pickRESTCAD = null;
-        PickCEN pickCEN = null;
-        PickDTOA returnValue = null;
-
-        // HTTP response
-        HttpResponseMessage response = null;
-        string uri = null;
-
-        try
-        {
-                SessionInitializeTransaction ();
-                pickRESTCAD = new PickRESTCAD (session);
-                pickCEN = new PickCEN (pickRESTCAD);
-
-                // Modify
-                pickCEN.ModifyPick (idPick,
-                        dto.Odd
-                        ,
-                        dto.Description
-                        ,
-                        dto.PickResult
-                        ,
-                        dto.Bookie
-                        );
-
-                // Return modified object
-                returnValue = PickAssembler.Convert (pickRESTCAD.ReadOIDDefault (idPick), session);
-
-                SessionCommit ();
-        }
-
-        catch (Exception e)
-        {
-                SessionRollBack ();
-
-                if (e.GetType () == typeof(HttpResponseException)) throw e;
-                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
-                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
-        }
-        finally
-        {
-                SessionClose ();
-        }
-
-        // Return 404 - Not found
-        if (returnValue == null)
-                return this.Request.CreateResponse (HttpStatusCode.NotFound);
+        // Return 204 - Empty
+        if (returnValue == null || returnValue.Count == 0)
+                return this.Request.CreateResponse (HttpStatusCode.NoContent);
         // Return 200 - OK
-        else{
-                response = this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
-
-                return response;
-        }
+        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
 }
 
 
 
 
 
-[HttpDelete]
 
-[Route ("~/api/Post/{idPost}/GetAllPickOfPost/{idPick}/")]
 
-public HttpResponseMessage DeletePick (int idPick)
-{
-        // CAD, CEN
-        PickRESTCAD pickRESTCAD = null;
-        PickCEN pickCEN = null;
 
-        try
-        {
-                SessionInitializeTransaction ();
-                pickRESTCAD = new PickRESTCAD (session);
-                pickCEN = new PickCEN (pickRESTCAD);
 
-                pickCEN.DeletePick (idPick);
-                SessionCommit ();
-        }
 
-        catch (Exception e)
-        {
-                SessionRollBack ();
 
-                if (e.GetType () == typeof(HttpResponseException)) throw e;
-                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
-                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
-        }
-        finally
-        {
-                SessionClose ();
-        }
 
-        // Return 204 - No Content
-        return this.Request.CreateResponse (HttpStatusCode.NoContent);
-}
+
+
+
+
+
+
+
+
 
 
 
