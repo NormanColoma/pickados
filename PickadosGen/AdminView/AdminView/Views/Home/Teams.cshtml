@@ -4,16 +4,33 @@
 }
 
 <h2>@ViewBag.Title</h2>
+@if (ViewBag.allTeams != null)
+{
+            <div class="container-fluid">
 
-<div class="container-fluid">
+                <hr>
 
-    <hr>
+                <div class="row">
+                    <div class="col-md-2">
 
-    <div class="row">
-        <div class="col-md-2">
+                        <div id="MainMenu">
+                            <div class="list-group panel">
+                                @foreach (var item in ViewBag.allTeams)
+                                {
+                                <!--<a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">ATLETICO DE MADRID</a>
+                                <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">REAL MADRID</a>-->
+                                @Html.ActionLink((string)item.Name, "DetailsTeam", "Home", new { id = item.Id }, new { @class = "list-group-item" })
+                                <!--<a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">SEVILLA FC</a>-->
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
 
             <!-- menu -->
-            <div id="MainMenu">
+            <!--<div id="MainMenu">
                 <div class="list-group panel">
                     <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">CLUB TEAMS <i class="fa fa-caret-down"></i></a>
                     <div class="collapse" id="demo3">
@@ -21,7 +38,7 @@
                         <div class="collapse list-group-submenu" id="SubMenu1">
                             <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">ATLETICO DE MADRID</a>
                             <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">REAL MADRID</a>
-                            @Html.ActionLink("FC BARCELONA", "DetailsTeam", "Home", new { id = 1 }, new { @class = "list-group-item" })
+                            @*@Html.ActionLink("FC BARCELONA", "DetailsTeam", "Home", new { id = 1 }, new { @class = "list-group-item" })*@
                             <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">SEVILLA FC</a>
                         </div>
                         <a href="javascript:;" class="list-group-item">PREMIER LEAGUE</a>
@@ -40,34 +57,7 @@
                 </div>
             </div>
         </div>
-        <!--<div class="col-md-2">
-            <div id="SecondMenu">
-                <div class="list-group panel">
-                    <a href="#subDemo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#SecondMenu">PLAYERS <i class="fa fa-caret-down"></i></a>
-                    <div class="collapse" id="subDemo1">
-                        <a href="javascript:;" class="list-group-item">MARC-ANDRÉ TER STEGEN</a>
-                        <a href="javascript:;" class="list-group-item">GERARD PIQUÉ</a>
-                        <a href="javascript:;" class="list-group-item">SAMUEL UMTITI</a>
-                        <a href="javascript:;" class="list-group-item">ANDRES INIESTA</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <h3>Team Name: <span class="label label-default">Football Club Barcelona</span></h3>
-            <h3>Fundation Year: <span class="label label-default"> 29th November 1899</span></h3>
-            <h3>City: <span class="label label-default"> Barcelona</span></h3>
-            <h3>Country: <span class="label label-default"> Spain</span></h3>
-            <h3>Stadium: <span class="label label-default"> Camp Nou</span></h3>
-        </div>
-        <div class="col-md-8">
-            <h3>Player Name: <span class="label label-default">Marc-André Ter Stegen</span></h3>
-            <h3>Birth: <span class="label label-default"> 30th April 1992 </span></h3>
-            <h3>Height: <span class="label label-default"> 1.87m</span></h3>
-            <h3>Weigh: <span class="label label-default"> 85Kg</span></h3>
-            <h3>Country: <span class="label label-default"> Germany</span></h3>
-        </div>-->
     </div>
 
-</div>
+</div>-->
 
