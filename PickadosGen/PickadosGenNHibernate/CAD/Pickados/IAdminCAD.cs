@@ -22,5 +22,13 @@ void ModifyAdmin (AdminEN admin);
 
 void DeleteAdmin (int id
                   );
+
+
+
+AdminEN GetAdminById (int id
+                      );
+
+
+System.Collections.Generic.IList<AdminEN> GetAllAdmins (int first, int size);
 }
 }

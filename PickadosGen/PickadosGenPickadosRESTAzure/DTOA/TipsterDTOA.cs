@@ -16,6 +16,27 @@ public int Id
 }
 
 
+private string alias;
+public string Alias
+{
+        get { return alias; }
+        set { alias = value; }
+}
+
+private string email;
+public string Email
+{
+        get { return email; }
+        set { email = value; }
+}
+
+private Nullable<DateTime> created_at;
+public Nullable<DateTime> Created_at
+{
+        get { return created_at; }
+        set { created_at = value; }
+}
+
 private bool premium;
 public bool Premium
 {
@@ -28,20 +49,6 @@ public double Subscription_fee
 {
         get { return subscription_fee; }
         set { subscription_fee = value; }
-}
-
-private string email;
-public string Email
-{
-        get { return email; }
-        set { email = value; }
-}
-
-private string alias;
-public string Alias
-{
-        get { return alias; }
-        set { alias = value; }
 }
 
 private string nif;

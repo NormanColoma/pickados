@@ -1,0 +1,56 @@
+﻿@model IList<PickadosGenNHibernate.EN.Pickados.UsuarioEN>
+
+<h1>Usuarios</h1>
+<hr />
+
+<ul class="nav nav-tabs">
+    <li id="tipstersf" class="active"><a>Tipsters free</a></li>
+    <li id="tipstersp"><a>Tipsters premium</a></li>
+    <li id="admins"><a>Administradores</a></li>
+</ul>
+
+<div id="contenedor-tipsters-free" class="col-md-12 contenedor tipstersf">
+    <table class="table">
+        <tr>
+            <th>Alias</th>
+            <th>Email</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>Nif</th>
+            <th></th>
+        </tr>
+        @{Html.RenderAction("_ListaTipstersFree", "User", new { page = 0 });}
+    </table>
+</div>
+
+<div id="contenedor-tipsters-premium" class="col-md-12 contenedor tipstersp">
+    <table class="table">
+        <tr>
+            <th>Alias</th>
+            <th>Email</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>Nif</th>
+            <th>Subcription_fee</th>
+            <th></th>
+        </tr>
+        @{Html.RenderAction("_ListaTipstersPremium", "User", new { page = 0 });}
+    </table>
+</div>
+
+<div id="contenedor-admins" class="col-md-12 contenedor admins">
+    <table class="table">
+        <tr>
+            <th>Alias</th>
+            <th>Email</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>Nif</th>
+            <th>is_Admin</th>
+            <th></th>
+        </tr>
+        @{Html.RenderAction("_ListaAdmins", "User", new { page = 0 });}
+    </table>
+</div>
+
+@Scripts.Render("~/bundles/index")

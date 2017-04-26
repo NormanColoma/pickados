@@ -14,8 +14,9 @@ class PickDTOA : DTOA
 	var id: Int?;
 	
 	var odd: Double?;
-	var pickResult: PickResult?;
+	var description: String?;
 	var bookie: String?;
+	var pickResult: PickResult?;
 	
 	
 	
@@ -38,11 +39,12 @@ class PickDTOA : DTOA
 		
 	
 		self.odd = json["Odd"].object as? Double;
+		self.description = json["Description"].object as? String;
+		self.bookie = json["Bookie"].object as? String;
 		if let enumValue = json["PickResult"].object as? Int
 		{
 			self.pickResult = PickResult(rawValue: enumValue);
 		}
-		self.bookie = json["Bookie"].object as? String;
 		
 		
 	}
@@ -61,12 +63,17 @@ class PickDTOA : DTOA
 	
 
 	
-		dictionary["PickResult"] = self.pickResult?.rawValue;
+		dictionary["Description"] = self.description;
 	
 	
 
 	
 		dictionary["Bookie"] = self.bookie;
+	
+	
+
+	
+		dictionary["PickResult"] = self.pickResult?.rawValue;
 	
 	
 		

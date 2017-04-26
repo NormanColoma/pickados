@@ -203,5 +203,65 @@ public void DeleteAdmin (int id
                 SessionClose ();
         }
 }
+
+//Sin e: GetAdminById
+//Con e: AdminEN
+public AdminEN GetAdminById (int id
+                             )
+{
+        AdminEN adminEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                adminEN = (AdminEN)session.Get (typeof(AdminEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in AdminCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return adminEN;
+}
+
+public System.Collections.Generic.IList<AdminEN> GetAllAdmins (int first, int size)
+{
+        System.Collections.Generic.IList<AdminEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                if (size > 0)
+                        result = session.CreateCriteria (typeof(AdminEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<AdminEN>();
+                else
+                        result = session.CreateCriteria (typeof(AdminEN)).List<AdminEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in AdminCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

@@ -54,7 +54,7 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> Ge
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date, int ? p_oid);
 
 
-System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium ();
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersPremium (int? first, int ? size);
 
 
 PickadosGenNHibernate.EN.Pickados.TipsterEN FindByUser (string alias);
@@ -66,5 +66,10 @@ PickadosGenNHibernate.EN.Pickados.TipsterEN FindByMail (string email);
 
 
 PickadosGenNHibernate.EN.Pickados.TipsterEN FindByNIF (string nif);
+
+
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersFree (int? first, int ? size);
 }
 }

@@ -442,7 +442,10 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_c2xDsPlKEea4BMBLrnI2Ow" name="p_date" type="Date"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_FPOGIP0lEeaPse79Ou_vjA" name="p_oid" type="Integer"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_C6Bq8PtlEea3Y6_aXsHiNQ" name="getTipstersPremium" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="FROM TipsterEN where Premium=true" automaticSynchronize="false"/>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_C6Bq8PtlEea3Y6_aXsHiNQ" name="getTipstersPremium" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="FROM TipsterEN where Premium=true" automaticSynchronize="false" customizedTransaction="true">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9_gFICdrEeemiKRdzZVZtw" name="first" type="Integer"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_AZ3OwCdsEeemiKRdzZVZtw" name="size" type="Integer"/>
+      </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_s3KZ0ADMEeeIc4bGxe66Bw" name="findByUser" operationType="ReadFilter" type="Object" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="select t FROM TipsterEN as t where alias = :alias" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_6brHsADMEeeIc4bGxe66Bw" name="alias"/>
       </operations>
@@ -469,6 +472,10 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_GYMMEAHVEeeiFNTTg73Glw" name="deletingFollower" type="Boolean">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GYNaMAHVEeeiFNTTg73Glw" name="idTipster" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_JwdvcAHVEeeiFNTTg73Glw" name="idUnfollower" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
+      </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_naSb8CbgEeeJFqOApmrG7Q" name="getTipstersFree" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="FROM TipsterEN where Premium=false" automaticSynchronize="false" customizedTransaction="true">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_K_vmkCbjEeeJFqOApmrG7Q" name="first" type="Integer"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_RW6kACbjEeeJFqOApmrG7Q" name="size" type="Integer"/>
       </operations>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_bgvkEdN7Eeadlco1x1sS6g" alias="idMonthlyStats" aggregation="Composite" lower="0" upper="*" associationOrigin="_bgvkENN7Eeadlco1x1sS6g" name="monthlyStats" type="Object" collectionType="List"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_k_YBsdN7Eeadlco1x1sS6g" alias="idPost" aggregation="Composite" lower="0" upper="*" associationOrigin="_k_YBsNN7Eeadlco1x1sS6g" name="post" type="Object" collectionType="List"/>
@@ -504,6 +511,10 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qJ-c4AdFEeenU-wdeoiIyw" name="name"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_wffNcAdFEeenU-wdeoiIyw" name="password"/>
       </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_osJcgCbMEee0Or_7-5kznA" name="getAdminById" operationType="ReadOID" type="Object" typeObject="_nnowUNNuEeaZBpN3xqTI2g">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_osUboCbMEee0Or_7-5kznA" name="p_Admin_OID" type="OID" typeObject="_nnowUNNuEeaZBpN3xqTI2g"/>
+      </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_osXe8CbMEee0Or_7-5kznA" name="getAllAdmins" operationType="ReadAll" type="Object" collectionType="List" typeObject="_nnowUNNuEeaZBpN3xqTI2g"/>
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_RUUNUNNwEeaZBpN3xqTI2g" name="Stats" alias="Stats" asociationTarget="_bgvkENN7Eeadlco1x1sS6g">
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_EuQPQNNxEeaZBpN3xqTI2g" name="newMonthlyStats" operationType="New" type="Object" typeObject="_RUUNUNNwEeaZBpN3xqTI2g">
@@ -1676,6 +1687,13 @@
           <styles xmi:type="notation:FillStyle" xmi:id="_GYPPYwHVEeeiFNTTg73Glw"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GYPPZAHVEeeiFNTTg73Glw"/>
         </children>
+        <children xmi:type="notation:Node" xmi:id="_na9xYCbgEeeJFqOApmrG7Q" type="3004" element="_naSb8CbgEeeJFqOApmrG7Q">
+          <children xmi:type="notation:DecorationNode" xmi:id="_na9xZSbgEeeJFqOApmrG7Q" type="5004"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_na9xYSbgEeeJFqOApmrG7Q"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_na9xYibgEeeJFqOApmrG7Q" fontName="Segoe UI"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_na9xYybgEeeJFqOApmrG7Q"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_na9xZCbgEeeJFqOApmrG7Q"/>
+        </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_dCD4wdNuEeaZBpN3xqTI2g"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_dCD4wtNuEeaZBpN3xqTI2g"/>
       </children>
@@ -2429,9 +2447,7 @@
       </children>
       <styles xmi:type="notation:RoutingStyle" xmi:id="_6pTMt9QZEearPKYnvwakQw"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_6pTMuNQZEearPKYnvwakQw" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6pTMudQZEearPKYnvwakQw" points="[-1, 8, -44, -133]$[-72, 8, -115, -133]$[-72, 164, -115, 23]$[29, 164, -14, 23]$[41, 144, -2, 3]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6pcWoNQZEearPKYnvwakQw" id="(0.004807692307692308,0.7293233082706767)"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6pTMudQZEearPKYnvwakQw" points="[-13, 5, -37, -124]$[-77, 5, -101, -124]$[-77, 154, -101, 25]$[16, 154, -8, 25]$[16, 132, -8, 3]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6pTMudQZEearPKYnvwakQw" points="[-15, 0, -44, -167]$[-76, 0, -105, -167]$[-76, 182, -105, 15]$[20, 182, -9, 15]$[20, 170, -9, 3]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6pcWoNQZEearPKYnvwakQw" id="(0.07518796992481203,0.6923076923076923)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6pcWodQZEearPKYnvwakQw" id="(0.21323529411764705,0.9949238578680203)"/>
     </edges>

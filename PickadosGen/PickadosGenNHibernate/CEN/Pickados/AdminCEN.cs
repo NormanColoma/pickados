@@ -89,5 +89,22 @@ public void DeleteAdmin (int id
 {
         _IAdminCAD.DeleteAdmin (id);
 }
+
+public AdminEN GetAdminById (int id
+                             )
+{
+        AdminEN adminEN = null;
+
+        adminEN = _IAdminCAD.GetAdminById (id);
+        return adminEN;
+}
+
+public System.Collections.Generic.IList<AdminEN> GetAllAdmins (int first, int size)
+{
+        System.Collections.Generic.IList<AdminEN> list = null;
+
+        list = _IAdminCAD.GetAllAdmins (first, size);
+        return list;
+}
 }
 }

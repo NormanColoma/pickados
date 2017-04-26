@@ -18,14 +18,10 @@ public class PostDTOA extends DTOA
 {
 	// region - Members, getters and setters
 
-	
-	private Double stake;
-	public Double getStake () { return stake; }
-	public void setStake (Double stake) { this.stake = stake; }
-	
-	private java.util.Date modified_at;
-	public java.util.Date getModified_at () { return modified_at; }
-	public void setModified_at (java.util.Date modified_at) { this.modified_at = modified_at; }
+	private Integer id;
+	public Integer getId () { return id; }
+	public void setId (Integer id) { this.id = id; }
+
 	
 	private java.util.Date created_at;
 	public java.util.Date getCreated_at () { return created_at; }
@@ -39,9 +35,13 @@ public class PostDTOA extends DTOA
 	public PickResult getPostResult () { return postResult; }
 	public void setPostResult (PickResult postResult) { this.postResult = postResult; }
 	
-	private Integer id;
-	public Integer getId () { return id; }
-	public void setId (Integer id) { this.id = id; }
+	private Double stake;
+	public Double getStake () { return stake; }
+	public void setStake (Double stake) { this.stake = stake; }
+	
+	private Double totalOdd;
+	public Double getTotalOdd () { return totalOdd; }
+	public void setTotalOdd (Double totalOdd) { this.totalOdd = totalOdd; }
 	
 	
 	/* Rol: Post o--> Pick */
@@ -67,23 +67,11 @@ public class PostDTOA extends DTOA
 	{
 		try
 		{
+			if (!JSONObject.NULL.equals(json.opt("Id")))
+			{
+				this.id = (Integer) json.opt("Id");
+			}
 			
-
-			if (!JSONObject.NULL.equals(json.opt("Stake")))
-			{
-			 
-			 	String stringDouble = String.valueOf(json.opt("Stake"));
- 				this.stake = Double.parseDouble(stringDouble);
-			 
-			}
-
-			if (!JSONObject.NULL.equals(json.opt("Modified_at")))
-			{
-			 
-			 	String stringDate = (String) json.opt("Modified_at");
-				this.modified_at = DateUtils.stringToDateFormat(stringDate);
-			 
-			}
 
 			if (!JSONObject.NULL.equals(json.opt("Created_at")))
 			{
@@ -107,10 +95,19 @@ public class PostDTOA extends DTOA
 			 
 			}
 
-			if (!JSONObject.NULL.equals(json.opt("Id")))
+			if (!JSONObject.NULL.equals(json.opt("Stake")))
 			{
 			 
-				this.id = (Integer) json.opt("Id");
+			 	String stringDouble = String.valueOf(json.opt("Stake"));
+ 				this.stake = Double.parseDouble(stringDouble);
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("TotalOdd")))
+			{
+			 
+			 	String stringDouble = String.valueOf(json.opt("TotalOdd"));
+ 				this.totalOdd = Double.parseDouble(stringDouble);
 			 
 			}
 			
@@ -142,15 +139,10 @@ public class PostDTOA extends DTOA
 		
 		try
 		{
+			if (this.id != null){
+				json.put("Id", this.id);
+			}
 			
-		
-		  if (this.stake != null)
-			json.put("Stake", this.stake);
-		
-		
-		  if (this.modified_at != null)
-			json.put("Modified_at", DateUtils.dateToFormatString(this.modified_at));
-		
 		
 		  if (this.created_at != null)
 			json.put("Created_at", DateUtils.dateToFormatString(this.created_at));
@@ -164,8 +156,12 @@ public class PostDTOA extends DTOA
 			json.put("PostResult", this.postResult.getRawValue());
 		
 		
-		  if (this.id != null)
-			json.put("Id", this.id.intValue());
+		  if (this.stake != null)
+			json.put("Stake", this.stake);
+		
+		
+		  if (this.totalOdd != null)
+			json.put("TotalOdd", this.totalOdd);
 		
 			
 
@@ -196,18 +192,18 @@ public class PostDTOA extends DTOA
 		
 		// Attributes
 		
+	dto.setId (this.getId());
+
 		
-	dto.setStake (this.getStake());
-
-	dto.setModified_at (this.getModified_at());
-
 	dto.setCreated_at (this.getCreated_at());
 
 	dto.setDescription (this.getDescription());
 
 	dto.setPostResult (this.getPostResult());
 
-	dto.setId (this.getId());
+	dto.setStake (this.getStake());
+
+	dto.setTotalOdd (this.getTotalOdd());
 
 		
 		
