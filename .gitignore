@@ -10,6 +10,7 @@ Pickados/build.properties
 Pickados/.settings/
 Pickados/resources/
 Pickados/project.properties
+PickadosGen/AdminView/AdminView/Web.config
 *launch
 # User-specific files
 *.suo
@@ -261,3 +262,7 @@ paket-files/
 .idea/
 *.sln.iml
 *.zip
+PickadosGen/InitializeDB/PickadosGenNHibernateDataSet.xss
+PickadosGen/InitializeDB/PickadosGenNHibernateDataSet.xsd
+PickadosGen/InitializeDB/PickadosGenNHibernateDataSet.xsc
+PickadosGen/InitializeDB/PickadosGenNHibernateDataSet.Designer.cs
