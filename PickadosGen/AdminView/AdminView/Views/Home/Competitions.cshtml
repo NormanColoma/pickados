@@ -13,10 +13,10 @@
             {
                 <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">@item.Name<i class="fa fa-caret-down"></i></a>
                 <div class="collapse list-group-submenu" id="SubMenu1">
-                    <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">ATLETICO DE MADRID</a>
-                    <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">REAL MADRID</a>
-                    @Html.ActionLink("FC BARCELONA", "DetailsTeam", "Home", new { id = 1 }, new { @class = "list-group-item" })
-                    <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">SEVILLA FC</a>
+                    @foreach (var item2 in ViewBag.allTeams)
+                    {
+                        @Html.ActionLink((string)@item2.Name, "DetailsTeam", "Home", new { id = @item2.Id }, new { @class = "list-group-item" })
+                    }
                 </div>
             }
                     <!--<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">CLUB TEAMS <i class="fa fa-caret-down"></i></a>

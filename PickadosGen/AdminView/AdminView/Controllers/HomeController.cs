@@ -19,11 +19,15 @@ namespace AdminView.Controllers
             return View();
         }
 
-        public ActionResult Competitions()
+        public ActionResult Competitions(int id = 0)
         {
             CompetitionCEN competis = new CompetitionCEN();
+            TeamCEN teams = new TeamCEN();
             var totalCompetis = competis.GetAllCompetitions(1, 2000).OrderBy(p => p.Place);
+            var totalTeams = teams.GetTeamByCompetition(id);
             ViewBag.allCompetitions = totalCompetis;
+            ViewBag.allTeams = totalTeams;
+            
             return View();
         }
 
