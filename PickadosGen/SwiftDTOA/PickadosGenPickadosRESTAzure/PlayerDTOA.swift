@@ -12,8 +12,8 @@ class PlayerDTOA : DTOA
 	// MARK: - Properties
 
 	
-	var name: String?;
 	var id: Int?;
+	var name: String?;
 	
 	
 	
@@ -34,8 +34,8 @@ class PlayerDTOA : DTOA
 	{
 		
 	
-		self.name = json["Name"].object as? String;
 		self.id = json["Id"].object as? Int;
+		self.name = json["Name"].object as? String;
 		
 		
 	}
@@ -48,12 +48,12 @@ class PlayerDTOA : DTOA
 	
 
 	
-		dictionary["Name"] = self.name;
+		dictionary["Id"] = self.id;
 	
 	
 
 	
-		dictionary["Id"] = self.id;
+		dictionary["Name"] = self.name;
 	
 	
 		

@@ -23,6 +23,18 @@ public class TipsterDTOA extends DTOA
 	public void setId (Integer id) { this.id = id; }
 
 	
+	private String alias;
+	public String getAlias () { return alias; }
+	public void setAlias (String alias) { this.alias = alias; }
+	
+	private String email;
+	public String getEmail () { return email; }
+	public void setEmail (String email) { this.email = email; }
+	
+	private java.util.Date created_at;
+	public java.util.Date getCreated_at () { return created_at; }
+	public void setCreated_at (java.util.Date created_at) { this.created_at = created_at; }
+	
 	private Boolean premium;
 	public Boolean getPremium () { return premium; }
 	public void setPremium (Boolean premium) { this.premium = premium; }
@@ -30,14 +42,6 @@ public class TipsterDTOA extends DTOA
 	private Double subscription_fee;
 	public Double getSubscription_fee () { return subscription_fee; }
 	public void setSubscription_fee (Double subscription_fee) { this.subscription_fee = subscription_fee; }
-	
-	private String email;
-	public String getEmail () { return email; }
-	public void setEmail (String email) { this.email = email; }
-	
-	private String alias;
-	public String getAlias () { return alias; }
-	public void setAlias (String alias) { this.alias = alias; }
 	
 	private String nif;
 	public String getNif () { return nif; }
@@ -68,6 +72,28 @@ public class TipsterDTOA extends DTOA
 			}
 			
 
+			if (!JSONObject.NULL.equals(json.opt("Alias")))
+			{
+			 
+				this.alias = (String) json.opt("Alias");
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Email")))
+			{
+			 
+				this.email = (String) json.opt("Email");
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Created_at")))
+			{
+			 
+			 	String stringDate = (String) json.opt("Created_at");
+				this.created_at = DateUtils.stringToDateFormat(stringDate);
+			 
+			}
+
 			if (!JSONObject.NULL.equals(json.opt("Premium")))
 			{
 			 
@@ -80,20 +106,6 @@ public class TipsterDTOA extends DTOA
 			 
 			 	String stringDouble = String.valueOf(json.opt("Subscription_fee"));
  				this.subscription_fee = Double.parseDouble(stringDouble);
-			 
-			}
-
-			if (!JSONObject.NULL.equals(json.opt("Email")))
-			{
-			 
-				this.email = (String) json.opt("Email");
-			 
-			}
-
-			if (!JSONObject.NULL.equals(json.opt("Alias")))
-			{
-			 
-				this.alias = (String) json.opt("Alias");
 			 
 			}
 
@@ -123,20 +135,24 @@ public class TipsterDTOA extends DTOA
 			}
 			
 		
-		  if (this.premium != null)
-			json.put("Premium", this.premium);
-		
-		
-		  if (this.subscription_fee != null)
-			json.put("Subscription_fee", this.subscription_fee);
+		  if (this.alias != null)
+			json.put("Alias", this.alias);
 		
 		
 		  if (this.email != null)
 			json.put("Email", this.email);
 		
 		
-		  if (this.alias != null)
-			json.put("Alias", this.alias);
+		  if (this.created_at != null)
+			json.put("Created_at", DateUtils.dateToFormatString(this.created_at));
+		
+		
+		  if (this.premium != null)
+			json.put("Premium", this.premium);
+		
+		
+		  if (this.subscription_fee != null)
+			json.put("Subscription_fee", this.subscription_fee);
 		
 		
 		  if (this.nif != null)
@@ -163,13 +179,15 @@ public class TipsterDTOA extends DTOA
 	dto.setId (this.getId());
 
 		
-	dto.setPremium (this.getPremium());
-
-	dto.setSubscription_fee (this.getSubscription_fee());
+	dto.setAlias (this.getAlias());
 
 	dto.setEmail (this.getEmail());
 
-	dto.setAlias (this.getAlias());
+	dto.setCreated_at (this.getCreated_at());
+
+	dto.setPremium (this.getPremium());
+
+	dto.setSubscription_fee (this.getSubscription_fee());
 
 	dto.setNif (this.getNif());
 

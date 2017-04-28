@@ -18,18 +18,18 @@ public class MatchDTOA extends DTOA
 {
 	// region - Members, getters and setters
 
-	
-	private java.util.Date date;
-	public java.util.Date getDate () { return date; }
-	public void setDate (java.util.Date date) { this.date = date; }
+	private Integer id;
+	public Integer getId () { return id; }
+	public void setId (Integer id) { this.id = id; }
+
 	
 	private String stadium;
 	public String getStadium () { return stadium; }
 	public void setStadium (String stadium) { this.stadium = stadium; }
 	
-	private Integer id;
-	public Integer getId () { return id; }
-	public void setId (Integer id) { this.id = id; }
+	private java.util.Date date;
+	public java.util.Date getDate () { return date; }
+	public void setDate (java.util.Date date) { this.date = date; }
 	
 	
 	/* Rol: Match o--> Team */
@@ -60,15 +60,11 @@ public class MatchDTOA extends DTOA
 	{
 		try
 		{
-			
-
-			if (!JSONObject.NULL.equals(json.opt("Date")))
+			if (!JSONObject.NULL.equals(json.opt("Id")))
 			{
-			 
-			 	String stringDate = (String) json.opt("Date");
-				this.date = DateUtils.stringToDateFormat(stringDate);
-			 
+				this.id = (Integer) json.opt("Id");
 			}
+			
 
 			if (!JSONObject.NULL.equals(json.opt("Stadium")))
 			{
@@ -77,10 +73,11 @@ public class MatchDTOA extends DTOA
 			 
 			}
 
-			if (!JSONObject.NULL.equals(json.opt("Id")))
+			if (!JSONObject.NULL.equals(json.opt("Date")))
 			{
 			 
-				this.id = (Integer) json.opt("Id");
+			 	String stringDate = (String) json.opt("Date");
+				this.date = DateUtils.stringToDateFormat(stringDate);
 			 
 			}
 			
@@ -116,18 +113,17 @@ public class MatchDTOA extends DTOA
 		
 		try
 		{
+			if (this.id != null){
+				json.put("Id", this.id);
+			}
 			
-		
-		  if (this.date != null)
-			json.put("Date", DateUtils.dateToFormatString(this.date));
-		
 		
 		  if (this.stadium != null)
 			json.put("Stadium", this.stadium);
 		
 		
-		  if (this.id != null)
-			json.put("Id", this.id.intValue());
+		  if (this.date != null)
+			json.put("Date", DateUtils.dateToFormatString(this.date));
 		
 			
 
@@ -159,12 +155,12 @@ public class MatchDTOA extends DTOA
 		
 		// Attributes
 		
-		
-	dto.setDate (this.getDate());
+	dto.setId (this.getId());
 
+		
 	dto.setStadium (this.getStadium());
 
-	dto.setId (this.getId());
+	dto.setDate (this.getDate());
 
 		
 		

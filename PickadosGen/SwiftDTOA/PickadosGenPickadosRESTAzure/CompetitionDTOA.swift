@@ -13,7 +13,12 @@ class CompetitionDTOA : DTOA
 
 	var id: Int?;
 	
+	var name: String?;
+	var place: String?;
 	
+	/* Rol: Competition o--> Match */
+	var getAllEventOfCompetition: [MatchDTOA]?;
+
 	
 	
 	
@@ -34,7 +39,14 @@ class CompetitionDTOA : DTOA
 		self.id = json["Id"].object as? Int
 		
 	
+		self.name = json["Name"].object as? String;
+		self.place = json["Place"].object as? String;
 		
+		if (json["GetAllEventOfCompetition"] != JSON.null)
+		{
+			self.getAllEventOfCompetition = MatchDTOA(fromJSONObject: json["GetAllEventOfCompetition"]);
+		}
+
 		
 	}
 	
@@ -45,7 +57,19 @@ class CompetitionDTOA : DTOA
 		dictionary["Id"] = self.id;
 		
 	
+
+	
+		dictionary["Name"] = self.name;
+	
+	
+
+	
+		dictionary["Place"] = self.place;
+	
+	
 		
+		dictionary["GetAllEventOfCompetition"] = self.getAllEventOfCompetition?.toDictionary() ?? NSNull();
+
 		
 		
 		return dictionary;

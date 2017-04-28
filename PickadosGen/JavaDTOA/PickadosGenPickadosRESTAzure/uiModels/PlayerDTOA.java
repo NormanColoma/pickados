@@ -19,13 +19,13 @@ public class PlayerDTOA extends DTOA
 	// region - Members, getters and setters
 
 	
-	private String name;
-	public String getName () { return name; }
-	public void setName (String name) { this.name = name; }
-	
 	private Integer id;
 	public Integer getId () { return id; }
 	public void setId (Integer id) { this.id = id; }
+	
+	private String name;
+	public String getName () { return name; }
+	public void setName (String name) { this.name = name; }
 	
 	
 	
@@ -48,17 +48,17 @@ public class PlayerDTOA extends DTOA
 		{
 			
 
-			if (!JSONObject.NULL.equals(json.opt("Name")))
-			{
-			 
-				this.name = (String) json.opt("Name");
-			 
-			}
-
 			if (!JSONObject.NULL.equals(json.opt("Id")))
 			{
 			 
 				this.id = (Integer) json.opt("Id");
+			 
+			}
+
+			if (!JSONObject.NULL.equals(json.opt("Name")))
+			{
+			 
+				this.name = (String) json.opt("Name");
 			 
 			}
 			
@@ -78,12 +78,12 @@ public class PlayerDTOA extends DTOA
 		{
 			
 		
-		  if (this.name != null)
-			json.put("Name", this.name);
-		
-		
 		  if (this.id != null)
 			json.put("Id", this.id.intValue());
+		
+		
+		  if (this.name != null)
+			json.put("Name", this.name);
 		
 			
 			
@@ -104,9 +104,9 @@ public class PlayerDTOA extends DTOA
 		// Attributes
 		
 		
-	dto.setName (this.getName());
-
 	dto.setId (this.getId());
+
+	dto.setName (this.getName());
 
 		
 		

@@ -202,41 +202,6 @@
 	
 	<Compile Include="Controllers\BasicController.cs" />
 	
-		<Compile Include="CAD\AdminRESTCAD.cs" />
-		<Compile Include="DTOA\AdminDTOA.cs" />
-		<Compile Include="Assemblers\AdminAssembler.cs" />
-		<Compile Include="Controllers\AdminController.cs" />
-		
-		<Compile Include="CAD\LoggedInAdminRESTCAD.cs" />
-		<Compile Include="DTOA\LoggedInAdminDTOA.cs" />
-		<Compile Include="Assemblers\LoggedInAdminAssembler.cs" />
-		<Compile Include="Controllers\LoggedInAdminController.cs" />
-		
-		<Compile Include="CAD\PostRESTCAD.cs" />
-		<Compile Include="DTOA\PostDTOA.cs" />
-		<Compile Include="Assemblers\PostAssembler.cs" />
-		<Compile Include="Controllers\PostController.cs" />
-		
-		<Compile Include="CAD\PickRESTCAD.cs" />
-		<Compile Include="DTOA\PickDTOA.cs" />
-		<Compile Include="Assemblers\PickAssembler.cs" />
-		<Compile Include="Controllers\PickController.cs" />
-		
-		<Compile Include="CAD\UsuarioRESTCAD.cs" />
-		<Compile Include="DTOA\UsuarioDTOA.cs" />
-		<Compile Include="Assemblers\UsuarioAssembler.cs" />
-		<Compile Include="Controllers\UsuarioController.cs" />
-		
-		<Compile Include="CAD\TipsterRESTCAD.cs" />
-		<Compile Include="DTOA\TipsterDTOA.cs" />
-		<Compile Include="Assemblers\TipsterAssembler.cs" />
-		<Compile Include="Controllers\TipsterController.cs" />
-		
-		<Compile Include="CAD\Event_RESTCAD.cs" />
-		<Compile Include="DTOA\Event_DTOA.cs" />
-		<Compile Include="Assemblers\Event_Assembler.cs" />
-		<Compile Include="Controllers\Event_Controller.cs" />
-		
 		<Compile Include="CAD\CompetitionRESTCAD.cs" />
 		<Compile Include="DTOA\CompetitionDTOA.cs" />
 		<Compile Include="Assemblers\CompetitionAssembler.cs" />
@@ -252,25 +217,30 @@
 		<Compile Include="Assemblers\TeamAssembler.cs" />
 		<Compile Include="Controllers\TeamController.cs" />
 		
-		<Compile Include="CAD\ClubTeamsRESTCAD.cs" />
-		<Compile Include="DTOA\ClubTeamsDTOA.cs" />
-		<Compile Include="Assemblers\ClubTeamsAssembler.cs" />
-		<Compile Include="Controllers\ClubTeamsController.cs" />
+		<Compile Include="CAD\TipsterRESTCAD.cs" />
+		<Compile Include="DTOA\TipsterDTOA.cs" />
+		<Compile Include="Assemblers\TipsterAssembler.cs" />
+		<Compile Include="Controllers\TipsterController.cs" />
+		
+		<Compile Include="CAD\PostRESTCAD.cs" />
+		<Compile Include="DTOA\PostDTOA.cs" />
+		<Compile Include="Assemblers\PostAssembler.cs" />
+		<Compile Include="Controllers\PostController.cs" />
 		
 		<Compile Include="CAD\PlayerRESTCAD.cs" />
 		<Compile Include="DTOA\PlayerDTOA.cs" />
 		<Compile Include="Assemblers\PlayerAssembler.cs" />
 		<Compile Include="Controllers\PlayerController.cs" />
 		
-		<Compile Include="CAD\NationalTeamRESTCAD.cs" />
-		<Compile Include="DTOA\NationalTeamDTOA.cs" />
-		<Compile Include="Assemblers\NationalTeamAssembler.cs" />
-		<Compile Include="Controllers\NationalTeamController.cs" />
+		<Compile Include="CAD\SportRESTCAD.cs" />
+		<Compile Include="DTOA\SportDTOA.cs" />
+		<Compile Include="Assemblers\SportAssembler.cs" />
+		<Compile Include="Controllers\SportController.cs" />
 		
-		<Compile Include="CAD\RequestRESTCAD.cs" />
-		<Compile Include="DTOA\RequestDTOA.cs" />
-		<Compile Include="Assemblers\RequestAssembler.cs" />
-		<Compile Include="Controllers\RequestController.cs" />
+		<Compile Include="CAD\PickRESTCAD.cs" />
+		<Compile Include="DTOA\PickDTOA.cs" />
+		<Compile Include="Assemblers\PickAssembler.cs" />
+		<Compile Include="Controllers\PickController.cs" />
 		
 		<Compile Include="CAD\StatsRESTCAD.cs" />
 		<Compile Include="DTOA\StatsDTOA.cs" />

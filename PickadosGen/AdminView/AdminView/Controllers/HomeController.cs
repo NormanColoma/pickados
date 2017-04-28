@@ -19,11 +19,11 @@ namespace AdminView.Controllers
             return View();
         }
 
-        public ActionResult Teams()
+        public ActionResult Competitions()
         {
-            TeamCEN teams = new TeamCEN();
-            var totalTeams = teams.GetAllTeams(1, 2000).OrderBy(p => p.Country);
-            ViewBag.allTeams = totalTeams;
+            CompetitionCEN competis = new CompetitionCEN();
+            var totalCompetis = competis.GetAllCompetitions(1, 2000).OrderBy(p => p.Place);
+            ViewBag.allCompetitions = totalCompetis;
             return View();
         }
 
@@ -33,7 +33,7 @@ namespace AdminView.Controllers
             {
                 TeamCEN team = new TeamCEN();
                 PlayerCEN player = new PlayerCEN();
-                var totalTeams = team.GetAllTeams(1, 2000).OrderBy(p => p.Country);
+                var totalTeams = team.GetTeamByCompetition(id).OrderBy(p => p.Name);
                 ViewBag.allTeams = totalTeams;
                 TeamEN teamToSearch = team.GetTeamById(id);
                 ViewBag.team = teamToSearch;

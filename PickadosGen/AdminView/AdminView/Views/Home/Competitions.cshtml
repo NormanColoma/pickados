@@ -1,44 +1,31 @@
 ﻿
 @{
-    ViewBag.Title = "Teams";
+    ViewBag.Title = "Competitions";
 }
 
 <h2>@ViewBag.Title</h2>
-@if (ViewBag.allTeams != null)
+@if (ViewBag.allCompetitions != null)
 {
-            <div class="container-fluid">
 
-                <hr>
-
-                <div class="row">
-                    <div class="col-md-2">
-
-                        <div id="MainMenu">
-                            <div class="list-group panel">
-                                @foreach (var item in ViewBag.allTeams)
-                                {
-                                <!--<a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">ATLETICO DE MADRID</a>
-                                <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">REAL MADRID</a>-->
-                                @Html.ActionLink((string)item.Name, "DetailsTeam", "Home", new { id = item.Id }, new { @class = "list-group-item" })
-                                <!--<a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">SEVILLA FC</a>-->
-                                }
-                            </div>
-                        </div>
-                    </div>
+<div id="MainMenu">
+        <div class="list-group panel">
+            @foreach (var item in ViewBag.allCompetitions)
+            {
+                <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">@item.Name<i class="fa fa-caret-down"></i></a>
+                <div class="collapse list-group-submenu" id="SubMenu1">
+                    <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">ATLETICO DE MADRID</a>
+                    <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">REAL MADRID</a>
+                    @Html.ActionLink("FC BARCELONA", "DetailsTeam", "Home", new { id = 1 }, new { @class = "list-group-item" })
+                    <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">SEVILLA FC</a>
                 </div>
-            </div>
-}
-
-            <!-- menu -->
-            <!--<div id="MainMenu">
-                <div class="list-group panel">
-                    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">CLUB TEAMS <i class="fa fa-caret-down"></i></a>
+            }
+                    <!--<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">CLUB TEAMS <i class="fa fa-caret-down"></i></a>
                     <div class="collapse" id="demo3">
                         <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">LA LIGA SANTANDER <i class="fa fa-caret-down"></i></a>
                         <div class="collapse list-group-submenu" id="SubMenu1">
                             <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">ATLETICO DE MADRID</a>
                             <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">REAL MADRID</a>
-                            @*@Html.ActionLink("FC BARCELONA", "DetailsTeam", "Home", new { id = 1 }, new { @class = "list-group-item" })*@
+                            
                             <a href="javascript:;" class="list-group-item" data-parent="#SubMenu1">SEVILLA FC</a>
                         </div>
                         <a href="javascript:;" class="list-group-item">PREMIER LEAGUE</a>
@@ -53,11 +40,8 @@
                         <a href="javascript:;" class="list-group-item">AFICA</a>
                         <a href="javascript:;" class="list-group-item">ASIA</a>
                         <a href="javascript:;" class="list-group-item">OCEANIA</a>
-                    </div>
+                    </div>-->
                 </div>
-            </div>
-        </div>
     </div>
-
-</div>-->
+}
 

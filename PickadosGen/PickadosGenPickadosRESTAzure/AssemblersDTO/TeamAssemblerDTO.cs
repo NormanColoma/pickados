@@ -62,6 +62,14 @@ public static TeamEN Convert (TeamDTO dto)
                                         newinstance.National_player.Add (playerCAD.ReadOIDDefault (entry));
                                 }
                         }
+                        if (dto.Competition_oid != null) {
+                                PickadosGenNHibernate.CAD.Pickados.ICompetitionCAD competitionCAD = new PickadosGenNHibernate.CAD.Pickados.CompetitionCAD ();
+
+                                newinstance.Competition = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                                foreach (int entry in dto.Competition_oid) {
+                                        newinstance.Competition.Add (competitionCAD.ReadOIDDefault (entry));
+                                }
+                        }
                 }
         }
         catch (Exception ex)

@@ -23,11 +23,11 @@ public double Odd
         set { odd = value; }
 }
 
-private PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum pickResult;
-public PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum PickResult
+private string description;
+public string Description
 {
-        get { return pickResult; }
-        set { pickResult = value; }
+        get { return description; }
+        set { description = value; }
 }
 
 private string bookie;
@@ -35,6 +35,13 @@ public string Bookie
 {
         get { return bookie; }
         set { bookie = value; }
+}
+
+private PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum pickResult;
+public PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum PickResult
+{
+        get { return pickResult; }
+        set { pickResult = value; }
 }
 }
 }

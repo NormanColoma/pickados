@@ -238,6 +238,13 @@ public static void InitializeData ()
                 evento.JoinCompetition (match3, competition2);
                 Console.WriteLine ("There are " + match.GetMatchByCompetition (competition2, 0, 0).Count + " matches in ACB");
 
+                IList<int> competSpain = new List<int>();
+                competSpain.Add(competition);
+
+                teamCEN.AddCompetition(team1, competSpain);
+                teamCEN.AddCompetition(team2, competSpain);
+                Console.WriteLine("There are "+teamCEN.GetTeamByCompetition(competition).Count+" teams in Santander League");
+
                 Console.WriteLine ("--------------- Creating new Players -------------");
                 PlayerCEN playerCEN = new PlayerCEN ();
                 int player1 = playerCEN.NewPlayer ("Yoel Rodríguez");
@@ -312,9 +319,9 @@ public static void InitializeData ()
 
                 Console.WriteLine ("--------------- Get Post by Tipster -------------");
                 PostCAD postCAD = new PostCAD ();
-               /* IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2);
-                foreach (var p in posts)
-                        Console.WriteLine ("- " + p.Description);*/
+                /* IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2);
+                 * foreach (var p in posts)
+                 *       Console.WriteLine ("- " + p.Description);*/
 
                 MatchCEN matchCEN = new MatchCEN ();
                 int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), team1, team5, "Camp Nou");

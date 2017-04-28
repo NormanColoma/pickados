@@ -98,6 +98,7 @@ public void ModifyDefault (CompetitionEN competition)
 
                 competitionEN.Place = competition.Place;
 
+
                 session.Update (competitionEN);
                 SessionCommit ();
         }

@@ -49,6 +49,8 @@ enum Months: Int
 	case October = 10
 	case November = 11
 	case December = 12
+}
+
 enum RequestType: Int
 {
 	case Modify = 1
