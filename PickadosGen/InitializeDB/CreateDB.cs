@@ -312,7 +312,7 @@ public static void InitializeData ()
 
                 Console.WriteLine ("--------------- Get Post by Tipster -------------");
                 PostCAD postCAD = new PostCAD ();
-                IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2,0,10);
+                IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2, 0, 10);
                 foreach (var p in posts)
                         Console.WriteLine ("- " + p.Description);
 
