@@ -61,5 +61,6 @@
 		  
 		  <query name="CompetitionENReadAllHQL">from CompetitionEN</query>
 		  <query name="CompetitionENgetCompetitionsByPlaceHQL"><![CDATA[FROM CompetitionEN WHERE Place = :place]]></query>
+		  <query name="CompetitionENgetCompetitionsByTeamHQL"><![CDATA[select c FROM CompetitionEN as c INNER JOIN c.Team as t where t.Id=:id]]></query>
 		</hibernate-mapping>
 	

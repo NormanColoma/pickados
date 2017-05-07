@@ -294,5 +294,36 @@ public System.Collections.Generic.IList<CompetitionEN> GetAllCompetitions (int f
 
         return result;
 }
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionsByTeam (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CompetitionEN self where select c FROM CompetitionEN as c INNER JOIN c.Team as t where t.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetCompetitionsByTeamHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

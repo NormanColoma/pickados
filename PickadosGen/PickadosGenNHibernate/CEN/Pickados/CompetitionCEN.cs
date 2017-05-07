@@ -103,5 +103,9 @@ public System.Collections.Generic.IList<CompetitionEN> GetAllCompetitions (int f
         list = _ICompetitionCAD.GetAllCompetitions (first, size);
         return list;
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionsByTeam (int id)
+{
+        return _ICompetitionCAD.GetCompetitionsByTeam (id);
+}
 }
 }

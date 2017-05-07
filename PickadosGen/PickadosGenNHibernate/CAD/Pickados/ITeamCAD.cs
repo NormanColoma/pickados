@@ -35,5 +35,12 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetTe
 
 
 void AddCompetition (int p_Team_OID, System.Collections.Generic.IList<int> p_competition_OIDs);
+
+void DeleteCompetition (int p_Team_OID, System.Collections.Generic.IList<int> p_competition_OIDs);
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetClubTeamsByPlayer (int id);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetNationalTeamsByPlayer (int id);
 }
 }

@@ -239,11 +239,15 @@ public static void InitializeData ()
                 Console.WriteLine ("There are " + match.GetMatchByCompetition (competition2, 0, 0).Count + " matches in ACB");
 
                 IList<int> competSpain = new List<int>();
-                competSpain.Add(competition);
-
-                teamCEN.AddCompetition(team1, competSpain);
-                teamCEN.AddCompetition(team2, competSpain);
-                Console.WriteLine("There are "+teamCEN.GetTeamByCompetition(competition).Count+" teams in Santander League");
+                competSpain.Add (competition);
+                IList<int> competSpainBasket = new List<int>();
+                competSpainBasket.Add (competition2);
+                teamCEN.AddCompetition (team1, competSpain);
+                teamCEN.AddCompetition (team2, competSpain);
+                teamCEN.AddCompetition (team4, competSpain);
+                teamCEN.AddCompetition (team6, competSpainBasket);
+                Console.WriteLine ("There are " + teamCEN.GetTeamByCompetition (competition).Count + " teams in Santander League");
+                Console.WriteLine ("There are " + competi.GetAllCompetitions (0, 2000).Count + " competitions");
 
                 Console.WriteLine ("--------------- Creating new Players -------------");
                 PlayerCEN playerCEN = new PlayerCEN ();

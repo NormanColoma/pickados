@@ -29,5 +29,11 @@ namespace AdminView.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<PickadosGenNHibernate.EN.Pickados.CompetitionEN> CompetitionENs { get; set; }
+
+        public System.Data.Entity.DbSet<PickadosGenNHibernate.EN.Pickados.TeamEN> TeamEN { get; set; }
+
+        public System.Data.Entity.DbSet<PickadosGenNHibernate.EN.Pickados.PlayerEN> PlayerENs { get; set; }
     }
 }

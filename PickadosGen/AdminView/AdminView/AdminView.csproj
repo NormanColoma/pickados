@@ -53,6 +53,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -121,8 +122,11 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Home\Competitions.cshtml" />
+    <Content Include="Views\Home\DetailsCompetition.cshtml" />
     <Content Include="Views\Home\DetailsTeam.cshtml" />
-    <Content Include="Views\Home\DetailsPlayer.cshtml" />
+    <Content Include="Views\Home\AddCompeti.cshtml" />
+    <Content Include="Views\Home\DeleteCompeti.cshtml" />
+    <Content Include="Views\Players\PlayerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -240,6 +244,7 @@
     <Reference Include="Owin">
       <HintPath>..\..\..\..\..\Desktop\backup\bin\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers">

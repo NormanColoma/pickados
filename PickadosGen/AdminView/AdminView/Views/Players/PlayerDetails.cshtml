@@ -1,7 +1,7 @@
-﻿@model PickadosGenNHibernate.EN.Pickados.TeamEN
+﻿@model PickadosGenNHibernate.EN.Pickados.PlayerEN
 
 @{
-    ViewBag.Title = "Details Team";
+    ViewBag.Title = "Player Details";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -30,7 +30,7 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.ActionLink((string)@item.Name, "PlayerDetails", "Players", new { idCompeti= ViewBag.allCompetitions.SelectedValue, idTeam=ViewBag.allTeams.SelectedValue, idPlayer = @item.Id,  }, new { @class = "list-group-item" })
+                                            @Html.ActionLink((string)@item.Name, "DetailsPlayer", "Home", new { id = @item.Id }, new { @class = "list-group-item" })
                                         </td>
                                     </tr>
                                 }
@@ -41,6 +41,7 @@
             </div>
         </div>
         <div class="col-md-6">
+
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -59,60 +60,52 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Save" class="btn btn-default" />
                         </div>
                     </div>
                 </div>
             }
-            <br>
+            <!--<br>
             <div class="col-md-6">
-                @Html.DropDownList("allCompetis", null, new { @class = "form-control", id = "allCompetis", required = "required" })
+                @*@Html.DropDownList("allTeams", null, new { @class = "form-control", id = "allTeams", required = "required" })*@
             </div>
             <div class="col-md-4">
                 <a class="addCompeti" href="#">Añadir</a>
-            </div>
+            </div>-->
             <br><br><br>
             <table class="table table-striped">
                 <tr>
                     <th>
-                        Competition Name
+                        Team Name
                     </th>
-                    <th>
+                    <!--<th>
                         Actions
-                    </th>
+                    </th>-->
                 </tr>
-                @foreach (var item in ViewBag.competiByTeam)
+                @foreach (var item in ViewBag.teamByPlayer)
                 {
                     <tr>
                         <td>
                             @item.Name
                         </td>
-                        <td>
-                            <input type="button" id="deleteCompet" value="Eliminar" onclick="deleteCompet(@(item.Id))" />
-                        </td>
+                        <!--<td>
+                            <input type="button" id="deleteCompet" value="Eliminar" onclick="deleteTeam(@(item.Id))" />
+                        </td>-->
                     </tr>
                 }
             </table>
 
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
+            <!--<div>
+                @*@Html.ActionLink("Back to List", "Index")*@
+            </div>-->
         </div>
-        </div>
+    </div>
 
-            </div>
+</div>
 
-            @section scripts {
-                <script type="text/javascript">
+@section scripts {
+    <script type="text/javascript">
 
                     $(document).ready(function () {
                         $('.addCompeti').on('click', function () {
@@ -138,11 +131,11 @@
                         });
                     })
 
-                    function deleteCompet(id) {
+                    function deleteTeam(id) {
                         var idNew = id
                         var team = $('#allTeams').val();
                         var idCompet = $('#allCompetitions').val();
-                        location.href = '@Url.Action("DeleteCompeti", "Home")?idOldCompet=' + idNew + '&idTeam=' + team + '&idCompeti=' + idCompet;
+                        location.href = '@Url.Action("DeleteTeam", "Players")?idOldTeam=' + idNew + '&idTeam=' + team + '&idCompeti=' + idCompet;
                     };
-                </script>
-            }
+    </script>
+}

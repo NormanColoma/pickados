@@ -90,5 +90,7 @@
 		  
 		  <query name="TeamENReadAllHQL">from TeamEN</query>
 		  <query name="TeamENgetTeamByCompetitionHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.Competition as c where c.Id = :id]]></query>
+		  <query name="TeamENgetClubTeamsByPlayerHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.Club_player as p where p.Id=:id]]></query>
+		  <query name="TeamENgetNationalTeamsByPlayerHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.National_player as p where p.Id=:id]]></query>
 		</hibernate-mapping>
 	
