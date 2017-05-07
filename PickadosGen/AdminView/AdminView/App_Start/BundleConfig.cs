@@ -28,7 +28,7 @@ namespace AdminView
             bundles.Add(new ScriptBundle("~/bundles/metismenu").Include(
           "~/Scripts/metisMenu.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/index").Include(
+            bundles.Add(new ScriptBundle("~/bundles/users").Include(
                       "~/Scripts/functions/functions.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

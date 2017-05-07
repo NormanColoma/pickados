@@ -6,8 +6,7 @@ var scrolltopTP = 0;
 var scrolltopA = 0;
 
 $('#contenedor-tipsters-free').bind('scroll', function () {
-    if ($(this).scrollTop() != scrolltopTF)
-    {
+    if ($(this).scrollTop() != scrolltopTF) {
         if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
             $.ajax({
                 type: 'GET',
@@ -60,12 +59,12 @@ $('#contenedor-admins').bind('scroll', function () {
     }
 });
 
-$(".nav a").on("click", function () {
-    $('.' + $(".nav").find(".active").attr('id')).hide()
-    $(".nav").find(".active").removeClass("active");
-    
-    $(this).parent().addClass("active");
-    $('.' + $(".nav").find(".active").attr('id')).show()
+$('[id^="tipsters"], [id^="admins"]').on("click", function () {
+    $('[id^="contenedor-tipsters"], [id^="contenedor-admins"]').hide()
+    $('#contenedor-' + $(this).attr('id')).show();
+
+    $(this).siblings().removeClass('active')
+    $(this).addClass("active");
 });
 
 $(document).ready(function () {
