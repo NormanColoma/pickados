@@ -40,6 +40,13 @@ private string place;
 
 
 
+/**
+ *	Atributo team
+ */
+private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> team;
+
+
+
 
 
 
@@ -73,29 +80,36 @@ public virtual string Place {
 
 
 
+public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> Team {
+        get { return team; } set { team = value;  }
+}
+
+
+
 
 
 public CompetitionEN()
 {
         event_ = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.Event_EN>();
+        team = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.TeamEN>();
 }
 
 
 
-public CompetitionEN(int id, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_, PickadosGenNHibernate.EN.Pickados.SportEN sport, string place
+public CompetitionEN(int id, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_, PickadosGenNHibernate.EN.Pickados.SportEN sport, string place, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> team
                      )
 {
-        this.init (Id, name, event_, sport, place);
+        this.init (Id, name, event_, sport, place, team);
 }
 
 
 public CompetitionEN(CompetitionEN competition)
 {
-        this.init (Id, competition.Name, competition.Event_, competition.Sport, competition.Place);
+        this.init (Id, competition.Name, competition.Event_, competition.Sport, competition.Place, competition.Team);
 }
 
 private void init (int id
-                   , string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_, PickadosGenNHibernate.EN.Pickados.SportEN sport, string place)
+                   , string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> event_, PickadosGenNHibernate.EN.Pickados.SportEN sport, string place, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> team)
 {
         this.Id = id;
 
@@ -107,6 +121,8 @@ private void init (int id
         this.Sport = sport;
 
         this.Place = place;
+
+        this.Team = team;
 }
 
 public override bool Equals (object obj)

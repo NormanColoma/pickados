@@ -66,6 +66,18 @@
 							<one-to-many class="PickadosGenNHibernate.EN.Pickados.PlayerEN"/>
 					    </bag>
 					
+			
+		  			
+						<bag name="Competition" table="[competition_team]" inverse="true" >
+							<key>
+								
+									<column name="FK_id_idTeam"/> 
+							</key>
+      						<many-to-many class="PickadosGenNHibernate.EN.Pickados.CompetitionEN">
+									<column name="FK_id_idCompetition"/> 
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					
@@ -77,5 +89,8 @@
 		 </class>	
 		  
 		  <query name="TeamENReadAllHQL">from TeamEN</query>
+		  <query name="TeamENgetClubTeamsByPlayerHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.Club_player as p where p.Id=:id]]></query>
+		  <query name="TeamENgetNationalTeamsByPlayerHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.Club_player as p where p.Id=:id]]></query>
+		  <query name="TeamENgetTeamByCompetitionHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.Competition as c where c.Id=:id]]></query>
 		</hibernate-mapping>
 	

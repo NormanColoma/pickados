@@ -45,5 +45,12 @@ private System.Collections.Generic.IList<int> national_player_oid;
 public System.Collections.Generic.IList<int> National_player_oid {
         get { return national_player_oid; } set { national_player_oid = value;  }
 }
+
+
+
+private System.Collections.Generic.IList<int> competition_oid;
+public System.Collections.Generic.IList<int> Competition_oid {
+        get { return competition_oid; } set { competition_oid = value;  }
+}
 }
 }
