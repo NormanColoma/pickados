@@ -24,6 +24,9 @@
 		 
 				var place: String?;
 				    	 
+		 
+				var team_oid: [Int]?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -69,6 +72,9 @@
 				
 					dictionary["place"] = self.place;
 				
+
+					dictionary["team_oid"] = self.team_oid;
+			
 						
 				return dictionary;
 			}

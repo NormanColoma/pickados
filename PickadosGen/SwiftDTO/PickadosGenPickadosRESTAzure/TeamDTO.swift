@@ -30,6 +30,9 @@
 		 
 				var national_player_oid: [Int]?;
 				    	 
+		 
+				var competition_oid: [Int]?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -70,6 +73,9 @@
 			
 
 					dictionary["national_player_oid"] = self.national_player_oid;
+			
+
+					dictionary["competition_oid"] = self.competition_oid;
 			
 						
 				return dictionary;

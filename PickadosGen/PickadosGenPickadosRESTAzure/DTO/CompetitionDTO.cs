@@ -29,5 +29,11 @@ private string place;
 public string Place {
         get { return place; } set { place = value;  }
 }
+
+
+private System.Collections.Generic.IList<int> team_oid;
+public System.Collections.Generic.IList<int> Team_oid {
+        get { return team_oid; } set { team_oid = value;  }
+}
 }
 }

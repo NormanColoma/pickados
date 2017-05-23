@@ -37,6 +37,10 @@
 				public String getPlace () { return place; } 
 				public void setPlace  (String value) { place = value;  } 
 				    	 
+				private ArrayList<Integer> team_oid;
+				public ArrayList<Integer>  getTeam_oid () { return team_oid; } 
+				public void setTeam_oid (ArrayList<Integer> value) { team_oid = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -68,6 +72,17 @@
 				
 						  json.put("Place", this.place);
 				
+
+						if (this.team_oid != null)
+						{
+							JSONArray jsonArray = new JSONArray();
+							for (int i = 0; i < this.team_oid.size(); ++i)
+							{
+								jsonArray.put(this.team_oid.get(i));
+							}
+							json.put("Team_oid", jsonArray);
+						}
+		
 						
 					}
 					catch (JSONException e)

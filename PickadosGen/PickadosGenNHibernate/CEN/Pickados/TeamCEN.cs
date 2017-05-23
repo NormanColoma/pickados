@@ -91,5 +91,29 @@ public System.Collections.Generic.IList<TeamEN> GetAllTeams (int first, int size
         list = _ITeamCAD.GetAllTeams (first, size);
         return list;
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetClubTeamsByPlayer (int id)
+{
+        return _ITeamCAD.GetClubTeamsByPlayer (id);
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetNationalTeamsByPlayer (int id)
+{
+        return _ITeamCAD.GetNationalTeamsByPlayer (id);
+}
+public void AddCompetition (int p_Team_OID, System.Collections.Generic.IList<int> p_competition_OIDs)
+{
+        //Call to TeamCAD
+
+        _ITeamCAD.AddCompetition (p_Team_OID, p_competition_OIDs);
+}
+public void DeleteCompetition (int p_Team_OID, System.Collections.Generic.IList<int> p_competition_OIDs)
+{
+        //Call to TeamCAD
+
+        _ITeamCAD.DeleteCompetition (p_Team_OID, p_competition_OIDs);
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetTeamByCompetition (int id)
+{
+        return _ITeamCAD.GetTeamByCompetition (id);
+}
 }
 }
