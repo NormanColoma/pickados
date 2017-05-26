@@ -45,6 +45,10 @@
 				public ArrayList<Integer>  getNational_player_oid () { return national_player_oid; } 
 				public void setNational_player_oid (ArrayList<Integer> value) { national_player_oid = value;  } 
 				    	 
+				private ArrayList<Integer> competition_oid;
+				public ArrayList<Integer>  getCompetition_oid () { return competition_oid; } 
+				public void setCompetition_oid (ArrayList<Integer> value) { competition_oid = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -103,6 +107,17 @@
 								jsonArray.put(this.national_player_oid.get(i));
 							}
 							json.put("National_player_oid", jsonArray);
+						}
+		
+
+						if (this.competition_oid != null)
+						{
+							JSONArray jsonArray = new JSONArray();
+							for (int i = 0; i < this.competition_oid.size(); ++i)
+							{
+								jsonArray.put(this.competition_oid.get(i));
+							}
+							json.put("Competition_oid", jsonArray);
 						}
 		
 						

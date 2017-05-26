@@ -32,5 +32,8 @@ CompetitionEN GetCompetitionById (int id
 
 
 System.Collections.Generic.IList<CompetitionEN> GetAllCompetitions (int first, int size);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionByTeam (int id);
 }
 }

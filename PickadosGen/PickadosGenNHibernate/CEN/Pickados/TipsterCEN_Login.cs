@@ -22,31 +22,17 @@ public partial class TipsterCEN
 {
 public PickadosGenNHibernate.EN.Pickados.TipsterEN Login (string user, string pass)
 {
-        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_login) ENABLED START*/
+            /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_login) ENABLED START*/
 
-        // Write here your custom code...
-        string codedPass;
-        TipsterCEN usuario = new TipsterCEN ();
-        TipsterEN us = usuario.FindByUser (user);
+            // Write here your custom code...
+            UsuarioCEN userCEN = new UsuarioCEN();
+            TipsterEN userFound = (TipsterEN)userCEN.Login(user, pass);
 
-        if (us != null) {
-                StringBuilder hash = new StringBuilder ();
-                MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider ();
-                byte[] bytes = md5provider.ComputeHash (new UTF8Encoding ().GetBytes (pass));
+            return userFound;
 
-                for (int i = 0; i < bytes.Length; i++) {
-                        hash.Append (bytes [i].ToString ("x2"));
-                }
-                codedPass = hash.ToString ();
-                if (us.Password == codedPass) {
-                        return us;
-                }
+            //throw new NotImplementedException ("Method Login() not yet implemented.");
+
+            /*PROTECTED REGION END*/
         }
-        return null;
-
-        //throw new NotImplementedException ("Method Login() not yet implemented.");
-
-        /*PROTECTED REGION END*/
-}
 }
 }

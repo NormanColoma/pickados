@@ -39,6 +39,18 @@
 						</many-to-one>
 											 					
 			
+			
+		  			
+						<bag name="Team" table="[competition_team]"  >
+							<key>
+								
+									<column name="FK_id_idCompetition"/> 
+							</key>
+      						<many-to-many class="PickadosGenNHibernate.EN.Pickados.TeamEN">
+									<column name="FK_id_idTeam"/> 
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					
@@ -49,5 +61,6 @@
 		  
 		  <query name="CompetitionENReadAllHQL">from CompetitionEN</query>
 		  <query name="CompetitionENgetCompetitionsByPlaceHQL"><![CDATA[FROM CompetitionEN WHERE Place = :place]]></query>
+		  <query name="CompetitionENgetCompetitionByTeamHQL"><![CDATA[select c FROM CompetitionEN as c INNER JOIN c.Team as t where t.Id=:id]]></query>
 		</hibernate-mapping>
 	

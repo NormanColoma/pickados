@@ -137,11 +137,17 @@
 			
 			
 			
+			
 	<Compile Include="EN\Pickados\TeamEN.cs" />
 	<Compile Include="CEN\Pickados\TeamCEN.cs" />
 	<Compile Include="CAD\Pickados\ITeamCAD.cs" />
 	<Compile Include="CAD\Pickados\TeamCAD.cs" />
 	<Compile Include="CP\Pickados\TeamCP.cs" />
+			
+			
+			
+			
+			
 			
 			
 			

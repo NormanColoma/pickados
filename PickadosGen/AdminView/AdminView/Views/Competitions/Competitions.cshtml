@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Competiciones";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.DropDownList("allCompetitions", null, new { @class = "form-control", id = "allCompetitions", required = "required" })
+
+@section scripts {
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#allCompetitions").change(function () {
+            var url = $(this).val();
+            if (url != null && url != '') {
+                location.href = '@Url.Action("DetailsCompetition", "Competitions")?id=' + url;
+            }
+        })
+    });
+    </script>
+}
