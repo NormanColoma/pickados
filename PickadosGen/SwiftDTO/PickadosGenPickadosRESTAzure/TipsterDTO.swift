@@ -28,6 +28,9 @@
 		 
 				var subscription_fee: Double?;
 				    	 
+		 
+				var locked: Bool?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -84,6 +87,10 @@
 
 				
 					dictionary["subscription_fee"] = self.subscription_fee;
+				
+
+				
+					dictionary["locked"] = self.locked;
 				
 						
 				return dictionary;

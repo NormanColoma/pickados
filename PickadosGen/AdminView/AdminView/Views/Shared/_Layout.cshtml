@@ -269,7 +269,15 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            @Html.ActionLink("Usuarios", "Index", "User")
+                            <a href="#"><i class="fa fa-user fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    @Html.ActionLink("Ver todos", "Index", "User")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Editar", "Edit", "User")
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             @Html.ActionLink("Solicitudes", "Index", "Request")

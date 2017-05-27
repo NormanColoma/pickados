@@ -42,6 +42,10 @@
 				public Double getSubscription_fee () { return subscription_fee; } 
 				public void setSubscription_fee  (Double value) { subscription_fee = value;  } 
 				    	 
+				private Boolean locked;
+				public Boolean getLocked () { return locked; } 
+				public void setLocked  (Boolean value) { locked = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -96,6 +100,9 @@
 				
 				
 						  json.put("Subscription_fee", this.subscription_fee);
+				
+				
+						  json.put("Locked", this.locked);
 				
 						
 					}

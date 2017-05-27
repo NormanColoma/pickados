@@ -31,7 +31,7 @@ public int Registration (string alias, string nif, string email, string pass)
         TipsterEN emailExists = nuevo.FindByMail (email);
 
         if (nifExists == null || aliasExists == null || emailExists == null) {
-                int registered = nuevo.NewTipster (alias, email, pass, DateTime.Today, DateTime.Today, nif, false, false, 0.00);
+                int registered = nuevo.NewTipster (alias, email, pass, DateTime.Today, DateTime.Today, nif, false, false, 0.00, false);
                 return registered;
         }
 

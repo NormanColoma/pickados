@@ -261,6 +261,8 @@
 			
 			<Compile Include="CP\Pickados\TipsterCP_GetTipstersFree.cs" />
 			
+			<Compile Include="CEN\Pickados\TipsterCEN_ModifyTipsterByAdmin.cs" />
+			
 	<Compile Include="EN\Pickados\AdminEN.cs" />
 	<Compile Include="CEN\Pickados\AdminCEN.cs" />
 	<Compile Include="CAD\Pickados\IAdminCAD.cs" />

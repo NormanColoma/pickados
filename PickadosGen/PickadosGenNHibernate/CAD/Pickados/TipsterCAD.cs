@@ -100,6 +100,9 @@ public void ModifyDefault (TipsterEN tipster)
 
                 tipsterEN.Subscription_fee = tipster.Subscription_fee;
 
+
+                tipsterEN.Locked = tipster.Locked;
+
                 session.Update (tipsterEN);
                 SessionCommit ();
         }
@@ -177,6 +180,9 @@ public void ModifyTipster (TipsterEN tipster)
 
 
                 tipsterEN.Subscription_fee = tipster.Subscription_fee;
+
+
+                tipsterEN.Locked = tipster.Locked;
 
                 session.Update (tipsterEN);
                 SessionCommit ();
@@ -699,6 +705,53 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         }
 
         return result;
+}
+public void ModifyTipsterByAdmin (TipsterEN tipster)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                TipsterEN tipsterEN = (TipsterEN)session.Load (typeof(TipsterEN), tipster.Id);
+
+                tipsterEN.Alias = tipster.Alias;
+
+
+                tipsterEN.Email = tipster.Email;
+
+
+                tipsterEN.Created_at = tipster.Created_at;
+
+
+                tipsterEN.Updated_at = tipster.Updated_at;
+
+
+                tipsterEN.Nif = tipster.Nif;
+
+
+                tipsterEN.Premium = tipster.Premium;
+
+
+                tipsterEN.Subscription_fee = tipster.Subscription_fee;
+
+
+                tipsterEN.Locked = tipster.Locked;
+
+                session.Update (tipsterEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TipsterCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
 }
 }
 }
