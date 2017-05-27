@@ -38,5 +38,9 @@ private double subscription_fee;
 public double Subscription_fee {
         get { return subscription_fee; } set { subscription_fee = value;  }
 }
+private bool locked;
+public bool Locked {
+        get { return locked; } set { locked = value;  }
+}
 }
 }

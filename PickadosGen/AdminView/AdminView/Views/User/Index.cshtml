@@ -1,4 +1,4 @@
-﻿@model IList<PickadosGenNHibernate.EN.Pickados.UsuarioEN>
+﻿@model List<PickadosGenNHibernate.EN.Pickados.UsuarioEN>
 
 <h1>Usuarios</h1>
 <hr />
@@ -17,6 +17,7 @@
             <th>Created_at</th>
             <th>Updated_at</th>
             <th>Nif</th>
+            <th>Locked</th>
             <th></th>
         </tr>
         @{Html.RenderAction("_ListaTipstersFree", "User", new { page = 0 });}
@@ -46,7 +47,6 @@
             <th>Created_at</th>
             <th>Updated_at</th>
             <th>Nif</th>
-            <th>is_Admin</th>
             <th></th>
         </tr>
         @{Html.RenderAction("_ListaAdmins", "User", new { page = 0 });}

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PickadosGenNHibernate.EN.Pickados.AdminEN>
+﻿@model List<PickadosGenNHibernate.EN.Pickados.TipsterEN>
 
 @foreach (var item in Model) {
     <tr>
@@ -18,12 +18,12 @@
             @Html.DisplayFor(modelItem => item.Nif)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Admin)
+            @Html.DisplayFor(modelItem => item.Locked)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="@Url.Action("Stats", "Stats", new { id=item.Id })" class="fa fa-bar-chart-o fa-fw"></a>
+            <a href="@Url.Action("Edit", "User", new { id=item.Id })" class="fa fa-pencil fa-fw"></a>
+            <a href="@Url.Action("Delete", "User", new { id=item.Id })" class="fa fa-trash-o fa-fw"></a>
         </td>
     </tr>
 }

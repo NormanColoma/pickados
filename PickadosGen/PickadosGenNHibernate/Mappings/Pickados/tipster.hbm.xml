@@ -22,6 +22,9 @@
 					<property name="Subscription_fee" type="double"> 
 						<column name="subscription_fee"  not-null="true"/>
 					</property>
+					<property name="Locked" type="boolean"> 
+						<column name="locked"  not-null="true"/>
+					</property>
 			
 			
 		  			
@@ -69,6 +72,8 @@
     					</bag>
 			
 			
+			
+					
 					
 					
 					

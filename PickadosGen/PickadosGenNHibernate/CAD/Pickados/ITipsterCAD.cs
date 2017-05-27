@@ -71,5 +71,8 @@ PickadosGenNHibernate.EN.Pickados.TipsterEN FindByNIF (string nif);
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetTipstersFree (int? first, int ? size);
+
+
+void ModifyTipsterByAdmin (TipsterEN tipster);
 }
 }

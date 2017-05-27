@@ -85,10 +85,10 @@ public static void InitializeData ()
                 AdminCEN admin = new AdminCEN ();
                 UsuarioCEN user = new UsuarioCEN ();
 
-                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "12345678B", false, false, 0);
-                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "25836914C", false, false, 0);
-                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "36924518Z", false, false, 0);
-                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "56478912P", false, false, 0);
+                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "12345678B", false, false, 0, false);
+                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "25836914C", false, false, 0, false);
+                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "36924518Z", false, false, 0, false);
+                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "56478912P", false, false, 0, false);
 
                 admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N", true);
 
@@ -155,7 +155,7 @@ public static void InitializeData ()
                 Console.WriteLine ("Converting tipster 1 to premium");
                 nuevo.BecomePremium (originalTipster.Id, 2.8);
 
-                Console.WriteLine ("There are " + nuevo.GetTipstersPremium ().Count + " premium tipsters");
+                //Console.WriteLine ("There are " + nuevo.GetTipstersPremium ().Count + " premium tipsters");
 
                 // Añadimos datos a Equipos
                 Console.WriteLine ("------------- Creating new teams -------------");

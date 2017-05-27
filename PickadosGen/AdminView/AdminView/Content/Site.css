@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
 }
 
@@ -26,7 +26,7 @@ textarea {
 /* -- -- */
 .contenedor {
     height: 800px;
-    overflow-y: scroll;
+    overflow: scroll;
 
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
