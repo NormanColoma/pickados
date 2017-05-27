@@ -100,6 +100,7 @@ public void ModifyDefault (TeamEN team)
 
 
 
+
                 session.Update (teamEN);
                 SessionCommit ();
         }
@@ -240,6 +241,174 @@ public System.Collections.Generic.IList<TeamEN> GetAllTeams (int first, int size
                                  SetFirstResult (first).SetMaxResults (size).List<TeamEN>();
                 else
                         result = session.CreateCriteria (typeof(TeamEN)).List<TeamEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetClubTeamsByPlayer (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TeamEN self where select t FROM TeamEN as t INNER JOIN t.Club_player as p where p.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TeamENgetClubTeamsByPlayerHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TeamEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetNationalTeamsByPlayer (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TeamEN self where select t FROM TeamEN as t INNER JOIN t.Club_player as p where p.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TeamENgetNationalTeamsByPlayerHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TeamEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public void AddCompetition (int p_Team_OID, System.Collections.Generic.IList<int> p_competition_OIDs)
+{
+        PickadosGenNHibernate.EN.Pickados.TeamEN teamEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                teamEN = (TeamEN)session.Load (typeof(TeamEN), p_Team_OID);
+                PickadosGenNHibernate.EN.Pickados.CompetitionEN competitionENAux = null;
+                if (teamEN.Competition == null) {
+                        teamEN.Competition = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                }
+
+                foreach (int item in p_competition_OIDs) {
+                        competitionENAux = new PickadosGenNHibernate.EN.Pickados.CompetitionEN ();
+                        competitionENAux = (PickadosGenNHibernate.EN.Pickados.CompetitionEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.CompetitionEN), item);
+                        competitionENAux.Team.Add (teamEN);
+
+                        teamEN.Competition.Add (competitionENAux);
+                }
+
+
+                session.Update (teamEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void DeleteCompetition (int p_Team_OID, System.Collections.Generic.IList<int> p_competition_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                PickadosGenNHibernate.EN.Pickados.TeamEN teamEN = null;
+                teamEN = (TeamEN)session.Load (typeof(TeamEN), p_Team_OID);
+
+                PickadosGenNHibernate.EN.Pickados.CompetitionEN competitionENAux = null;
+                if (teamEN.Competition != null) {
+                        foreach (int item in p_competition_OIDs) {
+                                competitionENAux = (PickadosGenNHibernate.EN.Pickados.CompetitionEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.CompetitionEN), item);
+                                if (teamEN.Competition.Contains (competitionENAux) == true) {
+                                        teamEN.Competition.Remove (competitionENAux);
+                                        competitionENAux.Team.Remove (teamEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_competition_OIDs you are trying to unrelationer, doesn't exist in TeamEN");
+                        }
+                }
+
+                session.Update (teamEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetTeamByCompetition (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TeamEN self where select t FROM TeamEN as t INNER JOIN t.Competition as c where c.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TeamENgetTeamByCompetitionHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TeamEN>();
                 SessionCommit ();
         }
 

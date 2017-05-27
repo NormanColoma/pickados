@@ -98,6 +98,7 @@ public void ModifyDefault (CompetitionEN competition)
 
                 competitionEN.Place = competition.Place;
 
+
                 session.Update (competitionEN);
                 SessionCommit ();
         }
@@ -275,6 +276,37 @@ public System.Collections.Generic.IList<CompetitionEN> GetAllCompetitions (int f
                                  SetFirstResult (first).SetMaxResults (size).List<CompetitionEN>();
                 else
                         result = session.CreateCriteria (typeof(CompetitionEN)).List<CompetitionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionByTeam (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CompetitionEN self where select c FROM CompetitionEN as c INNER JOIN c.Team as t where t.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetCompetitionByTeamHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
                 SessionCommit ();
         }
 
