@@ -1,0 +1,22 @@
+﻿<div id="deleteModal" class="modal" role="dialog" tabindex="-1">
+    @using (Html.BeginForm("Delete", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Borrar usuario</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" class="btn btn-primary" value="Aceptar" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
