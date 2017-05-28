@@ -87,7 +87,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -106,8 +105,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\functions\functions.js" />
     <Content Include="Scripts\functions\functions_edituser.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -123,7 +122,6 @@
     <Content Include="Scripts\metisMenu.min.js" />
     <Content Include="Scripts\metisMenu\metisMenu.js" />
     <Content Include="Scripts\metisMenu\metisMenu.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\morrisjs\morris.js" />
     <Content Include="Scripts\morrisjs\morris.min.js" />
@@ -154,8 +152,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
@@ -168,6 +164,7 @@
     <Content Include="Views\Teams\AddCompeti.cshtml" />
     <Content Include="Views\Teams\DeleteCompeti.cshtml" />
     <Content Include="Views\Players\PlayerDetails.cshtml" />
+    <Content Include="Views\User\_delete\_DeleteDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

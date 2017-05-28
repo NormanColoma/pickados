@@ -23,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -238,17 +238,17 @@ public static void InitializeData ()
                 evento.JoinCompetition (match3, competition2);
                 Console.WriteLine ("There are " + match.GetMatchByCompetition (competition2, 0, 0).Count + " matches in ACB");
 
-                Console.WriteLine("Joining teams to Competitions");
+                Console.WriteLine ("Joining teams to Competitions");
                 IList<int> competSpain = new List<int>();
-                competSpain.Add(competition);
+                competSpain.Add (competition);
                 IList<int> competSpainBasket = new List<int>();
-                competSpainBasket.Add(competition2);
-                teamCEN.AddCompetition(team1, competSpain);
-                teamCEN.AddCompetition(team2, competSpain);
-                teamCEN.AddCompetition(team4, competSpain);
-                teamCEN.AddCompetition(team6, competSpainBasket);
-                Console.WriteLine("There are " + teamCEN.GetTeamByCompetition(competition).Count + " teams in Santander League");
-                Console.WriteLine("There are " + competi.GetAllCompetitions(0, 2000).Count + " competitions");
+                competSpainBasket.Add (competition2);
+                teamCEN.AddCompetition (team1, competSpain);
+                teamCEN.AddCompetition (team2, competSpain);
+                teamCEN.AddCompetition (team4, competSpain);
+                teamCEN.AddCompetition (team6, competSpainBasket);
+                Console.WriteLine ("There are " + teamCEN.GetTeamByCompetition (competition).Count + " teams in Santander League");
+                Console.WriteLine ("There are " + competi.GetAllCompetitions (0, 2000).Count + " competitions");
 
                 Console.WriteLine ("--------------- Creating new Players -------------");
                 PlayerCEN playerCEN = new PlayerCEN ();

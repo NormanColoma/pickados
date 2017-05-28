@@ -87,12 +87,22 @@ namespace AdminView.Controllers
                         tipsterCEN.ModifyTipsterByAdmin(user.Id, user.Alias, user.Email, user.Created_at, user.Updated_at, user.Nif, false, 0, user.Locked);
                 }
 
-                return RedirectToAction("Index");
+                return View();
             }
             catch (Exception ex)
             {
                 return RedirectToAction("Index");
             }
         }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            UsuarioCEN usuarioCEN = new UsuarioCEN();
+            usuarioCEN.DeleteUser(id);
+
+            return RedirectToAction("Index");
+        }
+        
     }
 }
