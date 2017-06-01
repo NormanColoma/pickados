@@ -68,8 +68,9 @@ $('[id^="tipsters"], [id^="admins"]').on("click", function () {
 });
 
 $('.fa-trash-o').on("click", function () {
+    $('.modal-body').empty();
     var p = document.createElement('p');
-    p.textContent = '¿Estás seguro de que quieres borrar al usuario ' + this.getAttribute('data-alias') + '?';
+    p.textContent = '¿Desea elminar al usuario "' + this.getAttribute('data-alias') + '" del sistema?';
     $('.modal-body').append(p);
 
     var action = $('#deleteModal form').attr('action');
