@@ -30,9 +30,9 @@ private int totalPicks;
 public int TotalPicks {
         get { return totalPicks; } set { totalPicks = value;  }
 }
-private Nullable<DateTime> initialDate;
-public Nullable<DateTime> InitialDate {
-        get { return initialDate; } set { initialDate = value;  }
+private Nullable<DateTime> date;
+public Nullable<DateTime> Date {
+        get { return date; } set { date = value;  }
 }
 
 

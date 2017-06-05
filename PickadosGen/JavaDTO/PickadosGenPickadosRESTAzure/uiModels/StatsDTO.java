@@ -41,9 +41,9 @@
 				public Integer getTotalPicks () { return totalPicks; } 
 				public void setTotalPicks  (Integer value) { totalPicks = value;  } 
 				    	 
-				private java.util.Date initialDate;
-				public java.util.Date getInitialDate () { return initialDate; } 
-				public void setInitialDate  (java.util.Date value) { initialDate = value;  } 
+				private java.util.Date date;
+				public java.util.Date getDate () { return date; } 
+				public void setDate  (java.util.Date value) { date = value;  } 
 				    	 
 				private Integer tipster_oid;
 				public Integer  getTipster_oid () { return tipster_oid; } 
@@ -83,7 +83,7 @@
 						  json.put("TotalPicks", this.totalPicks.intValue());
 				
 				
-						  json.put("InitialDate", DateUtils.dateToFormatString(this.initialDate));
+						  json.put("Date", DateUtils.dateToFormatString(this.date));
 				
 
 						if (this.tipster_oid != null)

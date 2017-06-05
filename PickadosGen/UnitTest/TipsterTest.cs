@@ -358,6 +358,7 @@ namespace UnitTest
 
         }
 
+        /*
         [TestMethod]
         public void GettingStatsByMonthShouldThrowModelException()
         {
@@ -376,6 +377,7 @@ namespace UnitTest
                 Assert.IsInstanceOfType(actualException, typeof(ModelException));
             }
         }
+        */
 
     }
 }

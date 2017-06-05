@@ -27,8 +27,8 @@
 					<property name="TotalPicks" type="integer"> 
 						<column name="totalPicks"  not-null="true"/>
 					</property>
-					<property name="InitialDate" type="date"> 
-						<column name="initialDate"  not-null="true"/>
+					<property name="Date" type="date"> 
+						<column name="date"  not-null="true"/>
 					</property>
 					<property name="OddAccumulator" type="double"> 
 						<column name="oddAccumulator"  not-null="true"/>
@@ -67,6 +67,6 @@
 		  
 		  <query name="StatsENReadAllHQL">from StatsEN</query>
 		  <query name="StatsENgetStatsByTipsterHQL"><![CDATA[select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name]]></query>
-		  <query name="StatsENgetStatsByMonthTipsterHQL"><![CDATA[select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND month(initialDate) = :p_Stats_Month AND year(initialDate) = :p_Stats_Year]]></query>
+		  <query name="StatsENgetStatsByMonthTipsterHQL"><![CDATA[select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND month(date) = :p_Stats_Month AND year(date) = :p_Stats_Year]]></query>
 		</hibernate-mapping>
 	

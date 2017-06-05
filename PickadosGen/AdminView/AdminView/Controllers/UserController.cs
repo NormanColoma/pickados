@@ -87,7 +87,7 @@ namespace AdminView.Controllers
                         tipsterCEN.ModifyTipsterByAdmin(user.Id, user.Alias, user.Email, user.Created_at, user.Updated_at, user.Nif, false, 0, user.Locked);
                 }
 
-                return View();
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {

@@ -28,7 +28,7 @@
 				var totalPicks: Int?;
 				    	 
 		 
-				var initialDate: NSDate?;
+				var date: NSDate?;
 				    	 
 		 
 				var tipster_oid: Int?;
@@ -82,7 +82,7 @@
 				
 
 				
-					dictionary["initialDate"] = self.initialDate?.toString();
+					dictionary["date"] = self.date?.toString();
 				
 
 					dictionary["tipster_oid"] = self.tipster_oid;

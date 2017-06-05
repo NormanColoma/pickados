@@ -106,7 +106,7 @@ public void ModifyDefault (StatsEN stats)
                 statsEN.TotalPicks = stats.TotalPicks;
 
 
-                statsEN.InitialDate = stats.InitialDate;
+                statsEN.Date = stats.Date;
 
 
 
@@ -189,7 +189,7 @@ public void ModifyMonthlyStats (StatsEN stats)
                 statsEN.TotalPicks = stats.TotalPicks;
 
 
-                statsEN.InitialDate = stats.InitialDate;
+                statsEN.Date = stats.Date;
 
 
                 statsEN.OddAccumulator = stats.OddAccumulator;
@@ -335,7 +335,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsE
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM StatsEN self where select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND month(initialDate) = :p_Stats_Month AND year(initialDate) = :p_Stats_Year";
+                //String sql = @"FROM StatsEN self where select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND month(date) = :p_Stats_Month AND year(date) = :p_Stats_Year";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("StatsENgetStatsByMonthTipsterHQL");
                 query.SetParameter ("p_Tipster_Name", p_Tipster_Name);

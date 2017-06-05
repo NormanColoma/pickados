@@ -245,7 +245,6 @@
 			
 			<Compile Include="CEN\Pickados\TipsterCEN_BecomePremium.cs" />
 			
-			
 			<Compile Include="CP\Pickados\TipsterCP_GetTipstersPremium.cs" />
 			
 			

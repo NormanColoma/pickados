@@ -89,7 +89,6 @@
 		  <query name="TipsterENgetPostsHQL"><![CDATA[SELECT post FROM PostEN as post, TipsterEN as tipster WHERE post.Tipster.Id = tipster.Id ]]></query>
 		  <query name="TipsterENgetFollowsHQL"><![CDATA[select t1 FROM TipsterEN as t INNER JOIN t.Follow_to as t1 where t.Id=:id]]></query>
 		  <query name="TipsterENgetTipstersWithBenefitHQL"><![CDATA[FROM TipsterEN]]></query>
-		  <query name="TipsterENgetStatsByMonthHQL"><![CDATA[select s FROM StatsEN as s INNER JOIN s.Tipster as t where t.Id = :p_oid and month(s.InitialDate) = month(:p_date)]]></query>
 		  <query name="TipsterENgetTipstersPremiumHQL"><![CDATA[FROM TipsterEN where Premium=true]]></query>
 		  <query name="TipsterENfindByUserHQL"><![CDATA[select t FROM TipsterEN as t where alias = :alias]]></query>
 		  <query name="TipsterENfindByMailHQL"><![CDATA[select t FROM TipsterEN as t where email = :email]]></query>
