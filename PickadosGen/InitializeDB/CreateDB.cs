@@ -18,15 +18,16 @@ public class CreateDB
 {
 public static void Create (string databaseArg, string userArg, string passArg)
 {
+       
         String database = databaseArg;
         String user = userArg;
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
-
-        // Order T-SQL create user
-        String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+            cnn.Close();
+            // Order T-SQL create user
+            String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
             BEGIN
                 CREATE LOGIN ["                                                                                                                                     + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
             END"                                                                                                                                                                                                                                                                                    ;
