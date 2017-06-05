@@ -48,9 +48,9 @@ private int totalPicks;
 
 
 /**
- *	Atributo initialDate
+ *	Atributo date
  */
-private Nullable<DateTime> initialDate;
+private Nullable<DateTime> date;
 
 
 
@@ -114,8 +114,8 @@ public virtual int TotalPicks {
 
 
 
-public virtual Nullable<DateTime> InitialDate {
-        get { return initialDate; } set { initialDate = value;  }
+public virtual Nullable<DateTime> Date {
+        get { return date; } set { date = value;  }
 }
 
 
@@ -146,20 +146,20 @@ public StatsEN()
 
 
 
-public StatsEN(int id, double benefit, double stakeAverage, float yield, double oddAverage, int totalPicks, Nullable<DateTime> initialDate, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double oddAccumulator, double totalStaked
+public StatsEN(int id, double benefit, double stakeAverage, float yield, double oddAverage, int totalPicks, Nullable<DateTime> date, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double oddAccumulator, double totalStaked
                )
 {
-        this.init (Id, benefit, stakeAverage, yield, oddAverage, totalPicks, initialDate, tipster, oddAccumulator, totalStaked);
+        this.init (Id, benefit, stakeAverage, yield, oddAverage, totalPicks, date, tipster, oddAccumulator, totalStaked);
 }
 
 
 public StatsEN(StatsEN stats)
 {
-        this.init (Id, stats.Benefit, stats.StakeAverage, stats.Yield, stats.OddAverage, stats.TotalPicks, stats.InitialDate, stats.Tipster, stats.OddAccumulator, stats.TotalStaked);
+        this.init (Id, stats.Benefit, stats.StakeAverage, stats.Yield, stats.OddAverage, stats.TotalPicks, stats.Date, stats.Tipster, stats.OddAccumulator, stats.TotalStaked);
 }
 
 private void init (int id
-                   , double benefit, double stakeAverage, float yield, double oddAverage, int totalPicks, Nullable<DateTime> initialDate, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double oddAccumulator, double totalStaked)
+                   , double benefit, double stakeAverage, float yield, double oddAverage, int totalPicks, Nullable<DateTime> date, PickadosGenNHibernate.EN.Pickados.TipsterEN tipster, double oddAccumulator, double totalStaked)
 {
         this.Id = id;
 
@@ -174,7 +174,7 @@ private void init (int id
 
         this.TotalPicks = totalPicks;
 
-        this.InitialDate = initialDate;
+        this.Date = date;
 
         this.Tipster = tipster;
 

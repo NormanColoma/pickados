@@ -149,10 +149,6 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
 {
         return _ITipsterCAD.GetTipstersWithBenefit ();
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> GetStatsByMonth (Nullable<DateTime> p_date, int ? p_oid)
-{
-        return _ITipsterCAD.GetStatsByMonth (p_date, p_oid);
-}
 public PickadosGenNHibernate.EN.Pickados.TipsterEN FindByUser (string alias)
 {
         return _ITipsterCAD.FindByUser (alias);

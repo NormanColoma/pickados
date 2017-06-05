@@ -462,10 +462,6 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_z0PE8NpREeaRm9CNUEVRDg" name="p_oid" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_4guCMNpREeaRm9CNUEVRDg" name="fee" type="Double"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_REXMoPlKEea4BMBLrnI2Ow" name="getStatsByMonth" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="select s FROM StatsEN as s INNER JOIN s.Tipster as t where t.Id = :p_oid and month(s.InitialDate) = month(:p_date)" automaticSynchronize="false">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_c2xDsPlKEea4BMBLrnI2Ow" name="p_date" type="Date"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_FPOGIP0lEeaPse79Ou_vjA" name="p_oid" type="Integer"/>
-      </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_C6Bq8PtlEea3Y6_aXsHiNQ" name="getTipstersPremium" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_dCCDkNNuEeaZBpN3xqTI2g" filter="FROM TipsterEN where Premium=true" automaticSynchronize="false" customizedTransaction="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_9_gFICdrEeemiKRdzZVZtw" name="first" type="Integer"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_AZ3OwCdsEeemiKRdzZVZtw" name="size" type="Integer"/>
@@ -554,38 +550,38 @@
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_RUUNUNNwEeaZBpN3xqTI2g" name="Stats" alias="Stats" asociationTarget="_bgvkENN7Eeadlco1x1sS6g">
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_EuQPQNNxEeaZBpN3xqTI2g" name="newMonthlyStats" operationType="New" type="Object" typeObject="_RUUNUNNwEeaZBpN3xqTI2g">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3YkNwCEeafh9AUUbckPA" name="p_benefit" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3YkdwCEeafh9AUUbckPA" name="p_stakeAverage" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3YktwCEeafh9AUUbckPA" name="p_yield" type="Float"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3Yk9wCEeafh9AUUbckPA" name="p_oddAverage" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3YlNwCEeafh9AUUbckPA" name="p_totalPicks" type="Integer"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3YldwCEeafh9AUUbckPA" name="p_initialDate" type="Date"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3YltwCEeafh9AUUbckPA" name="p_tipster" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3Yl9wCEeafh9AUUbckPA" name="p_oddAccumulator" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3YmNwCEeafh9AUUbckPA" name="p_totalStaked" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKSTMEovEeedmo_gPQIg1g" name="p_benefit" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKSTMUovEeedmo_gPQIg1g" name="p_stakeAverage" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKSTMkovEeedmo_gPQIg1g" name="p_yield" type="Float"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKS6QEovEeedmo_gPQIg1g" name="p_oddAverage" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKS6QUovEeedmo_gPQIg1g" name="p_totalPicks" type="Integer"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKS6QkovEeedmo_gPQIg1g" name="p_date" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKS6Q0ovEeedmo_gPQIg1g" name="p_tipster" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKS6REovEeedmo_gPQIg1g" name="p_oddAccumulator" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKS6RUovEeedmo_gPQIg1g" name="p_totalStaked" type="Double"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_EuQPR9NxEeaZBpN3xqTI2g" name="modifyMonthlyStats" operationType="Modifier" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_oNwCEeafh9AUUbckPA" name="p_Stats_OID" type="OID" typeObject="_RUUNUNNwEeaZBpN3xqTI2g"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_odwCEeafh9AUUbckPA" name="p_benefit" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_otwCEeafh9AUUbckPA" name="p_stakeAverage" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_o9wCEeafh9AUUbckPA" name="p_yield" type="Float"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_pNwCEeafh9AUUbckPA" name="p_oddAverage" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_pdwCEeafh9AUUbckPA" name="p_totalPicks" type="Integer"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_ptwCEeafh9AUUbckPA" name="p_initialDate" type="Date"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_p9wCEeafh9AUUbckPA" name="p_oddAccumulator" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_qNwCEeafh9AUUbckPA" name="p_totalStaked" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKThUEovEeedmo_gPQIg1g" name="p_Stats_OID" type="OID" typeObject="_RUUNUNNwEeaZBpN3xqTI2g"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKThUUovEeedmo_gPQIg1g" name="p_benefit" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUIYEovEeedmo_gPQIg1g" name="p_stakeAverage" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUIYUovEeedmo_gPQIg1g" name="p_yield" type="Float"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUIYkovEeedmo_gPQIg1g" name="p_oddAverage" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUIY0ovEeedmo_gPQIg1g" name="p_totalPicks" type="Integer"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUIZEovEeedmo_gPQIg1g" name="p_date" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUIZUovEeedmo_gPQIg1g" name="p_oddAccumulator" type="Double"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUIZkovEeedmo_gPQIg1g" name="p_totalStaked" type="Double"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_EuQPT9NxEeaZBpN3xqTI2g" name="deleteMonthlyStats" operationType="Destroy" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_qdwCEeafh9AUUbckPA" name="p_Stats_OID" type="OID" typeObject="_RUUNUNNwEeaZBpN3xqTI2g"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUvcEovEeedmo_gPQIg1g" name="p_Stats_OID" type="OID" typeObject="_RUUNUNNwEeaZBpN3xqTI2g"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_xOEo8NvbEeaH16oqCgSP8Q" name="getStatById" operationType="ReadOID" type="Object" typeObject="_RUUNUNNwEeaZBpN3xqTI2g">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="__H3_qtwCEeafh9AUUbckPA" name="p_Stats_OID" type="OID" typeObject="_RUUNUNNwEeaZBpN3xqTI2g"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_vKUvcUovEeedmo_gPQIg1g" name="p_Stats_OID" type="OID" typeObject="_RUUNUNNwEeaZBpN3xqTI2g"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_xOF3EdvbEeaH16oqCgSP8Q" name="getAllStats" operationType="ReadAll" type="Object" collectionType="List" typeObject="_RUUNUNNwEeaZBpN3xqTI2g"/>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_ne_8AAJxEeerseA8PUfcWA" name="getStatsByTipster" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_RUUNUNNwEeaZBpN3xqTI2g" filter="select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_VlegQAJyEeerseA8PUfcWA" name="p_Tipster_Name"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_zdCN8AK2EeeXLIHN2UD9Tw" name="getStatsByMonthTipster" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_RUUNUNNwEeaZBpN3xqTI2g" filter="select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND month(initialDate) = :p_Stats_Month AND year(initialDate) = :p_Stats_Year" automaticSynchronize="false">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_zdCN8AK2EeeXLIHN2UD9Tw" name="getStatsByMonthTipster" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_RUUNUNNwEeaZBpN3xqTI2g" filter="select s FROM StatsEN as s INNER JOIN s.Tipster as t WHERE t.Alias = :p_Tipster_Name AND month(date) = :p_Stats_Month AND year(date) = :p_Stats_Year" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_ZYrewAK3EeeXLIHN2UD9Tw" name="p_Tipster_Name"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_6n9XgAP-EeeukbpSDWJAwg" name="p_Stats_Month" type="Enum" typeEnum="_5dPhwAQHEeeukbpSDWJAwg"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_zIW-IAQZEeeVYtuQck6lKw" name="p_Stats_Year" type="Integer"/>
@@ -596,7 +592,7 @@
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_5F6TINNwEeaZBpN3xqTI2g" alias="yield" name="yield" type="Float"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_7Gg48NNwEeaZBpN3xqTI2g" alias="oddAverage" name="oddAverage" type="Double"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_9WgloNNwEeaZBpN3xqTI2g" alias="totalPicks" name="totalPicks" type="Integer"/>
-      <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_A4JgYNNxEeaZBpN3xqTI2g" alias="initialDate" name="initialDate" type="Date"/>
+      <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_A4JgYNNxEeaZBpN3xqTI2g" alias="date" name="date" type="Date"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_bgvkEtN7Eeadlco1x1sS6g" alias="idTipster" associationTarget="_bgvkENN7Eeadlco1x1sS6g" name="tipster" type="Object"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_AOjlwNwBEeafh9AUUbckPA" alias="oddAccumulator" name="oddAccumulator" type="Double"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_J74msNwBEeafh9AUUbckPA" alias="totalStaked" name="totalStaked" type="Double"/>
@@ -1755,13 +1751,6 @@
           <styles xmi:type="notation:FontStyle" xmi:id="_z0TWYtpREeaRm9CNUEVRDg" fontName="Segoe UI"/>
           <styles xmi:type="notation:FillStyle" xmi:id="_z0TWY9pREeaRm9CNUEVRDg"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z0TWZNpREeaRm9CNUEVRDg"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_REcFIPlKEea4BMBLrnI2Ow" type="3004" element="_REXMoPlKEea4BMBLrnI2Ow">
-          <children xmi:type="notation:DecorationNode" xmi:id="_REcsMPlKEea4BMBLrnI2Ow" type="5004"/>
-          <styles xmi:type="notation:DescriptionStyle" xmi:id="_REcFIflKEea4BMBLrnI2Ow"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_REcFIvlKEea4BMBLrnI2Ow" fontName="Segoe UI"/>
-          <styles xmi:type="notation:FillStyle" xmi:id="_REcFI_lKEea4BMBLrnI2Ow"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_REcFJPlKEea4BMBLrnI2Ow"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_C6F8YPtlEea3Y6_aXsHiNQ" type="3004" element="_C6Bq8PtlEea3Y6_aXsHiNQ">
           <children xmi:type="notation:DecorationNode" xmi:id="_C6GjcPtlEea3Y6_aXsHiNQ" type="5004"/>

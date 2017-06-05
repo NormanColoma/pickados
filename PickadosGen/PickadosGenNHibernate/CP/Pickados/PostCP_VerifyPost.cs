@@ -66,7 +66,7 @@ public void VerifyPost (int p_oid)
 
                                         StatsEN statsEN = new StatsEN ();
                                         statsEN.Tipster = postEN.Tipster;
-                                        statsEN.InitialDate = DateTime.Now;
+                                        statsEN.Date = DateTime.Now;
                                         int id_stats = 0;
                                         if (tipsterEN.MonthlyStats != null && !tipsterEN.MonthlyStats.Any ()) {
                                                 id_stats = statsCEN.get_IStatsCAD ().NewMonthlyStats (statsEN);
@@ -78,7 +78,7 @@ public void VerifyPost (int p_oid)
                                                 //Comprobamos entre las existentes si hay alguna de este mes.
                                                 //Se puede mejorar accediendo directamente a la �ltima creada
                                                 foreach (StatsEN stats in tipsterEN.MonthlyStats) {
-                                                        if (stats.InitialDate.Value.Month.Equals (DateTime.Now.Month)) {
+                                                        if (stats.Date.Value.Month.Equals (DateTime.Now.Month)) {
                                                                 id_stats = stats.Id;
                                                                 exist = true;
                                                         }

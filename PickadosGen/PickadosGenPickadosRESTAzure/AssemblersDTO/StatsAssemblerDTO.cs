@@ -33,7 +33,7 @@ public static StatsEN Convert (StatsDTO dto)
                         newinstance.Yield = dto.Yield;
                         newinstance.OddAverage = dto.OddAverage;
                         newinstance.TotalPicks = dto.TotalPicks;
-                        newinstance.InitialDate = dto.InitialDate;
+                        newinstance.Date = dto.Date;
                         if (dto.Tipster_oid != -1) {
                                 PickadosGenNHibernate.CAD.Pickados.ITipsterCAD tipsterCAD = new PickadosGenNHibernate.CAD.Pickados.TipsterCAD ();
 
