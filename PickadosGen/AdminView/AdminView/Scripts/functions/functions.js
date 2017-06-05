@@ -67,6 +67,17 @@ $('[id^="tipsters"], [id^="admins"]').on("click", function () {
     $(this).addClass("active");
 });
 
+$('.fa-trash-o').on("click", function () {
+    $('.modal-body').empty();
+    var p = document.createElement('p');
+    p.textContent = '¿Desea elminar al usuario "' + this.getAttribute('data-alias') + '" del sistema?';
+    $('.modal-body').append(p);
+
+    var action = $('#deleteModal form').attr('action');
+    var id = this.getAttribute('data-id');
+    $('#deleteModal form').attr('action', action + "/" + id);
+});
+
 $(document).ready(function () {
     $('.admins').hide();
     $('.tipstersp').hide();

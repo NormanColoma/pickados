@@ -26,10 +26,13 @@ namespace AdminView
                       "~/Scripts/sb-admin-2.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/metismenu").Include(
-          "~/Scripts/metisMenu.js"));
+                      "~/Scripts/metisMenu.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/users").Include(
                       "~/Scripts/functions/functions.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/edituser").Include(
+                      "~/Scripts/functions/functions_edituser.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
