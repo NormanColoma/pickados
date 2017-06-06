@@ -18,5 +18,8 @@ System.Collections.Generic.IList<LoginEN> ReadAllDefault (int first, int size);
 int NewLogin (LoginEN login);
 
 System.Collections.Generic.IList<LoginEN> GetAllLogins (int first, int size);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginEN> GetLoginBetweenMonths (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate);
 }
 }

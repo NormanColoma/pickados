@@ -170,5 +170,37 @@ public System.Collections.Generic.IList<LoginEN> GetAllLogins (int first, int si
 
         return result;
 }
+
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginEN> GetLoginBetweenMonths (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM LoginEN self where FROM LoginEN WHERE date BETWEEN :initialDate and :finalDate";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("LoginENgetLoginBetweenMonthsHQL");
+                query.SetParameter ("initialDate", initialDate);
+                query.SetParameter ("finalDate", finalDate);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.LoginEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in LoginCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

@@ -166,10 +166,10 @@
     <Content Include="Views\Teams\DeleteCompeti.cshtml" />
     <Content Include="Views\Players\PlayerDetails.cshtml" />
     <Content Include="Views\User\_delete\_DeleteDialog.cshtml" />
+    <Content Include="Views\Stats\_LoginStats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Stats\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />

@@ -16,10 +16,27 @@ namespace AdminView.Controllers
             return View();
         }
 
-        public ActionResult _Stat(string alias)
+        public ActionResult Login()
         {
-            StatsCEN statsCEN = new StatsCEN();
-            IList<StatsEN> statsEN = statsCEN.GetStatsByTipster(alias);
+            DateTime init = DateTime.Now.AddMonths(-12);
+            DateTime fin = DateTime.Now;
+            
+            string initialDate = init.Month + "/" + init.Year;
+            string finalDate = fin.Month + "/" + fin.Year;
+
+            return _Login(initialDate, finalDate);
+        }
+
+        public ActionResult _Login(string initialDate, string finalDate)
+        {
+            string[] iDate = initialDate.Split('/');
+            string[] fDate = finalDate.Split('/');
+
+            DateTime init = new DateTime(Int32.Parse(iDate[1]), Int32.Parse(iDate[0]), 01);
+            DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), 01);
+
+            LoginCEN loginCEN = new LoginCEN();
+            List<LoginEN> logins = loginCEN.GetLoginBetweenMonths(init, fin).ToList();
 
             return View();
         }

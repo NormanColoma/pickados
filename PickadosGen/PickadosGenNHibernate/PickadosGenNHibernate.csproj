@@ -369,6 +369,7 @@
 	<Compile Include="CP\Pickados\LoginCP.cs" />
 			
 			
+			
 	<Compile Include="Enumerated\Pickados\PickResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\ResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\LineEnum.cs" />
