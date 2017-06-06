@@ -40,7 +40,10 @@ public PickadosGenNHibernate.EN.Pickados.UsuarioEN Login (string name, string pa
                 }
                 codedPass = hash.ToString ();
                 if (us.Password == codedPass) {
-                        return us;
+                    LoginCEN loginCEN = new LoginCEN();
+                    loginCEN.NewLogin(name, DateTime.Now);
+
+                    return us;
                 }
         }
         return null;

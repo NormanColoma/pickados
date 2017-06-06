@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				<class name="LoginEN" table="Login"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Alias" type="string"> 
+						<column name="alias"  not-null="true"/>
+					</property>
+					<property name="Date" type="date"> 
+						<column name="date"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="LoginENReadAllHQL">from LoginEN</query>
+		</hibernate-mapping>
+	

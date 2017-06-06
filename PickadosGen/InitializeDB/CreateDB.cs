@@ -85,10 +85,32 @@ public static void InitializeData ()
                 AdminCEN admin = new AdminCEN ();
                 UsuarioCEN user = new UsuarioCEN ();
 
-                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "12345678B", false, false, 0, false);
-                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "25836914C", false, false, 0, false);
-                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "36924518Z", false, false, 0, false);
-                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "56478912P", false, false, 0, false);
+                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "25448998G", false, false, 0, false);
+                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "41569269N", false, false, 0, false);
+                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "15095054Q", false, false, 0, false);
+                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "41021257K", false, false, 0, false);
+                int tipster4 = nuevo.NewTipster ("maria", "maria@gmail.com", "mariaPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "24233961B", false, false, 0, false);
+                int tipster5 = nuevo.NewTipster ("aaron", "aaron@gmail.com", "aaronPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "78509149Y", false, false, 0, false);
+                int tipster6 = nuevo.NewTipster ("abdala", "abdala@outlook.com", "abdalaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "09072257E", false, false, 0, false);
+                int tipster7 = nuevo.NewTipster ("arquimedes", "arquimedes@gmail.com", "arquimedesPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "88828221J", false, false, 0, false);
+                
+                int tipster8 = nuevo.NewTipster("casimiro", "casimiro@gmail.com", "casimiroPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "42940561K", false, false, 0, false);
+                int tipster9 = nuevo.NewTipster("eulalio", "eulalio@gmail.com", "eulalioPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "90630606A", false, false, 0, false);
+                int tipster10 = nuevo.NewTipster("edgar", "edgar@outlook.com", "edgarPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "75711312G", false, false, 0, false);
+                int tipster11 = nuevo.NewTipster("justino", "justino@gmail.com", "justinoPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "24298795P", false, false, 0, false);
+                int tipster12 = nuevo.NewTipster("astor", "astor@gmail.com", "astorPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "08289374J", false, false, 0, false);
+                int tipster13 = nuevo.NewTipster("cesar", "cesar@gmail.com", "cesarPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "21689311N", false, false, 0, false);
+                int tipster14 = nuevo.NewTipster("ceferino", "ceferino@outlook.com", "ceferinoPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "41907700K", false, false, 0, false);
+                int tipster15 = nuevo.NewTipster("clementino", "clementino@gmail.com", "clementinoPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "49317769L", false, false, 0, false);
+
+                int tipster16 = nuevo.NewTipster("rodolfo", "rodolfo@gmail.com", "rodolfoPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "79577588A", false, false, 0, false);
+                int tipster17 = nuevo.NewTipster("alvaro", "alvaro@gmail.com", "alvaroPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "21680857E", false, false, 0, false);
+                int tipster18 = nuevo.NewTipster("auberto", "auberto@outlook.com", "aubertoPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "52574311Z", false, false, 0, false);
+                int tipster19 = nuevo.NewTipster("felipe", "felipe@gmail.com", "felipePro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "12543676M", false, false, 0, false);
+                int tipster20 = nuevo.NewTipster("cristina", "cristina@gmail.com", "cristinaPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "91065753J", false, false, 0, false);
+                int tipster21 = nuevo.NewTipster("iker", "iker@gmail.com", "ikerPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "41771143S", false, false, 0, false);
+                int tipster22 = nuevo.NewTipster("aitor", "aitor@outlook.com", "aitorPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "46269204N", false, false, 0, false);
+                int tipster23 = nuevo.NewTipster("arya", "arya@gmail.com", "aryaPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "45415817V", false, false, 0, false);
 
                 admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N", true);
 
@@ -371,8 +393,20 @@ public static void InitializeData ()
                 RequestCEN requestCEN = new RequestCEN ();
                 requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
 
+                LoginCEN loginCEN = new LoginCEN();
+                loginCEN.NewLogin("arya", DateTime.Now.AddDays(1).AddHours(2));
+                loginCEN.NewLogin("edgar", DateTime.Now);
+                loginCEN.NewLogin("justino", DateTime.Now.AddMonths(-2));
+                loginCEN.NewLogin("clementino", DateTime.Now.AddMonths(-2));
+                loginCEN.NewLogin("rodolfo", DateTime.Now.AddMonths(-2));
+                loginCEN.NewLogin("rodolfo", DateTime.Now.AddMonths(-1));
+                loginCEN.NewLogin("rodolfo", DateTime.Now.AddMonths(1));
+                loginCEN.NewLogin("rodolfo", DateTime.Now.AddMonths(2));
+                loginCEN.NewLogin("auberto", DateTime.Now.AddDays(1));
+                loginCEN.NewLogin("arya", DateTime.Now.AddDays(1));
+
                 /*PROTECTED REGION END*/
-        }
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);

@@ -194,6 +194,8 @@
 	<Compile Include="AssemblersDTO\TimecastAssemblerDTO.cs" />
 	<Compile Include="DTO\RequestDTO.cs" />
 	<Compile Include="AssemblersDTO\RequestAssemblerDTO.cs" />
+	<Compile Include="DTO\LoginDTO.cs" />
+	<Compile Include="AssemblersDTO\LoginAssemblerDTO.cs" />
 	
 
     

@@ -362,6 +362,13 @@
 			
 			
 			
+	<Compile Include="EN\Pickados\LoginEN.cs" />
+	<Compile Include="CEN\Pickados\LoginCEN.cs" />
+	<Compile Include="CAD\Pickados\ILoginCAD.cs" />
+	<Compile Include="CAD\Pickados\LoginCAD.cs" />
+	<Compile Include="CP\Pickados\LoginCP.cs" />
+			
+			
 	<Compile Include="Enumerated\Pickados\PickResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\ResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\LineEnum.cs" />
@@ -405,6 +412,7 @@
 	<EmbeddedResource Include="Mappings\Pickados\wincast.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\timecast.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\request.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\login.hbm.xml" />
 	
 	
 
