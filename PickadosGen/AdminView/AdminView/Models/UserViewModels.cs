@@ -1,9 +1,5 @@
-﻿using PickadosGenNHibernate.EN.Pickados;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace AdminView.Models
 {

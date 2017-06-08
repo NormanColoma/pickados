@@ -774,7 +774,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //   `('localStorage' in window) && ` test first because otherwise Firefox will
     //   throw bugzil.la/365772 if cookies are disabled
 
-    // Also in iOS5 Private Browsing mode, attempting to use localStorage.setItem
+    // Also in iOS5 public Browsing mode, attempting to use localStorage.setItem
     // will throw the exception:
     //   QUOTA_EXCEEDED_ERRROR DOM Exception 22.
     // Peculiarly, getItem and removeItem calls do not throw.
@@ -1065,7 +1065,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         /**
          * Creates a style sheet with the given CSS text and adds it to the document.
-         * @private
+         * @public
          * @param {Document} ownerDocument The document.
          * @param {String} cssText The CSS text.
          * @returns {StyleSheet} The style element.
@@ -1080,7 +1080,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         /**
          * Returns the value of `html5.elements` as an array.
-         * @private
+         * @public
          * @returns {Array} An array of shived element node names.
          */
         function getElements() {
@@ -1090,7 +1090,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         /**
          * Returns the data associated to the given document
-         * @private
+         * @public
          * @param {Document} ownerDocument The document.
          * @returns {Object} An object of data.
          */
@@ -1168,7 +1168,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         /**
          * Shivs the `createElement` and `createDocumentFragment` methods of the document.
-         * @private
+         * @public
          * @param {Document|DocumentFragment} ownerDocument The document.
          * @param {Object} data of the document.
          */
@@ -1307,7 +1307,7 @@ window.Modernizr = (function( window, document, undefined ) {
     }(this, document));
     /*>>shiv*/
 
-    // Assign private properties to the return object with prefix
+    // Assign public properties to the return object with prefix
     Modernizr._version      = version;
 
     // expose these for the plugin API. Look in the source for how to join() them against your input
