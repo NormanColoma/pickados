@@ -87,9 +87,9 @@ namespace AdminView.Controllers
 
         #region Aplicaciones auxiliares
         // Se usa para la protección XSRF al agregar inicios de sesión externos
-        private const string XsrfKey = "XsrfId";
+        public const string XsrfKey = "XsrfId";
 
-        private IAuthenticationManager AuthenticationManager
+        public IAuthenticationManager AuthenticationManager
         {
             get
             {
@@ -97,7 +97,7 @@ namespace AdminView.Controllers
             }
         }
 
-        private void AddErrors(IdentityResult result)
+        public void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
             {
@@ -105,7 +105,7 @@ namespace AdminView.Controllers
             }
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
+        public ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
             {

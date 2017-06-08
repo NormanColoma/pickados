@@ -22,6 +22,10 @@ namespace AdminView
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/canvas").Include(
+                      "~/Scripts/canvas/canvasjs.min.js",
+                      "~/Scripts/canvas/jquery.canvasjs.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/sbadmin").Include(
                       "~/Scripts/sb-admin-2.js"));
 

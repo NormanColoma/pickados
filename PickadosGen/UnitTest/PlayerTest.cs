@@ -23,7 +23,7 @@ namespace UnitTest
             //
         }
 
-        private TestContext testContextInstance;
+        public TestContext testContextInstance;
 
         /// <summary>
         ///Obtiene o establece el contexto de las pruebas que proporciona

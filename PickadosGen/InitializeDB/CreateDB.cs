@@ -394,16 +394,16 @@ public static void InitializeData ()
                 requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
 
                 LoginCEN loginCEN = new LoginCEN ();
-                loginCEN.NewLogin ("arya", DateTime.Now.AddDays (1).AddHours (2));
-                loginCEN.NewLogin ("edgar", DateTime.Now);
-                loginCEN.NewLogin ("justino", DateTime.Now.AddMonths (-2));
-                loginCEN.NewLogin ("clementino", DateTime.Now.AddMonths (-2));
-                loginCEN.NewLogin ("rodolfo", DateTime.Now.AddMonths (-2));
-                loginCEN.NewLogin ("rodolfo", DateTime.Now.AddMonths (-1));
-                loginCEN.NewLogin ("rodolfo", DateTime.Now.AddMonths (1));
-                loginCEN.NewLogin ("rodolfo", DateTime.Now.AddMonths (2));
-                loginCEN.NewLogin ("auberto", DateTime.Now.AddDays (1));
-                loginCEN.NewLogin ("arya", DateTime.Now.AddDays (1));
+                loginCEN.NewLogin ("arya", new DateTime (2016, 06, 01));
+                loginCEN.NewLogin ("edgar", new DateTime (2016, 06, 11));
+                loginCEN.NewLogin ("justino", new DateTime (2016, 06, 15));
+                loginCEN.NewLogin ("clementino", new DateTime (2016, 07, 01));
+                loginCEN.NewLogin ("rodolfo", new DateTime (2016, 07, 01));
+                loginCEN.NewLogin ("rodolfo", new DateTime (2016, 10, 15));
+                loginCEN.NewLogin ("rodolfo", new DateTime (2018, 01, 01));
+                loginCEN.NewLogin ("rodolfo", new DateTime (2015, 01, 01));
+                loginCEN.NewLogin ("auberto", new DateTime (2017, 06, 01));
+                loginCEN.NewLogin ("arya", new DateTime (2017, 06, 01));
 
                 /*PROTECTED REGION END*/
         }
