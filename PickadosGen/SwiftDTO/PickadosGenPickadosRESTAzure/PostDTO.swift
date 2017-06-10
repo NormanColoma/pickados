@@ -42,6 +42,12 @@
 		 
 				var request_oid: [Int]?;
 				    	 
+		 
+				var likeit: Int?;
+				    	 
+		 
+				var report: Int?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -100,6 +106,14 @@
 
 					dictionary["request_oid"] = self.request_oid;
 			
+
+				
+					dictionary["likeit"] = self.likeit;
+				
+
+				
+					dictionary["report"] = self.report;
+				
 						
 				return dictionary;
 			}

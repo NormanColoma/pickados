@@ -38,7 +38,7 @@ public IPostCAD get_IPostCAD ()
         return this._IPostCAD;
 }
 
-public void ModifyPost (int p_Post_OID, Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
+public void ModifyPost (int p_Post_OID, Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult, int p_likeit, int p_report)
 {
         PostEN postEN = null;
 
@@ -52,6 +52,8 @@ public void ModifyPost (int p_Post_OID, Nullable<DateTime> p_created_at, Nullabl
         postEN.Private_ = p_private;
         postEN.TotalOdd = p_totalOdd;
         postEN.PostResult = p_postResult;
+        postEN.Likeit = p_likeit;
+        postEN.Report = p_report;
         //Call to PostCAD
 
         _IPostCAD.ModifyPost (postEN);
@@ -79,7 +81,7 @@ public System.Collections.Generic.IList<PostEN> GetAllPosts (int first, int size
         list = _IPostCAD.GetAllPosts (first, size);
         return list;
 }
-public int NewPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult)
+public int NewPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, double p_totalOdd, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postResult, int p_likeit, int p_report)
 {
         PostEN postEN = null;
         int oid;
@@ -121,6 +123,10 @@ public int NewPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modifi
         postEN.TotalOdd = p_totalOdd;
 
         postEN.PostResult = p_postResult;
+
+        postEN.Likeit = p_likeit;
+
+        postEN.Report = p_report;
 
         //Call to PostCAD
 

@@ -56,6 +56,8 @@ public static PostEN Convert (PostDTO dto)
                                         newinstance.Request.Add (requestCAD.ReadOIDDefault (entry));
                                 }
                         }
+                        newinstance.Likeit = dto.Likeit;
+                        newinstance.Report = dto.Report;
                 }
         }
         catch (Exception ex)

@@ -61,6 +61,14 @@
 				public ArrayList<Integer>  getRequest_oid () { return request_oid; } 
 				public void setRequest_oid (ArrayList<Integer> value) { request_oid = value;  } 
 				    	 
+				private Integer likeit;
+				public Integer getLikeit () { return likeit; } 
+				public void setLikeit  (Integer value) { likeit = value;  } 
+				    	 
+				private Integer report;
+				public Integer getReport () { return report; } 
+				public void setReport  (Integer value) { report = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -119,6 +127,12 @@
 							json.put("Request_oid", jsonArray);
 						}
 		
+				
+						  json.put("Likeit", this.likeit.intValue());
+				
+				
+						  json.put("Report", this.report.intValue());
+				
 						
 					}
 					catch (JSONException e)

@@ -369,8 +369,9 @@ public static void InitializeData ()
                 Console.WriteLine ("--------------- Get Post by Tipster -------------");
                 PostCAD postCAD = new PostCAD ();
                 IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2, 0, 10);
-                foreach (var p in posts)
+                foreach (var p in posts) {
                         Console.WriteLine ("- " + p.Description);
+                }
 
                 MatchCEN matchCEN = new MatchCEN ();
                 int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), round1, team1, team5, "Camp Nou");
@@ -383,9 +384,10 @@ public static void InitializeData ()
                 picks.Add (id_correctScore);
 
                 int id_post = postCEN.NewPost (new DateTime (2017, 2, 19), new DateTime (2017, 2, 19), 1, "Va a ser un partido sufrido",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
+                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 0);
 
                 postCP.VerifyPost (id_post);
+                postCEN.AddLike (id_post);
 
                 DateTime d = new DateTime (2017, 3, 8);
 

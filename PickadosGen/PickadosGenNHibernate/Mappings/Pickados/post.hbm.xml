@@ -33,6 +33,12 @@
 					<property name="PostResult" > 
 						<column name="postResult"  not-null="true"/>
 					</property>
+					<property name="Likeit" type="integer"> 
+						<column name="likeit"  not-null="true"/>
+					</property>
+					<property name="Report" type="integer"> 
+						<column name="report"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -69,6 +75,10 @@
 					      	</key>
 							<one-to-many class="PickadosGenNHibernate.EN.Pickados.RequestEN"/>
 					    </bag>
+					
+			
+			
+					
 					
 					
 					

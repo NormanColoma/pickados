@@ -50,7 +50,7 @@ public int PublishPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_mo
                 }
 
                 if (picks_id.Count > 0) {
-                        postId = postCEN.NewPost (p_created_at, p_modified_at, p_stake, p_description, p_private, picks_id, p_tipster, 0, p_postResult);
+                        postId = postCEN.NewPost (p_created_at, p_modified_at, p_stake, p_description, p_private, picks_id, p_tipster, 0, p_postResult, 0, 0);
                         double totalOdd = postCEN.GetTotalOdd (postId);
                         PostEN post = postCEN.GetPostById (postId);
                         postCAD.ModifyPost (post);
