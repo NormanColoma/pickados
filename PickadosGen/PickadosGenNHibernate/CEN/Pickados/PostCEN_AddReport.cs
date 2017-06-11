@@ -21,16 +21,16 @@ public partial class PostCEN
 {
 public void AddReport (int p_oid)
 {
-            /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_addReport) ENABLED START*/
+        /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Post_addReport) ENABLED START*/
 
-            PostCEN postCEN = new PostCEN();
-            PostEN postEN = postCEN.GetPostById(p_oid);
+        PostCEN postCEN = new PostCEN ();
+        PostEN postEN = postCEN.GetPostById (p_oid);
 
-            postEN.Report += 1;
+        postEN.Report += 1;
 
-            postCEN.ModifyPost(postEN.Id, postEN.Created_at, postEN.Modified_at, postEN.Stake, postEN.Description, postEN.Private_, postEN.TotalOdd, postEN.PostResult, postEN.Likeit, postEN.Report);
+        postCEN.ModifyPost (postEN.Id, postEN.Created_at, postEN.Modified_at, postEN.Stake, postEN.Description, postEN.Private_, postEN.TotalOdd, postEN.PostResult, postEN.Likeit, postEN.Report);
 
-            /*PROTECTED REGION END*/
-        }
+        /*PROTECTED REGION END*/
+}
 }
 }

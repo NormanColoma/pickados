@@ -362,7 +362,7 @@ public static void InitializeData ()
                 Event_CEN eventCEN = new Event_CEN ();
                 //int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0), round1);
                 int pickId = resultCEN.NewResult (2, "Gana Local", PickResultEnum.unstarted, "Kirolbet", match1, ResultEnum.home, TimeEnum.fulltime);
-                List < int > picks_id = new List<int>();
+                List<int> picks_id = new List<int>();
                 picks_id.Add (pickId);
                 postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster2, PickResultEnum.unfinished);
 
@@ -380,7 +380,7 @@ public static void InitializeData ()
                 CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
                 int id_correctScore = correctScoreCEN.NewCorrectScore (10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
                         "Bet365", id_match, 2, 1);
-                IList < int > picks = new List<int>();
+                IList<int> picks = new List<int>();
                 picks.Add (id_correctScore);
 
                 int id_post = postCEN.NewPost (new DateTime (2017, 2, 19), new DateTime (2017, 2, 19), 1, "Va a ser un partido sufrido",

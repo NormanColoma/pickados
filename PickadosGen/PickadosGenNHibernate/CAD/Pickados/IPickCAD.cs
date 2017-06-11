@@ -32,5 +32,8 @@ System.Collections.Generic.IList<PickEN> GetAllPicks (int first, int size);
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? p_pickResult);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByPost (int ? post_id);
 }
 }

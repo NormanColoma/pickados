@@ -59,5 +59,6 @@
 		  
 		  <query name="PickENReadAllHQL">from PickEN</query>
 		  <query name="PickENgetPicksByResultHQL"><![CDATA[FROM PickEN where pickResult = :p_pickResult]]></query>
+		  <query name="PickENgetPicksByPostHQL"><![CDATA[select pi FROM PickEN as pi INNER JOIN pi.Post as po where po.id=:post_id]]></query>
 		</hibernate-mapping>
 	

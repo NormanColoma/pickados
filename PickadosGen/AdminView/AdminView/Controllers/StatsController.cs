@@ -1,4 +1,5 @@
-﻿using AdminView.Models;
+﻿using AdminView.Assemblers;
+using AdminView.Models;
 using PickadosGenNHibernate.CEN.Pickados;
 using PickadosGenNHibernate.EN.Pickados;
 using System;
@@ -11,12 +12,6 @@ namespace AdminView.Controllers
 {
     public class StatsController : Controller
     {
-        // GET: Stats
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Login()
         {
@@ -67,6 +62,41 @@ namespace AdminView.Controllers
             slm.DataPoints = slm.DataPointsToString(logs);
             
             return View(slm);
+        }
+
+        [HttpGet]
+        public ActionResult Post()
+        {
+            DateTime fin = DateTime.Today;
+            DateTime init = DateTime.Today.AddMonths(-11);
+
+            PostCEN postCEN = new PostCEN();
+            List<PostEN> posts = postCEN.GetAllPosts(0, 15).Where(p => p.Modified_at >= init).Where(p => p.Modified_at <= fin).OrderByDescending(p => p.Likeit).ToList();
+
+            List<PostModel> postsModel = PostAssembler.ConvertPostENtoModel(posts);
+
+            return View(postsModel);
+        }
+
+        [HttpPost]
+        [ActionName("Post")]
+        public ActionResult PostPost()
+        {
+            DateTime fin = DateTime.Today;
+            DateTime init = DateTime.Today.AddMonths(-11);
+
+            PostCEN postCEN = new PostCEN();
+            List<PostEN> posts = postCEN.GetAllPosts(0, 15).Where(p => p.Modified_at >= init).Where(p => p.Modified_at <= fin).OrderBy(p => p.Likeit).ToList();
+
+            return View(posts);
+        }
+
+        public ActionResult PostDetalles(int id)
+        {
+            PostCEN postCEN = new PostCEN();
+            PostModel postModel = PostAssembler.ConvertPostENtoModel(postCEN.GetPostById(id));
+
+            return View("posts/PostDetalles", postModel);
         }
     }
 }

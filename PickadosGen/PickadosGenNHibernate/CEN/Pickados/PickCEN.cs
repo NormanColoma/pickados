@@ -109,5 +109,9 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN
 {
         return _IPickCAD.GetPicksByResult (p_pickResult);
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByPost (int ? post_id)
+{
+        return _IPickCAD.GetPicksByPost (post_id);
+}
 }
 }

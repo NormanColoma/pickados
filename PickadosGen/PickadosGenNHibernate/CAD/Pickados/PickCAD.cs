@@ -306,5 +306,35 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN
 
         return result;
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> GetPicksByPost (int ? post_id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PickEN self where select pi FROM PickEN as pi INNER JOIN pi.Post as po where po.id=:post_id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PickENgetPicksByPostHQL");
+                query.SetParameter ("post_id", post_id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PickEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PickCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

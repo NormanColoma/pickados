@@ -65,11 +65,11 @@ namespace AdminView.Controllers
             UsuarioCEN usuarioCEN = new UsuarioCEN();
             UsuarioEN usuarioEN = usuarioCEN.GetUserById(id);
 
-            return View("Edit", AssemblerUser.ConverterUserENtoModel(usuarioEN));
+            return View("Edit", UserAssembler.ConverterUserENtoModel(usuarioEN));
         }
 
         [HttpPost]
-        public ActionResult Edit(UserViewModels user)
+        public ActionResult Edit(UserModel user)
         {
             try
             {
