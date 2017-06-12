@@ -27,6 +27,12 @@
 		 
 				var team_oid: [Int]?;
 				    	 
+		 
+				var clubs: Bool?;
+				    	 
+		 
+				var season_oid: [Int]?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -74,6 +80,13 @@
 				
 
 					dictionary["team_oid"] = self.team_oid;
+			
+
+				
+					dictionary["clubs"] = self.clubs;
+				
+
+					dictionary["season_oid"] = self.season_oid;
 			
 						
 				return dictionary;

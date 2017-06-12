@@ -40,6 +40,13 @@ private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Score
 
 
 
+/**
+ *	Atributo sport
+ */
+private PickadosGenNHibernate.EN.Pickados.SportEN sport;
+
+
+
 
 
 
@@ -73,6 +80,12 @@ public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickado
 
 
 
+public virtual PickadosGenNHibernate.EN.Pickados.SportEN Sport {
+        get { return sport; } set { sport = value;  }
+}
+
+
+
 
 
 public PlayerEN()
@@ -82,20 +95,20 @@ public PlayerEN()
 
 
 
-public PlayerEN(int id, PickadosGenNHibernate.EN.Pickados.TeamEN club_team, PickadosGenNHibernate.EN.Pickados.TeamEN national_team, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.ScorerEN> scorer
+public PlayerEN(int id, PickadosGenNHibernate.EN.Pickados.TeamEN club_team, PickadosGenNHibernate.EN.Pickados.TeamEN national_team, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.ScorerEN> scorer, PickadosGenNHibernate.EN.Pickados.SportEN sport
                 )
 {
-        this.init (Id, club_team, national_team, name, scorer);
+        this.init (Id, club_team, national_team, name, scorer, sport);
 }
 
 
 public PlayerEN(PlayerEN player)
 {
-        this.init (Id, player.Club_team, player.National_team, player.Name, player.Scorer);
+        this.init (Id, player.Club_team, player.National_team, player.Name, player.Scorer, player.Sport);
 }
 
 private void init (int id
-                   , PickadosGenNHibernate.EN.Pickados.TeamEN club_team, PickadosGenNHibernate.EN.Pickados.TeamEN national_team, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.ScorerEN> scorer)
+                   , PickadosGenNHibernate.EN.Pickados.TeamEN club_team, PickadosGenNHibernate.EN.Pickados.TeamEN national_team, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.ScorerEN> scorer, PickadosGenNHibernate.EN.Pickados.SportEN sport)
 {
         this.Id = id;
 
@@ -107,6 +120,8 @@ private void init (int id
         this.Name = name;
 
         this.Scorer = scorer;
+
+        this.Sport = sport;
 }
 
 public override bool Equals (object obj)

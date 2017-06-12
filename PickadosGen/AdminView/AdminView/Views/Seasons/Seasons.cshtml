@@ -1,0 +1,32 @@
+﻿@helper TempName(string message, DateTime init, DateTime fin)
+{
+    string inicio = init.Year.ToString();
+    string final = fin.Year.ToString();
+    string total = inicio + "/" + final;
+    @Html.Raw(message + total);
+}
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Calendar", "Calendar", "Calendar")</li>
+    <li>@Html.ActionLink((string)ViewBag.typeCompetition, "TypeCompetiCalendar", "TypeCompetiCalendar", new { idSport = ViewBag.sport.Id }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.sport.Name, "CountryCalendar", "CountryCalendar", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.country, "CompetiCalendar", "CompetiCalendar", new { countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.competition.Name, "Seasons", "Seasons", new { idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+</ul>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.allSeasons)
+    {
+        <tr>
+            <td>
+                
+                @Html.ActionLink((string)@TempName(ViewBag.Message, item.InitDate, item.FinalDate).ToString(), "Round", "Round", new { idSeason = item.Id, idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)
+            </td>
+        </tr>
+    }
+</table>

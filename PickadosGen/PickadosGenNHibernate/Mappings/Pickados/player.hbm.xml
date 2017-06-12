@@ -41,6 +41,13 @@
 							<one-to-many class="PickadosGenNHibernate.EN.Pickados.ScorerEN"/>
 					    </bag>
 					
+			
+		  			
+						<many-to-one name="Sport" class="PickadosGenNHibernate.EN.Pickados.SportEN" >	
+								<column name="FK_idSport_idSport"/> 
+						</many-to-one>
+											 					
+					
 					
 					
 					
@@ -52,5 +59,7 @@
 		  <query name="PlayerENReadAllHQL">from PlayerEN</query>
 		  <query name="PlayerENgetPlayersByClubTeamHQL"><![CDATA[SELECT p FROM PlayerEN as p INNER JOIN p.Club_team as t WHERE t.Name = :p_ClubTeam_Name]]></query>
 		  <query name="PlayerENgetPlayersByNationalTeamHQL"><![CDATA[SELECT p FROM PlayerEN as p INNER JOIN p.National_team as t WHERE t.Name = :p_NationalTeam_Name]]></query>
+		  <query name="PlayerENgetPlayersNoClubTeamHQL"><![CDATA[select p FROM PlayerEN as p LEFT JOIN p.Club_team as t INNER JOIN p.Sport as s where t is null AND s.Id = :id]]></query>
+		  <query name="PlayerENgetPlayersNoNationalTeamHQL"><![CDATA[select p FROM PlayerEN as p LEFT JOIN p.National_team as t INNER JOIN p.Sport as s where t is null AND s.Id =:id]]></query>
 		</hibernate-mapping>
 	

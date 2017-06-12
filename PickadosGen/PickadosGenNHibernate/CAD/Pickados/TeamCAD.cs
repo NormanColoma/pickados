@@ -101,6 +101,9 @@ public void ModifyDefault (TeamEN team)
 
 
 
+
+                teamEN.Club = team.Club;
+
                 session.Update (teamEN);
                 SessionCommit ();
         }
@@ -157,6 +160,9 @@ public void ModifyTeam (TeamEN team)
 
 
                 teamEN.Country = team.Country;
+
+
+                teamEN.Club = team.Club;
 
                 session.Update (teamEN);
                 SessionCommit ();
@@ -407,6 +413,64 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TeamENgetTeamByCompetitionHQL");
                 query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TeamEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetNationalTeams ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TeamEN self where FROM TeamEN as t where t.Club = true";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TeamENgetNationalTeamsHQL");
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.TeamEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in TeamCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetInternationalTeam ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TeamEN self where FROM TeamEN as t where t.Club = false";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TeamENGetInternationalTeamHQL");
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.TeamEN>();
                 SessionCommit ();

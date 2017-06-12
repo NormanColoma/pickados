@@ -26,6 +26,13 @@ private string name;
 
 
 
+/**
+ *	Atributo player
+ */
+private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> player;
+
+
+
 
 
 
@@ -47,29 +54,36 @@ public virtual string Name {
 
 
 
+public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> Player {
+        get { return player; } set { player = value;  }
+}
+
+
+
 
 
 public SportEN()
 {
         competition = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+        player = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PlayerEN>();
 }
 
 
 
-public SportEN(int id, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> competition, string name
+public SportEN(int id, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> competition, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> player
                )
 {
-        this.init (Id, competition, name);
+        this.init (Id, competition, name, player);
 }
 
 
 public SportEN(SportEN sport)
 {
-        this.init (Id, sport.Competition, sport.Name);
+        this.init (Id, sport.Competition, sport.Name, sport.Player);
 }
 
 private void init (int id
-                   , System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> competition, string name)
+                   , System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> competition, string name, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> player)
 {
         this.Id = id;
 
@@ -77,6 +91,8 @@ private void init (int id
         this.Competition = competition;
 
         this.Name = name;
+
+        this.Player = player;
 }
 
 public override bool Equals (object obj)

@@ -138,11 +138,19 @@
 			
 			
 			
+			
+			
+			
+			
+			
+			
 	<Compile Include="EN\Pickados\TeamEN.cs" />
 	<Compile Include="CEN\Pickados\TeamCEN.cs" />
 	<Compile Include="CAD\Pickados\ITeamCAD.cs" />
 	<Compile Include="CAD\Pickados\TeamCAD.cs" />
 	<Compile Include="CP\Pickados\TeamCP.cs" />
+			
+			
 			
 			
 			
@@ -303,6 +311,8 @@
 			
 			
 			
+			
+			
 	<Compile Include="EN\Pickados\SportEN.cs" />
 	<Compile Include="CEN\Pickados\SportCEN.cs" />
 	<Compile Include="CAD\Pickados\ISportCAD.cs" />
@@ -363,6 +373,28 @@
 			
 			
 			
+	<Compile Include="EN\Pickados\SeasonEN.cs" />
+	<Compile Include="CEN\Pickados\SeasonCEN.cs" />
+	<Compile Include="CAD\Pickados\ISeasonCAD.cs" />
+	<Compile Include="CAD\Pickados\SeasonCAD.cs" />
+	<Compile Include="CP\Pickados\SeasonCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\Pickados\RoundEN.cs" />
+	<Compile Include="CEN\Pickados\RoundCEN.cs" />
+	<Compile Include="CAD\Pickados\IRoundCAD.cs" />
+	<Compile Include="CAD\Pickados\RoundCAD.cs" />
+	<Compile Include="CP\Pickados\RoundCP.cs" />
+			
+			
+			
+			
+			
+			
 	<Compile Include="Enumerated\Pickados\PickResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\ResultEnum.cs" />
 	<Compile Include="Enumerated\Pickados\LineEnum.cs" />
@@ -406,6 +438,8 @@
 	<EmbeddedResource Include="Mappings\Pickados\wincast.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\timecast.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Pickados\request.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\season.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Pickados\round.hbm.xml" />
 	
 	
 

@@ -94,6 +94,7 @@ public void ModifyDefault (SportEN sport)
 
                 sportEN.Name = sport.Name;
 
+
                 session.Update (sportEN);
                 SessionCommit ();
         }

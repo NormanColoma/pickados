@@ -41,6 +41,14 @@
 				public ArrayList<Integer>  getTeam_oid () { return team_oid; } 
 				public void setTeam_oid (ArrayList<Integer> value) { team_oid = value;  } 
 				    	 
+				private Boolean clubs;
+				public Boolean getClubs () { return clubs; } 
+				public void setClubs  (Boolean value) { clubs = value;  } 
+				    	 
+				private ArrayList<Integer> season_oid;
+				public ArrayList<Integer>  getSeason_oid () { return season_oid; } 
+				public void setSeason_oid (ArrayList<Integer> value) { season_oid = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -81,6 +89,20 @@
 								jsonArray.put(this.team_oid.get(i));
 							}
 							json.put("Team_oid", jsonArray);
+						}
+		
+				
+						  json.put("Clubs", this.clubs);
+				
+
+						if (this.season_oid != null)
+						{
+							JSONArray jsonArray = new JSONArray();
+							for (int i = 0; i < this.season_oid.size(); ++i)
+							{
+								jsonArray.put(this.season_oid.get(i));
+							}
+							json.put("Season_oid", jsonArray);
 						}
 		
 						

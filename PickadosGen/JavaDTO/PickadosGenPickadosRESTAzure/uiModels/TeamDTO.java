@@ -49,6 +49,10 @@
 				public ArrayList<Integer>  getCompetition_oid () { return competition_oid; } 
 				public void setCompetition_oid (ArrayList<Integer> value) { competition_oid = value;  } 
 				    	 
+				private Boolean club;
+				public Boolean getClub () { return club; } 
+				public void setClub  (Boolean value) { club = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -120,6 +124,9 @@
 							json.put("Competition_oid", jsonArray);
 						}
 		
+				
+						  json.put("Club", this.club);
+				
 						
 					}
 					catch (JSONException e)

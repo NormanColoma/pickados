@@ -58,20 +58,20 @@ public MatchEN() : base ()
 
 
 public MatchEN(int id, PickadosGenNHibernate.EN.Pickados.TeamEN away, PickadosGenNHibernate.EN.Pickados.TeamEN home, string stadium
-               , PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date
+               , PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date, PickadosGenNHibernate.EN.Pickados.RoundEN round
                )
 {
-        this.init (Id, away, home, stadium, competition, pick_rel, date);
+        this.init (Id, away, home, stadium, competition, pick_rel, date, round);
 }
 
 
 public MatchEN(MatchEN match)
 {
-        this.init (Id, match.Away, match.Home, match.Stadium, match.Competition, match.Pick_rel, match.Date);
+        this.init (Id, match.Away, match.Home, match.Stadium, match.Competition, match.Pick_rel, match.Date, match.Round);
 }
 
 private void init (int id
-                   , PickadosGenNHibernate.EN.Pickados.TeamEN away, PickadosGenNHibernate.EN.Pickados.TeamEN home, string stadium, PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date)
+                   , PickadosGenNHibernate.EN.Pickados.TeamEN away, PickadosGenNHibernate.EN.Pickados.TeamEN home, string stadium, PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date, PickadosGenNHibernate.EN.Pickados.RoundEN round)
 {
         this.Id = id;
 
@@ -87,6 +87,8 @@ private void init (int id
         this.Pick_rel = pick_rel;
 
         this.Date = date;
+
+        this.Round = round;
 }
 
 public override bool Equals (object obj)

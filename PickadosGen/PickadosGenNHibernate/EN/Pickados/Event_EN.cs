@@ -33,6 +33,13 @@ private Nullable<DateTime> date;
 
 
 
+/**
+ *	Atributo round
+ */
+private PickadosGenNHibernate.EN.Pickados.RoundEN round;
+
+
+
 
 
 
@@ -60,6 +67,12 @@ public virtual Nullable<DateTime> Date {
 
 
 
+public virtual PickadosGenNHibernate.EN.Pickados.RoundEN Round {
+        get { return round; } set { round = value;  }
+}
+
+
+
 
 
 public Event_EN()
@@ -69,20 +82,20 @@ public Event_EN()
 
 
 
-public Event_EN(int id, PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date
+public Event_EN(int id, PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date, PickadosGenNHibernate.EN.Pickados.RoundEN round
                 )
 {
-        this.init (Id, competition, pick_rel, date);
+        this.init (Id, competition, pick_rel, date, round);
 }
 
 
 public Event_EN(Event_EN event_)
 {
-        this.init (Id, event_.Competition, event_.Pick_rel, event_.Date);
+        this.init (Id, event_.Competition, event_.Pick_rel, event_.Date, event_.Round);
 }
 
 private void init (int id
-                   , PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date)
+                   , PickadosGenNHibernate.EN.Pickados.CompetitionEN competition, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PickEN> pick_rel, Nullable<DateTime> date, PickadosGenNHibernate.EN.Pickados.RoundEN round)
 {
         this.Id = id;
 
@@ -92,6 +105,8 @@ private void init (int id
         this.Pick_rel = pick_rel;
 
         this.Date = date;
+
+        this.Round = round;
 }
 
 public override bool Equals (object obj)

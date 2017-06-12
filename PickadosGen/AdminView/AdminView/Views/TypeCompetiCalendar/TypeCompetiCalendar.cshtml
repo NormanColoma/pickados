@@ -1,0 +1,22 @@
+﻿<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Calendar", "Calendar", "Calendar")</li>
+    <li>@Html.ActionLink((string)ViewBag.sport.Name, "TypeCompetiCalendar", "TypeCompetiCalendar", new { idSport = ViewBag.sport.Id }, null)</li>
+</ul>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Type
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("National", "CountryCalendar", "CountryCalendar", new { idSport = ViewBag.sport.Id, typeCompetition = "National" }, null)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("International", "CountryCalendar", "CountryCalendar", new { idSport = ViewBag.sport.Id, typeCompetition = "International" }, null)
+        </td>
+    </tr>
+</table>

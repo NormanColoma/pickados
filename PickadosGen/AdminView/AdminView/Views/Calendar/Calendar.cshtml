@@ -1,0 +1,19 @@
+﻿<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Calendar", "Calendar", "Calendar")</li>
+</ul>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.allSports)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink((string)item.Name, "TypeCompetiCalendar", "TypeCompetiCalendar", new { idSport = item.Id }, null)
+            </td>
+        </tr>
+    }
+</table>

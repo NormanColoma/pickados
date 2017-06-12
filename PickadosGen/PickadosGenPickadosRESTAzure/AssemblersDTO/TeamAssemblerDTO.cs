@@ -70,6 +70,7 @@ public static TeamEN Convert (TeamDTO dto)
                                         newinstance.Competition.Add (competitionCAD.ReadOIDDefault (entry));
                                 }
                         }
+                        newinstance.Club = dto.Club;
                 }
         }
         catch (Exception ex)

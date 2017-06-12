@@ -18,6 +18,9 @@
 					<property name="Country" type="string"> 
 						<column name="country"  not-null="true"/>
 					</property>
+					<property name="Club" type="boolean"> 
+						<column name="club"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -77,6 +80,8 @@
 									<column name="FK_id_idCompetition"/> 
       						</many-to-many>
     					</bag>
+			
+					
 					
 					
 					
@@ -92,5 +97,7 @@
 		  <query name="TeamENgetClubTeamsByPlayerHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.Club_player as p where p.Id=:id]]></query>
 		  <query name="TeamENgetNationalTeamsByPlayerHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.Club_player as p where p.Id=:id]]></query>
 		  <query name="TeamENgetTeamByCompetitionHQL"><![CDATA[select t FROM TeamEN as t INNER JOIN t.Competition as c where c.Id=:id]]></query>
+		  <query name="TeamENgetNationalTeamsHQL"><![CDATA[FROM TeamEN as t where t.Club = true]]></query>
+		  <query name="TeamENGetInternationalTeamHQL"><![CDATA[FROM TeamEN as t where t.Club = false]]></query>
 		</hibernate-mapping>
 	

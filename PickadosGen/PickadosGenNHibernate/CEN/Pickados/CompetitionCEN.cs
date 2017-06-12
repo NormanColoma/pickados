@@ -38,7 +38,7 @@ public ICompetitionCAD get_ICompetitionCAD ()
         return this._ICompetitionCAD;
 }
 
-public int NewCompetition (string p_name, int p_sport, string p_place)
+public int NewCompetition (string p_name, int p_sport, string p_place, bool p_clubs, System.Collections.Generic.IList<int> p_season)
 {
         CompetitionEN competitionEN = null;
         int oid;
@@ -57,13 +57,29 @@ public int NewCompetition (string p_name, int p_sport, string p_place)
 
         competitionEN.Place = p_place;
 
+        competitionEN.Clubs = p_clubs;
+
+
+        competitionEN.Season = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.SeasonEN>();
+        if (p_season != null) {
+                foreach (int item in p_season) {
+                        PickadosGenNHibernate.EN.Pickados.SeasonEN en = new PickadosGenNHibernate.EN.Pickados.SeasonEN ();
+                        en.Id = item;
+                        competitionEN.Season.Add (en);
+                }
+        }
+
+        else{
+                competitionEN.Season = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.SeasonEN>();
+        }
+
         //Call to CompetitionCAD
 
         oid = _ICompetitionCAD.NewCompetition (competitionEN);
         return oid;
 }
 
-public void ModifyCompetition (int p_Competition_OID, string p_name, string p_place)
+public void ModifyCompetition (int p_Competition_OID, string p_name, string p_place, bool p_clubs)
 {
         CompetitionEN competitionEN = null;
 
@@ -72,6 +88,7 @@ public void ModifyCompetition (int p_Competition_OID, string p_name, string p_pl
         competitionEN.Id = p_Competition_OID;
         competitionEN.Name = p_name;
         competitionEN.Place = p_place;
+        competitionEN.Clubs = p_clubs;
         //Call to CompetitionCAD
 
         _ICompetitionCAD.ModifyCompetition (competitionEN);
@@ -106,6 +123,30 @@ public System.Collections.Generic.IList<CompetitionEN> GetAllCompetitions (int f
 public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionByTeam (int id)
 {
         return _ICompetitionCAD.GetCompetitionByTeam (id);
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionBySport (int id)
+{
+        return _ICompetitionCAD.GetCompetitionBySport (id);
+}
+public System.Collections.Generic.IList<string> GetPlaces ()
+{
+        return _ICompetitionCAD.GetPlaces ();
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetClubCompetition ()
+{
+        return _ICompetitionCAD.GetClubCompetition ();
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetNationalCompetition ()
+{
+        return _ICompetitionCAD.GetNationalCompetition ();
+}
+public System.Collections.Generic.IList<string> GetClubPlaces ()
+{
+        return _ICompetitionCAD.GetClubPlaces ();
+}
+public System.Collections.Generic.IList<string> GetNationalPlaces ()
+{
+        return _ICompetitionCAD.GetNationalPlaces ();
 }
 }
 }

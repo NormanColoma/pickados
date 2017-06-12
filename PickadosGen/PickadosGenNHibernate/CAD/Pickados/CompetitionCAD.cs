@@ -99,6 +99,10 @@ public void ModifyDefault (CompetitionEN competition)
                 competitionEN.Place = competition.Place;
 
 
+
+                competitionEN.Clubs = competition.Clubs;
+
+
                 session.Update (competitionEN);
                 SessionCommit ();
         }
@@ -129,6 +133,12 @@ public int NewCompetition (CompetitionEN competition)
 
                         competition.Sport.Competition
                         .Add (competition);
+                }
+                if (competition.Season != null) {
+                        for (int i = 0; i < competition.Season.Count; i++) {
+                                competition.Season [i] = (PickadosGenNHibernate.EN.Pickados.SeasonEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.SeasonEN), competition.Season [i].Id);
+                                competition.Season [i].Competition = competition;
+                        }
                 }
 
                 session.Save (competition);
@@ -162,6 +172,9 @@ public void ModifyCompetition (CompetitionEN competition)
 
 
                 competitionEN.Place = competition.Place;
+
+
+                competitionEN.Clubs = competition.Clubs;
 
                 session.Update (competitionEN);
                 SessionCommit ();
@@ -307,6 +320,181 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Compet
                 query.SetParameter ("id", id);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionBySport (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CompetitionEN self where select c FROM CompetitionEN as c INNER JOIN c.Sport as s where s.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetCompetitionBySportHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<string> GetPlaces ()
+{
+        System.Collections.Generic.IList<string> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CompetitionEN self where select DISTINCT(c.Place) FROM CompetitionEN as c";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetPlacesHQL");
+
+                result = query.List<string>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetClubCompetition ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CompetitionEN self where FROM CompetitionEN as c where c.Clubs=true";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetClubCompetitionHQL");
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetNationalCompetition ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CompetitionEN self where FROM CompetitionEN as c where c.Clubs = false";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetNationalCompetitionHQL");
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.CompetitionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<string> GetClubPlaces ()
+{
+        System.Collections.Generic.IList<string> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CompetitionEN self where select DISTINCT(c.Place) FROM CompetitionEN as c where c.Clubs=true";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetClubPlacesHQL");
+
+                result = query.List<string>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in CompetitionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<string> GetNationalPlaces ()
+{
+        System.Collections.Generic.IList<string> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CompetitionEN self where select DISTINCT(c.Place) FROM CompetitionEN as c where c.Clubs=false";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CompetitionENgetNationalPlacesHQL");
+
+                result = query.List<string>();
                 SessionCommit ();
         }
 

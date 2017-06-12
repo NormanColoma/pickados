@@ -95,6 +95,7 @@ public void ModifyDefault (Event_EN event_)
 
                 event_EN.Date = event_.Date;
 
+
                 session.Update (event_EN);
                 SessionCommit ();
         }
@@ -119,6 +120,13 @@ public int NewEvent (Event_EN event_)
         try
         {
                 SessionInitializeTransaction ();
+                if (event_.Round != null) {
+                        // Argumento OID y no colección.
+                        event_.Round = (PickadosGenNHibernate.EN.Pickados.RoundEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.RoundEN), event_.Round.Id);
+
+                        event_.Round.Event_
+                        .Add (event_);
+                }
 
                 session.Save (event_);
                 SessionCommit ();

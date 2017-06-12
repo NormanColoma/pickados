@@ -119,6 +119,13 @@ public int NewMatch (MatchEN match)
         try
         {
                 SessionInitializeTransaction ();
+                if (match.Round != null) {
+                        // Argumento OID y no colección.
+                        match.Round = (PickadosGenNHibernate.EN.Pickados.RoundEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.RoundEN), match.Round.Id);
+
+                        match.Round.Event_
+                        .Add (match);
+                }
                 if (match.Away != null) {
                         // Argumento OID y no colección.
                         match.Away = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), match.Away.Id);

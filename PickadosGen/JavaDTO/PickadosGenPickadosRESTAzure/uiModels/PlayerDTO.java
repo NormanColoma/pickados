@@ -37,6 +37,10 @@
 				public ArrayList<Integer>  getScorer_oid () { return scorer_oid; } 
 				public void setScorer_oid (ArrayList<Integer> value) { scorer_oid = value;  } 
 				    	 
+				private Integer sport_oid;
+				public Integer  getSport_oid () { return sport_oid; } 
+				public void setSport_oid (Integer value) { sport_oid = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -71,6 +75,11 @@
 							json.put("Scorer_oid", jsonArray);
 						}
 		
+
+						if (this.sport_oid != null)
+						{
+							json.put("Sport_oid", this.sport_oid.intValue());
+						}
 						
 					}
 					catch (JSONException e)

@@ -61,6 +61,13 @@ private System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Compe
 
 
 
+/**
+ *	Atributo club
+ */
+private bool club;
+
+
+
 
 
 
@@ -112,6 +119,12 @@ public virtual System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickado
 
 
 
+public virtual bool Club {
+        get { return club; } set { club = value;  }
+}
+
+
+
 
 
 public TeamEN()
@@ -125,20 +138,20 @@ public TeamEN()
 
 
 
-public TeamEN(int id, string name, string country, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> event_home, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> event_away, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> club_player, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> national_player, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> competition
+public TeamEN(int id, string name, string country, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> event_home, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> event_away, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> club_player, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> national_player, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> competition, bool club
               )
 {
-        this.init (Id, name, country, event_home, event_away, club_player, national_player, competition);
+        this.init (Id, name, country, event_home, event_away, club_player, national_player, competition, club);
 }
 
 
 public TeamEN(TeamEN team)
 {
-        this.init (Id, team.Name, team.Country, team.Event_home, team.Event_away, team.Club_player, team.National_player, team.Competition);
+        this.init (Id, team.Name, team.Country, team.Event_home, team.Event_away, team.Club_player, team.National_player, team.Competition, team.Club);
 }
 
 private void init (int id
-                   , string name, string country, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> event_home, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> event_away, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> club_player, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> national_player, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> competition)
+                   , string name, string country, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> event_home, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> event_away, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> club_player, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> national_player, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> competition, bool club)
 {
         this.Id = id;
 
@@ -156,6 +169,8 @@ private void init (int id
         this.National_player = national_player;
 
         this.Competition = competition;
+
+        this.Club = club;
 }
 
 public override bool Equals (object obj)
