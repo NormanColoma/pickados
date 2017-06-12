@@ -27,6 +27,7 @@ namespace AdminView.Controllers
         {
             SportCEN sports = new SportCEN();
             SportEN sport = sports.GetSportById(idSport);
+            ViewBag.sportImage = sport.Image;
             return View(sport);
         }
 
@@ -36,8 +37,9 @@ namespace AdminView.Controllers
             SportEN sportEdited = new SportEN();
             sportEdited.Id = id;
             sportEdited.Name = collection["Name"].ToString();
+            sportEdited.Image = collection["Image"].ToString();
             SportCEN sports = new SportCEN();
-            sports.ModifySport(sportEdited.Id, sportEdited.Name);
+            sports.ModifySport(sportEdited.Id, sportEdited.Name, sportEdited.Image);
             return RedirectToAction("Sports");
         }
 

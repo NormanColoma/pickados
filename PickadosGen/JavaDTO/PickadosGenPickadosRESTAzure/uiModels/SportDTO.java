@@ -33,6 +33,10 @@
 				public ArrayList<Integer>  getPlayer_oid () { return player_oid; } 
 				public void setPlayer_oid (ArrayList<Integer> value) { player_oid = value;  } 
 				    	 
+				private String image;
+				public String getImage () { return image; } 
+				public void setImage  (String value) { image = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -67,6 +71,9 @@
 							json.put("Player_oid", jsonArray);
 						}
 		
+				
+						  json.put("Image", this.image);
+				
 						
 					}
 					catch (JSONException e)
