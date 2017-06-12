@@ -21,6 +21,9 @@
 		 
 				var player_oid: [Int]?;
 				    	 
+		 
+				var image: String?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -62,6 +65,10 @@
 
 					dictionary["player_oid"] = self.player_oid;
 			
+
+				
+					dictionary["image"] = self.image;
+				
 						
 				return dictionary;
 			}
