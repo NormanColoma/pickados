@@ -29,6 +29,18 @@
 					
 			
 			
+			
+		  			
+						<bag name="Player" >
+							<key>
+							
+								
+								<column name="FK_idSport_idSport"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.PlayerEN"/>
+					    </bag>
+					
+					
 					
 					
 					

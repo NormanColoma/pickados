@@ -35,6 +35,13 @@
 					    </bag>
 					
 			
+			
+		  			
+						<many-to-one name="Round" class="PickadosGenNHibernate.EN.Pickados.RoundEN" >	
+								<column name="FK_id_idRound"/> 
+						</many-to-one>
+											 					
+					
 					
 					
 					

@@ -38,7 +38,7 @@ public IPlayerCAD get_IPlayerCAD ()
         return this._IPlayerCAD;
 }
 
-public int NewPlayer (string p_name)
+public int NewPlayer (string p_name, int p_sport)
 {
         PlayerEN playerEN = null;
         int oid;
@@ -46,6 +46,14 @@ public int NewPlayer (string p_name)
         //Initialized PlayerEN
         playerEN = new PlayerEN ();
         playerEN.Name = p_name;
+
+
+        if (p_sport != -1) {
+                // El argumento p_sport -> Property sport es oid = false
+                // Lista de oids id
+                playerEN.Sport = new PickadosGenNHibernate.EN.Pickados.SportEN ();
+                playerEN.Sport.Id = p_sport;
+        }
 
         //Call to PlayerCAD
 
@@ -119,6 +127,14 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Player
 public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByNationalTeam (string p_NationalTeam_Name)
 {
         return _IPlayerCAD.GetPlayersByNationalTeam (p_NationalTeam_Name);
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersNoClubTeam (int id)
+{
+        return _IPlayerCAD.GetPlayersNoClubTeam (id);
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersNoNationalTeam (int id)
+{
+        return _IPlayerCAD.GetPlayersNoNationalTeam (id);
 }
 }
 }

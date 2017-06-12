@@ -1,21 +1,28 @@
-﻿@{
-    ViewBag.Title = "Competiciones";
-}
+﻿<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Sports", "Sports", "Sports")</li>
+    <li>@Html.ActionLink((string)ViewBag.sport.Name, "TypeCompetition", "TypeCompetition", new { idSport = ViewBag.sport.Id }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.typeCompetition, "Country", "Country", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.country, "Competitions", "Competitions", new { countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+</ul>
 
-<h2>@ViewBag.Title</h2>
-
-@Html.DropDownList("allCompetitions", null, new { @class = "form-control", id = "allCompetitions", required = "required" })
-
-@section scripts {
-    <script type="text/javascript">
-
-    $(document).ready(function () {
-        $("#allCompetitions").change(function () {
-            var url = $(this).val();
-            if (url != null && url != '') {
-                location.href = '@Url.Action("DetailsCompetition", "Competitions")?id=' + url;
-            }
-        })
-    });
-    </script>
-}
+<table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.allCompetitions)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink((string)item.Name, "Teams", "Teams", new { idCompetition = item.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Competitions", new { countryName = ViewBag.country, idSport=ViewBag.sport.Id, idCompetition = item.Id,  typeCompetition = ViewBag.typeCompetition })" class="fa fa-pencil fa-fw"></a>
+            </td>
+        </tr>
+    }
+</table>

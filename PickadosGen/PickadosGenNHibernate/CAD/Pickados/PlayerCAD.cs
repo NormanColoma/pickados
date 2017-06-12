@@ -96,6 +96,7 @@ public void ModifyDefault (PlayerEN player)
                 playerEN.Name = player.Name;
 
 
+
                 session.Update (playerEN);
                 SessionCommit ();
         }
@@ -120,6 +121,13 @@ public int NewPlayer (PlayerEN player)
         try
         {
                 SessionInitializeTransaction ();
+                if (player.Sport != null) {
+                        // Argumento OID y no colección.
+                        player.Sport = (PickadosGenNHibernate.EN.Pickados.SportEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.SportEN), player.Sport.Id);
+
+                        player.Sport.Player
+                        .Add (player);
+                }
 
                 session.Save (player);
                 SessionCommit ();
@@ -423,6 +431,66 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Player
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("PlayerENgetPlayersByNationalTeamHQL");
                 query.SetParameter ("p_NationalTeam_Name", p_NationalTeam_Name);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PlayerEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersNoClubTeam (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PlayerEN self where select p FROM PlayerEN as p LEFT JOIN p.Club_team as t INNER JOIN p.Sport as s where t is null AND s.Id = :id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PlayerENgetPlayersNoClubTeamHQL");
+                query.SetParameter ("id", id);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PlayerEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PlayerCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersNoNationalTeam (int id)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PlayerEN self where select p FROM PlayerEN as p LEFT JOIN p.National_team as t INNER JOIN p.Sport as s where t is null AND s.Id =:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PlayerENgetPlayersNoNationalTeamHQL");
+                query.SetParameter ("id", id);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.PlayerEN>();
                 SessionCommit ();

@@ -38,7 +38,7 @@ public IMatchCAD get_IMatchCAD ()
         return this._IMatchCAD;
 }
 
-public int NewMatch (Nullable<DateTime> p_date, int p_away, int p_home, string p_stadium)
+public int NewMatch (Nullable<DateTime> p_date, int p_round, int p_away, int p_home, string p_stadium)
 {
         MatchEN matchEN = null;
         int oid;
@@ -46,6 +46,14 @@ public int NewMatch (Nullable<DateTime> p_date, int p_away, int p_home, string p
         //Initialized MatchEN
         matchEN = new MatchEN ();
         matchEN.Date = p_date;
+
+
+        if (p_round != -1) {
+                // El argumento p_round -> Property round es oid = false
+                // Lista de oids id
+                matchEN.Round = new PickadosGenNHibernate.EN.Pickados.RoundEN ();
+                matchEN.Round.Id = p_round;
+        }
 
 
         if (p_away != -1) {

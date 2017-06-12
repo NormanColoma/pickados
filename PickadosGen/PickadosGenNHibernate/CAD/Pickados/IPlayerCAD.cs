@@ -43,5 +43,11 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> Get
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersByNationalTeam (string p_NationalTeam_Name);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersNoClubTeam (int id);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PlayerEN> GetPlayersNoNationalTeam (int id);
 }
 }

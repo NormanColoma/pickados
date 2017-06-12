@@ -35,5 +35,23 @@ System.Collections.Generic.IList<CompetitionEN> GetAllCompetitions (int first, i
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionByTeam (int id);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetCompetitionBySport (int id);
+
+
+System.Collections.Generic.IList<string> GetPlaces ();
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetClubCompetition ();
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.CompetitionEN> GetNationalCompetition ();
+
+
+System.Collections.Generic.IList<string> GetClubPlaces ();
+
+
+System.Collections.Generic.IList<string> GetNationalPlaces ();
 }
 }

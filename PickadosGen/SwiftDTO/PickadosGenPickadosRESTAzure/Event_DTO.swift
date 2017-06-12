@@ -21,6 +21,9 @@
 		 
 				var date: NSDate?;
 				    	 
+		 
+				var round_oid: Int?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -62,6 +65,9 @@
 				
 					dictionary["date"] = self.date?.toString();
 				
+
+					dictionary["round_oid"] = self.round_oid;
+			
 						
 				return dictionary;
 			}

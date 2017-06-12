@@ -18,5 +18,11 @@ private string name;
 public string Name {
         get { return name; } set { name = value;  }
 }
+
+
+private System.Collections.Generic.IList<int> player_oid;
+public System.Collections.Generic.IList<int> Player_oid {
+        get { return player_oid; } set { player_oid = value;  }
+}
 }
 }

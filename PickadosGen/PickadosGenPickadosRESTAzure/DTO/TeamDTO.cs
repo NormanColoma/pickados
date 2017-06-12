@@ -52,5 +52,10 @@ private System.Collections.Generic.IList<int> competition_oid;
 public System.Collections.Generic.IList<int> Competition_oid {
         get { return competition_oid; } set { competition_oid = value;  }
 }
+
+private bool club;
+public bool Club {
+        get { return club; } set { club = value;  }
+}
 }
 }

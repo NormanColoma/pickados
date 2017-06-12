@@ -54,6 +54,11 @@ public static MatchEN Convert (MatchDTO dto)
                                 }
                         }
                         newinstance.Date = dto.Date;
+                        if (dto.Round_oid != -1) {
+                                PickadosGenNHibernate.CAD.Pickados.IRoundCAD roundCAD = new PickadosGenNHibernate.CAD.Pickados.RoundCAD ();
+
+                                newinstance.Round = roundCAD.ReadOIDDefault (dto.Round_oid);
+                        }
                 }
         }
         catch (Exception ex)

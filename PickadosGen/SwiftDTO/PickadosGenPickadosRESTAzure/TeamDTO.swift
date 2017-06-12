@@ -33,6 +33,9 @@
 		 
 				var competition_oid: [Int]?;
 				    	 
+		 
+				var club: Bool?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -77,6 +80,10 @@
 
 					dictionary["competition_oid"] = self.competition_oid;
 			
+
+				
+					dictionary["club"] = self.club;
+				
 						
 				return dictionary;
 			}

@@ -18,6 +18,9 @@
 		 
 				var name: String?;
 				    	 
+		 
+				var player_oid: [Int]?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -56,6 +59,9 @@
 				
 					dictionary["name"] = self.name;
 				
+
+					dictionary["player_oid"] = self.player_oid;
+			
 						
 				return dictionary;
 			}

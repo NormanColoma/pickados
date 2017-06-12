@@ -1,0 +1,21 @@
+﻿<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Sports", "Sports", "Sports")</li>
+    <li>@Html.ActionLink((string)ViewBag.sport.Name, "TypeCompetition", "TypeCompetition", new { idSport = ViewBag.sport.Id }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.typeCompetition, "Country", "Country", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+</ul>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.allCountries)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink((string)item, "Competitions", "Competitions", new { countryName = item, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)
+            </td>
+        </tr>
+    }
+</table>

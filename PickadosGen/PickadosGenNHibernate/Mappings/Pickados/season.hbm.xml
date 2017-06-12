@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PickadosGenNHibernate"
+		                   namespace="PickadosGenNHibernate.EN.Pickados">
+		    
+		    
+			
+				<class name="SeasonEN" table="Season"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="InitDate" type="date"> 
+						<column name="initDate"  not-null="true"/>
+					</property>
+					<property name="FinalDate" type="date"> 
+						<column name="finalDate"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Competition" class="PickadosGenNHibernate.EN.Pickados.CompetitionEN" >	
+								<column name="FK_id_idCompetition"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Round" >
+							<key>
+							
+								
+								<column name="FK_id_idSeason"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.RoundEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="SeasonENReadAllHQL">from SeasonEN</query>
+		  <query name="SeasonENGetSeasonByCompetitionHQL"><![CDATA[select s FROM SeasonEN as s INNER JOIN s.Competition as c where c.Id = :id]]></query>
+		</hibernate-mapping>
+	

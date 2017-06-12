@@ -18,6 +18,9 @@
 					<property name="Place" type="string"> 
 						<column name="place"  not-null="true"/>
 					</property>
+					<property name="Clubs" type="boolean"> 
+						<column name="clubs"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -50,6 +53,20 @@
 									<column name="FK_id_idTeam"/> 
       						</many-to-many>
     					</bag>
+			
+			
+		  			
+						<bag name="Season" >
+							<key>
+							
+								
+								<column name="FK_id_idCompetition"/>
+					      	</key>
+							<one-to-many class="PickadosGenNHibernate.EN.Pickados.SeasonEN"/>
+					    </bag>
+					
+					
+					
 					
 					
 					
@@ -62,5 +79,11 @@
 		  <query name="CompetitionENReadAllHQL">from CompetitionEN</query>
 		  <query name="CompetitionENgetCompetitionsByPlaceHQL"><![CDATA[FROM CompetitionEN WHERE Place = :place]]></query>
 		  <query name="CompetitionENgetCompetitionByTeamHQL"><![CDATA[select c FROM CompetitionEN as c INNER JOIN c.Team as t where t.Id=:id]]></query>
+		  <query name="CompetitionENgetCompetitionBySportHQL"><![CDATA[select c FROM CompetitionEN as c INNER JOIN c.Sport as s where s.Id=:id]]></query>
+		  <query name="CompetitionENgetPlacesHQL"><![CDATA[select DISTINCT(c.Place) FROM CompetitionEN as c]]></query>
+		  <query name="CompetitionENgetClubCompetitionHQL"><![CDATA[FROM CompetitionEN as c where c.Clubs=true]]></query>
+		  <query name="CompetitionENgetNationalCompetitionHQL"><![CDATA[FROM CompetitionEN as c where c.Clubs = false]]></query>
+		  <query name="CompetitionENgetClubPlacesHQL"><![CDATA[select DISTINCT(c.Place) FROM CompetitionEN as c where c.Clubs=true]]></query>
+		  <query name="CompetitionENgetNationalPlacesHQL"><![CDATA[select DISTINCT(c.Place) FROM CompetitionEN as c where c.Clubs=false]]></query>
 		</hibernate-mapping>
 	

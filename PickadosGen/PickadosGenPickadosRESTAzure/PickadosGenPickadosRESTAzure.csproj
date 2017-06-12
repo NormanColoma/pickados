@@ -196,6 +196,10 @@
 	<Compile Include="AssemblersDTO\RequestAssemblerDTO.cs" />
 	<Compile Include="DTO\LoginDTO.cs" />
 	<Compile Include="AssemblersDTO\LoginAssemblerDTO.cs" />
+	<Compile Include="DTO\SeasonDTO.cs" />
+	<Compile Include="AssemblersDTO\SeasonAssemblerDTO.cs" />
+	<Compile Include="DTO\RoundDTO.cs" />
+	<Compile Include="AssemblersDTO\RoundAssemblerDTO.cs" />
 	
 
     

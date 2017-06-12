@@ -47,6 +47,11 @@ public static PlayerEN Convert (PlayerDTO dto)
                                         newinstance.Scorer.Add (scorerCAD.ReadOIDDefault (entry));
                                 }
                         }
+                        if (dto.Sport_oid != -1) {
+                                PickadosGenNHibernate.CAD.Pickados.ISportCAD sportCAD = new PickadosGenNHibernate.CAD.Pickados.SportCAD ();
+
+                                newinstance.Sport = sportCAD.ReadOIDDefault (dto.Sport_oid);
+                        }
                 }
         }
         catch (Exception ex)

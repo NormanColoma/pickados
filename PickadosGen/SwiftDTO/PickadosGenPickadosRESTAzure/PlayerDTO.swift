@@ -24,6 +24,9 @@
 		 
 				var scorer_oid: [Int]?;
 				    	 
+		 
+				var sport_oid: Int?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -57,6 +60,9 @@
 				
 
 					dictionary["scorer_oid"] = self.scorer_oid;
+			
+
+					dictionary["sport_oid"] = self.sport_oid;
 			
 						
 				return dictionary;
