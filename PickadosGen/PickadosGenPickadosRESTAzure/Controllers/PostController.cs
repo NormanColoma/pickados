@@ -115,7 +115,7 @@ public HttpResponseMessage FindPostsByTipster (int id)
 
 
 
-                en = postCEN.FindPostsByTipster (id, 0, 10).ToList ();
+                en = postCEN.FindPostsByTipster (id).ToList ();
 
 
 

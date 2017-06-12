@@ -9,6 +9,9 @@
             Name
         </th>
         <th>
+            Image
+        </th>
+        <th>
             Actions
         </th>
     </tr>
@@ -17,6 +20,9 @@
         <tr>
             <td>
                 @Html.ActionLink((string)item.Name, "TypeCompetition", "TypeCompetition", new { idSport = item.Id }, null)
+            </td>
+            <td>
+                <img src=@item.Image height="40" width="40" />
             </td>
             <td>
                 <a href="@Url.Action("Edit", "Sports", new { idSport=item.Id })" class="fa fa-pencil fa-fw"></a>

@@ -181,9 +181,9 @@ public static void InitializeData ()
 
                 Console.WriteLine ("--------------- Creating new Sport -------------");
                 SportCEN sport = new SportCEN ();
-                int newSport = sport.NewSport ("Football");
+                int newSport = sport.NewSport("Football", "https://cdn0.iconfinder.com/data/icons/stroke-ball-icons-2/633/02_Soccer-512.png");
                 Console.WriteLine ("Football created");
-                int newSport2 = sport.NewSport ("Basketball");
+                int newSport2 = sport.NewSport ("Basketball", "https://images.vexels.com/media/users/3/129332/isolated/lists/b3f0ad2e079ac9027c5eb0a2d1c8549b-basketball-silhouette-icon.png");
                 Console.WriteLine ("Basketball created");
 
                 Console.WriteLine ("--------------- Creating new Season -------------");

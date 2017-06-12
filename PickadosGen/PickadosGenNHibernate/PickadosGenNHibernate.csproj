@@ -371,11 +371,15 @@
 			
 			
 			
+			
 	<Compile Include="EN\Pickados\LoginEN.cs" />
 	<Compile Include="CEN\Pickados\LoginCEN.cs" />
 	<Compile Include="CAD\Pickados\ILoginCAD.cs" />
 	<Compile Include="CAD\Pickados\LoginCAD.cs" />
 	<Compile Include="CP\Pickados\LoginCP.cs" />
+			
+			
+			
 	<Compile Include="EN\Pickados\SeasonEN.cs" />
 	<Compile Include="CEN\Pickados\SeasonCEN.cs" />
 	<Compile Include="CAD\Pickados\ISeasonCAD.cs" />
@@ -392,6 +396,7 @@
 	<Compile Include="CAD\Pickados\IRoundCAD.cs" />
 	<Compile Include="CAD\Pickados\RoundCAD.cs" />
 	<Compile Include="CP\Pickados\RoundCP.cs" />
+			
 			
 			
 			
