@@ -38,6 +38,14 @@ public static SportEN Convert (SportDTO dto)
                         }
                         newinstance.Id = dto.Id;
                         newinstance.Name = dto.Name;
+                        if (dto.Player_oid != null) {
+                                PickadosGenNHibernate.CAD.Pickados.IPlayerCAD playerCAD = new PickadosGenNHibernate.CAD.Pickados.PlayerCAD ();
+
+                                newinstance.Player = new System.Collections.Generic.List<PickadosGenNHibernate.EN.Pickados.PlayerEN>();
+                                foreach (int entry in dto.Player_oid) {
+                                        newinstance.Player.Add (playerCAD.ReadOIDDefault (entry));
+                                }
+                        }
                 }
         }
         catch (Exception ex)

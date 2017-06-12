@@ -55,12 +55,21 @@
     <Compile Include="Assemblers\AssemblerStatsLogin.cs" />
     <Compile Include="Assemblers\AssemblerUser.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\CompetiCalendarController.cs" />
     <Compile Include="Controllers\CompetitionsController.cs" />
+    <Compile Include="Controllers\CountryCalendarController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
+    <Compile Include="Controllers\RoundController.cs" />
+    <Compile Include="Controllers\SeasonsController.cs" />
+    <Compile Include="Controllers\SportsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\TypeCompetiCalendarController.cs" />
+    <Compile Include="Controllers\TypeCompetitionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +186,23 @@
     <Content Include="Views\Players\PlayerDetails.cshtml" />
     <Content Include="Views\User\_delete\_DeleteDialog.cshtml" />
     <Content Include="Views\Stats\Login.cshtml" />
+    <Content Include="Views\Sports\Sports.cshtml" />
+    <Content Include="Views\Sports\DetailsSport.cshtml" />
+    <Content Include="Views\Sports\DetailsSportCountry.cshtml" />
+    <Content Include="Views\Country\Country.cshtml" />
+    <Content Include="Views\Teams\Teams.cshtml" />
+    <Content Include="Views\Players\Players.cshtml" />
+    <Content Include="Views\Sports\Edit.cshtml" />
+    <Content Include="Views\Competitions\Edit.cshtml" />
+    <Content Include="Views\Teams\Edit.cshtml" />
+    <Content Include="Views\Players\Edit.cshtml" />
+    <Content Include="Views\TypeCompetition\TypeCompetition.cshtml" />
+    <Content Include="Views\Calendar\Calendar.cshtml" />
+    <Content Include="Views\TypeCompetiCalendar\TypeCompetiCalendar.cshtml" />
+    <Content Include="Views\CountryCalendar\CountryCalendar.cshtml" />
+    <Content Include="Views\CompetiCalendar\CompetiCalendar.cshtml" />
+    <Content Include="Views\Seasons\Seasons.cshtml" />
+    <Content Include="Views\Round\Round.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

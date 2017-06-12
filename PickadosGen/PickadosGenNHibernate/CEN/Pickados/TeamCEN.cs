@@ -38,7 +38,7 @@ public ITeamCAD get_ITeamCAD ()
         return this._ITeamCAD;
 }
 
-public int NewTeam (string p_name, string p_country)
+public int NewTeam (string p_name, string p_country, bool p_club)
 {
         TeamEN teamEN = null;
         int oid;
@@ -49,13 +49,15 @@ public int NewTeam (string p_name, string p_country)
 
         teamEN.Country = p_country;
 
+        teamEN.Club = p_club;
+
         //Call to TeamCAD
 
         oid = _ITeamCAD.NewTeam (teamEN);
         return oid;
 }
 
-public void ModifyTeam (int p_Team_OID, string p_name, string p_country)
+public void ModifyTeam (int p_Team_OID, string p_name, string p_country, bool p_club)
 {
         TeamEN teamEN = null;
 
@@ -64,6 +66,7 @@ public void ModifyTeam (int p_Team_OID, string p_name, string p_country)
         teamEN.Id = p_Team_OID;
         teamEN.Name = p_name;
         teamEN.Country = p_country;
+        teamEN.Club = p_club;
         //Call to TeamCAD
 
         _ITeamCAD.ModifyTeam (teamEN);
@@ -114,6 +117,14 @@ public void DeleteCompetition (int p_Team_OID, System.Collections.Generic.IList<
 public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetTeamByCompetition (int id)
 {
         return _ITeamCAD.GetTeamByCompetition (id);
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetNationalTeams ()
+{
+        return _ITeamCAD.GetNationalTeams ();
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TeamEN> GetInternationalTeam ()
+{
+        return _ITeamCAD.GetInternationalTeam ();
 }
 }
 }

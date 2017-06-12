@@ -38,7 +38,7 @@ public IEvent_CAD get_IEvent_CAD ()
         return this._IEvent_CAD;
 }
 
-public int NewEvent (Nullable<DateTime> p_date)
+public int NewEvent (Nullable<DateTime> p_date, int p_round)
 {
         Event_EN event_EN = null;
         int oid;
@@ -46,6 +46,14 @@ public int NewEvent (Nullable<DateTime> p_date)
         //Initialized Event_EN
         event_EN = new Event_EN ();
         event_EN.Date = p_date;
+
+
+        if (p_round != -1) {
+                // El argumento p_round -> Property round es oid = false
+                // Lista de oids id
+                event_EN.Round = new PickadosGenNHibernate.EN.Pickados.RoundEN ();
+                event_EN.Round.Id = p_round;
+        }
 
         //Call to Event_CAD
 

@@ -33,6 +33,10 @@
 				public java.util.Date getDate () { return date; } 
 				public void setDate  (java.util.Date value) { date = value;  } 
 				    	 
+				private Integer round_oid;
+				public Integer  getRound_oid () { return round_oid; } 
+				public void setRound_oid (Integer value) { round_oid = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -61,6 +65,11 @@
 				
 						  json.put("Date", DateUtils.dateToFormatString(this.date));
 				
+
+						if (this.round_oid != null)
+						{
+							json.put("Round_oid", this.round_oid.intValue());
+						}
 						
 					}
 					catch (JSONException e)

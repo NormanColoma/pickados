@@ -32,5 +32,12 @@ private System.Collections.Generic.IList<int> scorer_oid;
 public System.Collections.Generic.IList<int> Scorer_oid {
         get { return scorer_oid; } set { scorer_oid = value;  }
 }
+
+
+
+private int sport_oid;
+public int Sport_oid {
+        get { return sport_oid; } set { sport_oid = value;  }
+}
 }
 }

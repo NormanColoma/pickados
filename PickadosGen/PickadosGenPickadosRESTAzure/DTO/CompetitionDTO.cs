@@ -35,5 +35,16 @@ private System.Collections.Generic.IList<int> team_oid;
 public System.Collections.Generic.IList<int> Team_oid {
         get { return team_oid; } set { team_oid = value;  }
 }
+
+private bool clubs;
+public bool Clubs {
+        get { return clubs; } set { clubs = value;  }
+}
+
+
+private System.Collections.Generic.IList<int> season_oid;
+public System.Collections.Generic.IList<int> Season_oid {
+        get { return season_oid; } set { season_oid = value;  }
+}
 }
 }

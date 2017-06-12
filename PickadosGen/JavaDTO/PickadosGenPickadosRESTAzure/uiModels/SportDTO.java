@@ -29,6 +29,10 @@
 				public String getName () { return name; } 
 				public void setName  (String value) { name = value;  } 
 				    	 
+				private ArrayList<Integer> player_oid;
+				public ArrayList<Integer>  getPlayer_oid () { return player_oid; } 
+				public void setPlayer_oid (ArrayList<Integer> value) { player_oid = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -52,6 +56,17 @@
 				
 						  json.put("Name", this.name);
 				
+
+						if (this.player_oid != null)
+						{
+							JSONArray jsonArray = new JSONArray();
+							for (int i = 0; i < this.player_oid.size(); ++i)
+							{
+								jsonArray.put(this.player_oid.get(i));
+							}
+							json.put("Player_oid", jsonArray);
+						}
+		
 						
 					}
 					catch (JSONException e)

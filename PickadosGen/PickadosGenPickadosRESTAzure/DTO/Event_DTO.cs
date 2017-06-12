@@ -25,5 +25,11 @@ private Nullable<DateTime> date;
 public Nullable<DateTime> Date {
         get { return date; } set { date = value;  }
 }
+
+
+private int round_oid;
+public int Round_oid {
+        get { return round_oid; } set { round_oid = value;  }
+}
 }
 }

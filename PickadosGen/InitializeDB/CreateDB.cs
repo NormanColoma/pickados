@@ -23,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -179,51 +179,72 @@ public static void InitializeData ()
 
                 //Console.WriteLine ("There are " + nuevo.GetTipstersPremium ().Count + " premium tipsters");
 
+                Console.WriteLine ("--------------- Creating new Sport -------------");
+                SportCEN sport = new SportCEN ();
+                int newSport = sport.NewSport ("Football");
+                Console.WriteLine ("Football created");
+                int newSport2 = sport.NewSport ("Basketball");
+                Console.WriteLine ("Basketball created");
+
+                Console.WriteLine ("--------------- Creating new Season -------------");
+                SeasonCEN seasons = new SeasonCEN ();
+                int season1 = seasons.NewSeason (new DateTime (2016, 8, 18), new DateTime (2017, 5, 19));
+                Console.WriteLine ("Season 16/17 Santander created");
+                int season2 = seasons.NewSeason (new DateTime (2016, 8, 18), new DateTime (2017, 5, 19));
+                Console.WriteLine ("Season 16/17 ACB created");
+
+                Console.WriteLine ("--------------- Creating new Round -------------");
+                RoundCEN rounds = new RoundCEN ();
+                int round1 = rounds.NewRound (season1, "Jornada 1");
+                Console.WriteLine ("Round 1 Santander created");
+                int round2 = rounds.NewRound (season1, "Jornada 2");
+                Console.WriteLine ("Round 2 Santander created");
+
                 // Añadimos datos a Equipos
                 Console.WriteLine ("------------- Creating new teams -------------");
                 TeamCEN teamCEN = new TeamCEN ();
-                int team1 = teamCEN.NewTeam ("Barcelona", "Catalunya");
+                int team1 = teamCEN.NewTeam ("Barcelona", "Catalunya", true);
                 TeamEN equipo1 = teamCEN.GetTeamById (team1);
                 Console.WriteLine ("New team: " + equipo1.Name);
 
-                int team2 = teamCEN.NewTeam ("Madrid", "Spain");
+                int team2 = teamCEN.NewTeam ("Madrid", "Spain", true);
                 TeamEN equipo2 = teamCEN.GetTeamById (team2);
                 Console.WriteLine ("New team: " + equipo2.Name);
 
-                int team3 = teamCEN.NewTeam ("Juventus", "Italy");
+                int team3 = teamCEN.NewTeam ("Juventus", "Italy", true);
                 TeamEN equipo3 = teamCEN.GetTeamById (team3);
                 Console.WriteLine ("New team: " + equipo3.Name);
 
-                int team4 = teamCEN.NewTeam ("SD Eibar", "Spain");
+                int team4 = teamCEN.NewTeam ("SD Eibar", "Spain", true);
                 TeamEN equipo4 = teamCEN.GetTeamById (team4);
                 Console.WriteLine ("New team: " + equipo4.Name);
 
-                int team5 = teamCEN.NewTeam ("Manchester united", "England");
+                int team5 = teamCEN.NewTeam ("Manchester united", "England", true);
                 TeamEN equipo5 = teamCEN.GetTeamById (team5);
                 Console.WriteLine ("New team: " + equipo5.Name);
 
-                int team6 = teamCEN.NewTeam ("Barça Basket", "Spain");
+                int team6 = teamCEN.NewTeam ("Barça Basket", "Spain", true);
                 TeamEN equipo6 = teamCEN.GetTeamById (team6);
                 Console.WriteLine ("New team: " + equipo6.Name);
 
-                int team7 = teamCEN.NewTeam ("Gran Canaria Basket", "Spain");
+                int team7 = teamCEN.NewTeam ("Gran Canaria Basket", "Spain", true);
                 TeamEN equipo7 = teamCEN.GetTeamById (team7);
                 Console.WriteLine ("New team: " + equipo7.Name);
 
-                int selection1 = teamCEN.NewTeam ("Selección Española", "Spain");
+                int selection1 = teamCEN.NewTeam ("Selección Española", "Spain", false);
                 TeamEN seleccion1 = teamCEN.GetTeamById (selection1);
                 Console.WriteLine ("New team: " + seleccion1.Name);
 
                 // Añadimos datos a Partidos
                 Console.WriteLine ("------------- Creating new Matches -------------");
                 MatchCEN match = new MatchCEN ();
-                int match1 = match.NewMatch (new DateTime (2017, 4, 2), team2, team1, "Camp Nou");
+                int match1 = match.NewMatch (new DateTime (2017, 4, 2), round1, team2, team1, "Camp Nou");
                 MatchEN partido1 = match.GetMatchById (match1);
                 Console.WriteLine ("New match in: " + partido1.Stadium);
-                int match2 = match.NewMatch (new DateTime (2017, 3, 17), team1, team3, "Juventus Stadium");
+                int match2 = match.NewMatch (new DateTime (2017, 3, 17), round1, team1, team3, "Juventus Stadium");
                 MatchEN partido2 = match.GetMatchById (match2);
                 Console.WriteLine ("New match in: " + partido2.Stadium);
-                int match3 = match.NewMatch (new DateTime (2017, 3, 30), team6, team7, "Palau");
+                int match3 = match.NewMatch (new DateTime (2017, 3, 30), round1, team6, team7, "Palau");
                 MatchEN partido3 = match.GetMatchById (match3);
                 Console.WriteLine ("New match in: " + partido2.Stadium);
 
@@ -238,19 +259,16 @@ public static void InitializeData ()
                 IList<MatchEN> total = match.GetTotalMatchesByTeam (team1);
                 Console.WriteLine ("Barcelona has played: " + total.Count + " matches");
 
-                Console.WriteLine ("--------------- Creating new Sport -------------");
-                SportCEN sport = new SportCEN ();
-                int newSport = sport.NewSport ("Football");
-                Console.WriteLine ("Football created");
-                int newSport2 = sport.NewSport ("Basketball");
-                Console.WriteLine ("Basketball created");
-
                 Console.WriteLine ("--------------- Creating new Competition -------------");
+                List<int> seasonsSantander = new List<int>();
+                seasonsSantander.Add (season1);
+                List<int> seasonsACB = new List<int>();
+                seasonsACB.Add (season2);
                 CompetitionCEN competi = new CompetitionCEN ();
-                int competition = competi.NewCompetition ("Santander League", newSport, "Spain");
+                int competition = competi.NewCompetition ("Santander League", newSport, "Spain", true, seasonsSantander);
                 Console.WriteLine ("Santander League created");
                 Console.WriteLine ("There are " + competi.GetCompetitionsByPlace ("Spain").Count + " competitions in Spain");
-                int competition2 = competi.NewCompetition ("ACB", newSport2, "Spain");
+                int competition2 = competi.NewCompetition ("ACB", newSport2, "Spain", true, seasonsACB);
 
                 Console.WriteLine ("Joining Barcelona-Madrid to Santander League");
                 Event_CEN evento = new Event_CEN ();
@@ -274,25 +292,29 @@ public static void InitializeData ()
 
                 Console.WriteLine ("--------------- Creating new Players -------------");
                 PlayerCEN playerCEN = new PlayerCEN ();
-                int player1 = playerCEN.NewPlayer ("Yoel Rodríguez");
+                int player1 = playerCEN.NewPlayer ("Yoel Rodríguez", newSport);
                 PlayerEN jugador1 = playerCEN.GetPlayerById (player1);
                 Console.WriteLine ("New player: " + jugador1.Name);
 
-                int player2 = playerCEN.NewPlayer ("Gonzalo Escalante");
+                int player2 = playerCEN.NewPlayer ("Gonzalo Escalante", newSport);
                 PlayerEN jugador2 = playerCEN.GetPlayerById (player2);
                 Console.WriteLine ("New player: " + jugador2.Name);
 
-                int player3 = playerCEN.NewPlayer ("Fran Rico");
+                int player3 = playerCEN.NewPlayer ("Fran Rico", newSport);
                 PlayerEN jugador3 = playerCEN.GetPlayerById (player3);
                 Console.WriteLine ("New player: " + jugador3.Name);
 
-                int player4 = playerCEN.NewPlayer ("Ander Herrera");
+                int player4 = playerCEN.NewPlayer ("Ander Herrera", newSport);
                 PlayerEN jugador4 = playerCEN.GetPlayerById (player4);
                 Console.WriteLine ("New player: " + jugador4.Name);
 
-                int player5 = playerCEN.NewPlayer ("Juan Mata");
+                int player5 = playerCEN.NewPlayer ("Juan Mata", newSport);
                 PlayerEN jugador5 = playerCEN.GetPlayerById (player5);
                 Console.WriteLine ("New player: " + jugador5.Name);
+
+                int player6 = playerCEN.NewPlayer ("Juan Carlos Navarro", newSport2);
+                PlayerEN jugador6 = playerCEN.GetPlayerById (player6);
+                Console.WriteLine ("New player: " + jugador6.Name);
 
                 Console.WriteLine ("--------------- Join Player with Teams -------------");
                 PlayerCAD playerCAD = new PlayerCAD ();
@@ -338,7 +360,7 @@ public static void InitializeData ()
                 PostCP postCP = new PostCP ();
                 ResultCEN resultCEN = new ResultCEN ();
                 Event_CEN eventCEN = new Event_CEN ();
-                int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0));
+                int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0), round1);
                 int pickId = resultCEN.NewResult (2, "Gana Local", PickResultEnum.unstarted, "Kirolbet", match1, ResultEnum.home, TimeEnum.fulltime);
                 List < int > picks_id = new List<int>();
                 picks_id.Add (pickId);
@@ -351,7 +373,7 @@ public static void InitializeData ()
                         Console.WriteLine ("- " + p.Description);
 
                 MatchCEN matchCEN = new MatchCEN ();
-                int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), team1, team5, "Camp Nou");
+                int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), round1, team1, team5, "Camp Nou");
                 eventCEN.JoinCompetition (id_match, competition);
 
                 CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();

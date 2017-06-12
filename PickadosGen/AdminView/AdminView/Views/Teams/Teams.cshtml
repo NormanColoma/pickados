@@ -1,0 +1,81 @@
+﻿<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Sports", "Sports", "Sports")</li>
+    <li>@Html.ActionLink((string)ViewBag.typeCompetition, "TypeCompetition", "TypeCompetition", new { idSport = ViewBag.sport.Id }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.sport.Name, "Country", "Country", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.country, "Competitions", "Competitions", new { countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.competition.Name, "Teams", "Teams", new { idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+</ul>
+
+<br />
+<div class="row">
+    <div class="col-xs-6 col-md-4">
+        <label>Add Team to Competition:</label>
+        @using (Html.BeginForm("AddTeamToCompetition", "Teams", routeValues: new { idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }))
+        {
+            <input type="text" id="txtTeam" name="TeamName" />
+            <input type="hidden" id="hfTeam" name="TeamId" />
+            <button type="submit">
+                <span class="fa fa-plus fa-fw"></span>
+            </button>
+            <br /><br />
+        }
+    </div>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.allTeams)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink((string)item.Name, "Players", "Players", new { idTeam = item.Id, idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Teams", new { idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, idTeam = item.Id, typeCompetition = ViewBag.typeCompetition })" class="fa fa-pencil fa-fw"></a>
+                <a href="@Url.Action("Unlink", "Teams", new { idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, idTeam = item.Id, typeCompetition = ViewBag.typeCompetition })" class="fa fa-times fa-fw"></a>
+            </td>
+        </tr>
+    }
+</table>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+      rel="Stylesheet" type="text/css" />
+<script type="text/javascript">
+        $(function () {
+            $("#txtTeam").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Teams/AutoComplete/',
+                        data: "{ 'prefix': '" + request.term + "', 'typeCompetition': '@ViewBag.typeCompetition'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#hfTeam").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+</script>

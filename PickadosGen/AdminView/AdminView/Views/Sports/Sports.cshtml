@@ -1,0 +1,26 @@
+﻿
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Sports", "Sports", "Sports")</li>
+</ul>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.allSports)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink((string)item.Name, "TypeCompetition", "TypeCompetition", new { idSport = item.Id }, null)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Sports", new { idSport=item.Id })" class="fa fa-pencil fa-fw"></a>
+            </td>
+        </tr>
+    }
+</table>
