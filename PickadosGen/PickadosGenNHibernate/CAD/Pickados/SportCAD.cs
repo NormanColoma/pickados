@@ -95,6 +95,9 @@ public void ModifyDefault (SportEN sport)
                 sportEN.Name = sport.Name;
 
 
+
+                sportEN.Image = sport.Image;
+
                 session.Update (sportEN);
                 SessionCommit ();
         }
@@ -148,6 +151,9 @@ public void ModifySport (SportEN sport)
                 SportEN sportEN = (SportEN)session.Load (typeof(SportEN), sport.Id);
 
                 sportEN.Name = sport.Name;
+
+
+                sportEN.Image = sport.Image;
 
                 session.Update (sportEN);
                 SessionCommit ();
