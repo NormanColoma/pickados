@@ -46,6 +46,7 @@ public static SportEN Convert (SportDTO dto)
                                         newinstance.Player.Add (playerCAD.ReadOIDDefault (entry));
                                 }
                         }
+                        newinstance.Image = dto.Image;
                 }
         }
         catch (Exception ex)

@@ -24,5 +24,10 @@ private System.Collections.Generic.IList<int> player_oid;
 public System.Collections.Generic.IList<int> Player_oid {
         get { return player_oid; } set { player_oid = value;  }
 }
+
+private string image;
+public string Image {
+        get { return image; } set { image = value;  }
+}
 }
 }

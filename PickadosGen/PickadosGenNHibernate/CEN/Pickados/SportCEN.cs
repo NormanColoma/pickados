@@ -38,7 +38,7 @@ public ISportCAD get_ISportCAD ()
         return this._ISportCAD;
 }
 
-public int NewSport (string p_name)
+public int NewSport (string p_name, string p_image)
 {
         SportEN sportEN = null;
         int oid;
@@ -47,13 +47,15 @@ public int NewSport (string p_name)
         sportEN = new SportEN ();
         sportEN.Name = p_name;
 
+        sportEN.Image = p_image;
+
         //Call to SportCAD
 
         oid = _ISportCAD.NewSport (sportEN);
         return oid;
 }
 
-public void ModifySport (int p_Sport_OID, string p_name)
+public void ModifySport (int p_Sport_OID, string p_name, string p_image)
 {
         SportEN sportEN = null;
 
@@ -61,6 +63,7 @@ public void ModifySport (int p_Sport_OID, string p_name)
         sportEN = new SportEN ();
         sportEN.Id = p_Sport_OID;
         sportEN.Name = p_name;
+        sportEN.Image = p_image;
         //Call to SportCAD
 
         _ISportCAD.ModifySport (sportEN);
