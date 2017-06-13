@@ -1,4 +1,10 @@
 ﻿@using Microsoft.AspNet.Identity
+
+<div id="botonera-idioma" class="col-md-2 btn-group">
+    <button id="btn-es" lang="es" class="btn btn-xs btn-default">Español</button>
+    <button id="btn-en" lang="en" class="btn btn-xs btn-default">English</button>
+</div>
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -14,3 +20,12 @@ else
         <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 }
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#botonera-idioma button").click(function () {
+        window.location = "@Url.Action("idioma", "Home")?lang=" + $(this).attr("lang") + "&returnUrl=" + document.location;
+    });
+  });
+</script>

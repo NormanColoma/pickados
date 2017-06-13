@@ -1,4 +1,6 @@
-﻿<ul class="nav nav-tabs">
+﻿@using AdminView.Resources
+
+<ul class="nav nav-tabs">
     <li>@Html.ActionLink("Sports", "Sports", "Sports")</li>
     <li>@Html.ActionLink((string)ViewBag.typeCompetition, "TypeCompetition", "TypeCompetition", new { idSport = ViewBag.sport.Id }, null)</li>
     <li>@Html.ActionLink((string)ViewBag.sport.Name, "Country", "Country", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
@@ -9,7 +11,7 @@
 <br />
 <div class="row">
     <div class="col-xs-6 col-md-4">
-        <label>Add Team to Competition:</label>
+        <label>@textos.AddTeamCompetition</label>
         @using (Html.BeginForm("AddTeamToCompetition", "Teams", routeValues: new { idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }))
         {
             <input type="text" id="txtTeam" name="TeamName" />

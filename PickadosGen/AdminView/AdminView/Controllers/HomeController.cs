@@ -16,5 +16,11 @@ namespace AdminView.Controllers
             }
             return View();
         }
+
+        public ActionResult idioma(string lang, string returnUrl)
+        {
+            Session["Cultura"] = new System.Globalization.CultureInfo(lang);
+            return RedirectToRoute("Login");
+        }
     }
 }
