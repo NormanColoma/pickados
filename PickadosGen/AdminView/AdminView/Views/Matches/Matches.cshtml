@@ -1,0 +1,15 @@
+﻿<table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.totalMatches)
+    {
+        <tr>
+            <td>
+                @item.Away.Name
+            </td>
+        </tr>
+    }
+</table>

@@ -25,7 +25,7 @@ string total = inicio + "/" + final;
     {
         <tr>
             <td>
-                @item.Id.ToString()
+                @Html.ActionLink((string)item.Name, "Matches", "Matches", new { idRound = item.Id, idSeason = ViewBag.season.Id, idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)
             </td>
         </tr>
     }

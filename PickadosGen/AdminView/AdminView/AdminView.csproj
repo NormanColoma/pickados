@@ -61,6 +61,7 @@
     <Compile Include="Controllers\CountryCalendarController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MatchesController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Controllers\RoundController.cs" />
@@ -213,6 +214,8 @@
     <Content Include="Views\CompetiCalendar\CompetiCalendar.cshtml" />
     <Content Include="Views\Seasons\Seasons.cshtml" />
     <Content Include="Views\Round\Round.cshtml" />
+    <Content Include="Views\Matches\getMatches.cshtml" />
+    <Content Include="Views\Matches\Matches.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
