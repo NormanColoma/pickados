@@ -1,0 +1,39 @@
+﻿@model PickadosGenNHibernate.EN.Pickados.MatchEN
+
+@using (Html.BeginForm("Edit", "Matches", routeValues: new { idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>MatchEN</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Stadium, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Stadium, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Stadium, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back", "Matches", "Matches", new { idRound = ViewBag.round, idSeason=ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }, null)
+</div>

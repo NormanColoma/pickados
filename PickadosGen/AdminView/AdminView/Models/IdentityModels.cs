@@ -37,5 +37,7 @@ namespace AdminView.Models
         public System.Data.Entity.DbSet<PickadosGenNHibernate.EN.Pickados.TeamEN> TeamEN { get; set; }
 
         public System.Data.Entity.DbSet<PickadosGenNHibernate.EN.Pickados.PlayerEN> PlayerENs { get; set; }
+
+        public System.Data.Entity.DbSet<PickadosGenNHibernate.EN.Pickados.MatchEN> Event_EN { get; set; }
     }
 }

@@ -126,6 +126,7 @@
 			
 			
 			
+			
 	<Compile Include="EN\Pickados\CompetitionEN.cs" />
 	<Compile Include="CEN\Pickados\CompetitionCEN.cs" />
 	<Compile Include="CAD\Pickados\ICompetitionCAD.cs" />

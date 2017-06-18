@@ -321,5 +321,36 @@ public void UnlinkCompetition (int p_Event_OID, int p_competition_OID)
                 SessionClose ();
         }
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> GetEventsByRoundAndCompetition (int id, int idComp)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM Event_EN self where select e FROM Event_EN as e INNER JOIN e.Round as r INNER JOIN e.Competition as c where r.Id = :id and c.Id = :idComp";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("Event_ENgetEventsByRoundAndCompetitionHQL");
+                query.SetParameter ("id", id);
+                query.SetParameter ("idComp", idComp);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.Event_EN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in Event_CAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

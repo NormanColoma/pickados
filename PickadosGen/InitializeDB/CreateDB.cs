@@ -181,7 +181,7 @@ public static void InitializeData ()
 
                 Console.WriteLine ("--------------- Creating new Sport -------------");
                 SportCEN sport = new SportCEN ();
-                int newSport = sport.NewSport("Football", "https://cdn0.iconfinder.com/data/icons/stroke-ball-icons-2/633/02_Soccer-512.png");
+                int newSport = sport.NewSport ("Football", "https://cdn0.iconfinder.com/data/icons/stroke-ball-icons-2/633/02_Soccer-512.png");
                 Console.WriteLine ("Football created");
                 int newSport2 = sport.NewSport ("Basketball", "https://images.vexels.com/media/users/3/129332/isolated/lists/b3f0ad2e079ac9027c5eb0a2d1c8549b-basketball-silhouette-icon.png");
                 Console.WriteLine ("Basketball created");
@@ -246,7 +246,7 @@ public static void InitializeData ()
                 Console.WriteLine ("New match in: " + partido2.Stadium);
                 int match3 = match.NewMatch (new DateTime (2017, 3, 30), round1, team6, team7, "Palau");
                 MatchEN partido3 = match.GetMatchById (match3);
-                Console.WriteLine ("New match in: " + partido2.Stadium);
+                Console.WriteLine ("New match in: " + partido3.Stadium);
 
                 Console.WriteLine ("Local and Visistant matches");
                 IList<MatchEN> totalMatch = match.GetMatchByLocalTeam (team1);
@@ -360,7 +360,7 @@ public static void InitializeData ()
                 PostCP postCP = new PostCP ();
                 ResultCEN resultCEN = new ResultCEN ();
                 Event_CEN eventCEN = new Event_CEN ();
-                int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0), round1);
+                //int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0), round1);
                 int pickId = resultCEN.NewResult (2, "Gana Local", PickResultEnum.unstarted, "Kirolbet", match1, ResultEnum.home, TimeEnum.fulltime);
                 List < int > picks_id = new List<int>();
                 picks_id.Add (pickId);

@@ -1,0 +1,51 @@
+﻿@helper TempName(string message, DateTime init, DateTime fin)
+{
+string inicio = init.Year.ToString();
+string final = fin.Year.ToString();
+string total = inicio + "/" + final;
+    @Html.Raw(message + total);
+}
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink("Calendar", "Calendar", "Calendar")</li>
+    <li>@Html.ActionLink((string)ViewBag.typeCompetition, "TypeCompetiCalendar", "TypeCompetiCalendar", new { idSport = ViewBag.sport.Id }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.sport.Name, "CountryCalendar", "CountryCalendar", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.country, "CompetiCalendar", "CompetiCalendar", new { countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.competition.Name, "Seasons", "Seasons", new { idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)@TempName(ViewBag.Message, ViewBag.season.InitDate, ViewBag.season.FinalDate).ToString(), "Round", "Round", new { idSeason = ViewBag.season.Id, idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+    <li>@Html.ActionLink((string)ViewBag.round.Name, "Matches", "Matches", new { idRound = ViewBag.round.Id, idSeason = ViewBag.season.Id, idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
+</ul>
+
+@foreach (var item in ViewBag.totalMatches)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-3 col-md-3 text-center">
+                                <strong>Local:</strong><br />
+                                @item.Home.Name
+                            </div>
+                            <div class="col-xs-5 col-md-5 text-center">
+                                <strong>Información:</strong>
+                                <strong>Estadio:</strong> @item.Stadium<br />
+                                <strong>Fecha:</strong><br />
+                                @item.Date <br />
+                                <strong>Estado:</strong> <br />
+                                Pendiente
+                            </div>
+                            <div class="col-xs-3 col-md-3 text-center">
+                                <strong>Visitante:</strong><br />
+                                @item.Away.Name
+                            </div>
+                        </div>
+                        <a href="@Url.Action("Edit", "Matches", new { idMatch = item.Id, idRound = ViewBag.round.Id, idSeason = ViewBag.season.Id, idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition })" class="fa fa-pencil fa-fw"></a>
+                        <!--<a href="http://www.jquery2dotnet.com/" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span> Website</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
