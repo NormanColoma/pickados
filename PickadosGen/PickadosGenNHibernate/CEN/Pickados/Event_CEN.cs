@@ -108,9 +108,9 @@ public void UnlinkCompetition (int p_Event_OID, int p_competition_OID)
 
         _IEvent_CAD.UnlinkCompetition (p_Event_OID, p_competition_OID);
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> GetEventsByRound (int id)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> GetEventsByRoundAndCompetition (int id, int idComp)
 {
-        return _IEvent_CAD.GetEventsByRound (id);
+        return _IEvent_CAD.GetEventsByRoundAndCompetition (id, idComp);
 }
 }
 }

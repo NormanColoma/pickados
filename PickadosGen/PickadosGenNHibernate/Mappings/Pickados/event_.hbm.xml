@@ -50,6 +50,6 @@
 		 </class>	
 		  
 		  <query name="Event_ENReadAllHQL">from Event_EN</query>
-		  <query name="Event_ENgetEventsByRoundHQL"><![CDATA[select e FROM Event_EN as e INNER JOIN e.Round as r where r.Id = :id]]></query>
+		  <query name="Event_ENgetEventsByRoundAndCompetitionHQL"><![CDATA[select e FROM Event_EN as e INNER JOIN e.Round as r INNER JOIN e.Competition as c where r.Id = :id and c.Id = :idComp]]></query>
 		</hibernate-mapping>
 	

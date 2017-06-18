@@ -41,6 +41,7 @@ string total = inicio + "/" + final;
                                 @item.Away.Name
                             </div>
                         </div>
+                        <a href="@Url.Action("Edit", "Matches", new { idMatch = item.Id, idRound = ViewBag.round.Id, idSeason = ViewBag.season.Id, idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition })" class="fa fa-pencil fa-fw"></a>
                         <!--<a href="http://www.jquery2dotnet.com/" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span> Website</a>-->
                     </div>
                 </div>

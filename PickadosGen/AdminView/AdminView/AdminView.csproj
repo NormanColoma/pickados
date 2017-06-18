@@ -216,6 +216,7 @@
     <Content Include="Views\Round\Round.cshtml" />
     <Content Include="Views\Matches\getMatches.cshtml" />
     <Content Include="Views\Matches\Matches.cshtml" />
+    <Content Include="Views\Matches\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

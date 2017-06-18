@@ -35,6 +35,6 @@ void JoinCompetition (int p_Event_OID, int p_competition_OID);
 
 void UnlinkCompetition (int p_Event_OID, int p_competition_OID);
 
-System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> GetEventsByRound (int id);
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Event_EN> GetEventsByRoundAndCompetition (int id, int idComp);
 }
 }
