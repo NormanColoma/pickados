@@ -65,5 +65,46 @@ namespace AdminView.Controllers
             matches.ModifyMatch(matchEdited.Id, matchEdited.Date, matchEdited.Stadium);
             return RedirectToAction("Matches", "Matches", new { idRound = idRound, idSeason = idSeason, idCompetition = idCompetition, countryName = countryName, idSport = idSport, typeCompetition = typeCompetition });
         }
+
+        public JsonResult AutoComplete(string prefix, string typeCompetition)
+        {
+            TeamCEN entities = new TeamCEN();
+            List<TeamEN> total = new List<TeamEN>();
+            if (typeCompetition.Equals("National"))
+            {
+                total = entities.GetNationalTeams().ToList();
+            }
+            else
+            {
+                total = entities.GetInternationalTeam().ToList();
+            }
+            var teams = (from team in total
+                         where team.Name.Contains(prefix)
+                         select new
+                         {
+                             label = team.Name,
+                             val = team.Id
+                         }).ToList();
+
+            return Json(teams);
+        }
+
+        [HttpPost]
+        public ActionResult AddLocalTeamToMatch(string teamNameLocal, string teamIdLocal, int idLocalTeam, int idMatch, int idRound, int idSeason, int idCompetition, string countryName, int idSport, string typeCompetition)
+        {
+            MatchCEN matches = new MatchCEN();
+            matches.UnjoinLocalTeamToMatch(idMatch, idLocalTeam);
+            matches.AddLocalTeamToMatch(idMatch, Convert.ToInt32(teamIdLocal));
+            return RedirectToAction("Matches", "Matches", new { idRound = idRound, idSeason = idSeason, idCompetition = idCompetition, countryName = countryName, idSport = idSport, typeCompetition = typeCompetition });
+        }
+
+        [HttpPost]
+        public ActionResult AddAwayTeamToMatch(string teamNameAway, string teamIdAway, int idAwayTeam, int idMatch, int idRound, int idSeason, int idCompetition, string countryName, int idSport, string typeCompetition)
+        {
+            MatchCEN matches = new MatchCEN();
+            matches.UnjoinAwayTeamToMatch(idMatch, idAwayTeam);
+            matches.AddAwayTeamToMatch(idMatch, Convert.ToInt32(teamIdAway));
+            return RedirectToAction("Matches", "Matches", new { idRound = idRound, idSeason = idSeason, idCompetition = idCompetition, countryName = countryName, idSport = idSport, typeCompetition = typeCompetition });
+        }
     }
 }

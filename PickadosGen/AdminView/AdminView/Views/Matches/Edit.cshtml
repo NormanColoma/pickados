@@ -31,9 +31,101 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
+
     </div>
 }
+
+<div class="col-xs-3 col-md-3 text-center">
+    <strong>Local:</strong><br />
+    @using (Html.BeginForm("AddLocalTeamToMatch", "Matches", routeValues: new { idLocalTeam = Model.Home.Id, idMatch = Model.Id, idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
+    {
+        <input type="text" id="txtTeamLocal" name="TeamNameLocal" value="@Model.Home.Name"/>
+            <input type="hidden" id="hfTeamLocal" name="TeamIdLocal" />
+            <button type="submit">
+                <span class="fa fa-plus fa-fw"></span>
+            </button>
+            <br /><br />
+    }
+</div>
+<div class="col-xs-3 col-md-3 text-center">
+    <strong>Visitante:</strong><br />
+    @using (Html.BeginForm("AddAwayTeamToMatch", "Matches", routeValues: new { idAwayTeam = Model.Away.Id, idMatch = Model.Id, idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
+    {
+        <input type="text" id="txtTeamAway" name="TeamNameAway" value="@Model.Away.Name"/>
+        <input type="hidden" id="hfTeamAway" name="TeamIdAway" />
+            <button type="submit">
+                <span class="fa fa-plus fa-fw"></span>
+            </button>
+            <br /><br />
+    }
+</div>
+<br />
 
 <div>
     @Html.ActionLink("Back", "Matches", "Matches", new { idRound = ViewBag.round, idSeason=ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }, null)
 </div>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+      rel="Stylesheet" type="text/css" />
+<script type="text/javascript">
+        $(function () {
+            $("#txtTeamLocal").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Teams/AutoComplete/',
+                        data: "{ 'prefix': '" + request.term + "', 'typeCompetition': '@ViewBag.typeCompetition'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#hfTeamLocal").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+
+    $(function () {
+        $("#txtTeamAway").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/Teams/AutoComplete/',
+                    data: "{ 'prefix': '" + request.term + "', 'typeCompetition': '@ViewBag.typeCompetition'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return item;
+                        }))
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            },
+            select: function (e, i) {
+                $("#hfTeamAway").val(i.item.val);
+            },
+            minLength: 1
+        });
+    });
+</script>
+

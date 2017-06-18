@@ -372,5 +372,129 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchE
 
         return result;
 }
+public void AddLocalTeamToMatch (int p_Match_OID, int p_home_OID)
+{
+        PickadosGenNHibernate.EN.Pickados.MatchEN matchEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                matchEN = (MatchEN)session.Load (typeof(MatchEN), p_Match_OID);
+                matchEN.Home = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), p_home_OID);
+
+                matchEN.Home.Event_home.Add (matchEN);
+
+
+
+                session.Update (matchEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void UnjoinLocalTeamToMatch (int p_Match_OID, int p_home_OID)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                PickadosGenNHibernate.EN.Pickados.MatchEN matchEN = null;
+                matchEN = (MatchEN)session.Load (typeof(MatchEN), p_Match_OID);
+
+                if (matchEN.Home.Id == p_home_OID) {
+                        matchEN.Home = null;
+                }
+                else
+                        throw new ModelException ("The identifier " + p_home_OID + " in p_home_OID you are trying to unrelationer, doesn't exist in MatchEN");
+
+                session.Update (matchEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void AddAwayTeamToMatch (int p_Match_OID, int p_away_OID)
+{
+        PickadosGenNHibernate.EN.Pickados.MatchEN matchEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                matchEN = (MatchEN)session.Load (typeof(MatchEN), p_Match_OID);
+                matchEN.Away = (PickadosGenNHibernate.EN.Pickados.TeamEN)session.Load (typeof(PickadosGenNHibernate.EN.Pickados.TeamEN), p_away_OID);
+
+                matchEN.Away.Event_away.Add (matchEN);
+
+
+
+                session.Update (matchEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void UnjoinAwayTeamToMatch (int p_Match_OID, int p_away_OID)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                PickadosGenNHibernate.EN.Pickados.MatchEN matchEN = null;
+                matchEN = (MatchEN)session.Load (typeof(MatchEN), p_Match_OID);
+
+                if (matchEN.Away.Id == p_away_OID) {
+                        matchEN.Away = null;
+                }
+                else
+                        throw new ModelException ("The identifier " + p_away_OID + " in p_away_OID you are trying to unrelationer, doesn't exist in MatchEN");
+
+                session.Update (matchEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in MatchCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

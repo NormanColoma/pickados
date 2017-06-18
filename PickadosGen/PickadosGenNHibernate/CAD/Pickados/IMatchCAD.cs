@@ -39,5 +39,14 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetM
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchEN> GetMatchByVisistantTeam (int id);
+
+
+void AddLocalTeamToMatch (int p_Match_OID, int p_home_OID);
+
+void UnjoinLocalTeamToMatch (int p_Match_OID, int p_home_OID);
+
+void AddAwayTeamToMatch (int p_Match_OID, int p_away_OID);
+
+void UnjoinAwayTeamToMatch (int p_Match_OID, int p_away_OID);
 }
 }

@@ -338,6 +338,10 @@
 			
 			
 			
+			
+			
+			
+			
 	<Compile Include="EN\Pickados\ScorerEN.cs" />
 	<Compile Include="CEN\Pickados\ScorerCEN.cs" />
 	<Compile Include="CAD\Pickados\IScorerCAD.cs" />
