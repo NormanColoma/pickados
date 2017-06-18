@@ -1,4 +1,6 @@
-﻿@helper TempName(string message, DateTime init, DateTime fin)
+﻿@using AdminView.Resources
+
+@helper TempName(string message, DateTime init, DateTime fin)
 {
 string inicio = init.Year.ToString();
 string final = fin.Year.ToString();
@@ -7,7 +9,7 @@ string total = inicio + "/" + final;
 }
 
 <ul class="nav nav-tabs">
-    <li>@Html.ActionLink("Calendar", "Calendar", "Calendar")</li>
+    <li>@Html.ActionLink(@textos.Calendar, "Calendar", "Calendar")</li>
     <li>@Html.ActionLink((string)ViewBag.typeCompetition, "TypeCompetiCalendar", "TypeCompetiCalendar", new { idSport = ViewBag.sport.Id }, null)</li>
     <li>@Html.ActionLink((string)ViewBag.sport.Name, "CountryCalendar", "CountryCalendar", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
     <li>@Html.ActionLink((string)ViewBag.country, "CompetiCalendar", "CompetiCalendar", new { countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
@@ -18,7 +20,7 @@ string total = inicio + "/" + final;
 <table class="table table-striped">
     <tr>
         <th>
-            Name
+            @textos.Name
         </th>
     </tr>
     @foreach (var item in ViewBag.allRounds)

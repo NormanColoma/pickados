@@ -117,7 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="AddPlayerToTeam" xml:space="preserve">
+    <value>Add Player to Team</value>
+  </data>
   <data name="AddTeamCompetition" xml:space="preserve">
     <value>Add Team to Competition</value>
+  </data>
+  <data name="AdminPanel" xml:space="preserve">
+    <value>Admin Panel</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+  <data name="Hi" xml:space="preserve">
+    <value>Hello </value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information:</value>
+  </data>
+  <data name="International" xml:space="preserve">
+    <value>International</value>
+  </data>
+  <data name="Local" xml:space="preserve">
+    <value>Local:</value>
+  </data>
+  <data name="LocalAccount" xml:space="preserve">
+    <value>Use a local account to login</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Match" xml:space="preserve">
+    <value>Match</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="National" xml:space="preserve">
+    <value>National</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Sports</value>
+  </data>
+  <data name="Stadium" xml:space="preserve">
+    <value>Stadium:</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State:</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Visitor" xml:space="preserve">
+    <value>Visitor:</value>
   </data>
 </root>

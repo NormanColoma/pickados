@@ -117,7 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Actions" xml:space="preserve">
+    <value>Acciones</value>
+  </data>
+  <data name="AddPlayerToTeam" xml:space="preserve">
+    <value>Añadir Jugador al Equipo</value>
+  </data>
   <data name="AddTeamCompetition" xml:space="preserve">
     <value>Agregar equipo a Competición</value>
+  </data>
+  <data name="AdminPanel" xml:space="preserve">
+    <value>Panel de Administración</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Atrás</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha:</value>
+  </data>
+  <data name="Hi" xml:space="preserve">
+    <value>Hola </value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Información:</value>
+  </data>
+  <data name="International" xml:space="preserve">
+    <value>Internacional</value>
+  </data>
+  <data name="Local" xml:space="preserve">
+    <value>Local:</value>
+  </data>
+  <data name="LocalAccount" xml:space="preserve">
+    <value>Usa una cuenta local para inciar sesión</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Match" xml:space="preserve">
+    <value>Partido</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="National" xml:space="preserve">
+    <value>Nacional</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Deportes</value>
+  </data>
+  <data name="Stadium" xml:space="preserve">
+    <value>Estadio:</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Estado:</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Visitor" xml:space="preserve">
+    <value>Visitante:</value>
   </data>
 </root>

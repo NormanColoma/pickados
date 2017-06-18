@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using AdminView.Resources
+
+@using Microsoft.AspNet.Identity
 
 <div id="botonera-idioma" class="col-md-2 btn-group">
     <button id="btn-es" lang="es" class="btn btn-xs btn-default">Español</button>
@@ -10,15 +12,15 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         <li>
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(@textos.Hi + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
     }
 }
 else
 {
-        <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <!--<li>@*Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@</li>-->
+        <li>@Html.ActionLink(@textos.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 }
 
 

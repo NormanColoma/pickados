@@ -1,18 +1,19 @@
-﻿
+﻿@using AdminView.Resources
+
 <ul class="nav nav-tabs">
-    <li>@Html.ActionLink("Sports", "Sports", "Sports")</li>
+    <li>@Html.ActionLink(@textos.Sport, "Sports", "Sports")</li>
 </ul>
 
 <table class="table table-striped">
     <tr>
         <th>
-            Name
+            @textos.Name
         </th>
         <th>
-            Image
+            @textos.Image
         </th>
         <th>
-            Actions
+            @textos.Actions
         </th>
     </tr>
     @foreach (var item in ViewBag.allSports)

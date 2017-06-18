@@ -1,4 +1,6 @@
-﻿@helper TempName(string message, DateTime init, DateTime fin)
+﻿@using AdminView.Resources
+
+@helper TempName(string message, DateTime init, DateTime fin)
 {
 string inicio = init.Year.ToString();
 string final = fin.Year.ToString();
@@ -7,7 +9,7 @@ string total = inicio + "/" + final;
 }
 
 <ul class="nav nav-tabs">
-    <li>@Html.ActionLink("Calendar", "Calendar", "Calendar")</li>
+    <li>@Html.ActionLink(@textos.Calendar, "Calendar", "Calendar")</li>
     <li>@Html.ActionLink((string)ViewBag.typeCompetition, "TypeCompetiCalendar", "TypeCompetiCalendar", new { idSport = ViewBag.sport.Id }, null)</li>
     <li>@Html.ActionLink((string)ViewBag.sport.Name, "CountryCalendar", "CountryCalendar", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
     <li>@Html.ActionLink((string)ViewBag.country, "CompetiCalendar", "CompetiCalendar", new { countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
@@ -25,19 +27,19 @@ string total = inicio + "/" + final;
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-3 col-md-3 text-center">
-                                <strong>Local:</strong><br />
+                                <strong>@textos.Local</strong><br />
                                 @item.Home.Name
                             </div>
                             <div class="col-xs-5 col-md-5 text-center">
-                                <strong>Información:</strong>
-                                <strong>Estadio:</strong> @item.Stadium<br />
-                                <strong>Fecha:</strong><br />
+                                <strong>@textos.Information</strong><br />
+                                <strong>@textos.Stadium</strong> @item.Stadium<br />
+                                <strong>@textos.Date</strong><br />
                                 @item.Date <br />
-                                <strong>Estado:</strong> <br />
+                                <strong>@textos.State</strong> <br />
                                 Pendiente
                             </div>
                             <div class="col-xs-3 col-md-3 text-center">
-                                <strong>Visitante:</strong><br />
+                                <strong>@textos.Visitor</strong><br />
                                 @item.Away.Name
                             </div>
                         </div>
