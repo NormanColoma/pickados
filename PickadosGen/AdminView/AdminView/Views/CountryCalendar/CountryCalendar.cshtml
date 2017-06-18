@@ -1,5 +1,7 @@
-﻿<ul class="nav nav-tabs">
-    <li>@Html.ActionLink("Calendar", "Calendar", "Calendar")</li>
+﻿@using AdminView.Resources
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(@textos.Calendar, "Calendar", "Calendar")</li>
     <li>@Html.ActionLink((string)ViewBag.sport.Name, "TypeCompetiCalendar", "TypeCompetiCalendar", new { idSport = ViewBag.sport.Id }, null)</li>
     <li>@Html.ActionLink((string)ViewBag.typeCompetition, "CountryCalendar", "CountryCalendar", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
 </ul>
@@ -7,7 +9,7 @@
 <table class="table table-striped">
     <tr>
         <th>
-            Name
+            @textos.Name
         </th>
     </tr>
     @foreach (var item in ViewBag.allCountries)

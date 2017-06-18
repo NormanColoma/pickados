@@ -1,11 +1,13 @@
-﻿@model PickadosGenNHibernate.EN.Pickados.MatchEN
+﻿@using AdminView.Resources
+
+@model PickadosGenNHibernate.EN.Pickados.MatchEN
 
 @using (Html.BeginForm("Edit", "Matches", routeValues: new { idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>MatchEN</h4>
+        <h4>@textos.Match</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -28,7 +30,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value=@textos.Save class="btn btn-default" />
             </div>
         </div>
 
@@ -36,7 +38,7 @@
 }
 
 <div class="col-xs-3 col-md-3 text-center">
-    <strong>Local:</strong><br />
+    <strong>@textos.Local</strong><br />
     @using (Html.BeginForm("AddLocalTeamToMatch", "Matches", routeValues: new { idLocalTeam = Model.Home.Id, idMatch = Model.Id, idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
     {
         <input type="text" id="txtTeamLocal" name="TeamNameLocal" value="@Model.Home.Name"/>
@@ -48,7 +50,7 @@
     }
 </div>
 <div class="col-xs-3 col-md-3 text-center">
-    <strong>Visitante:</strong><br />
+    <strong>@textos.Visitor</strong><br />
     @using (Html.BeginForm("AddAwayTeamToMatch", "Matches", routeValues: new { idAwayTeam = Model.Away.Id, idMatch = Model.Id, idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
     {
         <input type="text" id="txtTeamAway" name="TeamNameAway" value="@Model.Away.Name"/>
@@ -58,11 +60,10 @@
             </button>
             <br /><br />
     }
-</div>
-<br />
+</div><br /><br /><br /><br />
 
 <div>
-    @Html.ActionLink("Back", "Matches", "Matches", new { idRound = ViewBag.round, idSeason=ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }, null)
+    @Html.ActionLink(@textos.Back, "Matches", "Matches", new { idRound = ViewBag.round, idSeason=ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }, null)
 </div>
 
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>

@@ -1,11 +1,14 @@
-﻿<ul class="nav nav-tabs">
-    <li>@Html.ActionLink("Calendar", "Calendar", "Calendar")</li>
+﻿@using AdminView.Resources
+
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(@textos.Calendar, "Calendar", "Calendar")</li>
 </ul>
 
 <table class="table table-striped">
     <tr>
         <th>
-            Name
+            @textos.Name
         </th>
     </tr>
     @foreach (var item in ViewBag.allSports)
