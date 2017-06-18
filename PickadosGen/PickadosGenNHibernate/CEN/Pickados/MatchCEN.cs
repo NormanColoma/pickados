@@ -127,5 +127,29 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.MatchE
 {
         return _IMatchCAD.GetMatchByVisistantTeam (id);
 }
+public void AddLocalTeamToMatch (int p_Match_OID, int p_home_OID)
+{
+        //Call to MatchCAD
+
+        _IMatchCAD.AddLocalTeamToMatch (p_Match_OID, p_home_OID);
+}
+public void UnjoinLocalTeamToMatch (int p_Match_OID, int p_home_OID)
+{
+        //Call to MatchCAD
+
+        _IMatchCAD.UnjoinLocalTeamToMatch (p_Match_OID, p_home_OID);
+}
+public void AddAwayTeamToMatch (int p_Match_OID, int p_away_OID)
+{
+        //Call to MatchCAD
+
+        _IMatchCAD.AddAwayTeamToMatch (p_Match_OID, p_away_OID);
+}
+public void UnjoinAwayTeamToMatch (int p_Match_OID, int p_away_OID)
+{
+        //Call to MatchCAD
+
+        _IMatchCAD.UnjoinAwayTeamToMatch (p_Match_OID, p_away_OID);
+}
 }
 }

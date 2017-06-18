@@ -28,7 +28,7 @@
 											 					
 			
 		  			
-						<many-to-one name="Home" class="PickadosGenNHibernate.EN.Pickados.TeamEN" lazy ="false">	
+						<many-to-one name="Home" class="PickadosGenNHibernate.EN.Pickados.TeamEN"  lazy="false">	
 								<column name="FK_id_idLocal"/> 
 						</many-to-one>
 											 					
