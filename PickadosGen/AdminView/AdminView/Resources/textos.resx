@@ -135,6 +135,9 @@
   <data name="Calendar" xml:space="preserve">
     <value>Calendario</value>
   </data>
+  <data name="Created_at" xml:space="preserve">
+    <value>Creado el</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Fecha:</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="International" xml:space="preserve">
     <value>Internacional</value>
+  </data>
+  <data name="Likes" xml:space="preserve">
+    <value>Me gusta</value>
   </data>
   <data name="Local" xml:space="preserve">
     <value>Local:</value>
@@ -168,6 +174,18 @@
   <data name="National" xml:space="preserve">
     <value>Nacional</value>
   </data>
+  <data name="Pick" xml:space="preserve">
+    <value>Apuesta</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Publicación</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Publicaciones</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Denuncias</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Guardar</value>
   </data>
@@ -177,11 +195,20 @@
   <data name="Stadium" xml:space="preserve">
     <value>Estadio:</value>
   </data>
+  <data name="Stake" xml:space="preserve">
+    <value>Inversión</value>
+  </data>
   <data name="State" xml:space="preserve">
     <value>Estado:</value>
   </data>
+  <data name="Total_odd" xml:space="preserve">
+    <value>Cuota final</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>Tipo</value>
+  </data>
+  <data name="Updated_at" xml:space="preserve">
+    <value>Última actualización</value>
   </data>
   <data name="Visitor" xml:space="preserve">
     <value>Visitante:</value>

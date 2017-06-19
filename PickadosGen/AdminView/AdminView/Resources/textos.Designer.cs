@@ -115,6 +115,15 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Creado el.
+        /// </summary>
+        public static string Created_at {
+            get {
+                return ResourceManager.GetString("Created_at", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Fecha:.
         /// </summary>
         public static string Date {
@@ -156,6 +165,15 @@ namespace AdminView.Resources {
         public static string International {
             get {
                 return ResourceManager.GetString("International", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Me gusta.
+        /// </summary>
+        public static string Likes {
+            get {
+                return ResourceManager.GetString("Likes", resourceCulture);
             }
         }
         
@@ -214,6 +232,42 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Apuesta.
+        /// </summary>
+        public static string Pick {
+            get {
+                return ResourceManager.GetString("Pick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Publicación.
+        /// </summary>
+        public static string Post {
+            get {
+                return ResourceManager.GetString("Post", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Publicaciones.
+        /// </summary>
+        public static string Posts {
+            get {
+                return ResourceManager.GetString("Posts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Denuncias.
+        /// </summary>
+        public static string Reports {
+            get {
+                return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Guardar.
         /// </summary>
         public static string Save {
@@ -241,6 +295,15 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Inversión.
+        /// </summary>
+        public static string Stake {
+            get {
+                return ResourceManager.GetString("Stake", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Estado:.
         /// </summary>
         public static string State {
@@ -250,11 +313,29 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cuota final.
+        /// </summary>
+        public static string Total_odd {
+            get {
+                return ResourceManager.GetString("Total_odd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Tipo.
         /// </summary>
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Última actualización.
+        /// </summary>
+        public static string Updated_at {
+            get {
+                return ResourceManager.GetString("Updated_at", resourceCulture);
             }
         }
         

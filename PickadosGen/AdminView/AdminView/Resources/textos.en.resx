@@ -135,6 +135,9 @@
   <data name="Calendar" xml:space="preserve">
     <value>Calendar</value>
   </data>
+  <data name="Created_at" xml:space="preserve">
+    <value>Created at</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date:</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="International" xml:space="preserve">
     <value>International</value>
+  </data>
+  <data name="Likes" xml:space="preserve">
+    <value>Likes</value>
   </data>
   <data name="Local" xml:space="preserve">
     <value>Local:</value>
@@ -168,6 +174,18 @@
   <data name="National" xml:space="preserve">
     <value>National</value>
   </data>
+  <data name="Pick" xml:space="preserve">
+    <value>Pick</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -177,11 +195,20 @@
   <data name="Stadium" xml:space="preserve">
     <value>Stadium:</value>
   </data>
+  <data name="Stake" xml:space="preserve">
+    <value>Stake</value>
+  </data>
   <data name="State" xml:space="preserve">
     <value>State:</value>
   </data>
+  <data name="Total_odd" xml:space="preserve">
+    <value>Total odd</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Updated_at" xml:space="preserve">
+    <value>Updated at</value>
   </data>
   <data name="Visitor" xml:space="preserve">
     <value>Visitor:</value>
