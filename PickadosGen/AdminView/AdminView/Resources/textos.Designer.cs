@@ -97,11 +97,38 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Asian.
+        /// </summary>
+        public static string Asian {
+            get {
+                return ResourceManager.GetString("Asian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Marcador visitante.
+        /// </summary>
+        public static string Away_score {
+            get {
+                return ResourceManager.GetString("Away_score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Atrás.
         /// </summary>
         public static string Back {
             get {
                 return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Corredor de apuestas.
+        /// </summary>
+        public static string Bookie {
+            get {
+                return ResourceManager.GetString("Bookie", resourceCulture);
             }
         }
         
@@ -133,11 +160,47 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Descripción.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Correo electrónico.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Handicap.
+        /// </summary>
+        public static string Handicap_result {
+            get {
+                return ResourceManager.GetString("Handicap_result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Hola .
         /// </summary>
         public static string Hi {
             get {
                 return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Marcador de casa.
+        /// </summary>
+        public static string Home_score {
+            get {
+                return ResourceManager.GetString("Home_score", resourceCulture);
             }
         }
         
@@ -178,6 +241,15 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Linea.
+        /// </summary>
+        public static string Line {
+            get {
+                return ResourceManager.GetString("Line", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Local:.
         /// </summary>
         public static string Local {
@@ -192,6 +264,15 @@ namespace AdminView.Resources {
         public static string LocalAccount {
             get {
                 return ResourceManager.GetString("LocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bloqueado.
+        /// </summary>
+        public static string Locked {
+            get {
+                return ResourceManager.GetString("Locked", resourceCulture);
             }
         }
         
@@ -214,6 +295,15 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Minuto de juego.
+        /// </summary>
+        public static string Match_time {
+            get {
+                return ResourceManager.GetString("Match_time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nombre.
         /// </summary>
         public static string Name {
@@ -228,6 +318,15 @@ namespace AdminView.Resources {
         public static string National {
             get {
                 return ResourceManager.GetString("National", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cuota final.
+        /// </summary>
+        public static string Odd {
+            get {
+                return ResourceManager.GetString("Odd", resourceCulture);
             }
         }
         
@@ -259,6 +358,24 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Privado.
+        /// </summary>
+        public static string Private {
+            get {
+                return ResourceManager.GetString("Private", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cantidad.
+        /// </summary>
+        public static string Quantity {
+            get {
+                return ResourceManager.GetString("Quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Denuncias.
         /// </summary>
         public static string Reports {
@@ -268,11 +385,56 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Peticiones.
+        /// </summary>
+        public static string Request {
+            get {
+                return ResourceManager.GetString("Request", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Resultado.
+        /// </summary>
+        public static string Result {
+            get {
+                return ResourceManager.GetString("Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Guardar.
         /// </summary>
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tiempo de gol.
+        /// </summary>
+        public static string Score_time {
+            get {
+                return ResourceManager.GetString("Score_time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nombre del goleador.
+        /// </summary>
+        public static string Scorer_name {
+            get {
+                return ResourceManager.GetString("Scorer_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Goleador.
+        /// </summary>
+        public static string Scorer_player {
+            get {
+                return ResourceManager.GetString("Scorer_player", resourceCulture);
             }
         }
         
@@ -295,7 +457,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Inversión.
+        ///   Busca una cadena traducida similar a Apuesta.
         /// </summary>
         public static string Stake {
             get {
@@ -313,11 +475,29 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cuota final.
+        ///   Busca una cadena traducida similar a Cuota de suscripción.
         /// </summary>
-        public static string Total_odd {
+        public static string Subscription_fee {
             get {
-                return ResourceManager.GetString("Total_odd", resourceCulture);
+                return ResourceManager.GetString("Subscription_fee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nombre del equipo.
+        /// </summary>
+        public static string Team_name {
+            get {
+                return ResourceManager.GetString("Team_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Apostante.
+        /// </summary>
+        public static string Tipster {
+            get {
+                return ResourceManager.GetString("Tipster", resourceCulture);
             }
         }
         

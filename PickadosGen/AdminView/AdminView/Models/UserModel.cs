@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdminView.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace AdminView.Models
@@ -18,15 +19,15 @@ namespace AdminView.Models
         public string Alias { get; set; }
 
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Email", ResourceType = typeof(textos))]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Display(Name = "Created at...")]
+        [Display(Name = "Created_at", ResourceType = typeof(textos))]
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Created_at { get; set; }
 
-        [Display(Name = "Updated at...")]
+        [Display(Name = "Updated_at", ResourceType = typeof(textos))]
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Updated_at { get; set; }
 
@@ -38,11 +39,11 @@ namespace AdminView.Models
         [Display(Name = "Is premium")]
         public bool Tipsterp { get; set; }
 
-        [Display(Name = "Subscription fee")]
+        [Display(Name = "Subscription_fee", ResourceType = typeof(textos))]
         [DataType(DataType.Currency)]
         public double Subscription_fee { get; set; }
 
-        [Display(Name = "Is locked")]
+        [Display(Name = "Locked", ResourceType = typeof(textos))]
         public bool Locked { get; set; }
     }
 }

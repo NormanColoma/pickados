@@ -129,8 +129,14 @@
   <data name="AdminPanel" xml:space="preserve">
     <value>Panel de Administración</value>
   </data>
+  <data name="Away_score" xml:space="preserve">
+    <value>Marcador visitante</value>
+  </data>
   <data name="Back" xml:space="preserve">
     <value>Atrás</value>
+  </data>
+  <data name="Bookie" xml:space="preserve">
+    <value>Corredor de apuestas</value>
   </data>
   <data name="Calendar" xml:space="preserve">
     <value>Calendario</value>
@@ -141,8 +147,17 @@
   <data name="Date" xml:space="preserve">
     <value>Fecha:</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Handicap_result" xml:space="preserve">
+    <value>Handicap</value>
+  </data>
   <data name="Hi" xml:space="preserve">
     <value>Hola </value>
+  </data>
+  <data name="Home_score" xml:space="preserve">
+    <value>Marcador de casa</value>
   </data>
   <data name="Image" xml:space="preserve">
     <value>Imagen</value>
@@ -156,6 +171,9 @@
   <data name="Likes" xml:space="preserve">
     <value>Me gusta</value>
   </data>
+  <data name="Line" xml:space="preserve">
+    <value>Linea</value>
+  </data>
   <data name="Local" xml:space="preserve">
     <value>Local:</value>
   </data>
@@ -168,11 +186,17 @@
   <data name="Match" xml:space="preserve">
     <value>Partido</value>
   </data>
+  <data name="Match_time" xml:space="preserve">
+    <value>Minuto de juego</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
   </data>
   <data name="National" xml:space="preserve">
     <value>Nacional</value>
+  </data>
+  <data name="Odd" xml:space="preserve">
+    <value>Cuota final</value>
   </data>
   <data name="Pick" xml:space="preserve">
     <value>Apuesta</value>
@@ -183,11 +207,32 @@
   <data name="Posts" xml:space="preserve">
     <value>Publicaciones</value>
   </data>
+  <data name="Private" xml:space="preserve">
+    <value>Privado</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
   <data name="Reports" xml:space="preserve">
     <value>Denuncias</value>
   </data>
+  <data name="Request" xml:space="preserve">
+    <value>Peticiones</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Resultado</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Guardar</value>
+  </data>
+  <data name="Scorer_name" xml:space="preserve">
+    <value>Nombre del goleador</value>
+  </data>
+  <data name="Scorer_player" xml:space="preserve">
+    <value>Goleador</value>
+  </data>
+  <data name="Score_time" xml:space="preserve">
+    <value>Tiempo de gol</value>
   </data>
   <data name="Sport" xml:space="preserve">
     <value>Deportes</value>
@@ -196,13 +241,16 @@
     <value>Estadio:</value>
   </data>
   <data name="Stake" xml:space="preserve">
-    <value>Inversión</value>
+    <value>Apuesta</value>
   </data>
   <data name="State" xml:space="preserve">
     <value>Estado:</value>
   </data>
-  <data name="Total_odd" xml:space="preserve">
-    <value>Cuota final</value>
+  <data name="Team_name" xml:space="preserve">
+    <value>Nombre del equipo</value>
+  </data>
+  <data name="Tipster" xml:space="preserve">
+    <value>Apostante</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tipo</value>
@@ -212,5 +260,17 @@
   </data>
   <data name="Visitor" xml:space="preserve">
     <value>Visitante:</value>
+  </data>
+  <data name="Asian" xml:space="preserve">
+    <value>Asian</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Bloqueado</value>
+  </data>
+  <data name="Subscription_fee" xml:space="preserve">
+    <value>Cuota de suscripción</value>
   </data>
 </root>

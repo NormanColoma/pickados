@@ -52,8 +52,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Assemblers\AssemblerStatsLogin.cs" />
-    <Compile Include="Assemblers\AssemblerUser.cs" />
+    <Compile Include="Assemblers\PickAssembler.cs" />
+    <Compile Include="Assemblers\PostAssembler.cs" />
+    <Compile Include="Assemblers\UserAssembler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\CompetiCalendarController.cs" />
@@ -77,8 +78,10 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PickModel.cs" />
+    <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\StatsLoginModel.cs" />
-    <Compile Include="Models\UserViewModels.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="App_Resources\properties_spa.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -217,6 +220,10 @@
     <Content Include="Views\Matches\getMatches.cshtml" />
     <Content Include="Views\Matches\Matches.cshtml" />
     <Content Include="Views\Matches\Edit.cshtml" />
+    <Content Include="Views\Stats\picks\_PickDetalles.cshtml" />
+    <Content Include="Views\Stats\Post.cshtml" />
+    <Content Include="Views\Stats\PostDetalles.cshtml" />
+    <Content Include="Views\Stats\posts\_PostDetalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
