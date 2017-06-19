@@ -1,0 +1,13 @@
+﻿<div>
+    <h4>Información del post</h4>
+    <hr />
+    @{Html.RenderAction("_PostDetalles", "Stat");}
+
+    <h5>Información de la apuesta</h5>
+    <hr />
+
+    @{Html.RenderAction("_PickDetalles", "Stat", new { picks = Model.Picks });}
+</div>
+<p>
+    @Html.ActionLink("<< Ver todos", "Post")
+</p>

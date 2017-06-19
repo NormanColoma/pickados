@@ -38,6 +38,10 @@ namespace AdminView
             bundles.Add(new ScriptBundle("~/bundles/edituser").Include(
                       "~/Scripts/functions/functions_edituser.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/posts").Include(
+                      "~/Scripts/functions/funtions_posts.js",
+                      "~/Scripts/jquery/jquery.tablesorter.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/sb-admin-2.css",
