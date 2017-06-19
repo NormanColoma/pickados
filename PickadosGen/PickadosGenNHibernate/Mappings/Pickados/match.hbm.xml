@@ -22,13 +22,13 @@
 			
 			
 		  			
-						<many-to-one name="Away" class="PickadosGenNHibernate.EN.Pickados.TeamEN" lazy ="false">	
+						<many-to-one name="Away" class="PickadosGenNHibernate.EN.Pickados.TeamEN" >	
 								<column name="FK_id_idAway"/> 
 						</many-to-one>
 											 					
 			
 		  			
-						<many-to-one name="Home" class="PickadosGenNHibernate.EN.Pickados.TeamEN"  lazy="false">	
+						<many-to-one name="Home" class="PickadosGenNHibernate.EN.Pickados.TeamEN" >	
 								<column name="FK_id_idLocal"/> 
 						</many-to-one>
 											 					

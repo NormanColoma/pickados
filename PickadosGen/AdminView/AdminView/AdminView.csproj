@@ -227,6 +227,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\flags\1x1\" />
+    <Folder Include="Content\flags\4x3\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />

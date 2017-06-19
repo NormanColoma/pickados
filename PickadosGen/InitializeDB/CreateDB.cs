@@ -23,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -386,32 +386,32 @@ public static void InitializeData ()
                 int id_post_1 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido",
                         false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
 
-                int id_post_2 = postCEN.NewPost(new DateTime(2017, 2, 18), new DateTime(2017, 2, 18), 1, "Va a ser un partido sufrido 2",
+                int id_post_2 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido 2",
                         false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
 
-                int id_post_3 = postCEN.NewPost(new DateTime(2017, 2, 25), new DateTime(2017, 2, 25), 1, "Va a ser un partido sufrido 3",
+                int id_post_3 = postCEN.NewPost (new DateTime (2017, 2, 25), new DateTime (2017, 2, 25), 1, "Va a ser un partido sufrido 3",
                         false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
 
-                int id_post_4 = postCEN.NewPost(new DateTime(2017, 2, 28), new DateTime(2017, 2, 28), 1, "Va a ser un partido sufrido 4",
+                int id_post_4 = postCEN.NewPost (new DateTime (2017, 2, 28), new DateTime (2017, 2, 28), 1, "Va a ser un partido sufrido 4",
                         false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
 
-                int id_post_5 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Va a ser un partido sufrido 5",
+                int id_post_5 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 5",
                         false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
 
                 postCP.VerifyPost (id_post_1);
                 postCEN.AddLike (id_post_1);
 
-                postCP.VerifyPost(id_post_2);
-                postCEN.AddLike(id_post_2);
+                postCP.VerifyPost (id_post_2);
+                postCEN.AddLike (id_post_2);
 
-                postCP.VerifyPost(id_post_3);
-                postCEN.AddLike(id_post_3);
+                postCP.VerifyPost (id_post_3);
+                postCEN.AddLike (id_post_3);
 
-                postCP.VerifyPost(id_post_4);
-                postCEN.AddLike(id_post_4);
+                postCP.VerifyPost (id_post_4);
+                postCEN.AddLike (id_post_4);
 
-                postCP.VerifyPost(id_post_5);
-                postCEN.AddLike(id_post_5);
+                postCP.VerifyPost (id_post_5);
+                postCEN.AddLike (id_post_5);
 
                 DateTime d = new DateTime (2017, 3, 8);
 
