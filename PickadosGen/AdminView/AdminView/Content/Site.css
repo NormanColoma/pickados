@@ -38,3 +38,7 @@ textarea {
 #admins > a {
     cursor: pointer;
 }
+
+thead {
+    cursor: pointer;
+}

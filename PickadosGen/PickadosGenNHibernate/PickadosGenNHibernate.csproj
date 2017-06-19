@@ -114,6 +114,7 @@
 			
 			
 			
+			
 	<Compile Include="EN\Pickados\Event_EN.cs" />
 	<Compile Include="CEN\Pickados\Event_CEN.cs" />
 	<Compile Include="CAD\Pickados\IEvent_CAD.cs" />
@@ -219,6 +220,10 @@
 			
 			
 			
+			
+			<Compile Include="CEN\Pickados\PostCEN_AddLike.cs" />
+			
+			<Compile Include="CEN\Pickados\PostCEN_AddReport.cs" />
 			
 	<Compile Include="EN\Pickados\UsuarioEN.cs" />
 	<Compile Include="CEN\Pickados\UsuarioCEN.cs" />

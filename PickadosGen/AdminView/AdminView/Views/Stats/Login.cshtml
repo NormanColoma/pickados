@@ -2,8 +2,6 @@
 
 @using (Html.BeginForm("Login", "Stats", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
-
     <div class="form-horizontal col-md-12">
         <div class="form-group col-md-4">
             @Html.LabelFor(model => model.InitialDate, htmlAttributes: new { @class = "col-md-12" })

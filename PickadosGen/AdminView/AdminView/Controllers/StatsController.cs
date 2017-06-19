@@ -1,4 +1,5 @@
-﻿using AdminView.Models;
+﻿using AdminView.Assemblers;
+using AdminView.Models;
 using PickadosGenNHibernate.CEN.Pickados;
 using PickadosGenNHibernate.EN.Pickados;
 using System;
@@ -11,35 +12,39 @@ namespace AdminView.Controllers
 {
     public class StatsController : Controller
     {
-        // GET: Stats
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Login()
         {
-            DateTime fin = DateTime.Today;
-            DateTime init = DateTime.Today.AddMonths(-11);
-            
-            string initialDate = init.Month + "/" + init.Year;
-            string finalDate = fin.Month + "/" + fin.Year;
+            if (User.Identity.IsAuthenticated)
+            {
+                DateTime fin = DateTime.Today;
+                DateTime init = DateTime.Today.AddMonths(-11);
 
-            return _Login(initialDate, finalDate);
+                string initialDate = init.Month + "/" + init.Year;
+                string finalDate = fin.Month + "/" + fin.Year;
+
+                return _Login(initialDate, finalDate);
+            }
+            else
+                return RedirectToAction("login", "account");
         }
 
         [HttpPost]
         [ActionName("Login")]
         public ActionResult LoginPost(StatsLoginModel stat)
         {
-            string initialDate = stat.InitialDate.Month + "/" + stat.InitialDate.Year;
-            string finalDate = stat.FinalDate.Month + "/" + stat.FinalDate.Year;
+            if (User.Identity.IsAuthenticated)
+            {
+                string initialDate = stat.InitialDate.Month + "/" + stat.InitialDate.Year;
+                string finalDate = stat.FinalDate.Month + "/" + stat.FinalDate.Year;
 
-            return _Login(initialDate, finalDate);
+                return _Login(initialDate, finalDate);
+            }
+            else
+                return RedirectToAction("login", "account");
         }
 
-        public ActionResult _Login(string initialDate, string finalDate)
+        private ActionResult _Login(string initialDate, string finalDate)
         {
             string[] iDate = initialDate.Split('/');
             string[] fDate = finalDate.Split('/');
@@ -53,7 +58,7 @@ namespace AdminView.Controllers
             var loginsGroupby = logins.GroupBy(x => new { Month = x.Date.Value.Month, Year = x.Date.Value.Year }).ToList();
 
             Dictionary<string, int> logs = new Dictionary<string, int>();
-            for(DateTime date = init; date <= fin; date = date.AddMonths(1))
+            for (DateTime date = init; date <= fin; date = date.AddMonths(1))
             {
                 logs.Add(date.Month + "/" + date.Year, 0);
             }
@@ -65,8 +70,51 @@ namespace AdminView.Controllers
 
             StatsLoginModel slm = new StatsLoginModel();
             slm.DataPoints = slm.DataPointsToString(logs);
-            
+
             return View(slm);
+        }
+
+        [HttpGet]
+        public ActionResult Post()
+        {
+            DateTime fin = DateTime.Today;
+            DateTime init = DateTime.Today.AddMonths(-11);
+
+            PostCEN postCEN = new PostCEN();
+            List<PostEN> posts = postCEN.GetAllPosts(0, 15).Where(p => p.Modified_at >= init).Where(p => p.Modified_at <= fin).OrderByDescending(p => p.Likeit).ToList();
+
+            List<PostModel> postsModel = PostAssembler.ConvertPostENtoModel(posts);
+
+            return View(postsModel);
+        }
+
+        [HttpPost]
+        [ActionName("Post")]
+        public ActionResult PostPost()
+        {
+            DateTime fin = DateTime.Today;
+            DateTime init = DateTime.Today.AddMonths(-11);
+
+            PostCEN postCEN = new PostCEN();
+            List<PostEN> posts = postCEN.GetAllPosts(0, 15).Where(p => p.Modified_at >= init).Where(p => p.Modified_at <= fin).OrderBy(p => p.Likeit).ToList();
+
+            return View(posts);
+        }
+
+        public ActionResult _PostDetalles(int id)
+        {
+            PostCEN postCEN = new PostCEN();
+            PostModel postModel = PostAssembler.ConvertPostENtoModel(postCEN.GetPostById(id));
+
+            return PartialView("posts/_PostDetalles", postModel);
+        }
+
+        public ActionResult _PickDetalles(List<PickModel> picks)
+        {
+            PickModel pickModel = new PickModel();
+
+
+            return PartialView("pick/_PickDetalles", pickModel);
         }
     }
 }

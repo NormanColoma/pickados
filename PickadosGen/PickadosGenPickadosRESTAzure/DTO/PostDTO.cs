@@ -58,5 +58,14 @@ private System.Collections.Generic.IList<int> request_oid;
 public System.Collections.Generic.IList<int> Request_oid {
         get { return request_oid; } set { request_oid = value;  }
 }
+
+private int likeit;
+public int Likeit {
+        get { return likeit; } set { likeit = value;  }
+}
+private int report;
+public int Report {
+        get { return report; } set { report = value;  }
+}
 }
 }

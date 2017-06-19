@@ -1,0 +1,80 @@
+﻿@model AdminView.Models.PostModel
+
+<div>
+    <h4>Información del post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stake)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stake)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Private_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Private_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalOdd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalOdd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Likeit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Likeit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Report)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Report)
+        </dd>
+
+    </dl>
+
+    <h5>Información de la apuesta</h5>
+    <hr />
+
+    @{Html.RenderAction("PickDetalles", "Stat", new { picks = Model.Picks });}
+</div>
+<p>
+    @Html.ActionLink("<< Ver todos", "Post")
+</p>

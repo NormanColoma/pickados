@@ -114,6 +114,12 @@ public void ModifyDefault (PostEN post)
                 postEN.PostResult = post.PostResult;
 
 
+
+                postEN.Likeit = post.Likeit;
+
+
+                postEN.Report = post.Report;
+
                 session.Update (postEN);
                 SessionCommit ();
         }
@@ -159,6 +165,12 @@ public void ModifyPost (PostEN post)
 
 
                 postEN.PostResult = post.PostResult;
+
+
+                postEN.Likeit = post.Likeit;
+
+
+                postEN.Report = post.Report;
 
                 session.Update (postEN);
                 SessionCommit ();

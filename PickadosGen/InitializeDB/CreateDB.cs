@@ -362,15 +362,16 @@ public static void InitializeData ()
                 Event_CEN eventCEN = new Event_CEN ();
                 //int eventId = eventCEN.NewEvent (new DateTime (2017, 10, 25, 11, 0, 0), round1);
                 int pickId = resultCEN.NewResult (2, "Gana Local", PickResultEnum.unstarted, "Kirolbet", match1, ResultEnum.home, TimeEnum.fulltime);
-                List < int > picks_id = new List<int>();
+                List<int> picks_id = new List<int>();
                 picks_id.Add (pickId);
                 postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster2, PickResultEnum.unfinished);
 
                 Console.WriteLine ("--------------- Get Post by Tipster -------------");
                 PostCAD postCAD = new PostCAD ();
                 IList<PostEN> posts = postCAD.FindPostsByTipster (tipster2, 0, 10);
-                foreach (var p in posts)
+                foreach (var p in posts) {
                         Console.WriteLine ("- " + p.Description);
+                }
 
                 MatchCEN matchCEN = new MatchCEN ();
                 int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), round1, team1, team5, "Camp Nou");
@@ -379,13 +380,38 @@ public static void InitializeData ()
                 CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
                 int id_correctScore = correctScoreCEN.NewCorrectScore (10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
                         "Bet365", id_match, 2, 1);
-                IList < int > picks = new List<int>();
+                IList<int> picks = new List<int>();
                 picks.Add (id_correctScore);
 
-                int id_post = postCEN.NewPost (new DateTime (2017, 2, 19), new DateTime (2017, 2, 19), 1, "Va a ser un partido sufrido",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted);
+                int id_post_1 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido",
+                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
 
-                postCP.VerifyPost (id_post);
+                int id_post_2 = postCEN.NewPost(new DateTime(2017, 2, 18), new DateTime(2017, 2, 18), 1, "Va a ser un partido sufrido 2",
+                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
+
+                int id_post_3 = postCEN.NewPost(new DateTime(2017, 2, 25), new DateTime(2017, 2, 25), 1, "Va a ser un partido sufrido 3",
+                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
+
+                int id_post_4 = postCEN.NewPost(new DateTime(2017, 2, 28), new DateTime(2017, 2, 28), 1, "Va a ser un partido sufrido 4",
+                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
+
+                int id_post_5 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Va a ser un partido sufrido 5",
+                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
+
+                postCP.VerifyPost (id_post_1);
+                postCEN.AddLike (id_post_1);
+
+                postCP.VerifyPost(id_post_2);
+                postCEN.AddLike(id_post_2);
+
+                postCP.VerifyPost(id_post_3);
+                postCEN.AddLike(id_post_3);
+
+                postCP.VerifyPost(id_post_4);
+                postCEN.AddLike(id_post_4);
+
+                postCP.VerifyPost(id_post_5);
+                postCEN.AddLike(id_post_5);
 
                 DateTime d = new DateTime (2017, 3, 8);
 
@@ -413,7 +439,7 @@ public static void InitializeData ()
                 // Creating requests
 
                 RequestCEN requestCEN = new RequestCEN ();
-                requestCEN.New_ (id_post, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
+                requestCEN.New_ (id_post_1, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
 
                 LoginCEN loginCEN = new LoginCEN ();
                 loginCEN.NewLogin ("arya", new DateTime (2016, 06, 01));
