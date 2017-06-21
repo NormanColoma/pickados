@@ -237,7 +237,7 @@ public HttpResponseMessage GetTipstersPremium (int first, int size)
 [Route ("~/api/Tipster/Login")]
 
 
-public HttpResponseMessage Login (string user, string pass)
+public HttpResponseMessage Login ([FromBody] TipsterDTO tipster)
 {
         // CAD, CEN, returnValue
         TipsterRESTCAD tipsterRESTCAD = null;
@@ -253,7 +253,7 @@ public HttpResponseMessage Login (string user, string pass)
 
 
                 // Operation
-                en = tipsterCEN.Login (user, pass);
+                en = tipsterCEN.Login (tipster.Alias, tipster.Password);
                 SessionCommit ();
 
                 // Convert return

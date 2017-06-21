@@ -119,7 +119,7 @@ public HttpResponseMessage GetPlayersByClubTeam (string p_clubteam_name)
 
 
 
-                en = playerCEN.GetPlayersByClubTeam (p_clubteam_name).ToList ();
+                en = playerCEN.GetPlayersByClubTeam (p_clubteam_name, 0, 0).ToList ();
 
 
 
