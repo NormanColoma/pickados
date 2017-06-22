@@ -38,5 +38,10 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> FindP
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetByResult (PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum ? p_postResult);
+
+
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPostsBetweenDate (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate);
 }
 }

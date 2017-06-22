@@ -80,8 +80,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\PickModel.cs" />
     <Compile Include="Models\PostModel.cs" />
-    <Compile Include="Models\Stats\LoginModel.cs" />
-    <Compile Include="Models\Stats\PostModel.cs" />
+    <Compile Include="Models\StatModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="App_Resources\properties_spa.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -228,11 +227,11 @@
     <Content Include="Views\Matches\Edit.cshtml" />
     <Content Include="Views\Stats\Post.cshtml" />
     <Content Include="Views\Stats\PostDetalles.cshtml" />
-    <Content Include="Views\Stats\posts\_PostDetalles.cshtml" />
-    <Content Include="Views\Stats\picks\_PickDialog.cshtml" />
-    <Content Include="Views\Stats\picks\_PickDetalles.cshtml" />
-    <Content Include="Views\Stats\posts\_PostLista.cshtml" />
-    <Content Include="Views\Stats\posts\_PostStat.cshtml" />
+    <Content Include="Views\Stats\_posts\_PostDetalles.cshtml" />
+    <Content Include="Views\Stats\_picks\_PickDialog.cshtml" />
+    <Content Include="Views\Stats\_picks\_PickDetalles.cshtml" />
+    <Content Include="Views\Stats\_posts\_PostLista.cshtml" />
+    <Content Include="Views\Stats\_posts\_PostStat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
