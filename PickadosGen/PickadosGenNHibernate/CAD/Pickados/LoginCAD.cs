@@ -171,7 +171,7 @@ public System.Collections.Generic.IList<LoginEN> GetAllLogins (int first, int si
         return result;
 }
 
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginEN> GetLoginBetweenMonths (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginEN> GetLoginBetweenDate (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginEN> result;
         try
@@ -179,7 +179,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginE
                 SessionInitializeTransaction ();
                 //String sql = @"FROM LoginEN self where FROM LoginEN WHERE date BETWEEN :initialDate and :finalDate";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("LoginENgetLoginBetweenMonthsHQL");
+                IQuery query = (IQuery)session.GetNamedQuery ("LoginENgetLoginBetweenDateHQL");
                 query.SetParameter ("initialDate", initialDate);
                 query.SetParameter ("finalDate", finalDate);
 

@@ -29,6 +29,6 @@
 		 </class>	
 		  
 		  <query name="LoginENReadAllHQL">from LoginEN</query>
-		  <query name="LoginENgetLoginBetweenMonthsHQL"><![CDATA[FROM LoginEN WHERE date BETWEEN :initialDate and :finalDate]]></query>
+		  <query name="LoginENgetLoginBetweenDateHQL"><![CDATA[FROM LoginEN WHERE date BETWEEN :initialDate and :finalDate]]></query>
 		</hibernate-mapping>
 	

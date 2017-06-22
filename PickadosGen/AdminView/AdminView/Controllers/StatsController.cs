@@ -31,7 +31,7 @@ namespace AdminView.Controllers
 
         [HttpPost]
         [ActionName("Login")]
-        public ActionResult LoginPost(StatsLoginModel stat)
+        public ActionResult LoginPost(StatModel stat)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -53,68 +53,89 @@ namespace AdminView.Controllers
             DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), 01);
 
             LoginCEN loginCEN = new LoginCEN();
-            List<LoginEN> logins = loginCEN.GetLoginBetweenMonths(init, fin).ToList();
+            List<LoginEN> logins = loginCEN.GetLoginBetweenDate(init, fin).ToList();
 
             var loginsGroupby = logins.GroupBy(x => new { Month = x.Date.Value.Month, Year = x.Date.Value.Year }).ToList();
 
-            Dictionary<string, int> logs = new Dictionary<string, int>();
+            Dictionary<string, int> loginsDict = new Dictionary<string, int>();
             for (DateTime date = init; date <= fin; date = date.AddMonths(1))
             {
-                logs.Add(date.Month + "/" + date.Year, 0);
+                loginsDict.Add(date.Month + "/" + date.Year, 0);
             }
+
+            StatModel sm = new StatModel();
 
             for (int i = 0; i < loginsGroupby.Count; i++)
-            {
-                logs[loginsGroupby[i].Key.Month + "/" + loginsGroupby[i].Key.Year] = loginsGroupby[i].Count();
-            }
+                loginsDict[loginsGroupby[i].Key.Month + "/" + loginsGroupby[i].Key.Year] = loginsGroupby[i].Count();
 
-            StatsLoginModel slm = new StatsLoginModel();
-            slm.DataPoints = slm.DataPointsToString(logs);
+            sm.completeInfoStat(loginsDict);
 
-            return View(slm);
+            return View(sm);
+        }
+
+        public ActionResult Post()
+        {
+            return View();
         }
 
         [HttpGet]
-        public ActionResult Post()
+        public ActionResult _PostStat()
         {
-            DateTime fin = DateTime.Today;
-            DateTime init = DateTime.Today.AddMonths(-11);
+            if (User.Identity.IsAuthenticated)
+            {
+                DateTime fin = DateTime.Today;
+                DateTime init = DateTime.Today.AddMonths(-11);
 
-            PostCEN postCEN = new PostCEN();
-            List<PostEN> posts = postCEN.GetAllPosts(0, 15).Where(p => p.Modified_at >= init).Where(p => p.Modified_at <= fin).OrderByDescending(p => p.Likeit).ToList();
+                string initialDate = init.Month + "/" + init.Year;
+                string finalDate = fin.Month + "/" + fin.Year;
 
-            List<PostModel> postsModel = PostAssembler.ConvertPostENtoModel(posts);
-
-            return View(postsModel);
+                return PartialView("_posts/_PostStat", _Post(initialDate, finalDate));
+            }
+            else
+                return RedirectToAction("login", "account");
         }
 
-        [HttpPost]
-        [ActionName("Post")]
-        public ActionResult PostPost()
+        private StatModel _Post(string initialDate, string finalDate)
         {
-            DateTime fin = DateTime.Today;
-            DateTime init = DateTime.Today.AddMonths(-11);
+            string[] iDate = initialDate.Split('/');
+            string[] fDate = finalDate.Split('/');
+
+            DateTime init = new DateTime(Int32.Parse(iDate[1]), Int32.Parse(iDate[0]), 01);
+            DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), 01);
 
             PostCEN postCEN = new PostCEN();
-            List<PostEN> posts = postCEN.GetAllPosts(0, 15).Where(p => p.Modified_at >= init).Where(p => p.Modified_at <= fin).OrderBy(p => p.Likeit).ToList();
+            List<PostEN> posts = postCEN.GetPostsBetweenDate(init, fin).ToList();
 
-            return View(posts);
+            var postsGroupby = posts.GroupBy(x => new { Month = x.Created_at.Value.Month, Year = x.Created_at.Value.Year }).ToList();
+
+            Dictionary<string, int> postsDict = new Dictionary<string, int>();
+            for (DateTime date = init; date <= fin; date = date.AddMonths(1))
+            {
+                postsDict.Add(date.Month + "/" + date.Year, 0);
+            }
+
+            StatModel sm = new StatModel();
+
+            for (int i = 0; i < postsGroupby.Count; i++)
+                postsDict[postsGroupby[i].Key.Month + "/" + postsGroupby[i].Key.Year] = postsGroupby[i].Count();
+
+            sm.completeInfoStat(postsDict);
+
+            return sm;
         }
 
-        public ActionResult _PostDetalles(int id)
+        [HttpGet]
+        public ActionResult _PostList()
         {
-            PostCEN postCEN = new PostCEN();
-            PostModel postModel = PostAssembler.ConvertPostENtoModel(postCEN.GetPostById(id));
+            if (User.Identity.IsAuthenticated)
+            {
+                PostCEN postCEN = new PostCEN();
+                IEnumerable<PostEN> posts = postCEN.GetMoreVoted();
 
-            return PartialView("posts/_PostDetalles", postModel);
-        }
-
-        public ActionResult _PickDetalles(List<PickModel> picks)
-        {
-            PickModel pickModel = new PickModel();
-
-
-            return PartialView("pick/_PickDetalles", pickModel);
+                return PartialView("_posts/_PostList", posts);
+            }
+            else
+                return RedirectToAction("login", "account");
         }
     }
 }

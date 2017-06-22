@@ -80,7 +80,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\PickModel.cs" />
     <Compile Include="Models\PostModel.cs" />
-    <Compile Include="Models\StatsLoginModel.cs" />
+    <Compile Include="Models\StatModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="App_Resources\properties_spa.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -139,6 +139,10 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\canvas\canvasjs.min.js" />
+    <Content Include="Scripts\chartjs\Chart.bundle.js" />
+    <Content Include="Scripts\chartjs\Chart.bundle.min.js" />
+    <Content Include="Scripts\chartjs\Chart.js" />
+    <Content Include="Scripts\chartjs\Chart.min.js" />
     <Content Include="Scripts\canvas\jquery.canvasjs.min.js" />
     <Content Include="Scripts\functions\functions.js" />
     <Content Include="Scripts\functions\functions_edituser.js" />
@@ -152,6 +156,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery\jquery.tablesorter.min.js" />
     <Content Include="Scripts\metisMenu.js" />
     <Content Include="Scripts\metisMenu.min.js" />
     <Content Include="Scripts\metisMenu\metisMenu.js" />
@@ -220,10 +225,13 @@
     <Content Include="Views\Matches\getMatches.cshtml" />
     <Content Include="Views\Matches\Matches.cshtml" />
     <Content Include="Views\Matches\Edit.cshtml" />
-    <Content Include="Views\Stats\picks\_PickDetalles.cshtml" />
     <Content Include="Views\Stats\Post.cshtml" />
     <Content Include="Views\Stats\PostDetalles.cshtml" />
-    <Content Include="Views\Stats\posts\_PostDetalles.cshtml" />
+    <Content Include="Views\Stats\_posts\_PostDetalles.cshtml" />
+    <Content Include="Views\Stats\_picks\_PickDialog.cshtml" />
+    <Content Include="Views\Stats\_picks\_PickDetalles.cshtml" />
+    <Content Include="Views\Stats\_posts\_PostList.cshtml" />
+    <Content Include="Views\Stats\_posts\_PostStat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

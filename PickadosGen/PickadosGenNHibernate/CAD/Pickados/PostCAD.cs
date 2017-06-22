@@ -380,5 +380,65 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN
 
         return result;
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPostsBetweenDate (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PostEN self where FROM PostEN WHERE created_at BETWEEN :initialDate and :finalDate OR modified_at BETWEEN :initialDate and :finalDate";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PostENgetPostsBetweenDateHQL");
+                query.SetParameter ("initialDate", initialDate);
+                query.SetParameter ("finalDate", finalDate);
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PostEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PostCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetMoreVoted ()
+{
+        System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PostEN self where FROM PostEN ORDER BY likeit DESC";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PostENgetMoreVotedHQL");
+
+                result = query.List<PickadosGenNHibernate.EN.Pickados.PostEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PickadosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PickadosGenNHibernate.Exceptions.DataLayerException ("Error in PostCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

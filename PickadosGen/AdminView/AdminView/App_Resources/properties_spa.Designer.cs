@@ -104,5 +104,50 @@ namespace AdminView.App_Resources {
                 return ResourceManager.GetString("login_stat_type", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Mes/Año.
+        /// </summary>
+        public static string post_stat_axisx {
+            get {
+                return ResourceManager.GetString("post_stat_axisx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Total post.
+        /// </summary>
+        public static string post_stat_axisy {
+            get {
+                return ResourceManager.GetString("post_stat_axisy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a theme2.
+        /// </summary>
+        public static string post_stat_theme {
+            get {
+                return ResourceManager.GetString("post_stat_theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Control de publicaciones.
+        /// </summary>
+        public static string post_stat_title {
+            get {
+                return ResourceManager.GetString("post_stat_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a column.
+        /// </summary>
+        public static string post_stat_type {
+            get {
+                return ResourceManager.GetString("post_stat_type", resourceCulture);
+            }
+        }
     }
 }

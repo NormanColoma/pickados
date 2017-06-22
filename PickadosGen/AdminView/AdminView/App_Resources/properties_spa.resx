@@ -132,4 +132,19 @@
   <data name="login_stat_type" xml:space="preserve">
     <value>column</value>
   </data>
+  <data name="post_stat_axisx" xml:space="preserve">
+    <value>Mes/Año</value>
+  </data>
+  <data name="post_stat_axisy" xml:space="preserve">
+    <value>Total post</value>
+  </data>
+  <data name="post_stat_theme" xml:space="preserve">
+    <value>theme2</value>
+  </data>
+  <data name="post_stat_title" xml:space="preserve">
+    <value>Control de publicaciones</value>
+  </data>
+  <data name="post_stat_type" xml:space="preserve">
+    <value>column</value>
+  </data>
 </root>

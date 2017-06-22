@@ -62,9 +62,9 @@ public System.Collections.Generic.IList<LoginEN> GetAllLogins (int first, int si
         list = _ILoginCAD.GetAllLogins (first, size);
         return list;
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginEN> GetLoginBetweenMonths (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.LoginEN> GetLoginBetweenDate (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
 {
-        return _ILoginCAD.GetLoginBetweenMonths (initialDate, finalDate);
+        return _ILoginCAD.GetLoginBetweenDate (initialDate, finalDate);
 }
 }
 }
