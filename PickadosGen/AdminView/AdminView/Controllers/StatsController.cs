@@ -31,7 +31,7 @@ namespace AdminView.Controllers
 
         [HttpPost]
         [ActionName("Login")]
-        public ActionResult LoginPost(StatsLoginModel stat)
+        public ActionResult LoginPost(LoginModel stat)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -63,58 +63,14 @@ namespace AdminView.Controllers
                 logs.Add(date.Month + "/" + date.Year, 0);
             }
 
+            LoginModel lm = new LoginModel();
+
             for (int i = 0; i < loginsGroupby.Count; i++)
-            {
                 logs[loginsGroupby[i].Key.Month + "/" + loginsGroupby[i].Key.Year] = loginsGroupby[i].Count();
-            }
 
-            StatsLoginModel slm = new StatsLoginModel();
-            slm.DataPoints = slm.DataPointsToString(logs);
+            lm.completeInfoStat(logs);
 
-            return View(slm);
-        }
-
-        [HttpGet]
-        public ActionResult Post()
-        {
-            DateTime fin = DateTime.Today;
-            DateTime init = DateTime.Today.AddMonths(-11);
-
-            PostCEN postCEN = new PostCEN();
-            List<PostEN> posts = postCEN.GetAllPosts(0, 15).Where(p => p.Modified_at >= init).Where(p => p.Modified_at <= fin).OrderByDescending(p => p.Likeit).ToList();
-
-            List<PostModel> postsModel = PostAssembler.ConvertPostENtoModel(posts);
-
-            return View(postsModel);
-        }
-
-        [HttpPost]
-        [ActionName("Post")]
-        public ActionResult PostPost()
-        {
-            DateTime fin = DateTime.Today;
-            DateTime init = DateTime.Today.AddMonths(-11);
-
-            PostCEN postCEN = new PostCEN();
-            List<PostEN> posts = postCEN.GetAllPosts(0, 15).Where(p => p.Modified_at >= init).Where(p => p.Modified_at <= fin).OrderBy(p => p.Likeit).ToList();
-
-            return View(posts);
-        }
-
-        public ActionResult _PostDetalles(int id)
-        {
-            PostCEN postCEN = new PostCEN();
-            PostModel postModel = PostAssembler.ConvertPostENtoModel(postCEN.GetPostById(id));
-
-            return PartialView("posts/_PostDetalles", postModel);
-        }
-
-        public ActionResult _PickDetalles(List<PickModel> picks)
-        {
-            PickModel pickModel = new PickModel();
-
-
-            return PartialView("pick/_PickDetalles", pickModel);
+            return View(lm);
         }
     }
 }

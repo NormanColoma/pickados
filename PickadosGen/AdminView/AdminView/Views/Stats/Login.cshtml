@@ -1,4 +1,4 @@
-﻿@model AdminView.Models.StatsLoginModel
+﻿@model AdminView.Models.LoginModel
 
 @using (Html.BeginForm("Login", "Stats", FormMethod.Post))
 {
@@ -19,41 +19,44 @@
 
 <div class="clearfix"></div>
 
-<div id="chartContainer"></div>
+<script type="text/javascript" src="../../Scripts/chartjs/Chart.bundle.min.js"></script>
 
-<script type="text/javascript">
+<div class="col-md-offset-2 col-md-8"><canvas id="myChart"></canvas></div>
+           
 
-    $(function () {
-        var theme = '@(Model.Theme)';
-        var title = '@(Model.Title)';
-        var axisx = '@(Model.AxisX)';
-        var axisy = '@(Model.AxisY)';
-        var type = '@(Model.Type)';
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
 
-        var chart = new CanvasJS.Chart("chartContainer", {
-            theme: theme,
-            animationEnabled: true,
-            title: {
-                text: title
-            },
-            axisX: {
-                title: axisx
-            },
-            axisY: {
-                title: axisy
-            },
+    var label_stat = @Html.Raw(Json.Encode(Model.Label));
+    var label_stat_format = label_stat.replace("[", "").replace("]", "")
 
-            data: [
-            {
-                type: type,
-                dataPoints: @Html.Raw(Model.DataPoints),
+    var data_stat = @Html.Raw(Json.Encode(Model.Data));
+    var data_stat_format = data_stat.replace("[", "").replace("]", "")
 
-                //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
-                //dataPoints: @Html.Raw(ViewBag.DataPoints),
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: label_stat_format.split(","),
+            datasets: [{
+                label: 'number of login',
+                data: data_stat_format.split(","),
+                backgroundColor: 'rgba(213, 215, 216, 1)',
+                borderColor: 'rgba(87, 93, 99, 1)',
+                pointBorderColor: "#fff",
+                pointBackgroundColor: "rgba(179,181,198,1)",
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
             }
-            ]
-        });
-
-        chart.render();
+        }
     });
+
 </script>

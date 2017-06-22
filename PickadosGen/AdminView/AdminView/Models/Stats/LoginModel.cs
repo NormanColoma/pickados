@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AdminView.Models
 {
-    public class StatsLoginModel
+    public class LoginModel
     {
         public string Title { get; set; }
         public string Theme { get; set; }
@@ -13,7 +15,11 @@ namespace AdminView.Models
         public string AxisY { get; set; }
 
         public string Type { get; set; }
-        public string DataPoints { get; set; }
+
+        public string Label { get; set; }
+        public string Data { get; set; }
+
+
 
         [Required]
         [Display(Name = "Fecha de inicio")]
@@ -23,28 +29,19 @@ namespace AdminView.Models
         [Display(Name = "Fecha de fin")]
         public DateTime FinalDate { get; set; }
 
-        public StatsLoginModel()
+        public LoginModel()
         {
             Title = App_Resources.properties_spa.login_stat_title;
             Theme = App_Resources.properties_spa.login_stat_theme;
             AxisX = App_Resources.properties_spa.login_stat_axisx;
             AxisY = App_Resources.properties_spa.login_stat_axisy;
             Type = App_Resources.properties_spa.login_stat_type;
-            DataPoints = "";
         }
 
-        public string DataPointsToString(Dictionary<string, int> DataPoints)
+        public void completeInfoStat(Dictionary<string, int> statinfo)
         {
-            string datapoints = "[";
-
-            foreach (KeyValuePair<string, int> DataPoint in DataPoints)
-            {
-                datapoints += "{ y: " + DataPoint.Value + ", label: \" " + DataPoint.Key + " \"},";
-            }
-
-            datapoints = datapoints.Substring(0, datapoints.Length - 1) + "]";
-
-            return datapoints;
+            Label = JsonConvert.SerializeObject(new List<string>(statinfo.Keys));
+            Data = JsonConvert.SerializeObject(new List<int>(statinfo.Values));
         }
     }
 }

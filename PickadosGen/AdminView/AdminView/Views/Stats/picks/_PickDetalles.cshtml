@@ -1,8 +1,5 @@
 ﻿@model AdminView.Models.PickModel
 
-<div>
-    <h4>PickModel</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Odd)
@@ -85,8 +82,3 @@
         </dd>
 
     </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
