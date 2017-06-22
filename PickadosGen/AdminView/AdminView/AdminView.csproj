@@ -230,7 +230,7 @@
     <Content Include="Views\Stats\_posts\_PostDetalles.cshtml" />
     <Content Include="Views\Stats\_picks\_PickDialog.cshtml" />
     <Content Include="Views\Stats\_picks\_PickDetalles.cshtml" />
-    <Content Include="Views\Stats\_posts\_PostLista.cshtml" />
+    <Content Include="Views\Stats\_posts\_PostList.cshtml" />
     <Content Include="Views\Stats\_posts\_PostStat.cshtml" />
   </ItemGroup>
   <ItemGroup>

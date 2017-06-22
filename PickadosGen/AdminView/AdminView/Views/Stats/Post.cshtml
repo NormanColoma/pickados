@@ -1,1 +1,11 @@
-﻿@{Html.RenderAction("_PostStat", "Stats");}
+﻿<h3 class="col-md-12">Número de votos mensuales</h3>
+<hr />
+
+@{Html.RenderAction("_PostStat", "Stats");}
+
+
+
+<h3 class="col-md-12">Lista de posts más votados</h3>
+<hr />
+
+@{Html.RenderAction("_PostList", "Stats");}

@@ -43,5 +43,8 @@ System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetBy
 
 
 System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetPostsBetweenDate (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate);
+
+
+System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetMoreVoted ();
 }
 }

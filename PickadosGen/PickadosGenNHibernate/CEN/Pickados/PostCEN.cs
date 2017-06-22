@@ -146,5 +146,9 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN
 {
         return _IPostCAD.GetPostsBetweenDate (initialDate, finalDate);
 }
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetMoreVoted ()
+{
+        return _IPostCAD.GetMoreVoted ();
+}
 }
 }

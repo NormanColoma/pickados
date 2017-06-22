@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AdminView.Models.PostModel>
+﻿@model IEnumerable<PickadosGenNHibernate.EN.Pickados.PostEN>
 
 <table id="posts" class="table">
     <thead>
@@ -61,13 +61,7 @@
                     <i class="fa fa-plus fa-fw" data-toggle="collapse" data-target="#@Html.DisplayFor(modelItem => item.Id)"></i>
                 </td>
             </tr>
-            <tr id="@Html.DisplayFor(modelItem => item.Id)" class="collapse">
-                @foreach (var pick in item.Picks)
-                {
-                    <td>@{Html.RenderAction("_pickdetalles", "stats", new { pick = pick });}</td>
-                        }
-            </tr>
-                        }
+        }
     </tbody>
 </table>
 

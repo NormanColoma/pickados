@@ -123,5 +123,19 @@ namespace AdminView.Controllers
 
             return sm;
         }
+
+        [HttpGet]
+        public ActionResult _PostList()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                PostCEN postCEN = new PostCEN();
+                IEnumerable<PostEN> posts = postCEN.GetMoreVoted();
+
+                return PartialView("_posts/_PostList", posts);
+            }
+            else
+                return RedirectToAction("login", "account");
+        }
     }
 }

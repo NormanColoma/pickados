@@ -98,5 +98,6 @@
 		  <query name="PostENfindPostsByTipsterHQL"><![CDATA[select p FROM PostEN as p INNER JOIN p.Tipster t where t.Id = :id]]></query>
 		  <query name="PostENgetByResultHQL"><![CDATA[FROM PostEN  where postResult = :p_postResult]]></query>
 		  <query name="PostENgetPostsBetweenDateHQL"><![CDATA[FROM PostEN WHERE created_at BETWEEN :initialDate and :finalDate OR modified_at BETWEEN :initialDate and :finalDate]]></query>
+		  <query name="PostENgetMoreVotedHQL"><![CDATA[FROM PostEN ORDER BY likeit DESC]]></query>
 		</hibernate-mapping>
 	
