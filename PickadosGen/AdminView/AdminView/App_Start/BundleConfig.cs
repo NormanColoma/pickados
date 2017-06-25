@@ -48,6 +48,12 @@ namespace AdminView
                       "~/Content/metisMenu.css",
                       "~/Content/site.css",
                       "~/Content/font-awesome.css"));
+
+            bundles.Add(new StyleBundle("~/Content/stats").Include(
+                      "~/Content/stats.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/stats").Include(
+                "~/Scripts/functions/stats.js"));
         }
     }
 }

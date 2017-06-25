@@ -1,0 +1,22 @@
+﻿@model AdminView.Models.StatModel
+
+<div class="col-md-4">
+    <h4>Usuarios que más dinero apuestan</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Alias</th>
+                <th>Total apuestas</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListInfo)
+            {
+                <tr>
+                    <td>@item.Key</td>
+                    <td>@item.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

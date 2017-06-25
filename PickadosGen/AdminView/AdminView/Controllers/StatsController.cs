@@ -1,6 +1,7 @@
 ﻿using AdminView.Assemblers;
 using AdminView.Models;
 using PickadosGenNHibernate.CEN.Pickados;
+using PickadosGenNHibernate.CP.Pickados;
 using PickadosGenNHibernate.EN.Pickados;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace AdminView.Controllers
 {
     public class StatsController : Controller
     {
+        /* --- Stats by login --- */
         [HttpGet]
         public ActionResult Login()
         {
@@ -57,7 +59,7 @@ namespace AdminView.Controllers
 
             var loginsGroupby = logins.GroupBy(x => new { Month = x.Date.Value.Month, Year = x.Date.Value.Year }).ToList();
 
-            Dictionary<string, int> loginsDict = new Dictionary<string, int>();
+            Dictionary<string, double> loginsDict = new Dictionary<string, double>();
             for (DateTime date = init; date <= fin; date = date.AddMonths(1))
             {
                 loginsDict.Add(date.Month + "/" + date.Year, 0);
@@ -73,6 +75,7 @@ namespace AdminView.Controllers
             return View(sm);
         }
 
+        /* --- Stats by posts --- */
         public ActionResult Post()
         {
             return View();
@@ -108,7 +111,7 @@ namespace AdminView.Controllers
 
             var postsGroupby = posts.GroupBy(x => new { Month = x.Created_at.Value.Month, Year = x.Created_at.Value.Year }).ToList();
 
-            Dictionary<string, int> postsDict = new Dictionary<string, int>();
+            Dictionary<string, double> postsDict = new Dictionary<string, double>();
             for (DateTime date = init; date <= fin; date = date.AddMonths(1))
             {
                 postsDict.Add(date.Month + "/" + date.Year, 0);
@@ -136,6 +139,104 @@ namespace AdminView.Controllers
             }
             else
                 return RedirectToAction("login", "account");
+        }
+
+        /*--- Stats by bet tipster --- */
+        public ActionResult UsersBets()
+        {
+            return View();
+        }
+
+        public ActionResult _UsersBetsList()
+        {
+            /* --- Dates --- */
+            DateTime fin = DateTime.Today;
+            DateTime init = DateTime.Today.AddMonths(-11);
+
+            PostCEN postCEN = new PostCEN();
+            TipsterCEN tipsterCEN = new TipsterCEN();
+
+            /* --- Get posts --- */
+            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetPostsBetweenDate(init, fin).GroupBy(p => p.Tipster.Id).ToList();
+
+            StatModel sm = new StatModel();
+            sm.ListInfo = new Dictionary<string, double>();
+
+            foreach (var group in postsGroup)
+            {
+                TipsterEN tipsterEN = tipsterCEN.GetTipsterById(group.Key);
+                sm.ListInfo.Add(tipsterEN.Alias, group.Count());
+            }
+
+            sm.completeInfoStat(sm.ListInfo);
+
+            return PartialView("_usersbets/_UsersBetsList", sm);
+        }
+
+        [HttpPost]
+        [ActionName("_UsersBetsList")]
+        public ActionResult _UsersBetsListPost(StatModel stat)
+        {
+
+            string initialDate = stat.InitialDate.Month + "/" + stat.InitialDate.Year;
+            string finalDate = stat.FinalDate.Month + "/" + stat.FinalDate.Year;
+
+            string[] iDate = initialDate.Split('/');
+            string[] fDate = finalDate.Split('/');
+
+            DateTime init = new DateTime(Int32.Parse(iDate[1]), Int32.Parse(iDate[0]), 01);
+            DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), 01);
+
+            PostCEN postCEN = new PostCEN();
+            TipsterCEN tipsterCEN = new TipsterCEN();
+
+            /* --- Get posts --- */
+            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetPostsBetweenDate(init, fin).GroupBy(p => p.Tipster.Id).ToList();
+
+            Dictionary<string, double> usersBetDict = new Dictionary<string, double>();
+            for (int i = 0; i < postsGroup.Count(); i++)
+            {
+                TipsterEN tipsterEN = tipsterCEN.GetTipsterById(postsGroup[i].Key);
+                usersBetDict.Add(tipsterEN.Alias, postsGroup[i].Count());
+            }
+
+            StatModel sm = new StatModel();
+            sm.completeInfoStat(usersBetDict);
+
+            return PartialView("_usersbets/_UsersBetsList", sm);
+        }
+
+        public ActionResult _UsersStakeList()
+        {
+            /* --- Dates --- */
+            DateTime fin = DateTime.Today;
+            DateTime init = DateTime.Today.AddMonths(-11);
+
+            PostCEN postCEN = new PostCEN();
+            TipsterCEN tipsterCEN = new TipsterCEN();
+
+            /* --- Get posts --- */
+            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetPostsBetweenDate(init, fin).GroupBy(p => p.Tipster.Id).ToList();
+
+            StatModel sm = new StatModel();
+            sm.ListInfo = new Dictionary<string, double>();
+
+            foreach (var group in postsGroup)
+            {
+                double value = 0;
+                TipsterEN tipsterEN = tipsterCEN.GetTipsterById(group.Key);
+                
+                foreach (var item in group)
+                {
+                    value += item.Stake;
+                }
+
+                sm.ListInfo.Add(tipsterEN.Alias, value);
+            }
+
+            sm.completeInfoStat(sm.ListInfo);
+
+            return PartialView("_usersbets/_UsersStakeList", sm);
         }
     }
 }

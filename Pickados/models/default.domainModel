@@ -1802,7 +1802,7 @@
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_gc4PQtNtEeaZBpN3xqTI2g"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_gc4PQ9NtEeaZBpN3xqTI2g" fontName="Segoe UI"/>
       <styles xmi:type="notation:FillStyle" xmi:id="_gc4PRNNtEeaZBpN3xqTI2g" fillColor="12516090"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gc4PRdNtEeaZBpN3xqTI2g" x="-90" y="126"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gc4PRdNtEeaZBpN3xqTI2g" x="-132" y="42"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_B00EUdNuEeaZBpN3xqTI2g" type="2003" element="_B00EUNNuEeaZBpN3xqTI2g">
       <children xmi:type="notation:DecorationNode" xmi:id="_B00EVtNuEeaZBpN3xqTI2g" type="5005"/>
