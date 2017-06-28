@@ -41,6 +41,10 @@
 				public java.util.Date getDate () { return date; } 
 				public void setDate  (java.util.Date value) { date = value;  } 
 				    	 
+				private String adminComment;
+				public String getAdminComment () { return adminComment; } 
+				public void setAdminComment  (String value) { adminComment = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -67,6 +71,9 @@
 				
 				
 						  json.put("Date", DateUtils.dateToFormatString(this.date));
+				
+				
+						  json.put("AdminComment", this.adminComment);
 				
 						
 					}

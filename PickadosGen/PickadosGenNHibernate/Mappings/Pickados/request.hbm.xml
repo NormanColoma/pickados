@@ -24,6 +24,9 @@
 					<property name="Date" type="date"> 
 						<column name="date"  not-null="true"/>
 					</property>
+					<property name="AdminComment" type="string"> 
+						<column name="adminComment"  not-null="true"/>
+					</property>
 			
 			
 		  			
@@ -36,6 +39,8 @@
 			
 			
 			
+			
+					
 					
 					
 					

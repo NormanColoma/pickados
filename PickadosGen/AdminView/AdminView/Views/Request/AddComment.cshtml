@@ -1,0 +1,27 @@
+﻿@model PickadosGenNHibernate.EN.Pickados.RequestEN
+
+@using (Html.BeginForm("AddingComments", "Request"))
+{
+<div>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Añadir Comentario</h4>
+    </div>
+
+    @Html.HiddenFor(model => model.Id)
+    <dl class="dl-horizontal">
+        <dt>
+            Comentario del administrador:
+        </dt>
+        <dd>
+            @Html.TextAreaFor(model => model.AdminComment)
+        </dd>
+        <dt>
+        </dt>
+        <dd>
+            <input type="submit" value="Guardar" class="btn btn-default" />
+        </dd>
+    </dl>
+</div>  
+}

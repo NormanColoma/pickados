@@ -65,7 +65,7 @@ namespace AdminView.Controllers
                     else {
                         //TODO this better as transaction
                         postCEN.DeletePost(requestEN.Post.Id);
-                        requestCEN.Modify(id, requestEN.Type, requestEN.Reason, RequestStateEnum.Accepted, requestEN.Date);
+                        requestCEN.Modify(id, requestEN.Type, requestEN.Reason, RequestStateEnum.Accepted, requestEN.Date, "");
                     }
                 }
                 // TODO: Add insert logic here
@@ -115,10 +115,23 @@ namespace AdminView.Controllers
             }
         }
 
+
+
         // GET: Request/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            /*try
+            {*/
+                // TODO: Add delete logic here
+                RequestCEN requests = new RequestCEN();
+                RequestEN request = requests.GetById(id);
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, request.Date, "");
+                return RedirectToAction("Index");
+            /*}
+            catch
+            {
+                return RedirectToAction("Index");
+            }*/
         }
 
         // POST: Request/Delete/5
@@ -128,13 +141,42 @@ namespace AdminView.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                RequestCEN requests = new RequestCEN();
+                RequestEN request = requests.GetById(id);
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, new DateTime(), "");
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult AddComment(int id)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                RequestCEN requests = new RequestCEN();
+                RequestEN request = requests.GetById(id);
+                //requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, new DateTime(), "");*/
+                return PartialView("AddComment", request);
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddingComments(int id, FormCollection collection)
+        {
+            RequestCEN requests = new RequestCEN();
+            RequestEN request = requests.GetById(id);
+            string comment = collection["AdminComment"].ToString();
+            requests.Modify(id, request.Type, request.Reason, request.State, request.Date, comment);
+            return RedirectToAction("Index");
+
         }
     }
 }

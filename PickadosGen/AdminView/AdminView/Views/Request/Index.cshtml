@@ -1,4 +1,4 @@
-﻿﻿@model IEnumerable<PickadosGenNHibernate.EN.Pickados.RequestEN>
+﻿@model IEnumerable<PickadosGenNHibernate.EN.Pickados.RequestEN>
 
 @{
     ViewBag.Title = "Index";
@@ -9,15 +9,15 @@
 <!--<table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Reason)
+            @*@Html.DisplayNameFor(model => model.Reason)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @*@Html.DisplayNameFor(model => model.Date)*@
         </th>
         <th></th>
     </tr>
        -->
-<div class="row">
+<!--<div class="row">
     <div class="col-md-8">
         @foreach (var item in Model)
         {
@@ -25,69 +25,126 @@
             <!--
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Reason)
+                        @*@Html.DisplayFor(modelItem => item.Reason)*@
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Date)
+                        @*@Html.DisplayFor(modelItem => item.Date)*@
                     </td>
                     <td>
-                        @Html.ActionLink("Accept", "Accept", new { id = item.Id }) |
+                        @*@Html.ActionLink("Accept", "Accept", new { id = item.Id }) |
                         @Html.ActionLink("Open review", "Review", new { id = item.Id }) |
-                        @Html.ActionLink("Deny", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Deny", "Delete", new { id = item.Id })*@
                     </td>
                 </tr>
                 -->
 
-            if (@item.Type.ToString().Equals("delete"))
-            {
-                <div class="panel panel-warning">
-                    <div class="panel-heading">Borrado</div>
+            @*if (@item.State.Equals("Open"))
+            {*@
+                <div class="panel panel-primary">
+                    @if(@item.Type.ToString().Equals("modify")) {
+                    <div class="panel-heading">@Html.DisplayFor(modelItem => item.Type)</div>
+                    } else {
+                    <div class="panel-warning">@Html.DisplayFor(modelItem => item.Type)</div>
+                    }
 
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-7">
                                 <span class="fa fa-calendar"></span> Fecha solicitud: @Html.DisplayFor(modelItem => item.Date)<br />
-                                <span class="fa fa-calendar"></span> Inicio evento: @Html.DisplayFor(modelItem => item.Date)<br />
-                                <span class="fa fa-clock-o"></span> Evento: <br />
-                                <span class="fa fa-thumb-tack"></span>Razón: @Html.DisplayFor(modelItem => item.Reason)
+                                <span class="fa fa-thumb-tack"></span>Razón: @Html.DisplayFor(modelItem => item.Reason)<br />
+                                <span class="fa fa-list-alt"></span> Details Post<br />
+                                <span class="fa fa-thumb-tack"></span>Comentario del administrador:<br />
+                                @Html.DisplayFor(modelItem => item.AdminComment)<br />
                             </div>
                             <div class="col-md-5">
                                 @Html.ActionLink("Aceptar", "Accept", new { id = item.Id }, new { @class = "btn btn-outline btn-success" }) |
-                                @Html.ActionLink("Abrir disputa", "Review", new { id = item.Id }, new { @class = "btn btn-outline btn-info" }) |
-                                @Html.ActionLink("Denegar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline btn-danger" })
+                                @*@Html.ActionLink("Abrir disputa", "Review", new { id = item.Id }, new { @class = "btn btn-outline btn-info" }) *@
+                                @Html.ActionLink("Denegar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline btn-danger" }) <br/><br/>
+                                <a href="javascript:void(0);" class="anchorDetail" data-id="@item.Id">Añadir Comentario</a>
                             </div>
 
                         </div>
                     </div>
 
                 </div>
-            }
-            else
-            {
-                <div class="panel panel-primary" )">
+            @*}*@
+            @*else
+            {*@
+                <!--<div class="panel panel-primary" )">
                     <div class="panel-heading">Modificación</div>
 
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-7">
-                                <span class="fa fa-calendar"></span> Fecha solicitud: @Html.DisplayFor(modelItem => item.Date)<br />
-                                <span class="fa fa-calendar"></span> Inicio evento: @Html.DisplayFor(modelItem => item.Date)<br />
+                                <span class="fa fa-calendar"></span> Fecha solicitud: @*@Html.DisplayFor(modelItem => item.Date)*@<br />
+                                <span class="fa fa-calendar"></span> Inicio evento: @*@Html.DisplayFor(modelItem => item.Date)*@<br />
                                 <span class="fa fa-clock-o"></span> Evento: <br />
-                                <span class="fa fa-thumb-tack"></span>Razón: @Html.DisplayFor(modelItem => item.Reason)
+                                <span class="fa fa-thumb-tack"></span>Razón: @*@Html.DisplayFor(modelItem => item.Reason)*@
                             </div>
                             <div class="col-md-5">
-                                @Html.ActionLink("Aceptar", "Accept", new { id = item.Id }, new { @class = "btn btn-outline btn-success" }) |
+                                @*@Html.ActionLink("Aceptar", "Accept", new { id = item.Id }, new { @class = "btn btn-outline btn-success" }) |
                                 @Html.ActionLink("Abrir disputa", "Review", new { id = item.Id }, new { @class = "btn btn-outline btn-info" }) |
-                                @Html.ActionLink("Denegar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline btn-danger" })
+                                @Html.ActionLink("Denegar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline btn-danger" })*@
                             </div>
 
                         </div>
                     </div>
 
                 </div>
-            }
+            }-->
         }
-    </div>
-</div>
+    <!--</div>
+</div>-->
 
 <!--</table>-->
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+
+</div> 
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>  
+<script>
+
+    var TeamDetailPostBackURL = '/Request/AddComment';
+    $(function () {
+        $(".anchorDetail").click(function () {
+            debugger;
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                type: "GET",
+                url: TeamDetailPostBackURL,
+                contentType: "application/json; charset=utf-8",
+                data: { "id": id },
+                datatype: "json",
+                success: function (data) {
+                    debugger;
+                    $('#myModalContent').html(data);
+                    $('#myModal').modal(options);
+                    $('#myModal').modal('show');
+
+                },
+                error: function () {
+                    alert("Dynamic content load failed.");
+                }
+            });
+        });
+        //$("#closebtn").on('click',function(){
+        //    $('#myModal').modal('hide');
+
+        $("#closbtn").click(function () {
+            $('#myModal').modal('hide');
+        });
+    });
+
+</script>  
+
+

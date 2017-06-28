@@ -47,6 +47,13 @@ private Nullable<DateTime> date;
 
 
 
+/**
+ *	Atributo adminComment
+ */
+private string adminComment;
+
+
+
 
 
 
@@ -86,6 +93,12 @@ public virtual Nullable<DateTime> Date {
 
 
 
+public virtual string AdminComment {
+        get { return adminComment; } set { adminComment = value;  }
+}
+
+
+
 
 
 public RequestEN()
@@ -94,20 +107,20 @@ public RequestEN()
 
 
 
-public RequestEN(int id, PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date
+public RequestEN(int id, PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date, string adminComment
                  )
 {
-        this.init (Id, post, type, reason, state, date);
+        this.init (Id, post, type, reason, state, date, adminComment);
 }
 
 
 public RequestEN(RequestEN request)
 {
-        this.init (Id, request.Post, request.Type, request.Reason, request.State, request.Date);
+        this.init (Id, request.Post, request.Type, request.Reason, request.State, request.Date, request.AdminComment);
 }
 
 private void init (int id
-                   , PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date)
+                   , PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date, string adminComment)
 {
         this.Id = id;
 
@@ -121,6 +134,8 @@ private void init (int id
         this.State = state;
 
         this.Date = date;
+
+        this.AdminComment = adminComment;
 }
 
 public override bool Equals (object obj)

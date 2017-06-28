@@ -27,6 +27,9 @@
 		 
 				var date: NSDate?;
 				    	 
+		 
+				var adminComment: String?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -66,6 +69,10 @@
 
 				
 					dictionary["date"] = self.date?.toString();
+				
+
+				
+					dictionary["adminComment"] = self.adminComment;
 				
 						
 				return dictionary;
