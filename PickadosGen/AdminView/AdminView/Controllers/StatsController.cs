@@ -98,6 +98,24 @@ namespace AdminView.Controllers
                 return RedirectToAction("login", "account");
         }
 
+        [HttpPost]
+        [ActionName("_PostStat")]
+        public ActionResult _PostStatPost(string iDate, string fDate)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string[] iDateData = iDate.Split('-');
+                string[] fDateData = fDate.Split('-');
+
+                string initialDate = iDateData[1] + "/" + iDateData[0];
+                string finalDate = fDateData[1] + "/" + fDateData[0];
+
+                return PartialView("_posts/_PostStat", _Post(initialDate, finalDate));
+            }
+            else
+                return RedirectToAction("login", "account");
+        }
+
         private StatModel _Post(string initialDate, string finalDate)
         {
             string[] iDate = initialDate.Split('/');
@@ -132,8 +150,32 @@ namespace AdminView.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                DateTime fin = DateTime.Today;
+                DateTime init = DateTime.Today.AddMonths(-11);
+
                 PostCEN postCEN = new PostCEN();
-                IEnumerable<PostEN> posts = postCEN.GetMoreVoted();
+                IEnumerable<PostEN> posts = postCEN.GetMoreVoted(init, fin);
+
+                return PartialView("_posts/_PostList", posts);
+            }
+            else
+                return RedirectToAction("login", "account");
+        }
+
+        [HttpPost]
+        [ActionName("_PostList")]
+        public ActionResult _PostListPost(string iDate, string fDate)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string[] iDateData = iDate.Split('-');
+                string[] fDateData = fDate.Split('-');
+
+                DateTime init = new DateTime(Int32.Parse(iDateData[0]), Int32.Parse(iDateData[1]), 01);
+                DateTime fin = new DateTime(Int32.Parse(fDateData[0]), Int32.Parse(fDateData[1]), 01);
+
+                PostCEN postCEN = new PostCEN();
+                IEnumerable<PostEN> posts = postCEN.GetMoreVoted(init, fin);
 
                 return PartialView("_posts/_PostList", posts);
             }

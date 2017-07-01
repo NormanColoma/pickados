@@ -411,15 +411,17 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN
 
         return result;
 }
-public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetMoreVoted ()
+public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> GetMoreVoted (Nullable<DateTime> initialDate, Nullable<DateTime> finalDate)
 {
         System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM PostEN self where FROM PostEN ORDER BY likeit DESC";
+                //String sql = @"FROM PostEN self where FROM PostEN WHERE created_at BETWEEN :initialDate and :finalDate OR modified_at BETWEEN :initialDate and :finalDate ORDER BY likeit DESC";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("PostENgetMoreVotedHQL");
+                query.SetParameter ("initialDate", initialDate);
+                query.SetParameter ("finalDate", finalDate);
 
                 result = query.List<PickadosGenNHibernate.EN.Pickados.PostEN>();
                 SessionCommit ();

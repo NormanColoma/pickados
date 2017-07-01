@@ -398,13 +398,13 @@ public static void InitializeData ()
                 int id_post_5 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 5",
                         false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
 
-                int id_post_6 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Va a ser un partido sufrido 6",
+                int id_post_6 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 6",
                         false, picks, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 20, 0);
 
-                int id_post_7 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Va a ser un partido sufrido 7",
+                int id_post_7 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 7",
                         false, picks, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
 
-                int id_post_8 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Va a ser un partido sufrido 8",
+                int id_post_8 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 8",
                         false, picks, tipster3, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
 
                 postCP.VerifyPost (id_post_1);
@@ -422,14 +422,14 @@ public static void InitializeData ()
                 postCP.VerifyPost (id_post_5);
                 postCEN.AddLike (id_post_5);
 
-                postCP.VerifyPost(id_post_6);
-                postCEN.AddLike(id_post_6);
+                postCP.VerifyPost (id_post_6);
+                postCEN.AddLike (id_post_6);
 
-                postCP.VerifyPost(id_post_7);
-                postCEN.AddLike(id_post_7);
+                postCP.VerifyPost (id_post_7);
+                postCEN.AddLike (id_post_7);
 
-                postCP.VerifyPost(id_post_8);
-                postCEN.AddLike(id_post_8);
+                postCP.VerifyPost (id_post_8);
+                postCEN.AddLike (id_post_8);
 
                 DateTime d = new DateTime (2017, 3, 8);
 

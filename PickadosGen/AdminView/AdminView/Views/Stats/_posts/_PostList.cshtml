@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<PickadosGenNHibernate.EN.Pickados.PostEN>
 
+
 <table id="posts" class="table">
     <thead>
         <tr>
@@ -64,5 +65,41 @@
         }
     </tbody>
 </table>
+
+<script>
+    $(document).ready(function () {
+        $("#postlist_btn").on("click", function () {
+            var i_date = $('#iDateList').val();
+            var f_date = $('#fDateList').val();
+
+            $.ajax({
+                url: "/stats/_postlist",
+                type: "post",
+                data: {
+                    iDate: i_date,
+                    fDate: f_date
+                },
+                beforeSend: function () {
+                    if (i_date != null && f_date != null)
+                    {
+                        var iDate = Date.parse(i_date);
+                        var fDate = Date.parse(f_date);
+                        var today = Date.parse(new Date());
+
+                        if(iDate <= today && fDate <= today)
+                            return true;
+                    }
+
+                    return false;
+                }
+            })
+            .done(function (result) {
+                $("#posts").html(result);
+                $("#iDateList").val('');
+                $("#fDateList").val('');
+            });
+        });
+    });
+</script>
 
 @Scripts.Render("~/bundles/posts")

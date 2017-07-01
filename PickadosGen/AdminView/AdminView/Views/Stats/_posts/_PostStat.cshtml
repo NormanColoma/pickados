@@ -1,27 +1,12 @@
 ﻿@model AdminView.Models.StatModel
 
-@using (Html.BeginForm("_PostStat", "Stats", FormMethod.Post))
-{
-    <div class="form-horizontal col-md-12">
-        <div class="form-group col-md-4">
-            @Html.LabelFor(model => model.InitialDate, htmlAttributes: new { @class = "col-md-12" })
-            @Html.TextBoxFor(model => model.InitialDate, htmlAttributes: new { @class = "form-control col-md-12", type = "date" })
-        </div>
-        <div class="form-group col-md-4">
-            @Html.LabelFor(model => model.FinalDate, htmlAttributes: new { @class = "col-md-12" })
-            @Html.TextBoxFor(model => model.FinalDate, htmlAttributes: new { @class = "form-control col-md-12", type = "date" })
-        </div>
-        <div class="form-group col-md-4">
-            <input class="btn btn-default col-md-2" type="submit" value="Filtrar" />
-        </div>
-    </div>
-}
+<div id="poststat">
+    <div class="clearfix"></div>
 
-<div class="clearfix"></div>
+    <script type="text/javascript" src="../../Scripts/chartjs/Chart.bundle.min.js"></script>
 
-<script type="text/javascript" src="../../Scripts/chartjs/Chart.bundle.min.js"></script>
-
-<div class="col-md-offset-2 col-md-8"><canvas id="myChart"></canvas></div>
+    <div class="col-md-offset-2 col-md-8"><canvas id="myChart"></canvas></div>
+</div>
 
 <script>
     var ctx = document.getElementById("myChart").getContext('2d');
@@ -32,13 +17,12 @@
     var data_stat = @Html.Raw(Json.Encode(Model.Data));
     var data_stat_format = data_stat.replace("[", "").replace("]", "")
 
-
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: label_stat_format.split(","),
             datasets: [{
-                label: 'number of posts',
+                label: 'nº publicaciones',
                 data: data_stat_format.split(","),
                 backgroundColor: 'rgba(213, 215, 216, 1)',
                 borderColor: 'rgba(87, 93, 99, 1)',
@@ -47,15 +31,47 @@
                 borderWidth: 1
             }]
         },
-        options: {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero: true
                     }
                 }]
             }
-        }
+    });
+
+    $(document).ready(function() {
+        $("#poststat_btn").on("click", function() {
+            var i_date = $('#iDateStat').val();
+            var f_date = $('#fDateStat').val();
+
+            $.ajax({
+                url: "/stats/_poststat",
+                type: "post",
+                data: {
+                    iDate: i_date,
+                    fDate: f_date
+                },
+                beforeSend: function () {
+                    if (i_date != null && f_date != null)
+                    {
+                        var iDate = Date.parse(i_date);
+                        var fDate = Date.parse(f_date);
+                        var today = Date.parse(new Date());
+
+                        if(iDate <= today && fDate <= today)
+                            return true;
+                    }
+
+                    return false;
+                }
+            })
+            .done(function(result) {
+                $("#poststat").html(result);
+                $("#iDateStat").val('');
+                $("#fDateStat").val('');
+            });
+        });
     });
 
 </script>
