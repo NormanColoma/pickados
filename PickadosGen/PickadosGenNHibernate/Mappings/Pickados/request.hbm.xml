@@ -27,6 +27,9 @@
 					<property name="AdminComment" type="string"> 
 						<column name="adminComment"  not-null="true"/>
 					</property>
+					<property name="ChangeDate" type="date"> 
+						<column name="changeDate"  not-null="true"/>
+					</property>
 			
 			
 		  			
@@ -40,6 +43,8 @@
 			
 			
 			
+			
+					
 					
 					
 					

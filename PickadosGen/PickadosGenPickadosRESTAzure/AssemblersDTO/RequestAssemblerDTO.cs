@@ -38,6 +38,7 @@ public static RequestEN Convert (RequestDTO dto)
                         newinstance.State = dto.State;
                         newinstance.Date = dto.Date;
                         newinstance.AdminComment = dto.AdminComment;
+                        newinstance.ChangeDate = dto.ChangeDate;
                 }
         }
         catch (Exception ex)

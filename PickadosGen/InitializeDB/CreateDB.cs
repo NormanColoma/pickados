@@ -439,7 +439,7 @@ public static void InitializeData ()
                 // Creating requests
 
                 RequestCEN requestCEN = new RequestCEN ();
-                requestCEN.New_ (id_post_1, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20), "");
+                requestCEN.New_ (id_post_1, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20), "", new DateTime(1900, 01, 01));
 
                 LoginCEN loginCEN = new LoginCEN ();
                 loginCEN.NewLogin ("arya", new DateTime (2016, 06, 01));

@@ -65,7 +65,7 @@ namespace AdminView.Controllers
                     else {
                         //TODO this better as transaction
                         postCEN.DeletePost(requestEN.Post.Id);
-                        requestCEN.Modify(id, requestEN.Type, requestEN.Reason, RequestStateEnum.Accepted, requestEN.Date, "");
+                        requestCEN.Modify(id, requestEN.Type, requestEN.Reason, RequestStateEnum.Accepted, requestEN.Date, "", DateTime.Now);
                     }
                 }
                 // TODO: Add insert logic here
@@ -125,7 +125,7 @@ namespace AdminView.Controllers
                 // TODO: Add delete logic here
                 RequestCEN requests = new RequestCEN();
                 RequestEN request = requests.GetById(id);
-                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, request.Date, "");
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, request.Date, "", DateTime.Now);
                 return RedirectToAction("Index");
             /*}
             catch
@@ -143,7 +143,7 @@ namespace AdminView.Controllers
                 // TODO: Add delete logic here
                 RequestCEN requests = new RequestCEN();
                 RequestEN request = requests.GetById(id);
-                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, new DateTime(), "");
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, new DateTime(), "", DateTime.Now);
                 return RedirectToAction("Index");
             }
             catch
@@ -174,7 +174,7 @@ namespace AdminView.Controllers
             RequestCEN requests = new RequestCEN();
             RequestEN request = requests.GetById(id);
             string comment = collection["AdminComment"].ToString();
-            requests.Modify(id, request.Type, request.Reason, request.State, request.Date, comment);
+            requests.Modify(id, request.Type, request.Reason, request.State, request.Date, comment, DateTime.Now);
             return RedirectToAction("Index");
 
         }

@@ -54,6 +54,13 @@ private string adminComment;
 
 
 
+/**
+ *	Atributo changeDate
+ */
+private Nullable<DateTime> changeDate;
+
+
+
 
 
 
@@ -99,6 +106,12 @@ public virtual string AdminComment {
 
 
 
+public virtual Nullable<DateTime> ChangeDate {
+        get { return changeDate; } set { changeDate = value;  }
+}
+
+
+
 
 
 public RequestEN()
@@ -107,20 +120,20 @@ public RequestEN()
 
 
 
-public RequestEN(int id, PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date, string adminComment
+public RequestEN(int id, PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date, string adminComment, Nullable<DateTime> changeDate
                  )
 {
-        this.init (Id, post, type, reason, state, date, adminComment);
+        this.init (Id, post, type, reason, state, date, adminComment, changeDate);
 }
 
 
 public RequestEN(RequestEN request)
 {
-        this.init (Id, request.Post, request.Type, request.Reason, request.State, request.Date, request.AdminComment);
+        this.init (Id, request.Post, request.Type, request.Reason, request.State, request.Date, request.AdminComment, request.ChangeDate);
 }
 
 private void init (int id
-                   , PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date, string adminComment)
+                   , PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date, string adminComment, Nullable<DateTime> changeDate)
 {
         this.Id = id;
 
@@ -136,6 +149,8 @@ private void init (int id
         this.Date = date;
 
         this.AdminComment = adminComment;
+
+        this.ChangeDate = changeDate;
 }
 
 public override bool Equals (object obj)

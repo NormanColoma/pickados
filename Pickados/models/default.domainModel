@@ -874,26 +874,28 @@
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_reZxAAKWEeexzcR6TysJ7w" name="Request" alias="Request" associationOrigin="_yENAUAKWEeexzcR6TysJ7w">
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_3JhUUAKWEeexzcR6TysJ7w" name="new" operationType="New" type="Object" typeObject="_reZxAAKWEeexzcR6TysJ7w">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BitKMFwyEeeWQ_yAYXbqgw" name="p_post" type="OID" typeObject="_gc4PQNNtEeaZBpN3xqTI2g"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BitKMVwyEeeWQ_yAYXbqgw" name="p_type" type="Enum" typeEnum="_8bI-8AKWEeexzcR6TysJ7w"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BitKMlwyEeeWQ_yAYXbqgw" name="p_reason"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BitKM1wyEeeWQ_yAYXbqgw" name="p_state" type="Enum" typeEnum="_aybGcAKXEeexzcR6TysJ7w"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BitKNFwyEeeWQ_yAYXbqgw" name="p_date" type="Date"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BitxQFwyEeeWQ_yAYXbqgw" name="p_adminComment"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCdPwF5REeeZ4eSY-IUSuw" name="p_post" type="OID" typeObject="_gc4PQNNtEeaZBpN3xqTI2g"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCdPwV5REeeZ4eSY-IUSuw" name="p_type" type="Enum" typeEnum="_8bI-8AKWEeexzcR6TysJ7w"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCdPwl5REeeZ4eSY-IUSuw" name="p_reason"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCd20F5REeeZ4eSY-IUSuw" name="p_state" type="Enum" typeEnum="_aybGcAKXEeexzcR6TysJ7w"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCd20V5REeeZ4eSY-IUSuw" name="p_date" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCd20l5REeeZ4eSY-IUSuw" name="p_adminComment"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCd2015REeeZ4eSY-IUSuw" name="p_changeDate" type="Date"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_3JiicAKWEeexzcR6TysJ7w" name="modify" operationType="Modifier" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BitxQVwyEeeWQ_yAYXbqgw" name="p_Request_OID" type="OID" typeObject="_reZxAAKWEeexzcR6TysJ7w"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BiuYUFwyEeeWQ_yAYXbqgw" name="p_type" type="Enum" typeEnum="_8bI-8AKWEeexzcR6TysJ7w"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BiuYUVwyEeeWQ_yAYXbqgw" name="p_reason"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BiuYUlwyEeeWQ_yAYXbqgw" name="p_state" type="Enum" typeEnum="_aybGcAKXEeexzcR6TysJ7w"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BiuYU1wyEeeWQ_yAYXbqgw" name="p_date" type="Date"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BiuYVFwyEeeWQ_yAYXbqgw" name="p_adminComment"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCed4F5REeeZ4eSY-IUSuw" name="p_Request_OID" type="OID" typeObject="_reZxAAKWEeexzcR6TysJ7w"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCed4V5REeeZ4eSY-IUSuw" name="p_type" type="Enum" typeEnum="_8bI-8AKWEeexzcR6TysJ7w"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCed4l5REeeZ4eSY-IUSuw" name="p_reason"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCed415REeeZ4eSY-IUSuw" name="p_state" type="Enum" typeEnum="_aybGcAKXEeexzcR6TysJ7w"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCed5F5REeeZ4eSY-IUSuw" name="p_date" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCfE8F5REeeZ4eSY-IUSuw" name="p_adminComment"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCfE8V5REeeZ4eSY-IUSuw" name="p_changeDate" type="Date"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_3JjJgQKWEeexzcR6TysJ7w" name="delete" operationType="Destroy" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_BiuYVVwyEeeWQ_yAYXbqgw" name="p_Request_OID" type="OID" typeObject="_reZxAAKWEeexzcR6TysJ7w"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCfE8l5REeeZ4eSY-IUSuw" name="p_Request_OID" type="OID" typeObject="_reZxAAKWEeexzcR6TysJ7w"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_2QgMMAKXEeexzcR6TysJ7w" name="getById" operationType="ReadOID" type="Object" typeObject="_reZxAAKWEeexzcR6TysJ7w">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Biu_YFwyEeeWQ_yAYXbqgw" name="p_Request_OID" type="OID" typeObject="_reZxAAKWEeexzcR6TysJ7w"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_qCfE815REeeZ4eSY-IUSuw" name="p_Request_OID" type="OID" typeObject="_reZxAAKWEeexzcR6TysJ7w"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_2QhaUAKXEeexzcR6TysJ7w" name="getAll" operationType="ReadAll" type="Object" collectionType="List" typeObject="_reZxAAKWEeexzcR6TysJ7w"/>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_9iSXwAKXEeexzcR6TysJ7w" name="getByState" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_reZxAAKWEeexzcR6TysJ7w" filter="FROM RequestEN  where state = :p_state" automaticSynchronize="false">
@@ -906,6 +908,7 @@
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_r4rcwAKXEeexzcR6TysJ7w" alias="state" name="state" type="Enum" typeEnum="_aybGcAKXEeexzcR6TysJ7w"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_F-vKMAKZEeexzcR6TysJ7w" alias="date" name="date" type="Date"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_43lNIFwxEeeWQ_yAYXbqgw" alias="adminComment" name="adminComment"/>
+      <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_fDwVQF5LEeeZ4eSY-IUSuw" alias="changeDate" name="changeDate" type="Date"/>
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_yENAUAKWEeexzcR6TysJ7w" name="post_request" alias="post_request" rolOrigin="_yF1_EAKWEeexzcR6TysJ7w" rolTarget="_yF30QAKWEeexzcR6TysJ7w" classTarget="_gc4PQNNtEeaZBpN3xqTI2g" classOrigin="_reZxAAKWEeexzcR6TysJ7w" rolOriginName="post" rolTargetName="request" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
     <elements xmi:type="es.ua.dlsi.ooh:Enumeration" xmi:id="_8bI-8AKWEeexzcR6TysJ7w" name="RequestType">
@@ -2684,6 +2687,10 @@
         <children xmi:type="notation:Shape" xmi:id="_44jdgFwxEeeWQ_yAYXbqgw" type="3003" element="_43lNIFwxEeeWQ_yAYXbqgw" fontName="Segoe UI">
           <children xmi:type="notation:DecorationNode" xmi:id="_44sAYFwxEeeWQ_yAYXbqgw" type="5007"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_44jdgVwxEeeWQ_yAYXbqgw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_fJkCUF5LEeeZ4eSY-IUSuw" type="3003" element="_fDwVQF5LEeeZ4eSY-IUSuw" fontName="Segoe UI">
+          <children xmi:type="notation:DecorationNode" xmi:id="_fJkCUl5LEeeZ4eSY-IUSuw" type="5007"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fJkCUV5LEeeZ4eSY-IUSuw"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_rei68QKWEeexzcR6TysJ7w"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_rei68gKWEeexzcR6TysJ7w"/>

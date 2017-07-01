@@ -106,6 +106,9 @@ public void ModifyDefault (RequestEN request)
 
                 requestEN.AdminComment = request.AdminComment;
 
+
+                requestEN.ChangeDate = request.ChangeDate;
+
                 session.Update (requestEN);
                 SessionCommit ();
         }
@@ -178,6 +181,9 @@ public void Modify (RequestEN request)
 
 
                 requestEN.AdminComment = request.AdminComment;
+
+
+                requestEN.ChangeDate = request.ChangeDate;
 
                 session.Update (requestEN);
                 SessionCommit ();
