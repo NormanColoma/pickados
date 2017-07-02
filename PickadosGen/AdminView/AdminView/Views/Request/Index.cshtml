@@ -71,16 +71,15 @@ else
                             <div class="col-md-7">
                                 <span class="fa fa-calendar"></span> Fecha solicitud: @Html.DisplayFor(modelItem => item.Date)<br />
                                 <span class="fa fa-thumb-tack"></span>Razón: @Html.DisplayFor(modelItem => item.Reason)<br />
-                                <span class="fa fa-list-alt"></span>@Html.ActionLink("Detalles de Post", "Post", "PostDetails", new { post = item.Post }, null)<br />
+                                <!--<span class="fa fa-list-alt"></span>@*@Html.ActionLink("Detalles de Post", "Post", "PostDetails", new { post = item.Post }, null)*@<br />-->
                                 <span class="fa fa-calendar"></span> Fecha último cambio: @DateOfChange(ViewBag.Message, item.ChangeDate).ToString()<br />
                                 <span class="fa fa-thumb-tack"></span>Comentario del administrador:<br />
                                 @Html.DisplayFor(modelItem => item.AdminComment)<br />
                             </div>
                             <div class="col-md-5">
-                                @Html.ActionLink("Aceptar", "Accept", new { id = item.Id }, new { @class = "btn btn-outline btn-success" }) |
-                                @*@Html.ActionLink("Abrir disputa", "Review", new { id = item.Id }, new { @class = "btn btn-outline btn-info" }) *@
-                                @Html.ActionLink("Denegar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline btn-danger" }) <br/><br/>
-                                <a href="javascript:void(0);" class="anchorDetail" data-id="@item.Id">Añadir Comentario</a>
+                                <a href="javascript:void(0);" class="anchorDetail btn btn-outline btn-success" data-id="@item.Id" data-content="Aceptar">Aceptar</a> | 
+                                <a href="javascript:void(0);" class="anchorDetail btn btn-outline btn-danger" data-id="@item.Id" data-content="Denegar">Denegar</a> | 
+                                <a href="javascript:void(0);" class="anchorDetail btn btn-outline btn-warning" data-id="@item.Id" data-content="Revisar">Revisar</a><br /><br />
                             </div>
 
                         </div>
@@ -138,12 +137,13 @@ else
             debugger;
             var $buttonClicked = $(this);
             var id = $buttonClicked.attr('data-id');
+            var content = $buttonClicked.attr('data-content');
             var options = { "backdrop": "static", keyboard: true };
             $.ajax({
                 type: "GET",
                 url: TeamDetailPostBackURL,
                 contentType: "application/json; charset=utf-8",
-                data: { "id": id },
+                data: { "id": id, "content": content },
                 datatype: "json",
                 success: function (data) {
                     debugger;

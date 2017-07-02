@@ -1,6 +1,6 @@
 ﻿@model PickadosGenNHibernate.EN.Pickados.RequestEN
 
-@using (Html.BeginForm("AddingComments", "Request"))
+@using (Html.BeginForm("AddingComments", "Request", routeValues: new { content = ViewBag.typeContent }))
 {
 <div>
 
@@ -20,7 +20,7 @@
         <dt>
         </dt>
         <dd>
-            <input type="submit" value="Guardar" class="btn btn-default" />
+            <input type="submit" value=@ViewBag.typeContent class="btn btn-default" />
         </dd>
     </dl>
 </div>  
