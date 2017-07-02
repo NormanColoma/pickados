@@ -31,5 +31,13 @@ private Nullable<DateTime> date;
 public Nullable<DateTime> Date {
         get { return date; } set { date = value;  }
 }
+private string adminComment;
+public string AdminComment {
+        get { return adminComment; } set { adminComment = value;  }
+}
+private Nullable<DateTime> changeDate;
+public Nullable<DateTime> ChangeDate {
+        get { return changeDate; } set { changeDate = value;  }
+}
 }
 }

@@ -64,9 +64,9 @@
                         type: "POST",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
-                            response($.map(data, function (item) {
-                                return item;
-                            }))
+                            //response($.map(data, function (item) {
+                                return data;
+                            //}))
                         },
                         error: function (response) {
                             alert(response.responseText);

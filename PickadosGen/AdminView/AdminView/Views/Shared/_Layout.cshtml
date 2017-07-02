@@ -1,5 +1,29 @@
 ﻿@using AdminView.Resources
 
+<script type="text/javascript">
+    function getNumberOfRequests() {
+        var r = '';
+        $.ajax({
+            url: '/Request/CountRequests/',
+            data: "{ 'prefix': '" + 'hola' + "'}",
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                document.getElementById("demo").innerHTML=data+" nuevas solicitudes";
+            },
+            error: function (e) {
+                document.getElementById("demo").innerHTML = "Fallo de conexión";
+            },
+            failure: function (f) {
+                document.getElementById("demo").innerHTML = "Fallo de conexión";
+            }
+        });
+
+        return r;
+    };
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +36,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body onload="getNumberOfRequests();">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -27,6 +51,22 @@
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-alerts">
+            <li>
+                <a href="/Request">
+                    <div>
+                        <i class="fa fa fa-comment fa-fw"></i> <label id="demo" onload="getNumberOfRequests();"></label>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-alerts-->
+    </li>
+
                 @Html.Partial("_LoginPartial")  
             </ul>
 
@@ -74,9 +114,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <!--<li>
-                            @*@Html.ActionLink("Solicitudes", "Index", "Request")*@
-                        </li>-->
+                        <li>
+                            @Html.ActionLink("Solicitudes", "Index", "Request")
+                        </li>
                         <li>
                             @Html.ActionLink(@textos.Sport, "Sports", "Sports")
                         </li>
@@ -117,3 +157,7 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+
+

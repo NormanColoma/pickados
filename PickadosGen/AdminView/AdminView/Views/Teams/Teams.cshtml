@@ -1,7 +1,5 @@
 ﻿@using AdminView.Resources
 
-@using AdminView.Resources
-
 <ul class="nav nav-tabs">
     <li>@Html.ActionLink(@textos.Sport, "Sports", "Sports")</li>
     <li>@Html.ActionLink((string)ViewBag.typeCompetition, "TypeCompetition", "TypeCompetition", new { idSport = ViewBag.sport.Id }, null)</li>

@@ -15,126 +15,57 @@ namespace AdminView.Controllers
         public ActionResult Index()
         {
             RequestCEN requestCEN = new RequestCEN();
-            IList<RequestEN> list = requestCEN.GetByState(RequestStateEnum.Open);
+            List<RequestEN> list = requestCEN.GetByState(RequestStateEnum.Open).ToList();
+            List<RequestEN> list2 = requestCEN.GetByState(RequestStateEnum.inReview).ToList();
+            list.AddRange(list2);
             return View(list);
         }
 
-        // GET: Request/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Request/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Request/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        [HttpPost]
-        public ActionResult Accept(int id, FormCollection collection)
-        {
-            try
-            {
-                RequestCEN requestCEN = new RequestCEN();
-                RequestEN requestEN = requestCEN.GetById(id);
-                PostCEN postCEN = new PostCEN();
-
-                if (requestEN != null) {
-                    RequestTypeEnum requestType = requestEN.Type;
-
-                    if (requestType.Equals(RequestTypeEnum.modify)){
-                        //TODO Update post 
-                    }
-                    else {
-                        //TODO this better as transaction
-                        postCEN.DeletePost(requestEN.Post.Id);
-                        requestCEN.Modify(id, requestEN.Type, requestEN.Reason, RequestStateEnum.Accepted, requestEN.Date);
-                    }
-                }
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        [HttpPost]
-        public ActionResult Review(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Send email notification and set inReview(4) state.
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Request/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Request/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Request/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Request/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult AddComment(int id, string content)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                RequestCEN requests = new RequestCEN();
+                RequestEN request = requests.GetById(id);
+                //requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, new DateTime(), "");*/
+                ViewBag.typeContent = content;
+                return PartialView("AddComment", request);
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
+        }
+
+        [HttpPost]
+        public ActionResult AddingComments(string content, int id, FormCollection collection)
+        {
+            RequestCEN requests = new RequestCEN();
+            RequestEN request = requests.GetById(id);
+            string comment = collection["AdminComment"].ToString();
+            if (content.Equals("Aceptar"))
+            {
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Accepted, request.Date, comment, DateTime.Now);
+            } else if(content.Equals("Denegar"))
+            {
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, request.Date, comment, DateTime.Now);
+            } else
+            {
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.inReview, request.Date, comment, DateTime.Now);
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        [HttpPost]
+        public JsonResult CountRequests(string prefix)
+        {
+            RequestCEN requestCEN = new RequestCEN();
+            List<RequestEN> list = requestCEN.GetByState(RequestStateEnum.Open).ToList();
+            List<RequestEN> list2 = requestCEN.GetByState(RequestStateEnum.inReview).ToList();
+            list.AddRange(list2);
+            return Json(list.Count);
         }
     }
 }

@@ -23,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -439,7 +439,7 @@ public static void InitializeData ()
                 // Creating requests
 
                 RequestCEN requestCEN = new RequestCEN ();
-                requestCEN.New_ (id_post_1, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
+                requestCEN.New_ (id_post_1, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20), "", new DateTime(1900, 01, 01));
 
                 LoginCEN loginCEN = new LoginCEN ();
                 loginCEN.NewLogin ("arya", new DateTime (2016, 06, 01));
