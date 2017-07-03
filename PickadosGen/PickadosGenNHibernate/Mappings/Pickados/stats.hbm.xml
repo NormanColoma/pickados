@@ -46,7 +46,7 @@
 			
 			
 		  			
-						<many-to-one name="Tipster" class="PickadosGenNHibernate.EN.Pickados.TipsterEN" >	
+						<many-to-one name="Tipster" class="PickadosGenNHibernate.EN.Pickados.TipsterEN" lazy="false">	
 								<column name="FK_id_idTipster"/> 
 						</many-to-one>
 											 					

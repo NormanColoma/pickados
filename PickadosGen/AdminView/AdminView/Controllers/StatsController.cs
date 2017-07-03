@@ -184,7 +184,7 @@ namespace AdminView.Controllers
         }
 
         /*--- Stats by bet tipster --- */
-        public ActionResult UsersBets()
+        public ActionResult Users()
         {
             return View();
         }
@@ -219,46 +219,34 @@ namespace AdminView.Controllers
         [ActionName("_UsersBetsList")]
         public ActionResult _UsersBetsListPost(StatModel stat)
         {
-
-            string initialDate = stat.InitialDate.Month + "/" + stat.InitialDate.Year;
-            string finalDate = stat.FinalDate.Month + "/" + stat.FinalDate.Year;
-
-            string[] iDate = initialDate.Split('/');
-            string[] fDate = finalDate.Split('/');
-
-            DateTime init = new DateTime(Int32.Parse(iDate[1]), Int32.Parse(iDate[0]), 01);
-            DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), 01);
-
             PostCEN postCEN = new PostCEN();
             TipsterCEN tipsterCEN = new TipsterCEN();
 
             /* --- Get posts --- */
-            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetPostsBetweenDate(init, fin).GroupBy(p => p.Tipster.Id).ToList();
+            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetAllPosts(0, int.MaxValue).GroupBy(p => p.Tipster.Id).ToList();
 
-            Dictionary<string, double> usersBetDict = new Dictionary<string, double>();
+            StatModel sm = new StatModel();
+            sm.ListInfo = new Dictionary<string, double>();
+
             for (int i = 0; i < postsGroup.Count(); i++)
             {
                 TipsterEN tipsterEN = tipsterCEN.GetTipsterById(postsGroup[i].Key);
-                usersBetDict.Add(tipsterEN.Alias, postsGroup[i].Count());
+                sm.ListInfo.Add(tipsterEN.Alias, postsGroup[i].Count());
             }
-
-            StatModel sm = new StatModel();
-            sm.completeInfoStat(usersBetDict);
+           
+            sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
+            sm.completeInfoStat(sm.ListInfo);
 
             return PartialView("_usersbets/_UsersBetsList", sm);
         }
 
         public ActionResult _UsersStakeList()
         {
-            /* --- Dates --- */
-            DateTime fin = DateTime.Today;
-            DateTime init = DateTime.Today.AddMonths(-11);
-
             PostCEN postCEN = new PostCEN();
             TipsterCEN tipsterCEN = new TipsterCEN();
 
             /* --- Get posts --- */
-            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetPostsBetweenDate(init, fin).GroupBy(p => p.Tipster.Id).ToList();
+            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetAllPosts(0, int.MaxValue).GroupBy(p => p.Tipster.Id).ToList();
 
             StatModel sm = new StatModel();
             sm.ListInfo = new Dictionary<string, double>();
@@ -269,16 +257,44 @@ namespace AdminView.Controllers
                 TipsterEN tipsterEN = tipsterCEN.GetTipsterById(group.Key);
                 
                 foreach (var item in group)
-                {
                     value += item.Stake;
-                }
 
                 sm.ListInfo.Add(tipsterEN.Alias, value);
             }
 
+            sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
             sm.completeInfoStat(sm.ListInfo);
 
             return PartialView("_usersbets/_UsersStakeList", sm);
+        }
+
+        public ActionResult _UsersYieldList()
+        {
+            /* --- Get posts --- */
+            StatsCEN statsCEN = new StatsCEN();
+            List<IGrouping<string, StatsEN>> statsGroup = statsCEN.GetAllStats(0, int.MaxValue).GroupBy(s => s.Tipster.Alias).ToList();
+
+            StatModel sm = new StatModel();
+            sm.ListInfo = new Dictionary<string, double>();
+
+            foreach (var group in statsGroup)
+            {
+                int cont = 0;
+                float yield = 0;
+
+                foreach (var stat in group)
+                {
+                    cont++;
+                    yield += stat.Yield;
+                }
+
+                sm.ListInfo.Add(group.Key, yield/cont);
+            }
+
+            sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
+            sm.completeInfoStat(sm.ListInfo);
+
+            return PartialView("_usersbets/_UsersYieldList", sm);
         }
     }
 }
