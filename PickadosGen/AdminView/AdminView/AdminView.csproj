@@ -63,7 +63,9 @@
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatchesController.cs" />
+    <Compile Include="Controllers\PickController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Controllers\RoundController.cs" />
     <Compile Include="Controllers\SeasonsController.cs" />
@@ -237,6 +239,8 @@
     <Content Include="Views\Stats\_usersbets\_UsersStakeList.cshtml" />
     <Content Include="Views\Stats\_usersbets\_UsersYieldList.cshtml" />
     <Content Include="Views\Stats\Users.cshtml" />
+    <Content Include="Views\Post\PostDetails.cshtml" />
+    <Content Include="Views\Pick\DetailsPick.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

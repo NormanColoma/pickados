@@ -33,7 +33,7 @@
 			
 			
 		  			
-						<many-to-one name="Post" class="PickadosGenNHibernate.EN.Pickados.PostEN" >	
+						<many-to-one name="Post" class="PickadosGenNHibernate.EN.Pickados.PostEN" lazy="false">	
 								<column name="FK_id_idPost"/> 
 						</many-to-one>
 											 					

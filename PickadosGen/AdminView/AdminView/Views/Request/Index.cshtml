@@ -71,7 +71,7 @@ else
                             <div class="col-md-7">
                                 <span class="fa fa-calendar"></span> Fecha solicitud: @Html.DisplayFor(modelItem => item.Date)<br />
                                 <span class="fa fa-thumb-tack"></span>Razón: @Html.DisplayFor(modelItem => item.Reason)<br />
-                                <!--<span class="fa fa-list-alt"></span>@*@Html.ActionLink("Detalles de Post", "Post", "PostDetails", new { post = item.Post }, null)*@<br />-->
+                                <span class="fa fa-list-alt"></span>@Html.ActionLink("Detalles del Post", "PostDetails", "Post", new { post = item.Post.Id }, null)<br />
                                 <span class="fa fa-calendar"></span> Fecha último cambio: @DateOfChange(ViewBag.Message, item.ChangeDate).ToString()<br />
                                 <span class="fa fa-thumb-tack"></span>Comentario del administrador:<br />
                                 @Html.DisplayFor(modelItem => item.AdminComment)<br />
