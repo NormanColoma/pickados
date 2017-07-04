@@ -23,7 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -413,13 +413,17 @@ public static void InitializeData ()
                 postCP.VerifyPost (id_post_5);
                 postCEN.AddLike (id_post_5);
 
-                DateTime d = new DateTime (2017, 3, 8);
+                DateTime d_march = new DateTime (2017, 3, 8);
+                DateTime d_april = new DateTime(2017, 4, 3);
+                DateTime d_may = new DateTime(2017, 5, 3);
+                DateTime d_june = new DateTime(2017, 6, 3);
 
                 StatsCEN statCEN = new StatsCEN ();
-                statCEN.NewMonthlyStats (1, 1, 1, 1, 1, d, tipster2, 1, 1);
-                statCEN.NewMonthlyStats (2, 2, 2, 2, 2, d.AddDays (2), tipster2, 2, 2);
-                statCEN.NewMonthlyStats (3, 3, 3, 3, 3, d.AddMonths (2), tipster2, 3, 3);
-                statCEN.NewMonthlyStats (4, 4, 4, 4, 4, d.AddMonths (4), tipster2, 4, 4);
+                statCEN.NewMonthlyStats(4, 1, 10, 2, 12, d_march, tipster2, 24, 12);
+                statCEN.NewMonthlyStats(3, 3, 25, 3, 3, d_april, tipster2, 9, 9);
+                statCEN.NewMonthlyStats(4, 4, 20, 4, 4, d_may, tipster2, 16, 16);
+                statCEN.NewMonthlyStats(4, 4, 25, 4, 4, d_june, tipster2, 16, 16);
+
 
                 Console.WriteLine ("--------------- Get Stats by Tipster -------------");
                 StatsCAD statCAD = new StatsCAD ();
