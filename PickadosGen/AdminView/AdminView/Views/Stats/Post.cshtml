@@ -1,11 +1,39 @@
-﻿<h3 class="col-md-12">Número de votos mensuales</h3>
+﻿<h3 class="col-md-12">Publicaciones con más número de votos mensuales</h3>
 <hr />
+
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-4">
+        <label class="col-md-12" for="InitialDate">Fecha de inicio</label>
+        <input class="form-control col-md-12" id="iDateStat" name="InitialDate" type="date" value="">
+    </div>
+    <div class="form-group col-md-4">
+        <label class="col-md-12">Fecha de fin</label>
+        <input class="form-control col-md-12" id="fDateStat" name="FinalDate" type="date" value="">
+    </div>
+    <div class="form-group col-md-4">
+        <input id="poststat_btn" class="btn btn-default col-md-2" type="submit" value="Filtrar">
+    </div>
+</div>
 
 @{Html.RenderAction("_PostStat", "Stats");}
 
 
 
-<h3 class="col-md-12">Lista de posts más votados</h3>
+<h3 class="col-md-12">Lista de publicaciones más votados</h3>
 <hr />
+
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-4">
+        <label class="col-md-12" for="InitialDate">Fecha de inicio</label>
+        <input class="form-control col-md-12" id="iDateList" name="InitialDate" type="date" value="">
+    </div>
+    <div class="form-group col-md-4">
+        <label class="col-md-12">Fecha de fin</label>
+        <input class="form-control col-md-12" id="fDateList" name="FinalDate" type="date" value="">
+    </div>
+    <div class="form-group col-md-4">
+        <input id="postlist_btn" class="btn btn-default col-md-2" type="submit" value="Filtrar">
+    </div>
+</div>
 
 @{Html.RenderAction("_PostList", "Stats");}

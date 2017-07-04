@@ -1,6 +1,7 @@
 ﻿using AdminView.Assemblers;
 using AdminView.Models;
 using PickadosGenNHibernate.CEN.Pickados;
+using PickadosGenNHibernate.CP.Pickados;
 using PickadosGenNHibernate.EN.Pickados;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace AdminView.Controllers
 {
     public class StatsController : Controller
     {
+        /* --- Stats by login --- */
         [HttpGet]
         public ActionResult Login()
         {
@@ -57,7 +59,7 @@ namespace AdminView.Controllers
 
             var loginsGroupby = logins.GroupBy(x => new { Month = x.Date.Value.Month, Year = x.Date.Value.Year }).ToList();
 
-            Dictionary<string, int> loginsDict = new Dictionary<string, int>();
+            Dictionary<string, double> loginsDict = new Dictionary<string, double>();
             for (DateTime date = init; date <= fin; date = date.AddMonths(1))
             {
                 loginsDict.Add(date.Month + "/" + date.Year, 0);
@@ -73,6 +75,7 @@ namespace AdminView.Controllers
             return View(sm);
         }
 
+        /* --- Stats by posts --- */
         public ActionResult Post()
         {
             return View();
@@ -95,6 +98,24 @@ namespace AdminView.Controllers
                 return RedirectToAction("login", "account");
         }
 
+        [HttpPost]
+        [ActionName("_PostStat")]
+        public ActionResult _PostStatPost(string iDate, string fDate)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string[] iDateData = iDate.Split('-');
+                string[] fDateData = fDate.Split('-');
+
+                string initialDate = iDateData[1] + "/" + iDateData[0];
+                string finalDate = fDateData[1] + "/" + fDateData[0];
+
+                return PartialView("_posts/_PostStat", _Post(initialDate, finalDate));
+            }
+            else
+                return RedirectToAction("login", "account");
+        }
+
         private StatModel _Post(string initialDate, string finalDate)
         {
             string[] iDate = initialDate.Split('/');
@@ -108,7 +129,7 @@ namespace AdminView.Controllers
 
             var postsGroupby = posts.GroupBy(x => new { Month = x.Created_at.Value.Month, Year = x.Created_at.Value.Year }).ToList();
 
-            Dictionary<string, int> postsDict = new Dictionary<string, int>();
+            Dictionary<string, double> postsDict = new Dictionary<string, double>();
             for (DateTime date = init; date <= fin; date = date.AddMonths(1))
             {
                 postsDict.Add(date.Month + "/" + date.Year, 0);
@@ -129,13 +150,128 @@ namespace AdminView.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                DateTime fin = DateTime.Today;
+                DateTime init = DateTime.Today.AddMonths(-11);
+
                 PostCEN postCEN = new PostCEN();
-                IEnumerable<PostEN> posts = postCEN.GetMoreVoted();
+                IEnumerable<PostEN> posts = postCEN.GetMoreVoted(init, fin);
 
                 return PartialView("_posts/_PostList", posts);
             }
             else
                 return RedirectToAction("login", "account");
+        }
+
+        [HttpPost]
+        [ActionName("_PostList")]
+        public ActionResult _PostListPost(string iDate, string fDate)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string[] iDateData = iDate.Split('-');
+                string[] fDateData = fDate.Split('-');
+
+                DateTime init = new DateTime(Int32.Parse(iDateData[0]), Int32.Parse(iDateData[1]), 01);
+                DateTime fin = new DateTime(Int32.Parse(fDateData[0]), Int32.Parse(fDateData[1]), 01);
+
+                PostCEN postCEN = new PostCEN();
+                IEnumerable<PostEN> posts = postCEN.GetMoreVoted(init, fin);
+
+                return PartialView("_posts/_PostList", posts);
+            }
+            else
+                return RedirectToAction("login", "account");
+        }
+
+        /*--- Stats by bet tipster --- */
+        public ActionResult Users()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("login", "account");
+        }
+
+        public ActionResult _UsersBetsList()
+        {
+            PostCEN postCEN = new PostCEN();
+            TipsterCEN tipsterCEN = new TipsterCEN();
+
+            /* --- Get posts --- */
+            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetAllPosts(0, int.MaxValue).GroupBy(p => p.Tipster.Id).ToList();
+
+            StatModel sm = new StatModel();
+            sm.ListInfo = new Dictionary<string, double>();
+
+            for (int i = 0; i < postsGroup.Count(); i++)
+            {
+                TipsterEN tipsterEN = tipsterCEN.GetTipsterById(postsGroup[i].Key);
+                sm.ListInfo.Add(tipsterEN.Alias, postsGroup[i].Count());
+            }
+
+            sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
+            sm.completeInfoStat(sm.ListInfo);
+
+            return PartialView("_usersbets/_UsersBetsList", sm);
+        }
+
+        public ActionResult _UsersStakeList()
+        {
+            PostCEN postCEN = new PostCEN();
+            TipsterCEN tipsterCEN = new TipsterCEN();
+
+            /* --- Get posts --- */
+            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetAllPosts(0, int.MaxValue).GroupBy(p => p.Tipster.Id).ToList();
+
+            StatModel sm = new StatModel();
+            sm.ListInfo = new Dictionary<string, double>();
+
+            foreach (var group in postsGroup)
+            {
+                double value = 0;
+                TipsterEN tipsterEN = tipsterCEN.GetTipsterById(group.Key);
+                
+                foreach (var item in group)
+                    value += item.Stake;
+
+                sm.ListInfo.Add(tipsterEN.Alias, value);
+            }
+
+            sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
+            sm.completeInfoStat(sm.ListInfo);
+
+            return PartialView("_usersbets/_UsersStakeList", sm);
+        }
+
+        public ActionResult _UsersYieldList()
+        {
+            /* --- Get posts --- */
+            StatsCEN statsCEN = new StatsCEN();
+            List<IGrouping<string, StatsEN>> statsGroup = statsCEN.GetAllStats(0, int.MaxValue).GroupBy(s => s.Tipster.Alias).ToList();
+
+            StatModel sm = new StatModel();
+            sm.ListInfo = new Dictionary<string, double>();
+
+            foreach (var group in statsGroup)
+            {
+                int cont = 0;
+                float yield = 0;
+
+                foreach (var stat in group)
+                {
+                    cont++;
+                    yield += stat.Yield;
+                }
+
+                sm.ListInfo.Add(group.Key, yield/cont);
+            }
+
+            sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
+            sm.completeInfoStat(sm.ListInfo);
+
+            return PartialView("_usersbets/_UsersYieldList", sm);
         }
     }
 }

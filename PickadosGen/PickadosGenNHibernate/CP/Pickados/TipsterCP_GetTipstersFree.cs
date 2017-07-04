@@ -29,7 +29,7 @@ public System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.Tipste
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM TipsterEN self where FROM TipsterEN where Premium=false";
+                //String sql = @"FROM TipsterEN self FROM TipsterEN where Premium=false";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("TipsterENgetTipstersFreeHQL");
                 query.SetFirstResult (Convert.ToInt32 (first));

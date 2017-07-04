@@ -14,10 +14,12 @@ namespace AdminView.Models
         public string Label { get; set; }
         public string Data { get; set; }
 
-        public void completeInfoStat(Dictionary<string, int> statinfo)
+        public Dictionary<string, double> ListInfo { get; set; }
+
+        public void completeInfoStat(Dictionary<string, double> statinfo)
         {
             Label = JsonConvert.SerializeObject(new List<string>(statinfo.Keys));
-            Data = JsonConvert.SerializeObject(new List<int>(statinfo.Values));
+            Data = JsonConvert.SerializeObject(new List<double>(statinfo.Values));
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@using AdminView.Resources
 
 
-<ul class="nav nav-tabs">
+<ul class="breadcrumb">
     <li>@Html.ActionLink(@textos.Sport, "Sports", "Sports")</li>
     <li>@Html.ActionLink((string)ViewBag.sport.Name, "TypeCompetition", "TypeCompetition", new { idSport = ViewBag.sport.Id }, null)</li>
     <li>@Html.ActionLink((string)ViewBag.typeCompetition, "Country", "Country", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>

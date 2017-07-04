@@ -233,6 +233,10 @@
     <Content Include="Views\Stats\_posts\_PostList.cshtml" />
     <Content Include="Views\Stats\_posts\_PostStat.cshtml" />
     <Content Include="Views\Request\AddComment.cshtml" />
+    <Content Include="Views\Stats\_usersbets\_UsersBetsList.cshtml" />
+    <Content Include="Views\Stats\_usersbets\_UsersStakeList.cshtml" />
+    <Content Include="Views\Stats\_usersbets\_UsersYieldList.cshtml" />
+    <Content Include="Views\Stats\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
