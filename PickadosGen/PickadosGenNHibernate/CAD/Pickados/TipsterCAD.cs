@@ -688,9 +688,6 @@ public void ModifyTipsterByAdmin (TipsterEN tipster)
                 tipsterEN.Email = tipster.Email;
 
 
-                tipsterEN.Created_at = tipster.Created_at;
-
-
                 tipsterEN.Updated_at = tipster.Updated_at;
 
 
