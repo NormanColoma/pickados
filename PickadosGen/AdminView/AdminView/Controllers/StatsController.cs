@@ -186,38 +186,15 @@ namespace AdminView.Controllers
         /*--- Stats by bet tipster --- */
         public ActionResult Users()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("login", "account");
         }
 
         public ActionResult _UsersBetsList()
-        {
-            /* --- Dates --- */
-            DateTime fin = DateTime.Today;
-            DateTime init = DateTime.Today.AddMonths(-11);
-
-            PostCEN postCEN = new PostCEN();
-            TipsterCEN tipsterCEN = new TipsterCEN();
-
-            /* --- Get posts --- */
-            List<IGrouping<int, PostEN>> postsGroup = postCEN.GetPostsBetweenDate(init, fin).GroupBy(p => p.Tipster.Id).ToList();
-
-            StatModel sm = new StatModel();
-            sm.ListInfo = new Dictionary<string, double>();
-
-            foreach (var group in postsGroup)
-            {
-                TipsterEN tipsterEN = tipsterCEN.GetTipsterById(group.Key);
-                sm.ListInfo.Add(tipsterEN.Alias, group.Count());
-            }
-
-            sm.completeInfoStat(sm.ListInfo);
-
-            return PartialView("_usersbets/_UsersBetsList", sm);
-        }
-
-        [HttpPost]
-        [ActionName("_UsersBetsList")]
-        public ActionResult _UsersBetsListPost(StatModel stat)
         {
             PostCEN postCEN = new PostCEN();
             TipsterCEN tipsterCEN = new TipsterCEN();
@@ -233,7 +210,7 @@ namespace AdminView.Controllers
                 TipsterEN tipsterEN = tipsterCEN.GetTipsterById(postsGroup[i].Key);
                 sm.ListInfo.Add(tipsterEN.Alias, postsGroup[i].Count());
             }
-           
+
             sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
             sm.completeInfoStat(sm.ListInfo);
 
