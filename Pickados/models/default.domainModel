@@ -548,7 +548,6 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GV__IELNEeevkt8VfoCEyA" name="p_Tipster_OID" type="OID" typeObject="_dCCDkNNuEeaZBpN3xqTI2g"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GWAmMELNEeevkt8VfoCEyA" name="p_alias"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GWAmMULNEeevkt8VfoCEyA" name="p_email"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GWAmM0LNEeevkt8VfoCEyA" name="p_created_at" type="Time"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GWBNQELNEeevkt8VfoCEyA" name="p_updated_at" type="Time"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GWBNQULNEeevkt8VfoCEyA" name="p_nif"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_GWB0UELNEeevkt8VfoCEyA" name="p_premium" type="Boolean"/>

@@ -19,7 +19,7 @@ namespace PickadosGenNHibernate.CEN.Pickados
 {
 public partial class TipsterCEN
 {
-public void ModifyTipsterByAdmin (int p_Tipster_OID, string p_alias, string p_email, Nullable<DateTime> p_created_at, Nullable<DateTime> p_updated_at, string p_nif, bool p_premium, double p_subscription_fee, bool p_locked)
+public void ModifyTipsterByAdmin (int p_Tipster_OID, string p_alias, string p_email, Nullable<DateTime> p_updated_at, string p_nif, bool p_premium, double p_subscription_fee, bool p_locked)
 {
         /*PROTECTED REGION ID(PickadosGenNHibernate.CEN.Pickados_Tipster_modifyTipsterByAdmin_customized) START*/
 
@@ -30,7 +30,6 @@ public void ModifyTipsterByAdmin (int p_Tipster_OID, string p_alias, string p_em
         tipsterEN.Id = p_Tipster_OID;
         tipsterEN.Alias = p_alias;
         tipsterEN.Email = p_email;
-        tipsterEN.Created_at = p_created_at;
         tipsterEN.Updated_at = p_updated_at;
         tipsterEN.Nif = p_nif;
         tipsterEN.Premium = p_premium;

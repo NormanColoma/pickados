@@ -4,7 +4,7 @@
     function getNumberOfRequests() {
         var r = '';
         $.ajax({
-            url: '/Request/CountRequests/',
+            url: '/request/countrequests/',
             data: "{ 'prefix': '" + 'hola' + "'}",
             dataType: "json",
             type: "POST",
@@ -30,7 +30,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>Pickados</title>
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Pickados</a>
+                <a class="navbar-brand" href="/">Pickados</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -67,7 +67,7 @@
         <!-- /.dropdown-alerts-->
     </li>
 
-                @Html.Partial("_LoginPartial")  
+            @Html.Partial("_LoginPartial")  
             </ul>
 
             <!-- /.navbar-top-links -->
@@ -89,39 +89,34 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            @Html.ActionLink("Inicio", "Index", "Home")
+                            <a href="/"><i class="fa fa-home fa-fw"></i>Inicio</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Estadísticas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                    <a href="/stats/post">Publicaciones</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="/stats/users">Usuarios</a>
+                                </li>
+                                <li>
+                                    <a href="/stats/login">login</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    @Html.ActionLink("Ver todos", "Index", "User")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Editar", "Edit", "User")
-                                </li>
-                            </ul>
+                            <a href="/user"><i class="fa fa-user fa-fw"></i>Usuarios</a>
                         </li>
                         <li>
-                            @Html.ActionLink("Solicitudes", "Index", "Request")
+                            <a href="/request"><i class="fa fa-inbox fa-fw"></i>Solicitudes</a>
                         </li>
                         <li>
-                            @Html.ActionLink(@textos.Sport, "Sports", "Sports")
+                            <a href="/sports/sports"><i class="fa fa-soccer-ball-o fa-fw"></i>@textos.Sport</a>
                         </li>
                         <li>
-                            @Html.ActionLink(@textos.Calendar, "Calendar", "Calendar")
+                            <a href="/calendar/calendar"><i class="fa fa-calendar fa-fw"></i>Calendario</a>
                         </li>
                     </ul>
                 </div>

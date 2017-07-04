@@ -82,9 +82,9 @@ namespace AdminView.Controllers
                 {
                     TipsterCEN tipsterCEN = new TipsterCEN();
                     if (user.Tipsterp == true)
-                        tipsterCEN.ModifyTipsterByAdmin(user.Id, user.Alias, user.Email, user.Created_at, user.Updated_at, user.Nif, true, user.Subscription_fee, user.Locked);
+                        tipsterCEN.ModifyTipsterByAdmin(user.Id, user.Alias, user.Email, DateTime.Now, user.Nif, true, user.Subscription_fee, user.Locked);
                     else
-                        tipsterCEN.ModifyTipsterByAdmin(user.Id, user.Alias, user.Email, user.Created_at, user.Updated_at, user.Nif, false, 0, user.Locked);
+                        tipsterCEN.ModifyTipsterByAdmin(user.Id, user.Alias, user.Email, DateTime.Now, user.Nif, false, 0, user.Locked);
                 }
 
                 return RedirectToAction("Index");
