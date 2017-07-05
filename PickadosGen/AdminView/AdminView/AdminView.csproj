@@ -101,6 +101,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Resources\img\Pikados.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -237,6 +238,7 @@
     <Content Include="Views\Stats\_usersbets\_UsersStakeList.cshtml" />
     <Content Include="Views\Stats\_usersbets\_UsersYieldList.cshtml" />
     <Content Include="Views\Stats\Users.cshtml" />
+    <Content Include="Views\Stats\_logins\_LoginStat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

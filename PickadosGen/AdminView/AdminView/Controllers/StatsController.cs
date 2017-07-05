@@ -19,40 +19,52 @@ namespace AdminView.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                DateTime fin = DateTime.Today;
-                DateTime init = DateTime.Today.AddMonths(-11);
-
-                string initialDate = init.Month + "/" + init.Year;
-                string finalDate = fin.Month + "/" + fin.Year;
-
-                return _Login(initialDate, finalDate);
+                return View();
             }
             else
                 return RedirectToAction("login", "account");
+        }
+
+        [HttpGet]
+        public ActionResult _LoginStat()
+        {
+            DateTime fin = DateTime.Today;
+            DateTime init = DateTime.Today.AddMonths(-11);
+
+            string initialDate = init.Month + "/" + init.Year;
+            string finalDate = fin.Month + "/" + fin.Year;
+
+            return PartialView("_logins/_loginstat", _Login(initialDate, finalDate));
         }
 
         [HttpPost]
-        [ActionName("Login")]
-        public ActionResult LoginPost(StatModel stat)
+        [ActionName("_LoginStat")]
+        public ActionResult _LoginStatPost(string iDate, string fDate)
         {
             if (User.Identity.IsAuthenticated)
             {
-                string initialDate = stat.InitialDate.Month + "/" + stat.InitialDate.Year;
-                string finalDate = stat.FinalDate.Month + "/" + stat.FinalDate.Year;
+                string[] iDateData = iDate.Split('-');
+                string[] fDateData = fDate.Split('-');
 
-                return _Login(initialDate, finalDate);
+                string initialDate = iDateData[1] + "/" + iDateData[0];
+                string finalDate = fDateData[1] + "/" + fDateData[0];
+
+                return PartialView("_logins/_loginstat", _Login(initialDate, finalDate));
             }
             else
                 return RedirectToAction("login", "account");
         }
 
-        private ActionResult _Login(string initialDate, string finalDate)
+        private StatModel _Login(string initialDate, string finalDate)
         {
             string[] iDate = initialDate.Split('/');
             string[] fDate = finalDate.Split('/');
 
             DateTime init = new DateTime(Int32.Parse(iDate[1]), Int32.Parse(iDate[0]), 01);
-            DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), 01);
+            DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), DateTime.DaysInMonth(Int32.Parse(fDate[1]), Int32.Parse(fDate[0])));
+
+            if (fin > DateTime.Now)
+                fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), DateTime.Today.Day);
 
             LoginCEN loginCEN = new LoginCEN();
             List<LoginEN> logins = loginCEN.GetLoginBetweenDate(init, fin).ToList();
@@ -72,7 +84,7 @@ namespace AdminView.Controllers
 
             sm.completeInfoStat(loginsDict);
 
-            return View(sm);
+            return sm;
         }
 
         /* --- Stats by posts --- */
@@ -92,7 +104,7 @@ namespace AdminView.Controllers
                 string initialDate = init.Month + "/" + init.Year;
                 string finalDate = fin.Month + "/" + fin.Year;
 
-                return PartialView("_posts/_PostStat", _Post(initialDate, finalDate));
+                return PartialView("_posts/_poststat", _Post(initialDate, finalDate));
             }
             else
                 return RedirectToAction("login", "account");
@@ -110,7 +122,7 @@ namespace AdminView.Controllers
                 string initialDate = iDateData[1] + "/" + iDateData[0];
                 string finalDate = fDateData[1] + "/" + fDateData[0];
 
-                return PartialView("_posts/_PostStat", _Post(initialDate, finalDate));
+                return PartialView("_posts/_poststat", _Post(initialDate, finalDate));
             }
             else
                 return RedirectToAction("login", "account");
@@ -122,7 +134,10 @@ namespace AdminView.Controllers
             string[] fDate = finalDate.Split('/');
 
             DateTime init = new DateTime(Int32.Parse(iDate[1]), Int32.Parse(iDate[0]), 01);
-            DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), 01);
+            DateTime fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), DateTime.DaysInMonth(Int32.Parse(fDate[1]), Int32.Parse(fDate[0])));
+
+            if (fin > DateTime.Now)
+                fin = new DateTime(Int32.Parse(fDate[1]), Int32.Parse(fDate[0]), DateTime.Today.Day);
 
             PostCEN postCEN = new PostCEN();
             List<PostEN> posts = postCEN.GetPostsBetweenDate(init, fin).ToList();
@@ -154,9 +169,11 @@ namespace AdminView.Controllers
                 DateTime init = DateTime.Today.AddMonths(-11);
 
                 PostCEN postCEN = new PostCEN();
-                IEnumerable<PostEN> posts = postCEN.GetMoreVoted(init, fin);
+                IList<PostEN> posts = postCEN.GetMoreVoted(init, fin);
 
-                return PartialView("_posts/_PostList", posts);
+                List<PostModel> postsmodel = PostAssembler.ConvertPostENtoModel(posts);
+
+                return PartialView("_posts/_postlist", postsmodel);
             }
             else
                 return RedirectToAction("login", "account");
@@ -177,7 +194,7 @@ namespace AdminView.Controllers
                 PostCEN postCEN = new PostCEN();
                 IEnumerable<PostEN> posts = postCEN.GetMoreVoted(init, fin);
 
-                return PartialView("_posts/_PostList", posts);
+                return PartialView("_posts/_postlist", posts);
             }
             else
                 return RedirectToAction("login", "account");
@@ -214,7 +231,7 @@ namespace AdminView.Controllers
             sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
             sm.completeInfoStat(sm.ListInfo);
 
-            return PartialView("_usersbets/_UsersBetsList", sm);
+            return PartialView("_usersbets/_usersbetslist", sm);
         }
 
         public ActionResult _UsersStakeList()
@@ -242,7 +259,7 @@ namespace AdminView.Controllers
             sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
             sm.completeInfoStat(sm.ListInfo);
 
-            return PartialView("_usersbets/_UsersStakeList", sm);
+            return PartialView("_usersbets/_usersstakelist", sm);
         }
 
         public ActionResult _UsersYieldList()
@@ -271,7 +288,7 @@ namespace AdminView.Controllers
             sm.ListInfo = sm.ListInfo.OrderByDescending(s => s.Value).Take(10).ToDictionary(k => k.Key, v => v.Value);
             sm.completeInfoStat(sm.ListInfo);
 
-            return PartialView("_usersbets/_UsersYieldList", sm);
+            return PartialView("_usersbets/_usersyieldlist", sm);
         }
     }
 }

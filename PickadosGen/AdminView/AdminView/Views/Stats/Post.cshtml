@@ -1,7 +1,7 @@
 ﻿<h3 class="col-md-12">Publicaciones con más número de votos mensuales</h3>
 <hr />
 
-<div class="form-horizontal col-md-12">
+<div class="form-horizontal col-md-12 row">
     <div class="form-group col-md-4">
         <label class="col-md-12" for="InitialDate">Fecha de inicio</label>
         <input class="form-control col-md-12" id="iDateStat" name="InitialDate" type="date" value="">
@@ -15,14 +15,18 @@
     </div>
 </div>
 
-@{Html.RenderAction("_PostStat", "Stats");}
+<div id="poststat">
+    <div class="clearfix"></div>
 
+    <div class="col-md-offset-2 col-md-8">
+        @{Html.RenderAction("_poststat", "stats");}
+    </div>
+</div>
 
-
-<h3 class="col-md-12">Lista de publicaciones más votados</h3>
+<h3 class="col-md-12">Lista de publicaciones más votadas</h3>
 <hr />
 
-<div class="form-horizontal col-md-12">
+<div class="form-horizontal col-md-12 row">
     <div class="form-group col-md-4">
         <label class="col-md-12" for="InitialDate">Fecha de inicio</label>
         <input class="form-control col-md-12" id="iDateList" name="InitialDate" type="date" value="">
@@ -36,4 +40,4 @@
     </div>
 </div>
 
-@{Html.RenderAction("_PostList", "Stats");}
+@{Html.RenderAction("_postlist", "stats");}
