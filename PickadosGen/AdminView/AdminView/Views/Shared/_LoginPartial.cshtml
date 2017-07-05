@@ -2,24 +2,22 @@
 
 @using Microsoft.AspNet.Identity
 
-<div id="botonera-idioma" class="col-md-2 btn-group">
-    <button id="btn-es" lang="es" class="btn btn-xs btn-default">ESP</button>
-    <button id="btn-en" lang="en" class="btn btn-xs btn-default">ENG</button>
-</div>
+<li>
+    <div id="botonera-idioma" class="btn-group">
+        <button id="btn-es" lang="es" class="btn btn-xs btn-default">ESP</button>
+        <button id="btn-en" lang="en" class="btn btn-xs btn-default">ENG</button>
+    </div>
+</li>
 
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
         <li>
             @Html.ActionLink(@textos.Hi + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
-    }
+        <li><a href="/account/logoff">Cerrar sesión</a></li>
 }
 else
 {
-        <!--<li>@*Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@</li>-->
         <li>@Html.ActionLink(@textos.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 }
 
