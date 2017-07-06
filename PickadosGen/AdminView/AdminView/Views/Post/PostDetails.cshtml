@@ -116,7 +116,7 @@
             <td>@item.Description</td>
             <td>@item.PickResult</td>
             <td>@item.Bookie</td>
-            <td><a href="javascript:void(0);" class="anchorDetail btn btn-outline btn-success" data-id="@item.Id">Editar</a></td>
+            <td><a href="javascript:void(0);" class="anchorDetail btn btn-outline btn-success" data-id="@item.Id" data-content="@ViewBag.PostID">Editar</a></td>
         </tr>
     }
 </table>
@@ -146,12 +146,13 @@
             debugger;
             var $buttonClicked = $(this);
             var id = $buttonClicked.attr('data-id');
+            var content = $buttonClicked.attr('data-content');
             var options = { "backdrop": "static", keyboard: true };
             $.ajax({
                 type: "GET",
                 url: TeamDetailPostBackURL,
                 contentType: "application/json; charset=utf-8",
-                data: { "idPick": id },
+                data: { "idPick": id, "idPost": content },
                 datatype: "json",
                 success: function (data) {
                     debugger;
