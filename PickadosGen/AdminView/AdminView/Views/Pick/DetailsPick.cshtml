@@ -1,6 +1,6 @@
 ﻿@model PickadosGenNHibernate.EN.Pickados.PickEN
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditPick", "Post", routeValues: new { idPost = ViewBag.PostID }))
 {
     <div>
 

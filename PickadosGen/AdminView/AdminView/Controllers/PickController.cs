@@ -16,10 +16,11 @@ namespace AdminView.Controllers
             return View();
         }
 
-        public ActionResult DetailsPick(int idPick)
+        public ActionResult DetailsPick(int idPick=0, int idPost=0)
         {
             PickCEN picks = new PickCEN();
             PickEN pick = picks.GetPickById(idPick);
+            ViewBag.PostID = idPost;
             return PartialView("DetailsPick", pick);
         }
     }
