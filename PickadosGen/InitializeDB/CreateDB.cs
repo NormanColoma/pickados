@@ -112,6 +112,42 @@ public static void InitializeData ()
                 int tipster22 = nuevo.NewTipster ("aitor", "aitor@outlook.com", "aitorPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "46269204N", false, false, 0, false);
                 int tipster23 = nuevo.NewTipster ("arya", "arya@gmail.com", "aryaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "45415817V", false, false, 0, false);
 
+                int tipster24 = nuevo.NewTipster("abel", "abel@gmail.com", "abelPro", new DateTime(2017, 6, 2), new DateTime(2017, 6, 2), "61754249P", false, false, 0, false);
+                int tipster25 = nuevo.NewTipster("félix", "felix@gmail.com", "felixPro", new DateTime(2017, 6, 20), new DateTime(2017, 6, 20), "58385355Q", false, false, 0, false);
+                int tipster26 = nuevo.NewTipster("gerardo", "gerardo@outlook.com", "gerardoPro", new DateTime(2017, 6, 20), new DateTime(2017, 2, 25), "71338334Q", false, false, 0, false);
+                int tipster27 = nuevo.NewTipster("gorka", "gorka@gmail.com", "gorkaPro", new DateTime(2017, 1, 1), new DateTime(2017, 6, 20), "33454914B", false, false, 0, false);
+                int tipster28 = nuevo.NewTipster("irene", "irene@gmail.com", "irenePro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "10699007M", false, false, 0, false);
+                int tipster29 = nuevo.NewTipster("jacob", "jacob@gmail.com", "jacobPro", new DateTime(2017, 6, 20), new DateTime(2017, 6, 20), "81588767Q", false, false, 0, false);
+                int tipster30 = nuevo.NewTipster("casinomiro", "casinomiro@outlook.com", "casinomiroPro", new DateTime(2017, 6, 20), new DateTime(2017, 2, 25), "63570598R", false, false, 0, false);
+                int tipster31 = nuevo.NewTipster("lidia", "lidia@gmail.com", "lidiaPro", new DateTime(2017, 1, 1), new DateTime(2017, 6, 20), "45567301T", false, false, 0, false);
+
+                int tipster32 = nuevo.NewTipster("ladislao", "ladislao@gmail.com", "ladislaoPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "43227607G", false, false, 0, false);
+                int tipster33 = nuevo.NewTipster("macario", "macario@gmail.com", "macarioPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "37764644R", false, false, 0, false);
+                int tipster34 = nuevo.NewTipster("magdalena", "magdalena@outlook.com", "magdalenaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "23934878C", false, false, 0, false);
+                int tipster35 = nuevo.NewTipster("mario", "mario@gmail.com", "marioPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 15), "45032908N", false, false, 0, false);
+                int tipster36 = nuevo.NewTipster("miguel", "miguel@gmail.com", "miguelPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "41662475E", false, false, 0, false);
+                int tipster37 = nuevo.NewTipster("mónica", "monica@gmail.com", "monicaPro", new DateTime(2017, 2, 15), new DateTime(2017, 2, 15), "27955763E", false, false, 0, false);
+                int tipster38 = nuevo.NewTipster("narciso", "narciso@outlook.com", "narcisoPro", new DateTime(2016, 10, 15), new DateTime(2017, 2, 25), "54890791A", false, false, 0, false);
+                int tipster39 = nuevo.NewTipster("norberto", "norberto@gmail.com", "norbertoPro", new DateTime(2017, 1, 1), new DateTime(2016, 10, 15), "64625111X", false, false, 0, false);
+
+                int tipster40 = nuevo.NewTipster("octavio", "octavio@gmail.com", "octavioPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "40531881Q", false, false, 0, false);
+                int tipster41 = nuevo.NewTipster("poncio", "poncio@gmail.com", "poncioPro", new DateTime(2016, 10, 15), new DateTime(2016, 10, 15), "87829369M", false, false, 0, false);
+                int tipster42 = nuevo.NewTipster("ramón", "ramon@outlook.com", "ramonPro", new DateTime(2016, 10, 15), new DateTime(2017, 2, 25), "87715833C", false, false, 0, false);
+                int tipster43 = nuevo.NewTipster("rafael", "rafael@gmail.com", "rafaelPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "28091013D", false, false, 0, false);
+                int tipster44 = nuevo.NewTipster("rita", "rita@gmail.com", "ritaPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "18282686D", false, false, 0, false);
+                int tipster45 = nuevo.NewTipster("rosalia", "rosalia@gmail.com", "rosaliaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "87450233R", false, false, 0, false);
+                int tipster46 = nuevo.NewTipster("salvador", "salvador@outlook.com", "salvadorPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "82432192P", false, false, 0, false);
+                int tipster47 = nuevo.NewTipster("susana", "susana@gmail.com", "susanaPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "82437276D", false, false, 0, false);
+
+                int tipster48 = nuevo.NewTipster("tadeo", "tadeo@gmail.com", "tadeoPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "68155029A", false, false, 0, false);
+                int tipster49 = nuevo.NewTipster("teodora", "teodora@gmail.com", "teodoraPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "79951906L", false, false, 0, false);
+                int tipster50 = nuevo.NewTipster("timoteo", "timoteo@outlook.com", "timoteoPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "29911267C", false, false, 0, false);
+                int tipster51 = nuevo.NewTipster("toribio", "toribio@gmail.com", "toribioPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "05576746M", false, false, 0, false);
+                int tipster52 = nuevo.NewTipster("ubaldo", "ubaldo@gmail.com", "ubaldoPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "33993384M", false, false, 0, false);
+                int tipster53 = nuevo.NewTipster("ursula", "ursula@gmail.com", "ursulaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "13895015W", false, false, 0, false);
+                int tipster54 = nuevo.NewTipster("valentina", "valentina@outlook.com", "valentinaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "32731592Q", false, false, 0, false);
+                int tipster55 = nuevo.NewTipster("zacarias", "zacarias@gmail.com", "zacariasPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "65786469Y", false, false, 0, false);
+
                 admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N", true);
 
                 TipsterEN originalTipster = nuevo.GetTipsterById (tipster);
