@@ -25,7 +25,7 @@ textarea {
 
 /* -- -- */
 .contenedor {
-    height: 800px;
+    height: 70vh;
     overflow: scroll;
 
     border-left: 1px solid #ddd;
