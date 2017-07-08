@@ -243,6 +243,7 @@
     <Content Include="Views\Stats\_logins\_LoginStat.cshtml" />
     <Content Include="Views\Post\PostDetails.cshtml" />
     <Content Include="Views\Pick\DetailsPick.cshtml" />
+    <Content Include="Views\Request\Finalizadas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
