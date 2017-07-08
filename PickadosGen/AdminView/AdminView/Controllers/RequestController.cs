@@ -39,7 +39,7 @@ namespace AdminView.Controllers
                 // TODO: Add delete logic here
                 RequestCEN requests = new RequestCEN();
                 RequestEN request = requests.GetById(id);
-                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, DateTime.Now, "", new DateTime());
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, request.Date, content, DateTime.Now);
                 ViewBag.typeContent = content;
                 return PartialView("AddComment", request);
             }
