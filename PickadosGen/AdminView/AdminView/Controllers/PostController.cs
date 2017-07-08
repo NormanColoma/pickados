@@ -41,7 +41,21 @@ namespace AdminView.Controllers
 
 
             picks.ModifyPick(id, pick.Odd, pick.Description, result, pick.Bookie);
-            return RedirectToAction("PostDetails", "Post", new { post = idPost }); ;
+            return RedirectToAction("PostDetails", "Post", new { post = idPost });
+        }
+
+        [HttpPost]
+        public ActionResult editPost(int id, FormCollection collection)
+        {
+            PostCEN posts = new PostCEN();
+            PostEN post = posts.GetPostById(id);
+            post.Description = collection["Description"].ToString();
+            post.Stake = Convert.ToDouble(collection["Stake"].ToString());
+            PickResultEnum result  = (PickResultEnum)Enum.Parse(typeof(PickResultEnum), collection["PostResult"].ToString());
+            post.Report = Convert.ToInt32(collection["Report"].ToString());
+            posts.ModifyPost(id, post.Created_at, post.Modified_at, post.Stake, post.Description, post.Private_, post.TotalOdd, result, post.Likeit, post.Report);
+
+            return RedirectToAction("PostDetails", "Post", new { post = id });
         }
     }
 }

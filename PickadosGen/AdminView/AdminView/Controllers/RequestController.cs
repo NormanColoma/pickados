@@ -18,6 +18,17 @@ namespace AdminView.Controllers
             List<RequestEN> list = requestCEN.GetByState(RequestStateEnum.Open).ToList();
             List<RequestEN> list2 = requestCEN.GetByState(RequestStateEnum.inReview).ToList();
             list.AddRange(list2);
+            list.OrderBy(r => r.Date);
+            return View(list);
+        }
+
+        public ActionResult Finalizadas()
+        {
+            RequestCEN requestCEN = new RequestCEN();
+            List<RequestEN> list = requestCEN.GetByState(RequestStateEnum.Accepted).ToList();
+            List<RequestEN> list2 = requestCEN.GetByState(RequestStateEnum.Denied).ToList();
+            list.AddRange(list2);
+            list.OrderBy(r => r.Date);
             return View(list);
         }
 

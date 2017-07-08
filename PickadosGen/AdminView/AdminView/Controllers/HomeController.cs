@@ -14,7 +14,8 @@ namespace AdminView.Controllers
             {
                 return RedirectToRoute("Login");
             }
-            return View();
+            return RedirectToAction("Post", "Stats");
+            //return View();
         }
 
         public ActionResult idioma(string lang, string returnUrl)
