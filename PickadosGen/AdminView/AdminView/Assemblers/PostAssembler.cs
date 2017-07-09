@@ -28,8 +28,8 @@ namespace AdminView.Assemblers
             postModel.Likeit = postEN.Likeit;
             postModel.Report = postEN.Report;
 
-            postModel.Tipster = UserAssembler.ConverterUserENtoModel(tipsterCEN.GetTipsterById(postEN.Tipster.Id));
-            postModel.Picks = PickAssembler.ConvertPickENtoModel(pickCEN.GetPicksByPost(postEN.Id));
+            postModel.Tipster = UserAssembler.ConverterUserENtoModel(postEN.Tipster);
+            postModel.Picks = PickAssembler.ConvertPickENtoModel(postEN.Pick);
 
             return postModel;
         }

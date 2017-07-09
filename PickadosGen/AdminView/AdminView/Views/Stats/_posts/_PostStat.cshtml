@@ -35,39 +35,4 @@
                 }]
             }
     });
-
-    $(document).ready(function() {
-        $("#poststat_btn").on("click", function() {
-            var i_date = $('#iDateStat').val();
-            var f_date = $('#fDateStat').val();
-
-            $.ajax({
-                url: "/stats/_poststat",
-                type: "post",
-                data: {
-                    iDate: i_date,
-                    fDate: f_date
-                },
-                beforeSend: function () {
-                    if (i_date != null && f_date != null)
-                    {
-                        var iDate = Date.parse(i_date);
-                        var fDate = Date.parse(f_date);
-                        var today = Date.parse(new Date());
-
-                        if(iDate <= today && fDate <= today)
-                            return true;
-                    }
-
-                    return false;
-                }
-            })
-            .done(function(result) {
-                $("#poststat").html(result);
-                $("#iDateStat").val('');
-                $("#fDateStat").val('');
-            });
-        });
-    });
-
 </script>
