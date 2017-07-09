@@ -169,9 +169,7 @@ namespace AdminView.Controllers
                 DateTime init = DateTime.Today.AddMonths(-11);
 
                 PostCEN postCEN = new PostCEN();
-                IList<PostEN> posts = postCEN.GetMoreVoted(init, fin);
-
-                List<PostModel> postsmodel = PostAssembler.ConvertPostENtoModel(posts);
+                List<PostModel> postsmodel = PostAssembler.ConvertPostENtoModel(postCEN.GetMoreVoted(init, fin));
 
                 return PartialView("_posts/_postlist", postsmodel);
             }
@@ -192,9 +190,9 @@ namespace AdminView.Controllers
                 DateTime fin = new DateTime(Int32.Parse(fDateData[0]), Int32.Parse(fDateData[1]), 01);
 
                 PostCEN postCEN = new PostCEN();
-                IEnumerable<PostEN> posts = postCEN.GetMoreVoted(init, fin);
+                List<PostModel> postsmodel = PostAssembler.ConvertPostENtoModel(postCEN.GetMoreVoted(init, fin));
 
-                return PartialView("_posts/_postlist", posts);
+                return PartialView("_posts/_postlist", postsmodel);
             }
             else
                 return RedirectToAction("login", "account");

@@ -23,12 +23,12 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
             BEGIN
-                CREATE LOGIN ["                                                                                                                                     + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+                CREATE LOGIN [" + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
             END"                                                                                                                                                                                                                                                                                    ;
 
         //Order delete user if exist
@@ -414,34 +414,42 @@ public static void InitializeData ()
                 eventCEN.JoinCompetition (id_match, competition);
 
                 CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
-                int id_correctScore = correctScoreCEN.NewCorrectScore (10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
-                        "Bet365", id_match, 2, 1);
-                IList<int> picks = new List<int>();
-                picks.Add (id_correctScore);
+                int correctscore_1 = correctScoreCEN.NewCorrectScore (10, "Scorecast 1", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Bet365", id_match, 2, 1);
+                int correctscore_2 = correctScoreCEN.NewCorrectScore(10, "Scorecast 2", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Sportium", id_match, 5, 1);
+
+                int correctscore_3 = correctScoreCEN.NewCorrectScore(10, "Scorecast 3", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Bet365", id_match, 5, 1);
+
+
+                IList<int> picks_1 = new List<int>();
+                picks_1.Add (correctscore_1);
+                picks_1.Add(correctscore_2);
+
+                IList<int> picks_2 = new List<int>();
+                picks_2.Add(correctscore_3);
 
                 int id_post_1 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
+                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
 
                 int id_post_2 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido 2",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
+                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
 
                 int id_post_3 = postCEN.NewPost (new DateTime (2017, 2, 25), new DateTime (2017, 2, 25), 1, "Va a ser un partido sufrido 3",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
+                        false, picks_2, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
 
                 int id_post_4 = postCEN.NewPost (new DateTime (2017, 2, 28), new DateTime (2017, 2, 28), 1, "Va a ser un partido sufrido 4",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
+                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
 
                 int id_post_5 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 5",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
+                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
 
                 int id_post_6 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 6",
-                        false, picks, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 20, 0);
+                        false, picks_1, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 20, 0);
 
                 int id_post_7 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 7",
-                        false, picks, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
+                        false, picks_1, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
 
                 int id_post_8 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 8",
-                        false, picks, tipster3, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
+                        false, picks_1, tipster3, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
 
                 postCP.VerifyPost (id_post_1);
                 postCEN.AddLike (id_post_1);

@@ -1,105 +1,90 @@
 ﻿@model IEnumerable<AdminView.Models.PostModel>
 
-
-<table id="posts" class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Created_at)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Modified_at)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stake)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalOdd)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Likeit)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Report)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@if (Model.Count() > 0)
+{
+    <table id="posts" class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Created_at)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Modified_at)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Stake)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalOdd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Likeit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Report)
-                </td>
-                <td>
-                    <i class="fa fa-plus fa-fw" data-toggle="collapse" data-target="#@Html.DisplayFor(modelItem => item.Id)"></i>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created_at)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modified_at)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stake)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalOdd)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Likeit)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Report)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stake)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalOdd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Likeit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Report)
+                    </td>
+                    <td>
+                        <a href="#" class="fa fa-plus fa-fw" data-toggle="modal" data-target="#postDetailsModal@(item.Id)"></a>
+                    </td>
+                </tr>
 
-<script>
-    $(document).ready(function () {
-        $("#postlist_btn").on("click", function () {
-            var i_date = $('#iDateList').val();
-            var f_date = $('#fDateList').val();
+                @Html.Partial("_posts/_postdialog", item)
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-danger">
+        <span id="error_list_resul"></span>
+    </div>
 
-            $.ajax({
-                url: "/stats/_postlist",
-                type: "post",
-                data: {
-                    iDate: i_date,
-                    fDate: f_date
-                },
-                beforeSend: function () {
-                    if (i_date != null && f_date != null)
-                    {
-                        var iDate = Date.parse(i_date);
-                        var fDate = Date.parse(f_date);
-                        var today = Date.parse(new Date());
+    <script>
+        $(document).ready(function () {
+            
+            var i_date = $.cookie("postlist_iDate");
+            var f_date = $.cookie("postlist_fDate");
 
-                        if(iDate <= today && fDate <= today)
-                            return true;
-                    }
-
-                    return false;
-                }
-            })
-            .done(function (result) {
-                $("#posts").html(result);
-                $("#iDateList").val('');
-                $("#fDateList").val('');
-            });
+            var message = 'No se han realizado publicaciones desde el ' + $.format.date(new Date(i_date), 'dd/MM/yyyy') + ' hasta el ' + $.format.date(new Date(f_date), 'dd/MM/yyyy');
+            $('#error_list_resul').text(message);
         });
-    });
-</script>
+    </script>
+}
 
 @Scripts.Render("~/bundles/posts")

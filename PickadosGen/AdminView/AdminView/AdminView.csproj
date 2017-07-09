@@ -150,11 +150,15 @@
     <Content Include="Scripts\functions\functions.js" />
     <Content Include="Scripts\functions\functions_edituser.js" />
     <Content Include="Scripts\functions\functions_stats.js" />
+    <Content Include="Scripts\functions\funtions_posts.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.cookie-1.4.1.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.dateFormat-1.0.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -229,10 +233,7 @@
     <Content Include="Views\Matches\Matches.cshtml" />
     <Content Include="Views\Matches\Edit.cshtml" />
     <Content Include="Views\Stats\Post.cshtml" />
-    <Content Include="Views\Stats\PostDetalles.cshtml" />
-    <Content Include="Views\Stats\_posts\_PostDetalles.cshtml" />
-    <Content Include="Views\Stats\_picks\_PickDialog.cshtml" />
-    <Content Include="Views\Stats\_picks\_PickDetalles.cshtml" />
+    <Content Include="Views\Stats\_posts\_PostDialog.cshtml" />
     <Content Include="Views\Stats\_posts\_PostList.cshtml" />
     <Content Include="Views\Stats\_posts\_PostStat.cshtml" />
     <Content Include="Views\Request\AddComment.cshtml" />
@@ -241,9 +242,8 @@
     <Content Include="Views\Stats\_usersbets\_UsersYieldList.cshtml" />
     <Content Include="Views\Stats\Users.cshtml" />
     <Content Include="Views\Stats\_logins\_LoginStat.cshtml" />
-    <Content Include="Views\Post\PostDetails.cshtml" />
-    <Content Include="Views\Pick\DetailsPick.cshtml" />
     <Content Include="Views\Request\Finalizadas.cshtml" />
+    <Content Include="Views\Stats\_picks\_PickDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

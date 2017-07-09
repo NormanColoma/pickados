@@ -11,6 +11,10 @@ namespace AdminView.Models
 {
     public class PickModel
     {
+        public string Type { get; set; }
+
+        public int Post { get; set; }
+
         [Display(Name = "Id")]
         [Editable(false)]
         public int Id { get; set; }
