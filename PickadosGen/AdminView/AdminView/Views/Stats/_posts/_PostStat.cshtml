@@ -1,6 +1,10 @@
 ﻿@model AdminView.Models.StatModel
 
-<canvas id="poststatchart"></canvas>
+<div class="col-md-offset-2 col-md-8">
+    <div class="clearfix"></div>
+
+    <canvas id="poststatchart"></canvas>
+</div>
 
 <script type="text/javascript" src="../../Scripts/chartjs/Chart.bundle.min.js"></script>
 
@@ -27,12 +31,12 @@
                 borderWidth: 1
             }]
         },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
     });
 </script>

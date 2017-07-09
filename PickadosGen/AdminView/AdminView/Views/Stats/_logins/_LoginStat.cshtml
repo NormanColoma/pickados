@@ -1,74 +1,78 @@
 ﻿@model AdminView.Models.StatModel
 
-<canvas id="loginstatchart"></canvas>
+<div class="clearfix"></div>
+
+<div class="col-md-offset-2 col-md-8">
+    <canvas id="loginstatchart"></canvas>
+</div>
 
 <script type="text/javascript" src="../../Scripts/chartjs/Chart.bundle.min.js"></script>
 
 <script>
-    var ctx = document.getElementById("loginstatchart").getContext('2d');
+var ctx = document.getElementById("loginstatchart").getContext('2d');
 
-    var label_stat = @Html.Raw(Json.Encode(Model.Label));
-    var label_stat_format = label_stat.replace("[", "").replace("]", "");
+var label_stat = @Html.Raw(Json.Encode(Model.Label));
+var label_stat_format = label_stat.replace("[", "").replace("]", "");
 
-    var data_stat = @Html.Raw(Json.Encode(Model.Data));
-    var data_stat_format = data_stat.replace("[", "").replace("]", "");
+var data_stat = @Html.Raw(Json.Encode(Model.Data));
+var data_stat_format = data_stat.replace("[", "").replace("]", "");
 
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: label_stat_format.split(","),
-            datasets: [{
-                label: 'number of login',
-                data: data_stat_format.split(","),
-                backgroundColor: 'rgba(213, 215, 216, 1)',
-                borderColor: 'rgba(87, 93, 99, 1)',
-                pointBorderColor: "#fff",
-                pointBackgroundColor: "rgba(179,181,198,1)",
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
-        }
-    });
-
-    $(document).ready(function() {
-        $("#loginstat_btn").on("click", function() {
-            var i_date = $('#iDateStat').val();
-            var f_date = $('#fDateStat').val();
-
-            $.ajax({
-                url: "/stats/_loginstat",
-                type: "post",
-                data: {
-                    iDate: i_date,
-                    fDate: f_date
-                },
-                beforeSend: function () {
-                    if (i_date != null && f_date != null)
-                    {
-                        var iDate = Date.parse(i_date);
-                        var fDate = Date.parse(f_date);
-                        var today = Date.parse(new Date());
-
-                        if(iDate <= today && fDate <= today)
-                            return true;
-                    }
-
-                    return false;
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: label_stat_format.split(","),
+        datasets: [{
+            label: 'number of login',
+            data: data_stat_format.split(","),
+            backgroundColor: 'rgba(213, 215, 216, 1)',
+            borderColor: 'rgba(87, 93, 99, 1)',
+            pointBorderColor: "#fff",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
                 }
-            })
-            .done(function(result) {
-                $("#loginstat").html(result);
-                $("#iDateStat").val('');
-                $("#fDateStat").val('');
-            });
+            }]
+        }
+    }
+});
+
+$(document).ready(function() {
+    $("#loginstat_btn").on("click", function() {
+        var i_date = $('#iDateStat').val();
+        var f_date = $('#fDateStat').val();
+
+        $.ajax({
+            url: "/stats/_loginstat",
+            type: "post",
+            data: {
+                iDate: i_date,
+                fDate: f_date
+            },
+            beforeSend: function () {
+                if (i_date != null && f_date != null)
+                {
+                    var iDate = Date.parse(i_date);
+                    var fDate = Date.parse(f_date);
+                    var today = Date.parse(new Date());
+
+                    if(iDate <= today && fDate <= today)
+                        return true;
+                }
+
+                return false;
+            }
+        })
+        .done(function(result) {
+            $("#loginstat").html(result);
+            $("#iDateStat").val('');
+            $("#fDateStat").val('');
         });
     });
+});
 </script>

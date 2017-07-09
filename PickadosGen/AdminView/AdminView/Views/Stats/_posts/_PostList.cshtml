@@ -77,10 +77,9 @@ else
 
     <script>
         $(document).ready(function () {
+            
             var i_date = $.cookie("postlist_iDate");
             var f_date = $.cookie("postlist_fDate");
-
-            $.removeCookie("postlist_iDate"); $.removeCookie("postlist_fDate");
 
             var message = 'No se han realizado publicaciones desde el ' + $.format.date(new Date(i_date), 'dd/MM/yyyy') + ' hasta el ' + $.format.date(new Date(f_date), 'dd/MM/yyyy');
             $('#error_list_resul').text(message);

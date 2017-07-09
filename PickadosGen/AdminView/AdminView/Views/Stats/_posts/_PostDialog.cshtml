@@ -41,19 +41,9 @@
                     </dd>
                 </dl>
 
-                <div class="col-md-6">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Picks</h3>
-                            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-                        </div>
-                        <div class="panel-body">
+                @Html.Partial("_picks/_pickdialog", Model.Picks)
 
-                        </div>
-                    </div>
                 </div>
-                
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
             </div>

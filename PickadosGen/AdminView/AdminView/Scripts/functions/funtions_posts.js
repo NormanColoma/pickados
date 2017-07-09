@@ -34,6 +34,8 @@ $("#poststat_btn").on("click", function () {
 
                 if (iDate <= today && fDate <= today)
                     return true;
+                else
+                    return false;
             }
 
             return false;
@@ -70,6 +72,8 @@ $("#postlist_btn").on("click", function () {
 
                     return true;
                 }
+                else
+                    return false;
             }
 
             return false;

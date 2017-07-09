@@ -29,7 +29,7 @@ namespace AdminView.Assemblers
             postModel.Report = postEN.Report;
 
             postModel.Tipster = UserAssembler.ConverterUserENtoModel(postEN.Tipster);
-            postModel.Picks = PickAssembler.ConvertPickENtoModel(postEN.Pick);
+            postModel.Picks = PickAssembler.ConvertPickENtoModel(postEN.Pick, postModel.Id);
 
             return postModel;
         }
