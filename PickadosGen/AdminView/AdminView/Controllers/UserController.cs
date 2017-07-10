@@ -20,7 +20,7 @@ namespace AdminView.Controllers
         public ActionResult _ListaTipstersFree(int page)
         {
             int first = page*15;
-            int size = first+15;
+            int size = 15;
 
             TipsterCP tipsterCP = new TipsterCP();
             IList<TipsterEN> tipsters = tipsterCP.GetTipstersFree(first, size);

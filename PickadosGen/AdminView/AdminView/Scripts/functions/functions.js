@@ -13,11 +13,11 @@ $('#contenedor-tipstersf').bind('scroll', function () {
                 url: '/user/_listatipstersfree',
                 data: { page: pageTF },
                 cache: false,
+                async: false,
                 success: function (result) {
-                    scrolltopTF = $(this).scrollTop();
                     $('#contenedor-tipstersf > table > tbody').append(result);
-                    console.log(pageTF);
                     pageTF += 1;
+                    scrolltopTF = $(this).scrollTop();
                 }
             });
         }
@@ -32,6 +32,7 @@ $('#contenedor-tipstersp').bind('scroll', function () {
                 url: '/user/_listatipsterspremium',
                 data: { page: pageTF },
                 cache: false,
+                async: false,
                 success: function (result) {
                     $('#contenedor-tipstersp').append(result);
                     pageTP += 1;
@@ -50,6 +51,7 @@ $('#contenedor-admins').bind('scroll', function () {
                 url: '/user/_listaadmins',
                 data: { page: pageA },
                 cache: false,
+                async: false,
                 success: function (result) {
                     $('#contenedor-admins').append(result);
                     pageA += 1;
@@ -71,12 +73,12 @@ $('[id^="tipsters"], [id^="admins"]').on("click", function () {
 $('.fa-trash-o').on("click", function () {
     $('.modal-body').empty();
     var p = document.createElement('p');
-    p.textContent = '¿Desea elminar a ' + this.getAttribute('data-alias') + ' del sistema?';
+    p.innerHTML = '¿Desea elminar a <span class="username">' + this.getAttribute('data-alias') + '</span> del sistema?';
     $('.modal-body').append(p);
 
-    var action = $('#deleteModal form').attr('action');
+    $('#deleteModal form').removeAttr('action');
     var id = this.getAttribute('data-id');
-    $('#deleteModal form').attr('action', action + "/" + id);
+    $('#deleteModal form').attr('action', "/user/delete/" + id);
 });
 
 $(document).ready(function () {

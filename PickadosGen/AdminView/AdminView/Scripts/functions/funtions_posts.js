@@ -55,6 +55,7 @@ $("#postlist_btn").on("click", function () {
     $.ajax({
         url: "/stats/_postlist",
         type: "post",
+        async: false,
         data: {
             iDate: i_date,
             fDate: f_date
