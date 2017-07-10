@@ -5,6 +5,17 @@ var scrolltopTF = 0;
 var scrolltopTP = 0;
 var scrolltopA = 0;
 
+function dialogdelete(element) {
+    $('.modal-body').empty();
+    var p = document.createElement('p');
+    p.innerHTML = '¿Desea elminar a <span class="username">' + element.getAttribute('data-alias') + '</span> del sistema?';
+    $('.modal-body').append(p);
+
+    $('#deleteModal form').removeAttr('action');
+    var id = element.getAttribute('data-id');
+    $('#deleteModal form').attr('action', "/user/delete/" + id);
+}
+
 $('#contenedor-tipstersf').bind('scroll', function () {
     if ($(this).scrollTop() != scrolltopTF) {
         if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
@@ -68,17 +79,6 @@ $('[id^="tipsters"], [id^="admins"]').on("click", function () {
 
     $(this).siblings().removeClass('active')
     $(this).addClass("active");
-});
-
-$('.fa-trash-o').on("click", function () {
-    $('.modal-body').empty();
-    var p = document.createElement('p');
-    p.innerHTML = '¿Desea elminar a <span class="username">' + this.getAttribute('data-alias') + '</span> del sistema?';
-    $('.modal-body').append(p);
-
-    $('#deleteModal form').removeAttr('action');
-    var id = this.getAttribute('data-id');
-    $('#deleteModal form').attr('action', "/user/delete/" + id);
 });
 
 $(document).ready(function () {
