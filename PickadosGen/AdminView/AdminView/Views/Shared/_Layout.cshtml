@@ -52,7 +52,8 @@
             <!-- /.navbar-header -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-top-links navbar-right">
-                    @if (Request.IsAuthenticated) {
+                    @if (Request.IsAuthenticated)
+                    {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i></a>
                             <ul class="dropdown-menu dropdown-alerts">
@@ -112,7 +113,16 @@
                                     <a href="/user"><i class="fa fa-user fa-fw"></i>Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="/request"><i class="fa fa-inbox fa-fw"></i>Solicitudes</a>
+                                    <a href="#"><i class="fa fa-inbox fa-fw"></i>Solicitudes<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="/request">Pendientes</a>
+                                        </li>
+                                        <li>
+                                            <a href="/request/finalizadas">Finalizadas</a>
+                                        </li>
+                                    </ul>
+                                    <!--<a href="/request"><i class="fa fa-inbox fa-fw"></i>Solicitudes</a>-->
                                 </li>
                                 <li>
                                     <a href="/sports/sports"><i class="fa fa-soccer-ball-o fa-fw"></i>@textos.Sport</a>
@@ -128,15 +138,16 @@
                 <!-- /.navbar-static-side -->
             </div>
 
-            
+
         </nav>
         <div id="page-wrapper">
+            <!--
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">@textos.AdminPanel</h1>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
+            -->
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -157,7 +168,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
-
-
-

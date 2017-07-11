@@ -25,7 +25,7 @@ textarea {
 
 /* -- -- */
 .contenedor {
-    height: 800px;
+    height: 70vh;
     overflow: scroll;
 
     border-left: 1px solid #ddd;
@@ -41,4 +41,60 @@ textarea {
 
 thead {
     cursor: pointer;
+}
+
+
+.modal-header {
+    color: white;
+
+    background-color: #95999D;
+
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+.modal-header h4 {
+    font-weight: bold !important;
+}
+
+.modal-footer {
+    color: white;
+    font-weight: bold;
+
+    background-color: #F5F5F2;
+
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+     border-bottom-left-radius: 5px;
+     border-bottom-right-radius: 5px;
+}
+
+.modal-footer button {
+    color: #61676d;
+    border-color: #61676d;
+
+    background: none;
+}
+
+.modal-body .panel-heading {
+    font-weight: bold;
+    background-color: #D5D7D8 !important;
+}
+
+.modal-body .panel-heading a {
+    color: #61676d;
+}
+
+#deleteModal .btn-delete {
+    background-color: #95999D;
+}
+
+#deleteModal .username {
+    font-style: italic;
 }

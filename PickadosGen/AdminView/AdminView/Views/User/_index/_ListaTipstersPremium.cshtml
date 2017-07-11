@@ -1,4 +1,4 @@
-﻿@model List<PickadosGenNHibernate.EN.Pickados.TipsterEN>
+﻿@model List<AdminView.Models.UserModel>
 
 @foreach (var item in Model) {
     <tr>
@@ -22,7 +22,7 @@
         </td>
         <td>
             <a href="@Url.Action("Edit", "User", new { id=item.Id })" class="fa fa-pencil fa-fw"></a>
-            <a href="#" class="fa fa-trash-o fa-fw" data-toggle="modal" data-target="#deleteModal" data-alias="@Html.DisplayFor(modelItem => item.Alias)" data-id="@Html.DisplayFor(modelItem => item.Id)"></a>
+            <a href="#" class="fa fa-trash-o fa-fw" onclick="dialogdelete(this)" data-toggle="modal" data-target="#deleteModal" data-alias="@Html.DisplayFor(modelItem => item.Alias)" data-id="@Html.DisplayFor(modelItem => item.Id)"></a>
         </td>
     </tr>
 }

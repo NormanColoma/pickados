@@ -1,6 +1,10 @@
 ﻿@model AdminView.Models.StatModel
 
-<canvas id="poststatchart"></canvas>
+<div class="col-md-offset-2 col-md-8">
+    <div class="clearfix"></div>
+
+    <canvas id="poststatchart"></canvas>
+</div>
 
 <script type="text/javascript" src="../../Scripts/chartjs/Chart.bundle.min.js"></script>
 
@@ -27,47 +31,12 @@
                 borderWidth: 1
             }]
         },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-    });
-
-    $(document).ready(function() {
-        $("#poststat_btn").on("click", function() {
-            var i_date = $('#iDateStat').val();
-            var f_date = $('#fDateStat').val();
-
-            $.ajax({
-                url: "/stats/_poststat",
-                type: "post",
-                data: {
-                    iDate: i_date,
-                    fDate: f_date
-                },
-                beforeSend: function () {
-                    if (i_date != null && f_date != null)
-                    {
-                        var iDate = Date.parse(i_date);
-                        var fDate = Date.parse(f_date);
-                        var today = Date.parse(new Date());
-
-                        if(iDate <= today && fDate <= today)
-                            return true;
-                    }
-
-                    return false;
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
                 }
-            })
-            .done(function(result) {
-                $("#poststat").html(result);
-                $("#iDateStat").val('');
-                $("#fDateStat").val('');
-            });
-        });
+            }]
+        }
     });
-
 </script>

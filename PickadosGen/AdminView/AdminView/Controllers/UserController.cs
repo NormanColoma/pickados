@@ -20,7 +20,7 @@ namespace AdminView.Controllers
         public ActionResult _ListaTipstersFree(int page)
         {
             int first = page*15;
-            int size = first+15;
+            int size = 15;
 
             TipsterCP tipsterCP = new TipsterCP();
             IList<TipsterEN> tipsters = tipsterCP.GetTipstersFree(first, size);
@@ -28,7 +28,7 @@ namespace AdminView.Controllers
             if (tipsters.Count < 0)
                 return new EmptyResult();
 
-            return PartialView("_index/_ListaTipstersFree", tipsters);
+            return PartialView("_index/_ListaTipstersFree", UserAssembler.ConverterUserENtoModel(new List<UsuarioEN> (tipsters)));
         }
 
         public ActionResult _ListaTipstersPremium(int page)
@@ -42,7 +42,7 @@ namespace AdminView.Controllers
             if (tipsters.Count < 0)
                 return new EmptyResult();
 
-            return PartialView("_index/_ListaTipstersPremium", tipsters);
+            return PartialView("_index/_ListaTipstersPremium", UserAssembler.ConverterUserENtoModel(new List<UsuarioEN>(tipsters)));
         }
 
         public ActionResult _ListaAdmins(int page)
@@ -56,7 +56,7 @@ namespace AdminView.Controllers
             if (admins.Count < 0)
                 return new EmptyResult();
 
-            return PartialView("_index/_ListaAdmins", admins);
+            return PartialView("_index/_ListaAdmins", UserAssembler.ConverterUserENtoModel(new List<UsuarioEN>(admins)));
         }
 
         [HttpGet]

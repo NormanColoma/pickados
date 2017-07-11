@@ -18,6 +18,17 @@ namespace AdminView.Controllers
             List<RequestEN> list = requestCEN.GetByState(RequestStateEnum.Open).ToList();
             List<RequestEN> list2 = requestCEN.GetByState(RequestStateEnum.inReview).ToList();
             list.AddRange(list2);
+            list.OrderBy(r => r.Date);
+            return View(list);
+        }
+
+        public ActionResult Finalizadas()
+        {
+            RequestCEN requestCEN = new RequestCEN();
+            List<RequestEN> list = requestCEN.GetByState(RequestStateEnum.Accepted).ToList();
+            List<RequestEN> list2 = requestCEN.GetByState(RequestStateEnum.Denied).ToList();
+            list.AddRange(list2);
+            list.OrderBy(r => r.Date);
             return View(list);
         }
 
@@ -28,7 +39,7 @@ namespace AdminView.Controllers
                 // TODO: Add delete logic here
                 RequestCEN requests = new RequestCEN();
                 RequestEN request = requests.GetById(id);
-                //requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, new DateTime(), "");*/
+                requests.Modify(id, request.Type, request.Reason, RequestStateEnum.Denied, request.Date, content, DateTime.Now);
                 ViewBag.typeContent = content;
                 return PartialView("AddComment", request);
             }
