@@ -41,6 +41,10 @@ public static void Create (string databaseArg, string userArg, string passArg)
 
         try
         {
+                if(cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
                 // Open conex
                 cnn.Open ();
 
@@ -364,7 +368,7 @@ public static void InitializeData ()
                 int pickId = resultCEN.NewResult (2, "Gana Local", PickResultEnum.unstarted, "Kirolbet", match1, ResultEnum.home, TimeEnum.fulltime);
                 List<int> picks_id = new List<int>();
                 picks_id.Add (pickId);
-                postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster2, PickResultEnum.unfinished);
+                postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster, PickResultEnum.unfinished);
 
                 Console.WriteLine ("--------------- Get Post by Tipster -------------");
                 PostCAD postCAD = new PostCAD ();

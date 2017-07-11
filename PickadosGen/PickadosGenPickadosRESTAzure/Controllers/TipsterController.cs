@@ -101,9 +101,92 @@ public HttpResponseMessage GetFollowers (int id)
 }
 
 
-// No pasa el slEnables: getFollows
+        [HttpGet]
 
-[HttpGet]
+        [Route("~/api/Tipster/timeline")]
+
+        public HttpResponseMessage LoadTimeLine(int id)
+        {
+            // CAD, CEN, EN, returnValue
+
+            TipsterRESTCAD tipsterRESTCAD = null;
+            TipsterCEN tipsterCEN = null;
+            PostRESTCAD postRESTCAD = null;
+            PostCEN postCEN = null;
+
+            System.Collections.Generic.List<PostEN> en = new List<PostEN>();
+
+            System.Collections.Generic.List<PostDTOA> returnValue = null;
+
+            try
+            {
+                SessionInitializeWithoutTransaction();
+
+                tipsterRESTCAD = new TipsterRESTCAD(session);
+                tipsterCEN = new TipsterCEN(tipsterRESTCAD);
+
+                postRESTCAD = new PostRESTCAD(session);
+                postCEN = new PostCEN(postRESTCAD);
+
+                // CEN return
+
+
+
+                List<TipsterEN> tipstersFollowed = tipsterCEN.GetFollows(id).ToList();
+
+                foreach(TipsterEN t in tipstersFollowed)
+                {
+                    en.AddRange(postCEN.FindPostsByTipster(t.Id, 0, 10));
+                }
+
+
+                // Convert return
+                if (en != null)
+                {
+                    returnValue = new System.Collections.Generic.List<PostDTOA>();
+                    foreach (PostEN entry in en)
+                    {
+                        foreach (PickEN pick in postCEN.GetPostById(entry.Id).Pick)
+                        {
+                            PickDTOA p = PickAssembler.Convert(pick, session);
+                            MatchEN mEn = (MatchEN) pick.Event_rel.Competition.Event_.First();
+                            MatchDTOA match = MatchAssembler.Convert(mEn, session);
+                            match.Competition = mEn.Competition.Name;
+                            match.Sport = mEn.Competition.Sport.Name;
+                            p.GetAllMatchOfPick = new List<MatchDTOA>();
+                            p.GetAllMatchOfPick.Add(match);
+                            PostDTOA post = PostAssembler.Convert(entry, session);
+                            post.GetAllPickOfPost = new List<PickDTOA>();
+                            post.GetAllPickOfPost.Add(p);
+                            returnValue.Add(post);
+                        }
+                    }
+                        
+                }
+            }
+
+            catch (Exception e)
+            {
+                if (e.GetType() == typeof(HttpResponseException)) throw e;
+                else if (e.GetType() == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType() == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException(HttpStatusCode.BadRequest);
+                else throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
+            finally
+            {
+                SessionClose();
+            }
+
+            // Return 204 - Empty
+            if (returnValue == null || returnValue.Count == 0)
+                return this.Request.CreateResponse(HttpStatusCode.NoContent);
+            // Return 200 - OK
+            else return this.Request.CreateResponse(HttpStatusCode.OK, returnValue);
+        }
+
+
+        // No pasa el slEnables: getFollows
+
+        [HttpGet]
 
 [Route ("~/api/Tipster/GetFollows")]
 

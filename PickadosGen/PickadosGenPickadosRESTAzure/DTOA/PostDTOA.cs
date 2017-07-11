@@ -59,5 +59,7 @@ public IList<PickDTOA> GetAllPickOfPost
         get { return getAllPickOfPost; }
         set { getAllPickOfPost = value; }
 }
+    }
 }
-}
+
+

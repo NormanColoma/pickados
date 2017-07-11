@@ -46,5 +46,19 @@ public TeamDTOA GetAwayOfEvent_away
         get { return getAwayOfEvent_away; }
         set { getAwayOfEvent_away = value; }
 }
-}
+
+        private String competition;
+        public String Competition
+        {
+            get { return competition; }
+            set { competition = value; }
+        }
+
+        private String sport;
+        public String Sport
+        {
+            get { return sport; }
+            set { sport = value; }
+        }
+    }
 }
