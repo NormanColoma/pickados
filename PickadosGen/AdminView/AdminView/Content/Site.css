@@ -98,3 +98,22 @@ thead {
 #deleteModal .username {
     font-style: italic;
 }
+
+.bootstrap-select {
+    margin-bottom: 10px;
+}
+
+div[id$="_panel"] .panel-body {
+    background-color: white;
+    margin-top: 10px;
+    overflow: auto;
+    max-height: 60vh;
+}
+
+div[id$="_panel"] ul {
+    list-style-type: none;
+}
+
+.radio_competitions {
+    float: right;
+}

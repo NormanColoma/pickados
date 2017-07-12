@@ -1,0 +1,15 @@
+﻿<h4>Cargar datos en la base de datos</h4>
+<hr />
+
+<div class="btn-group bootstrap-select">
+
+    <select id="loaddata" class="selectpicker" data-live-search="true" title="Seleccione una opción">
+        <option data-tokens="competiciones">Competiciones</option>
+        <option data-tokens="jugadores">Jugadores</option>
+    </select>
+</div>
+
+<div id="data">
+</div>
+
+@Scripts.Render("~/bundles/database")
