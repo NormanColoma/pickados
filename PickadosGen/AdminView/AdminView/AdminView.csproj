@@ -109,8 +109,6 @@
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap-toggle.css" />
-    <Content Include="Content\bootstrap-toggle.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
@@ -127,8 +125,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
-    <Content Include="Scripts\bootstrap-toggle.js" />
-    <Content Include="Scripts\bootstrap-toggle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -149,7 +145,6 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Content\bootstrap-select.css.map" />
-    <Content Include="Scripts\bootstrap-toggle.min.js.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\canvas\canvasjs.min.js" />
@@ -240,6 +235,8 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.cookie-1.4.1.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.dateFormat-1.0.js" />
@@ -328,13 +325,11 @@
     <Content Include="Views\Stats\_logins\_LoginStat.cshtml" />
     <Content Include="Views\Request\Finalizadas.cshtml" />
     <Content Include="Views\Stats\_picks\_PickDialog.cshtml" />
-    <Content Include="Views\Database\InsertLeagues.cshtml" />
     <Content Include="Views\Database\Index.cshtml" />
+    <Content Include="Views\Database\_insert\_SuccessDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\flags\1x1\" />
-    <Folder Include="Content\flags\4x3\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />

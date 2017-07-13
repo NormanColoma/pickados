@@ -16,7 +16,7 @@ $("#loaddata").on("change", function (e) {
 
 function createcontainer(json)
 {
-    for (var i in json) {
+    for (var i = 0; i < json.length; i++) {
 
         var country_name = json[i].country_name;
         var country_name_id = country_name.toLowerCase().replace(/ /g, '').replace(/[^\w\s]/gi, '');
@@ -36,8 +36,8 @@ function createcontainer(json)
             var panel_title = '<h4 class="panel-title col-md-6"><a data-toggle="collapse" data-target="#' + country_name_id + '" href="#' + country_name_id + '" class="collapsed">' + country_name + '</a></h4>';
 
             var radio = '<div class="radio_competitions">';
-            var radio1 = '<label class="radio-inline col-md-2"><input type="radio" name="opciones_' + league_name_id + '" id="league_name_id" value="0">Internacional</label>';
-            var radio2 = '<label class="radio-inline col-md-2"><input type="radio" name="opciones_' + league_name_id + '" id="league_name_id" value="1">Nacional</label>';
+            var radio1 = '<label class="radio-inline col-md-2"><input type="radio" name="' + country_name_id + '" value="0">Internacional</label>';
+            var radio2 = '<label class="radio-inline col-md-2"><input type="radio" name="' + country_name_id + '" value="1">Nacional</label>';
 
             var radios = radio + radio1 + cierre_div + radio + radio2 + cierre_div;
             panel += panel_heading + container + panel_title + radios + cierre_div + cierre_div;
@@ -51,8 +51,11 @@ function createcontainer(json)
             var league = '<li class="list-group-item">' + league_name + '</li>';
             panel += league;
 
-            var cierre = '</ul>' + '</div>' + '</div>' + '</div>';
-            panel += cierre;
+            var cierre = '</ul>' + '</div>';
+
+            var panel_footer = '<div class="panel-footer footer_' + country_name_id + '"><button type="button" class="btn btn-default" onclick="insertdatabase(this)">Insertar datos en la BD</button></div>';
+
+            panel += cierre + panel_footer + '</div>' + '</div>';
 
             $('#data').append(panel);
         }
@@ -62,13 +65,40 @@ function createcontainer(json)
     }
 }
 
+function insertdatabase(element) {
+    var country_name = element.parentElement.parentElement.parentElement.getElementsByTagName('h4')[0].getElementsByTagName('a')[0].text;
+    var country_name_id = country_name.toLowerCase().replace(/ /g, '').replace(/[^\w\s]/gi, '');
 
-function createRadioButtons(league_name, league_name_id)
-{
-    var radio = '<div class="radio_competitions">'; var cierre = '</div>';
-    var radio1 = '<label><input type="radio" name="opciones" id="league_name_id" value="0" checked>Club team</label>';
-    var radio2 = '<label><input type="radio" name="opciones" id="league_name_id" value="1" checked>International team</label>';
+    $('#error_' + country_name_id).remove();
 
-    var radios = radio + radio1 + cierre + radio + radio2 + cierre;
-    return radios;
+    var leagues = element.parentElement.parentElement.getElementsByTagName('ul')[0].getElementsByTagName('li');
+    var json_leagues = "";
+
+    for (var i = 0; i < leagues.length; i++) {
+        json_leagues += "{\"value\": \"" + leagues[i].textContent + "\"},";
+    }
+
+    var json = "{\"name\":\"" + country_name + "\", \"leagues\": [" + json_leagues.substring(0, json_leagues.length - 1) + "]}"
+   
+    $.ajax({
+        url: "/database/cargarcompeticionesfutbol",
+        type: "post",
+        data: {
+            json: json,
+            club: $('input[name="' + country_name_id + '"]:checked').val()
+        },
+        beforeSend: function () {
+            if (!$('input[name="' + country_name_id + '"]:radio').is(':checked')) {
+                $('.footer_' + country_name_id).append('<span id="error_' + country_name_id + '" class="alert-danger">Tienes que indicar si la competición es nacional o internacional</span>');
+                return false;
+            }
+        },
+        success: function () {
+            $("#insertsuccessmodal").dialog();
+        }
+    })
+}
+
+function cerrardialog() {
+    $("#insertsuccessmodal").dialog("close");
 }

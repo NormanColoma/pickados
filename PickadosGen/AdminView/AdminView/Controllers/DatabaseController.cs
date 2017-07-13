@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
+using PickadosGenNHibernate.CEN.Pickados;
+using PickadosGenNHibernate.EN.Pickados;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,6 +49,37 @@ namespace AdminView.Controllers
             response.Close();
 
             return sorted;
+        }
+
+        [HttpPost]
+        public ActionResult CargarCompeticionesFutbol(string json, string club)
+        {
+            bool club_team = true;
+            if (club.Equals("0"))
+                club_team = false;
+
+            JObject jobject = JObject.Parse(json);
+
+            string place = jobject.GetValue("name").ToString();
+
+            JArray jarray = JArray.Parse(jobject.GetValue("leagues").ToString());
+
+            SportCEN sportCEN = new SportCEN();
+            int sport = sportCEN.NewSport("Football", "https://cdn0.iconfinder.com/data/icons/stroke-ball-icons-2/633/02_Soccer-512.png");
+
+            SeasonCEN seasonCEN = new SeasonCEN();
+            int season1 = seasonCEN.NewSeason(new DateTime(2016, 8, 18), new DateTime(2017, 5, 19));
+
+            List<int> seasons = new List<int>(); seasons.Add(season1);
+
+            foreach (JObject league_json in jarray)
+            {
+                string league = league_json.GetValue("value").ToString();
+                
+                CompetitionCEN compCEN = new CompetitionCEN();
+                compCEN.NewCompetition(league, sport, place, club_team, seasons);
+            }
+            return null;
         }
     }
 }

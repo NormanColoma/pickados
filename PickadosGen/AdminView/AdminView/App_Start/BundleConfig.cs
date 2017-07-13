@@ -42,7 +42,7 @@ namespace AdminView
 
             bundles.Add(new ScriptBundle("~/bundles/database").Include(
                       "~/Scripts/bootstrap-select.min.js",
-                      "~/Scripts/bootstrap-toggle.min.js",
+                      "~/Scripts/jquery-ui-1.12.1.min.js",
                       "~/Scripts/functions/functions_database.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/posts").Include(
@@ -50,7 +50,6 @@ namespace AdminView
                       "~/Scripts/jquery/jquery.tablesorter.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-toggle.css",
                       "~/Content/bootstrap-select.css",
                       "~/Content/bootstrap.css",
                       "~/Content/sb-admin-2.css",

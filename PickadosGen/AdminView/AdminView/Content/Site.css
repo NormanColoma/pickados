@@ -117,3 +117,10 @@ div[id$="_panel"] ul {
 .radio_competitions {
     float: right;
 }
+
+span[id^="error_"] {
+    float: right;
+    padding: 5px 5px 5px 5px;
+
+    border-radius: 4px;
+}
