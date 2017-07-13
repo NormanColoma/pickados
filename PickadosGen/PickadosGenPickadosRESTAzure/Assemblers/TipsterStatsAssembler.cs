@@ -35,6 +35,7 @@ public static TipsterStatsDTOA Convert (TipsterEN en, NHibernate.ISession sessio
                 dto.Alias = en.Alias;
                 dto.Subscription_fee = en.Subscription_fee;
                 dto.Premium = en.Premium;
+                dto.Sport = en.Sport;
 
                 //
                 // TravesalLink

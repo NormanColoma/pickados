@@ -85,32 +85,32 @@ public static void InitializeData ()
                 AdminCEN admin = new AdminCEN ();
                 UsuarioCEN user = new UsuarioCEN ();
 
-                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "25448998G", false, false, 0, false);
-                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "41569269N", false, false, 0, false);
-                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "15095054Q", false, false, 0, false);
-                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "41021257K", false, false, 0, false);
-                int tipster4 = nuevo.NewTipster ("maria", "maria@gmail.com", "mariaPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "24233961B", false, false, 0, false);
-                int tipster5 = nuevo.NewTipster ("aaron", "aaron@gmail.com", "aaronPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "78509149Y", false, false, 0, false);
-                int tipster6 = nuevo.NewTipster ("abdala", "abdala@outlook.com", "abdalaPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "09072257E", false, false, 0, false);
-                int tipster7 = nuevo.NewTipster ("arquimedes", "arquimedes@gmail.com", "arquimedesPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "88828221J", false, false, 0, false);
+                int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "25448998G", false, false, 0, false, "Football");
+                int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "41569269N", false, true, 0, false, "Football");
+                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "15095054Q", false, true, 0, false, "Football");
+                int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "41021257K", false, true, 0, false, "Football");
+                int tipster4 = nuevo.NewTipster ("maria", "maria@gmail.com", "mariaPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "24233961B", false, false, 0, false, "Football");
+                int tipster5 = nuevo.NewTipster ("aaron", "aaron@gmail.com", "aaronPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "78509149Y", false, false, 0, false, "Football");
+                int tipster6 = nuevo.NewTipster ("abdala", "abdala@outlook.com", "abdalaPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "09072257E", false, false, 0, false, "Football");
+                int tipster7 = nuevo.NewTipster ("arquimedes", "arquimedes@gmail.com", "arquimedesPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "88828221J", false, false, 0, false, "Football");
 
-                int tipster8 = nuevo.NewTipster ("casimiro", "casimiro@gmail.com", "casimiroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "42940561K", false, false, 0, false);
-                int tipster9 = nuevo.NewTipster ("eulalio", "eulalio@gmail.com", "eulalioPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "90630606A", false, false, 0, false);
-                int tipster10 = nuevo.NewTipster ("edgar", "edgar@outlook.com", "edgarPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "75711312G", false, false, 0, false);
-                int tipster11 = nuevo.NewTipster ("justino", "justino@gmail.com", "justinoPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "24298795P", false, false, 0, false);
-                int tipster12 = nuevo.NewTipster ("astor", "astor@gmail.com", "astorPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "08289374J", false, false, 0, false);
-                int tipster13 = nuevo.NewTipster ("cesar", "cesar@gmail.com", "cesarPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "21689311N", false, false, 0, false);
-                int tipster14 = nuevo.NewTipster ("ceferino", "ceferino@outlook.com", "ceferinoPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "41907700K", false, false, 0, false);
-                int tipster15 = nuevo.NewTipster ("clementino", "clementino@gmail.com", "clementinoPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "49317769L", false, false, 0, false);
+                int tipster8 = nuevo.NewTipster ("casimiro", "casimiro@gmail.com", "casimiroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "42940561K", false, false, 0, false, "Football");
+                int tipster9 = nuevo.NewTipster ("eulalio", "eulalio@gmail.com", "eulalioPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "90630606A", false, false, 0, false, "Football");
+                int tipster10 = nuevo.NewTipster ("edgar", "edgar@outlook.com", "edgarPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "75711312G", false, false, 0, false, "Football");
+                int tipster11 = nuevo.NewTipster ("justino", "justino@gmail.com", "justinoPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "24298795P", false, false, 0, false, "Football");
+                int tipster12 = nuevo.NewTipster ("astor", "astor@gmail.com", "astorPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "08289374J", false, false, 0, false, "Football");
+                int tipster13 = nuevo.NewTipster ("cesar", "cesar@gmail.com", "cesarPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "21689311N", false, false, 0, false, "Football");
+                int tipster14 = nuevo.NewTipster ("ceferino", "ceferino@outlook.com", "ceferinoPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "41907700K", false, false, 0, false, "Football");
+                int tipster15 = nuevo.NewTipster ("clementino", "clementino@gmail.com", "clementinoPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "49317769L", false, false, 0, false, "Football");
 
-                int tipster16 = nuevo.NewTipster ("rodolfo", "rodolfo@gmail.com", "rodolfoPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "79577588A", false, false, 0, false);
-                int tipster17 = nuevo.NewTipster ("alvaro", "alvaro@gmail.com", "alvaroPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "21680857E", false, false, 0, false);
-                int tipster18 = nuevo.NewTipster ("auberto", "auberto@outlook.com", "aubertoPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "52574311Z", false, false, 0, false);
-                int tipster19 = nuevo.NewTipster ("felipe", "felipe@gmail.com", "felipePro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "12543676M", false, false, 0, false);
-                int tipster20 = nuevo.NewTipster ("cristina", "cristina@gmail.com", "cristinaPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "91065753J", false, false, 0, false);
-                int tipster21 = nuevo.NewTipster ("iker", "iker@gmail.com", "ikerPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "41771143S", false, false, 0, false);
-                int tipster22 = nuevo.NewTipster ("aitor", "aitor@outlook.com", "aitorPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "46269204N", false, false, 0, false);
-                int tipster23 = nuevo.NewTipster ("arya", "arya@gmail.com", "aryaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "45415817V", false, false, 0, false);
+                int tipster16 = nuevo.NewTipster ("rodolfo", "rodolfo@gmail.com", "rodolfoPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "79577588A", false, false, 0, false, "Football");
+                int tipster17 = nuevo.NewTipster ("alvaro", "alvaro@gmail.com", "alvaroPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "21680857E", false, false, 0, false, "Football");
+                int tipster18 = nuevo.NewTipster ("auberto", "auberto@outlook.com", "aubertoPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "52574311Z", false, false, 0, false, "Basket");
+                int tipster19 = nuevo.NewTipster ("felipe", "felipe@gmail.com", "felipePro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "12543676M", false, false, 0, false, "Basket");
+                int tipster20 = nuevo.NewTipster ("cristina", "cristina@gmail.com", "cristinaPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "91065753J", false, false, 0, false, "Basket");
+                int tipster21 = nuevo.NewTipster ("iker", "iker@gmail.com", "ikerPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "41771143S", false, false, 0, false, "Basket");
+                int tipster22 = nuevo.NewTipster ("aitor", "aitor@outlook.com", "aitorPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "46269204N", false, false, 0, false, "Basket");
+                int tipster23 = nuevo.NewTipster ("arya", "arya@gmail.com", "aryaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "45415817V", false, false, 0, false, "Basket");
 
                 admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N", true);
 
@@ -414,15 +414,55 @@ public static void InitializeData ()
                 postCEN.AddLike (id_post_5);
 
                 DateTime d_march = new DateTime (2017, 3, 8);
-                DateTime d_april = new DateTime(2017, 4, 3);
-                DateTime d_may = new DateTime(2017, 5, 3);
-                DateTime d_june = new DateTime(2017, 6, 3);
+                DateTime d_april = new DateTime (2017, 4, 3);
+                DateTime d_may = new DateTime (2017, 5, 3);
+                DateTime d_june = new DateTime (2017, 6, 3);
 
                 StatsCEN statCEN = new StatsCEN ();
-                statCEN.NewMonthlyStats(4, 1, 10, 2, 12, d_march, tipster2, 24, 12);
-                statCEN.NewMonthlyStats(3, 3, 25, 3, 3, d_april, tipster2, 9, 9);
-                statCEN.NewMonthlyStats(4, 4, 20, 4, 4, d_may, tipster2, 16, 16);
-                statCEN.NewMonthlyStats(4, 4, 25, 4, 4, d_june, tipster2, 16, 16);
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster2, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster2, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster2, 16, 16);
+                statCEN.NewMonthlyStats (4, 4, 25, 4, 4, d_june, tipster2, 16, 16);
+
+                statCEN.NewMonthlyStats (4, 1, 30, 2, 12, d_march, tipster, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 0, 3, 3, d_april, tipster, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 5, 4, 4, d_may, tipster, 16, 16);
+                statCEN.NewMonthlyStats (1.12, 0.67, 28, 2.29, 6, d_june, tipster, 12, 4);
+
+                statCEN.NewMonthlyStats (4, 1, 11, 2, 12, d_march, tipster3, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 2, 3, 3, d_april, tipster3, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 4, 4, 4, d_may, tipster3, 16, 16);
+                statCEN.NewMonthlyStats (57, 1.08, 100, 13.16, 51, d_june, tipster3, 600, 53);
+
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster4, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster4, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster4, 16, 16);
+                statCEN.NewMonthlyStats (2.7, 1.44, 23, 1.94, 2, d_june, tipster4, 16, 16);
+
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster5, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster5, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster5, 16, 16);
+                statCEN.NewMonthlyStats (4, 4, 22, 4, 4, d_june, tipster5, 16, 16);
+
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster6, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster6, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster6, 16, 16);
+                statCEN.NewMonthlyStats (1, 4, 5, 4, 4, d_june, tipster6, 16, 16);
+
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster7, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster7, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster7, 16, 16);
+                statCEN.NewMonthlyStats (-1, 4, -1, 4, 4, d_june, tipster7, 16, 16);
+
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster8, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster8, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster8, 16, 16);
+                statCEN.NewMonthlyStats (-2, 4, -5, 4, 4, d_june, tipster8, 16, 16);
+
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster9, 24, 12);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster9, 9, 9);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster9, 16, 16);
+                statCEN.NewMonthlyStats (-10, 4, -20, 3, 3, d_june, tipster9, 16, 16);
 
 
                 Console.WriteLine ("--------------- Get Stats by Tipster -------------");

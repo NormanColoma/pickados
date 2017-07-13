@@ -37,6 +37,11 @@ public bool Premium
         set { premium = value; }
 }
 
+        private string sport;
+        public string Sport {
+            get { return sport; }
+            set { sport = value; }
+        }
 
 /* Rol: TipsterStats o--> Stats */
 private IList<StatsDTOA> getStatsOfTipster;

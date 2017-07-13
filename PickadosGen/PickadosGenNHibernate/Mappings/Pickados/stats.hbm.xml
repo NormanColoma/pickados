@@ -36,6 +36,15 @@
 					<property name="TotalStaked" type="double"> 
 						<column name="totalStaked"  not-null="true"/>
 					</property>
+					<property name="Wins" type="integer"> 
+						<column name="wins"  not-null="true"/>
+					</property>
+					<property name="Voids" type="integer"> 
+						<column name="voids"  not-null="true"/>
+					</property>
+					<property name="Lost" type="integer"> 
+						<column name="lost"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -52,6 +61,12 @@
 											 					
 			
 			
+			
+			
+			
+					
+					
+					
 					
 					
 					

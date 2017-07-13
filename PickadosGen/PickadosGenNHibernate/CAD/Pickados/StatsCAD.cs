@@ -115,6 +115,15 @@ public void ModifyDefault (StatsEN stats)
 
                 statsEN.TotalStaked = stats.TotalStaked;
 
+
+                statsEN.Wins = stats.Wins;
+
+
+                statsEN.Voids = stats.Voids;
+
+
+                statsEN.Lost = stats.Lost;
+
                 session.Update (statsEN);
                 SessionCommit ();
         }
@@ -196,6 +205,15 @@ public void ModifyMonthlyStats (StatsEN stats)
 
 
                 statsEN.TotalStaked = stats.TotalStaked;
+
+
+                statsEN.Wins = stats.Wins;
+
+
+                statsEN.Voids = stats.Voids;
+
+
+                statsEN.Lost = stats.Lost;
 
                 session.Update (statsEN);
                 SessionCommit ();
