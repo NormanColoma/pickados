@@ -295,6 +295,7 @@ public static void InitializeData ()
                 IList<MatchEN> total = match.GetTotalMatchesByTeam (team1);
                 Console.WriteLine ("Barcelona has played: " + total.Count + " matches");
 
+                /*
                 Console.WriteLine ("--------------- Creating new Competition -------------");
                 List<int> seasonsSantander = new List<int>();
                 seasonsSantander.Add (season1);
@@ -325,7 +326,7 @@ public static void InitializeData ()
                 teamCEN.AddCompetition (team6, competSpainBasket);
                 Console.WriteLine ("There are " + teamCEN.GetTeamByCompetition (competition).Count + " teams in Santander League");
                 Console.WriteLine ("There are " + competi.GetAllCompetitions (0, 2000).Count + " competitions");
-
+                
                 Console.WriteLine ("--------------- Creating new Players -------------");
                 PlayerCEN playerCEN = new PlayerCEN ();
                 int player1 = playerCEN.NewPlayer ("Yoel Rodríguez", newSport);
@@ -390,6 +391,7 @@ public static void InitializeData ()
                 Console.WriteLine ("Players in " + seleccion1.Name + ":");
                 foreach (var p in players2)
                         Console.WriteLine ("- " + p.Name);
+                */
 
                 //Publishing new post
                 PostCEN postCEN = new PostCEN ();
@@ -411,7 +413,7 @@ public static void InitializeData ()
 
                 MatchCEN matchCEN = new MatchCEN ();
                 int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), round1, team1, team5, "Camp Nou");
-                eventCEN.JoinCompetition (id_match, competition);
+                //eventCEN.JoinCompetition (id_match, competition);
 
                 CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
                 int correctscore_1 = correctScoreCEN.NewCorrectScore (10, "Scorecast 1", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Bet365", id_match, 2, 1);

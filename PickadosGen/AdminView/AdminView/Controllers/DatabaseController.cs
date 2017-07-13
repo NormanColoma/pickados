@@ -65,7 +65,7 @@ namespace AdminView.Controllers
             JArray jarray = JArray.Parse(jobject.GetValue("leagues").ToString());
 
             SportCEN sportCEN = new SportCEN();
-            int sport = sportCEN.NewSport("Football", "https://cdn0.iconfinder.com/data/icons/stroke-ball-icons-2/633/02_Soccer-512.png");
+            List<SportEN> sports = sportCEN.GetAllSports(0, 20).Where(s => s.Name.Equals("Football")).ToList();
 
             SeasonCEN seasonCEN = new SeasonCEN();
             int season1 = seasonCEN.NewSeason(new DateTime(2016, 8, 18), new DateTime(2017, 5, 19));
@@ -77,7 +77,7 @@ namespace AdminView.Controllers
                 string league = league_json.GetValue("value").ToString();
                 
                 CompetitionCEN compCEN = new CompetitionCEN();
-                compCEN.NewCompetition(league, sport, place, club_team, seasons);
+                compCEN.NewCompetition(league, sports[0].Id, place, club_team, seasons);
             }
             return null;
         }
