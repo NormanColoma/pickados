@@ -103,6 +103,9 @@ public void ModifyDefault (TipsterEN tipster)
 
                 tipsterEN.Locked = tipster.Locked;
 
+
+                tipsterEN.Sport = tipster.Sport;
+
                 session.Update (tipsterEN);
                 SessionCommit ();
         }
@@ -183,6 +186,9 @@ public void ModifyTipster (TipsterEN tipster)
 
 
                 tipsterEN.Locked = tipster.Locked;
+
+
+                tipsterEN.Sport = tipster.Sport;
 
                 session.Update (tipsterEN);
                 SessionCommit ();

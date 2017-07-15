@@ -419,50 +419,50 @@ public static void InitializeData ()
                 DateTime d_june = new DateTime (2017, 6, 3);
 
                 StatsCEN statCEN = new StatsCEN ();
-                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster2, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster2, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster2, 16, 16);
-                statCEN.NewMonthlyStats (4, 4, 25, 4, 4, d_june, tipster2, 16, 16);
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster2, 24, 12,7,2,3);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster2, 9, 9, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster2, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (4, 4, 25, 4, 4, d_june, tipster2, 16, 16, 2, 1, 1);
 
-                statCEN.NewMonthlyStats (4, 1, 30, 2, 12, d_march, tipster, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 0, 3, 3, d_april, tipster, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 5, 4, 4, d_may, tipster, 16, 16);
-                statCEN.NewMonthlyStats (1.12, 0.67, 28, 2.29, 6, d_june, tipster, 12, 4);
+                statCEN.NewMonthlyStats (4, 1, 30, 2, 12, d_march, tipster, 24, 12, 7, 2, 3);
+                statCEN.NewMonthlyStats (3, 3, 0, 3, 3, d_april, tipster, 9, 92, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 5, 4, 4, d_may, tipster, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (1.12, 0.67, 28, 2.29, 6, d_june, tipster, 12, 4, 3, 0, 3);
 
-                statCEN.NewMonthlyStats (4, 1, 11, 2, 12, d_march, tipster3, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 2, 3, 3, d_april, tipster3, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 4, 4, 4, d_may, tipster3, 16, 16);
-                statCEN.NewMonthlyStats (57, 1.08, 100, 13.16, 51, d_june, tipster3, 600, 53);
+                statCEN.NewMonthlyStats (4, 1, 11, 2, 12, d_march, tipster3, 24, 12, 7, 2, 3);
+                statCEN.NewMonthlyStats (3, 3, 2, 3, 3, d_april, tipster3, 9, 92, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 4, 4, 4, d_may, tipster3, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (57, 1.08, 100, 13.16, 51, d_june, tipster3, 600, 53, 20, 2, 29);
 
-                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster4, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster4, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster4, 16, 16);
-                statCEN.NewMonthlyStats (2.7, 1.44, 23, 1.94, 2, d_june, tipster4, 16, 16);
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster4, 24, 12, 7, 2, 3);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster4, 9, 92, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster4, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (2.7, 1.44, 23, 1.94, 2, d_june, tipster4, 16, 16, 1 , 1, 0);
 
-                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster5, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster5, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster5, 16, 16);
-                statCEN.NewMonthlyStats (4, 4, 22, 4, 4, d_june, tipster5, 16, 16);
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster5, 24, 12, 7, 2, 3);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster5, 9, 92, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster5, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (4, 4, 22, 4, 4, d_june, tipster5, 16, 16, 2, 1, 1);
 
-                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster6, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster6, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster6, 16, 16);
-                statCEN.NewMonthlyStats (1, 4, 5, 4, 4, d_june, tipster6, 16, 16);
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster6, 24, 12, 7, 2, 3);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster6, 9, 92, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster6, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (1, 4, 5, 4, 4, d_june, tipster6, 16, 16, 2, 1, 1);
 
-                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster7, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster7, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster7, 16, 16);
-                statCEN.NewMonthlyStats (-1, 4, -1, 4, 4, d_june, tipster7, 16, 16);
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster7, 24, 12, 7, 2, 3);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster7, 9, 92, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster7, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (-1, 4, -1, 4, 4, d_june, tipster7, 16, 16, 2, 1, 1);
 
-                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster8, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster8, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster8, 16, 16);
-                statCEN.NewMonthlyStats (-2, 4, -5, 4, 4, d_june, tipster8, 16, 16);
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster8, 24, 12, 7, 2, 3);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster8, 9, 92, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster8, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (-2, 4, -5, 4, 4, d_june, tipster8, 16, 16, 2, 1, 1);
 
-                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster9, 24, 12);
-                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster9, 9, 9);
-                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster9, 16, 16);
-                statCEN.NewMonthlyStats (-10, 4, -20, 3, 3, d_june, tipster9, 16, 16);
+                statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster9, 24, 12, 7, 2, 3);
+                statCEN.NewMonthlyStats (3, 3, 25, 3, 3, d_april, tipster9, 9, 92, 2, 1, 0);
+                statCEN.NewMonthlyStats (4, 4, 20, 4, 4, d_may, tipster9, 16, 16, 2, 1, 1);
+                statCEN.NewMonthlyStats (-10, 4, -20, 3, 3, d_june, tipster9, 16, 16, 0, 0, 3);
 
 
                 Console.WriteLine ("--------------- Get Stats by Tipster -------------");

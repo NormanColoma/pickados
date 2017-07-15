@@ -64,5 +64,26 @@ public double TotalStaked
         get { return totalStaked; }
         set { totalStaked = value; }
 }
-}
+
+        private double wins;
+        public double Wins
+        {
+            get { return wins; }
+            set { wins = value; }
+        }
+
+        private double voids;
+        public double Voids
+        {
+            get { return voids; }
+            set { voids = value; }
+        }
+
+        private double lost;
+        public double Lost
+        {
+            get { return lost; }
+            set { lost = value; }
+        }
+    }
 }
