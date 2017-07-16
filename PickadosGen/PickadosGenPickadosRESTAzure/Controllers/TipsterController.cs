@@ -304,6 +304,63 @@ public HttpResponseMessage GetTipstersPremium (int first, int size)
 }
 
 
+// No pasa el slEnables: findByUser
+
+[HttpGet]
+
+[Route ("~/api/Tipster/FindByUser")]
+
+public HttpResponseMessage FindByUser (string alias)
+{
+        // CAD, CEN, EN, returnValue
+
+        TipsterRESTCAD tipsterRESTCAD = null;
+        TipsterCEN tipsterCEN = null;
+
+
+        TipsterEN en;
+
+        TipsterDTOA returnValue;
+
+        try
+        {
+                SessionInitializeWithoutTransaction ();
+
+                tipsterRESTCAD = new TipsterRESTCAD (session);
+                tipsterCEN = new TipsterCEN (tipsterRESTCAD);
+
+                // CEN return
+
+
+
+                en = tipsterCEN.FindByUser (alias);
+
+
+
+
+                // Convert return
+                returnValue = TipsterAssembler.Convert (en, session);
+        }
+
+        catch (Exception e)
+        {
+                if (e.GetType () == typeof(HttpResponseException)) throw e;
+                else if (e.GetType () == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType () == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException (HttpStatusCode.BadRequest);
+                else throw new HttpResponseException (HttpStatusCode.InternalServerError);
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+        // Return 204 - Empty
+        if (returnValue == null)
+                return this.Request.CreateResponse (HttpStatusCode.NoContent);
+        // Return 200 - OK
+        else return this.Request.CreateResponse (HttpStatusCode.OK, returnValue);
+}
+
+
 
 
 

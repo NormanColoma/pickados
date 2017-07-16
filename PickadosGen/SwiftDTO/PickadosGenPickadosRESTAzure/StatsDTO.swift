@@ -39,6 +39,15 @@
 		 
 				var totalStaked: Double?;
 				    	 
+		 
+				var wins: Int?;
+				    	 
+		 
+				var voids: Int?;
+				    	 
+		 
+				var lost: Int?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -94,6 +103,18 @@
 
 				
 					dictionary["totalStaked"] = self.totalStaked;
+				
+
+				
+					dictionary["wins"] = self.wins;
+				
+
+				
+					dictionary["voids"] = self.voids;
+				
+
+				
+					dictionary["lost"] = self.lost;
 				
 						
 				return dictionary;

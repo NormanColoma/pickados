@@ -25,6 +25,9 @@
 					<property name="Locked" type="boolean"> 
 						<column name="locked"  not-null="true"/>
 					</property>
+					<property name="Sport" type="string"> 
+						<column name="sport"  not-null="true"/>
+					</property>
 			
 			
 		  			
@@ -73,6 +76,8 @@
 			
 			
 			
+			
+					
 					
 					
 					

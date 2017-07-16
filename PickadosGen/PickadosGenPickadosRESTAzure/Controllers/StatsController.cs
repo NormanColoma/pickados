@@ -107,40 +107,41 @@ public HttpResponseMessage GetStatsByTipster (string p_tipster_name)
 
 [Route ("~/api/Stats/GetStatsByMonthTipster")]
 
-public HttpResponseMessage GetStatsByMonthTipster (string p_tipster_name, PickadosGenNHibernate.Enumerated.Pickados.MonthsEnum p_stats_month, int p_stats_year)
+public HttpResponseMessage GetLastStatsByMonthTipster (string p_tipster_name, PickadosGenNHibernate.Enumerated.Pickados.MonthsEnum p_stats_month, int p_stats_year)
 {
         // CAD, CEN, EN, returnValue
 
         StatsRESTCAD statsRESTCAD = null;
         StatsCEN statsCEN = null;
+            int value = (int) p_stats_month;
 
 
         System.Collections.Generic.List<StatsEN> en;
 
         System.Collections.Generic.List<StatsDTOA> returnValue = null;
 
+        returnValue = new System.Collections.Generic.List<StatsDTOA>();
+
+
         try
         {
-                SessionInitializeWithoutTransaction ();
+            SessionInitializeWithoutTransaction ();
 
-                statsRESTCAD = new StatsRESTCAD (session);
-                statsCEN = new StatsCEN (statsRESTCAD);
-
-                // CEN return
-
+            statsRESTCAD = new StatsRESTCAD (session);
+            statsCEN = new StatsCEN (statsRESTCAD);
+            // CEN return
 
 
-                en = statsCEN.GetStatsByMonthTipster (p_tipster_name, p_stats_month, p_stats_year).ToList ();
+            for(int i = 0; i < 4; i++) {
 
-
-
-
-                // Convert return
+            en = statsCEN.GetStatsByMonthTipster (p_tipster_name, (PickadosGenNHibernate.Enumerated.Pickados.MonthsEnum) (value - i), p_stats_year).ToList ();
+            
+            // Convert return
                 if (en != null) {
-                        returnValue = new System.Collections.Generic.List<StatsDTOA>();
                         foreach (StatsEN entry in en)
                                 returnValue.Add (StatsAssembler.Convert (entry, session));
                 }
+            }
         }
 
         catch (Exception e)

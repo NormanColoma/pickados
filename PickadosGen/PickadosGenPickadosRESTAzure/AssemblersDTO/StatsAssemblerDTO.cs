@@ -41,6 +41,9 @@ public static StatsEN Convert (StatsDTO dto)
                         }
                         newinstance.OddAccumulator = dto.OddAccumulator;
                         newinstance.TotalStaked = dto.TotalStaked;
+                        newinstance.Wins = dto.Wins;
+                        newinstance.Voids = dto.Voids;
+                        newinstance.Lost = dto.Lost;
                 }
         }
         catch (Exception ex)

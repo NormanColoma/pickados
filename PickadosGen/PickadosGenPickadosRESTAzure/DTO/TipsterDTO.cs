@@ -42,5 +42,9 @@ private bool locked;
 public bool Locked {
         get { return locked; } set { locked = value;  }
 }
+private string sport;
+public string Sport {
+        get { return sport; } set { sport = value;  }
+}
 }
 }

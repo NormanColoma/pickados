@@ -57,6 +57,18 @@
 				public Double getTotalStaked () { return totalStaked; } 
 				public void setTotalStaked  (Double value) { totalStaked = value;  } 
 				    	 
+				private Integer wins;
+				public Integer getWins () { return wins; } 
+				public void setWins  (Integer value) { wins = value;  } 
+				    	 
+				private Integer voids;
+				public Integer getVoids () { return voids; } 
+				public void setVoids  (Integer value) { voids = value;  } 
+				    	 
+				private Integer lost;
+				public Integer getLost () { return lost; } 
+				public void setLost  (Integer value) { lost = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -95,6 +107,15 @@
 				
 				
 						  json.put("TotalStaked", this.totalStaked);
+				
+				
+						  json.put("Wins", this.wins.intValue());
+				
+				
+						  json.put("Voids", this.voids.intValue());
+				
+				
+						  json.put("Lost", this.lost.intValue());
 				
 						
 					}

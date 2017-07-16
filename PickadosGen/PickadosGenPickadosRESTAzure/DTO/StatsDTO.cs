@@ -49,5 +49,17 @@ private double totalStaked;
 public double TotalStaked {
         get { return totalStaked; } set { totalStaked = value;  }
 }
+private int wins;
+public int Wins {
+        get { return wins; } set { wins = value;  }
+}
+private int voids;
+public int Voids {
+        get { return voids; } set { voids = value;  }
+}
+private int lost;
+public int Lost {
+        get { return lost; } set { lost = value;  }
+}
 }
 }

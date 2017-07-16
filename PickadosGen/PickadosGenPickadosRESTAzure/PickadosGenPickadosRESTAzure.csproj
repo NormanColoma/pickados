@@ -253,6 +253,11 @@
 		<Compile Include="Assemblers\StatsAssembler.cs" />
 		<Compile Include="Controllers\StatsController.cs" />
 		
+		<Compile Include="CAD\TipsterStatsRESTCAD.cs" />
+		<Compile Include="DTOA\TipsterStatsDTOA.cs" />
+		<Compile Include="Assemblers\TipsterStatsAssembler.cs" />
+		<Compile Include="Controllers\TipsterStatsController.cs" />
+		
 	
 	
 	
