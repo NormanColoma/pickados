@@ -30,12 +30,24 @@ namespace AdminView.Assemblers
             return user;
         }
 
-        public static void ConverterAdminENtoModel(AdminEN usuario, UserModel user)
+        public static List<UserModel> ConverterUserENtoModel(List<UsuarioEN> users)
+        {
+            List<UserModel> usersModel = new List<UserModel>();
+            foreach (UsuarioEN user in users)
+            {
+                UserModel userModel = UserAssembler.ConverterUserENtoModel(user);
+                usersModel.Add(userModel);
+            }
+
+            return usersModel;
+        }
+
+        private static void ConverterAdminENtoModel(AdminEN usuario, UserModel user)
         {
             user.Admin = true;
         }
 
-        public static void ConverterTipsterENtoModel(TipsterEN usuario, UserModel user)
+        private static void ConverterTipsterENtoModel(TipsterEN usuario, UserModel user)
         {
             user.Tipsterp = usuario.Premium;
             if(user.Tipsterp != false)

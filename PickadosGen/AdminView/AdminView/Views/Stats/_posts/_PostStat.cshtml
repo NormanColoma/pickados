@@ -1,0 +1,42 @@
+﻿@model AdminView.Models.StatModel
+
+<div class="col-md-offset-2 col-md-8">
+    <div class="clearfix"></div>
+
+    <canvas id="poststatchart"></canvas>
+</div>
+
+<script type="text/javascript" src="../../Scripts/chartjs/Chart.bundle.min.js"></script>
+
+<script>
+    var ctx = document.getElementById("poststatchart").getContext('2d');
+
+    var label_stat = @Html.Raw(Json.Encode(Model.Label));
+    var label_stat_format = label_stat.replace("[", "").replace("]", "")
+
+    var data_stat = @Html.Raw(Json.Encode(Model.Data));
+    var data_stat_format = data_stat.replace("[", "").replace("]", "")
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: label_stat_format.split(","),
+            datasets: [{
+                label: 'nº publicaciones',
+                data: data_stat_format.split(","),
+                backgroundColor: 'rgba(213, 215, 216, 1)',
+                borderColor: 'rgba(87, 93, 99, 1)',
+                pointBorderColor: "#fff",
+                pointBackgroundColor: "rgba(179,181,198,1)",
+                borderWidth: 1
+            }]
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    });
+</script>

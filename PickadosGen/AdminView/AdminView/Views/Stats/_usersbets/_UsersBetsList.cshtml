@@ -1,0 +1,22 @@
+﻿@model AdminView.Models.StatModel
+
+<div class="col-xs-12 col-md-6">
+    <h4>Usuarios con más publicaciones</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Alias</th>
+                <th>Total publicaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListInfo)
+            {
+                <tr>
+                    <td>@item.Key</td>
+                    <td>@item.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

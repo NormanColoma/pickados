@@ -4,7 +4,7 @@
 
 @using (Html.BeginForm("Edit", "Players", routeValues: new { idTeam = ViewBag.team, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
 {
-    @Html.AntiForgeryToken()
+   // @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h4>@Model.Name</h4>

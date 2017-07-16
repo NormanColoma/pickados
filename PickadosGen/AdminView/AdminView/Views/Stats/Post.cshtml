@@ -1,68 +1,40 @@
-﻿@model IEnumerable<AdminView.Models.PostModel>
+﻿<h3 class="col-md-12">Publicaciones con más número de votos mensuales</h3>
+<hr />
 
-<table id="posts" class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Created_at)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Modified_at)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stake)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalOdd)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Likeit)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Report)
-                <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Created_at)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Modified_at)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Stake)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalOdd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Likeit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Report)
-                </td>
-                <td>
-                    <a href="@Url.Action("PostDetalles", "Stats", new { id=item.Id })" class="fa fa-plus fa-fw"></a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="form-horizontal col-md-12 row">
+    <div class="form-group col-md-4">
+        <label class="col-md-12" for="InitialDate">Fecha de inicio</label>
+        <input class="form-control col-md-12" id="iDateStat" name="InitialDate" type="date" value="">
+    </div>
+    <div class="form-group col-md-4">
+        <label class="col-md-12">Fecha de fin</label>
+        <input class="form-control col-md-12" id="fDateStat" name="FinalDate" type="date" value="">
+    </div>
+    <div class="form-group col-md-4">
+        <input id="poststat_btn" class="btn btn-default col-md-2" type="submit" value="Filtrar">
+    </div>
+</div>
 
-@Scripts.Render("~/bundles/posts")
+<div id="poststat">
+    @{Html.RenderAction("_poststat", "stats");}
+</div>
+
+<h3 class="col-md-12">Lista de publicaciones más votadas</h3>
+<hr />
+
+<div class="form-horizontal col-md-12 row">
+    <div class="form-group col-md-4">
+        <label class="col-md-12" for="InitialDate">Fecha de inicio</label>
+        <input class="form-control col-md-12" id="iDateList" name="InitialDate" type="date" value="">
+    </div>
+    <div class="form-group col-md-4">
+        <label class="col-md-12">Fecha de fin</label>
+        <input class="form-control col-md-12" id="fDateList" name="FinalDate" type="date" value="">
+    </div>
+    <div class="form-group col-md-4">
+        <input id="postlist_btn" class="btn btn-default col-md-2" type="submit" value="Filtrar">
+    </div>
+</div>
+
+@{Html.RenderAction("_postlist", "stats");}
+

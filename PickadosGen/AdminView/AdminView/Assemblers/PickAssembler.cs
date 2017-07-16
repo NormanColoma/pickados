@@ -9,10 +9,11 @@ namespace AdminView.Assemblers
 {
     public class PickAssembler
     {
-        public static PickModel ConvertPickENtoModel(PickEN pickEN)
+        public static PickModel ConvertPickENtoModel(PickEN pickEN, int post)
         {
             PickModel pick = new PickModel();
 
+            pick.Post = post;
             pick.Id = pickEN.Id;
             pick.Odd = pickEN.Odd;
             pick.Description = pickEN.Description;
@@ -23,48 +24,56 @@ namespace AdminView.Assemblers
 
             switch(PickType)
             {
-                case "Result":
+                case "ResultEN":
                     ResultEN resultEN = (ResultEN)pickEN;
+                    pick.Type = "Result";
                     pick.Result = resultEN.Result;
                     pick.MatchTime = resultEN.Matchtime;
                     break;
-                case "DoubleChance":
+                case "DoubleChanceEN":
                     DoubleChanceEN doubleChanceEN = (DoubleChanceEN)pickEN;
+                    pick.Type = "Double chance";
                     pick.Result = doubleChanceEN.Result;
                     pick.MatchTime = doubleChanceEN.Matchtime;
                     pick.Result_b = doubleChanceEN.Result_b;
                     break;
-                case "Goal":
+                case "GoalEN":
                     GoalEN goalEN = (GoalEN)pickEN;
+                    pick.Type = "Goal";
                     pick.Line = goalEN.Line;
                     pick.Quantity = goalEN.Quantity;
                     pick.Asian = goalEN.Asian;
                     break;
-                case "Handicap":
+                case "HandicapEN":
                     HandicapEN handicapEN = (HandicapEN)pickEN;
+                    pick.Type = "Handicap";
                     pick.Line = handicapEN.Line;
                     pick.Quantity = handicapEN.Quantity;
                     pick.Asian = handicapEN.Asian;
                     pick.HandicapResult = handicapEN.Result;
                     break;
-                case "CorrectScore":
+                case "CorrectScoreEN":
                     CorrectScoreEN correctScorerEN = (CorrectScoreEN)pickEN;
+                    pick.Type = "Correct score";
                     pick.HomeScore = correctScorerEN.HomeScore;
                     pick.AwayScore = correctScorerEN.AwayScore;
                     break;
-                case "Scorer":
+                case "ScorerEN":
                     ScorerEN scorerEN = (ScorerEN)pickEN;
+                    pick.Type = "Scorer";
                     pick.Scorer_name = scorerEN.Scorer_name;
                     pick.Scorer_Player = scorerEN.Player;
                     break;
-                case "Wincast":
+                case "WincastEN":
                     WincastEN wincastEN = (WincastEN)pickEN;
+                    pick.Type = "Wincast";
                     pick.Scorer_name = wincastEN.Scorer_name;
                     pick.Scorer_Player = wincastEN.Player;
                     pick.Team_name = wincastEN.Team_name;
                     break;
-                case "TimeCast":
+                case "TimeCastEN":
                     TimecastEN timecastEN = (TimecastEN)pickEN;
+                    pick.Type = "Timecast";
                     pick.Scorer_name = timecastEN.Scorer_name;
                     pick.Scorer_Player = timecastEN.Player;
                     pick.Score_time = timecastEN.Score_time;
@@ -74,12 +83,12 @@ namespace AdminView.Assemblers
             return pick;
         }
 
-        public static List<PickModel> ConvertPickENtoModel(IList<PickEN> picks)
+        public static List<PickModel> ConvertPickENtoModel(IList<PickEN> picks, int post)
         {
             List<PickModel> picksModel = new List<PickModel>();
             foreach(PickEN pick in picks)
             {
-                PickModel pickModel = PickAssembler.ConvertPickENtoModel(pick);
+                PickModel pickModel = PickAssembler.ConvertPickENtoModel(pick, post);
                 picksModel.Add(pickModel);
             }
 

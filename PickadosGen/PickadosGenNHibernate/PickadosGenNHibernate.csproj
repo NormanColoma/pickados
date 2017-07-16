@@ -225,6 +225,8 @@
 			
 			<Compile Include="CEN\Pickados\PostCEN_AddReport.cs" />
 			
+			
+			
 	<Compile Include="EN\Pickados\UsuarioEN.cs" />
 	<Compile Include="CEN\Pickados\UsuarioCEN.cs" />
 	<Compile Include="CAD\Pickados\IUsuarioCAD.cs" />

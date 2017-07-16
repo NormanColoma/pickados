@@ -44,7 +44,7 @@ public static MatchDTOA Convert (MatchEN en, NHibernate.ISession session = null)
                 /* Rol: Match o--> Team */
                 dto.GetAwayOfEvent_away = TeamAssembler.Convert (en.Away, session);
 
-
+               
                 //
                 // Service
         }

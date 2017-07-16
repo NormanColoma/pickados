@@ -47,6 +47,20 @@ private Nullable<DateTime> date;
 
 
 
+/**
+ *	Atributo adminComment
+ */
+private string adminComment;
+
+
+
+/**
+ *	Atributo changeDate
+ */
+private Nullable<DateTime> changeDate;
+
+
+
 
 
 
@@ -86,6 +100,18 @@ public virtual Nullable<DateTime> Date {
 
 
 
+public virtual string AdminComment {
+        get { return adminComment; } set { adminComment = value;  }
+}
+
+
+
+public virtual Nullable<DateTime> ChangeDate {
+        get { return changeDate; } set { changeDate = value;  }
+}
+
+
+
 
 
 public RequestEN()
@@ -94,20 +120,20 @@ public RequestEN()
 
 
 
-public RequestEN(int id, PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date
+public RequestEN(int id, PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date, string adminComment, Nullable<DateTime> changeDate
                  )
 {
-        this.init (Id, post, type, reason, state, date);
+        this.init (Id, post, type, reason, state, date, adminComment, changeDate);
 }
 
 
 public RequestEN(RequestEN request)
 {
-        this.init (Id, request.Post, request.Type, request.Reason, request.State, request.Date);
+        this.init (Id, request.Post, request.Type, request.Reason, request.State, request.Date, request.AdminComment, request.ChangeDate);
 }
 
 private void init (int id
-                   , PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date)
+                   , PickadosGenNHibernate.EN.Pickados.PostEN post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum type, string reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum state, Nullable<DateTime> date, string adminComment, Nullable<DateTime> changeDate)
 {
         this.Id = id;
 
@@ -121,6 +147,10 @@ private void init (int id
         this.State = state;
 
         this.Date = date;
+
+        this.AdminComment = adminComment;
+
+        this.ChangeDate = changeDate;
 }
 
 public override bool Equals (object obj)

@@ -1,4 +1,4 @@
-﻿@model List<PickadosGenNHibernate.EN.Pickados.UsuarioEN>
+﻿@model AdminView.Models.UserModel
 
 <h1>Usuarios</h1>
 <hr />
@@ -12,12 +12,12 @@
 <div id="contenedor-tipstersf" class="col-md-12 contenedor tipstersf">
     <table class="table">
         <tr>
-            <th>Alias</th>
-            <th>Email</th>
-            <th>Created_at</th>
-            <th>Updated_at</th>
-            <th>Nif</th>
-            <th>Locked</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Alias)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Email)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Created_at)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Updated_at)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Nif)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Locked)</th>
             <th></th>
         </tr>
         @{Html.RenderAction("_ListaTipstersFree", "User", new { page = 0 });}
@@ -27,12 +27,12 @@
 <div id="contenedor-tipstersp" class="col-md-12 contenedor tipstersp">
     <table class="table">
         <tr>
-            <th>Alias</th>
-            <th>Email</th>
-            <th>Created_at</th>
-            <th>Updated_at</th>
-            <th>Nif</th>
-            <th>Subcription_fee</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Alias)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Email)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Created_at)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Updated_at)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Nif)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Subscription_fee)</th>
             <th></th>
         </tr>
         @{Html.RenderAction("_ListaTipstersPremium", "User", new { page = 0 });}
@@ -42,11 +42,11 @@
 <div id="contenedor-admins" class="col-md-12 contenedor admins">
     <table class="table">
         <tr>
-            <th>Alias</th>
-            <th>Email</th>
-            <th>Created_at</th>
-            <th>Updated_at</th>
-            <th>Nif</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Alias)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Email)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Created_at)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Updated_at)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Nif)</th>
             <th></th>
         </tr>
         @{Html.RenderAction("_ListaAdmins", "User", new { page = 0 });}

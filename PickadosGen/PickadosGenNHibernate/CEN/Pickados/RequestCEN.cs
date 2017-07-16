@@ -38,7 +38,7 @@ public IRequestCAD get_IRequestCAD ()
         return this._IRequestCAD;
 }
 
-public int New_ (int p_post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum p_type, string p_reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum p_state, Nullable<DateTime> p_date)
+public int New_ (int p_post, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum p_type, string p_reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum p_state, Nullable<DateTime> p_date, string p_adminComment, Nullable<DateTime> p_changeDate)
 {
         RequestEN requestEN = null;
         int oid;
@@ -61,13 +61,17 @@ public int New_ (int p_post, PickadosGenNHibernate.Enumerated.Pickados.RequestTy
 
         requestEN.Date = p_date;
 
+        requestEN.AdminComment = p_adminComment;
+
+        requestEN.ChangeDate = p_changeDate;
+
         //Call to RequestCAD
 
         oid = _IRequestCAD.New_ (requestEN);
         return oid;
 }
 
-public void Modify (int p_Request_OID, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum p_type, string p_reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum p_state, Nullable<DateTime> p_date)
+public void Modify (int p_Request_OID, PickadosGenNHibernate.Enumerated.Pickados.RequestTypeEnum p_type, string p_reason, PickadosGenNHibernate.Enumerated.Pickados.RequestStateEnum p_state, Nullable<DateTime> p_date, string p_adminComment, Nullable<DateTime> p_changeDate)
 {
         RequestEN requestEN = null;
 
@@ -78,6 +82,8 @@ public void Modify (int p_Request_OID, PickadosGenNHibernate.Enumerated.Pickados
         requestEN.Reason = p_reason;
         requestEN.State = p_state;
         requestEN.Date = p_date;
+        requestEN.AdminComment = p_adminComment;
+        requestEN.ChangeDate = p_changeDate;
         //Call to RequestCAD
 
         _IRequestCAD.Modify (requestEN);

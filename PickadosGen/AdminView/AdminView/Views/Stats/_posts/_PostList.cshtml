@@ -1,0 +1,90 @@
+﻿@model IEnumerable<AdminView.Models.PostModel>
+
+@if (Model.Count() > 0)
+{
+    <table id="posts" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created_at)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modified_at)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stake)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalOdd)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Likeit)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Report)
+                    <i class="fa fa-sort fa-fw" aria-hidden="true"></i>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stake)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalOdd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Likeit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Report)
+                    </td>
+                    <td>
+                        <a href="#" class="fa fa-plus fa-fw" data-toggle="modal" data-target="#postDetailsModal@(item.Id)"></a>
+                    </td>
+                </tr>
+
+                @Html.Partial("_posts/_postdialog", item)
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-danger">
+        <span id="error_list_resul"></span>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            
+            var i_date = $.cookie("postlist_iDate");
+            var f_date = $.cookie("postlist_fDate");
+
+            var message = 'No se han realizado publicaciones desde el ' + $.format.date(new Date(i_date), 'dd/MM/yyyy') + ' hasta el ' + $.format.date(new Date(f_date), 'dd/MM/yyyy');
+            $('#error_list_resul').text(message);
+        });
+    </script>
+}
+
+@Scripts.Render("~/bundles/posts")

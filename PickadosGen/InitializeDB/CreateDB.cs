@@ -28,7 +28,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
             BEGIN
-                CREATE LOGIN ["                                                                                                                                     + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+                CREATE LOGIN [" + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
             END"                                                                                                                                                                                                                                                                                    ;
 
         //Order delete user if exist
@@ -41,6 +41,10 @@ public static void Create (string databaseArg, string userArg, string passArg)
 
         try
         {
+                if(cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
                 // Open conex
                 cnn.Open ();
 
@@ -87,7 +91,7 @@ public static void InitializeData ()
 
                 int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "25448998G", false, false, 0, false, "Football");
                 int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "41569269N", false, true, 0, false, "Football");
-                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "15095054Q", false, true, 0, false, "Football");
+                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "15095054Q", false, true, 15, false, "Football");
                 int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "41021257K", false, true, 0, false, "Football");
                 int tipster4 = nuevo.NewTipster ("maria", "maria@gmail.com", "mariaPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "24233961B", false, false, 0, false, "Football");
                 int tipster5 = nuevo.NewTipster ("aaron", "aaron@gmail.com", "aaronPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "78509149Y", false, false, 0, false, "Football");
@@ -111,6 +115,42 @@ public static void InitializeData ()
                 int tipster21 = nuevo.NewTipster ("iker", "iker@gmail.com", "ikerPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "41771143S", false, false, 0, false, "Basket");
                 int tipster22 = nuevo.NewTipster ("aitor", "aitor@outlook.com", "aitorPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "46269204N", false, false, 0, false, "Basket");
                 int tipster23 = nuevo.NewTipster ("arya", "arya@gmail.com", "aryaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "45415817V", false, false, 0, false, "Basket");
+
+                int tipster24 = nuevo.NewTipster("abel", "abel@gmail.com", "abelPro", new DateTime(2017, 6, 2), new DateTime(2017, 6, 2), "61754249P", false, false, 0, false, "Football");
+                int tipster25 = nuevo.NewTipster("félix", "felix@gmail.com", "felixPro", new DateTime(2017, 6, 20), new DateTime(2017, 6, 20), "58385355Q", false, false, 0, false, "Football");
+                int tipster26 = nuevo.NewTipster("gerardo", "gerardo@outlook.com", "gerardoPro", new DateTime(2017, 6, 20), new DateTime(2017, 2, 25), "71338334Q", false, false, 0, false, "Football");
+                int tipster27 = nuevo.NewTipster("gorka", "gorka@gmail.com", "gorkaPro", new DateTime(2017, 1, 1), new DateTime(2017, 6, 20), "33454914B", false, false, 0, false, "Football");
+                int tipster28 = nuevo.NewTipster("irene", "irene@gmail.com", "irenePro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "10699007M", false, false, 0, false, "Football");
+                int tipster29 = nuevo.NewTipster("jacob", "jacob@gmail.com", "jacobPro", new DateTime(2017, 6, 20), new DateTime(2017, 6, 20), "81588767Q", false, false, 0, false, "Football");
+                int tipster30 = nuevo.NewTipster("casinomiro", "casinomiro@outlook.com", "casinomiroPro", new DateTime(2017, 6, 20), new DateTime(2017, 2, 25), "63570598R", false, false, 0, false, "Football");
+                int tipster31 = nuevo.NewTipster("lidia", "lidia@gmail.com", "lidiaPro", new DateTime(2017, 1, 1), new DateTime(2017, 6, 20), "45567301T", false, false, 0, false, "Football");
+
+                int tipster32 = nuevo.NewTipster("ladislao", "ladislao@gmail.com", "ladislaoPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "43227607G", false, false, 0, false, "Football");
+                int tipster33 = nuevo.NewTipster("macario", "macario@gmail.com", "macarioPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "37764644R", false, false, 0, false, "Football");
+                int tipster34 = nuevo.NewTipster("magdalena", "magdalena@outlook.com", "magdalenaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "23934878C", false, false, 0, false, "Football");
+                int tipster35 = nuevo.NewTipster("mario", "mario@gmail.com", "marioPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 15), "45032908N", false, false, 0, false, "Football");
+                int tipster36 = nuevo.NewTipster("miguel", "miguel@gmail.com", "miguelPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "41662475E", false, false, 0, false, "Football");
+                int tipster37 = nuevo.NewTipster("mónica", "monica@gmail.com", "monicaPro", new DateTime(2017, 2, 15), new DateTime(2017, 2, 15), "27955763E", false, false, 0, false, "Football");
+                int tipster38 = nuevo.NewTipster("narciso", "narciso@outlook.com", "narcisoPro", new DateTime(2016, 10, 15), new DateTime(2017, 2, 25), "54890791A", false, false, 0, false, "Football");
+                int tipster39 = nuevo.NewTipster("norberto", "norberto@gmail.com", "norbertoPro", new DateTime(2017, 1, 1), new DateTime(2016, 10, 15), "64625111X", false, false, 0, false, "Football");
+
+                int tipster40 = nuevo.NewTipster("octavio", "octavio@gmail.com", "octavioPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "40531881Q", false, false, 0, false, "Football");
+                int tipster41 = nuevo.NewTipster("poncio", "poncio@gmail.com", "poncioPro", new DateTime(2016, 10, 15), new DateTime(2016, 10, 15), "87829369M", false, false, 0, false, "Football");
+                int tipster42 = nuevo.NewTipster("ramón", "ramon@outlook.com", "ramonPro", new DateTime(2016, 10, 15), new DateTime(2017, 2, 25), "87715833C", false, false, 0, false, "Football");
+                int tipster43 = nuevo.NewTipster("rafael", "rafael@gmail.com", "rafaelPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "28091013D", false, false, 0, false, "Football");
+                int tipster44 = nuevo.NewTipster("rita", "rita@gmail.com", "ritaPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "18282686D", false, false, 0, false, "Football");
+                int tipster45 = nuevo.NewTipster("rosalia", "rosalia@gmail.com", "rosaliaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "87450233R", false, false, 0, false, "Football");
+                int tipster46 = nuevo.NewTipster("salvador", "salvador@outlook.com", "salvadorPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "82432192P", false, false, 0, false, "Football");
+                int tipster47 = nuevo.NewTipster("susana", "susana@gmail.com", "susanaPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "82437276D", false, false, 0, false, "Football");
+
+                int tipster48 = nuevo.NewTipster("tadeo", "tadeo@gmail.com", "tadeoPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "68155029A", false, false, 0, false, "Football");
+                int tipster49 = nuevo.NewTipster("teodora", "teodora@gmail.com", "teodoraPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "79951906L", false, false, 0, false, "Basket");
+                int tipster50 = nuevo.NewTipster("timoteo", "timoteo@outlook.com", "timoteoPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "29911267C", false, false, 0, false, "Basket");
+                int tipster51 = nuevo.NewTipster("toribio", "toribio@gmail.com", "toribioPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "05576746M", false, false, 0, false, "Basket");
+                int tipster52 = nuevo.NewTipster("ubaldo", "ubaldo@gmail.com", "ubaldoPro", new DateTime(2017, 5, 2), new DateTime(2017, 5, 2), "33993384M", false, false, 0, false, "Basket");
+                int tipster53 = nuevo.NewTipster("ursula", "ursula@gmail.com", "ursulaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 20), "13895015W", false, false, 0, false, "Basket");
+                int tipster54 = nuevo.NewTipster("valentina", "valentina@outlook.com", "valentinaPro", new DateTime(2017, 2, 20), new DateTime(2017, 2, 25), "32731592Q", false, false, 0, false, "Basket");
+                int tipster55 = nuevo.NewTipster("zacarias", "zacarias@gmail.com", "zacariasPro", new DateTime(2017, 1, 1), new DateTime(2017, 2, 20), "65786469Y", false, false, 0, false, "Basket");
 
                 admin.NewAdmin ("admin", "admin@outlook.com", "adminPro", new DateTime (2017, 3, 14), new DateTime (2017, 8, 6), "65478912N", true);
 
@@ -259,6 +299,7 @@ public static void InitializeData ()
                 IList<MatchEN> total = match.GetTotalMatchesByTeam (team1);
                 Console.WriteLine ("Barcelona has played: " + total.Count + " matches");
 
+                /*
                 Console.WriteLine ("--------------- Creating new Competition -------------");
                 List<int> seasonsSantander = new List<int>();
                 seasonsSantander.Add (season1);
@@ -289,7 +330,7 @@ public static void InitializeData ()
                 teamCEN.AddCompetition (team6, competSpainBasket);
                 Console.WriteLine ("There are " + teamCEN.GetTeamByCompetition (competition).Count + " teams in Santander League");
                 Console.WriteLine ("There are " + competi.GetAllCompetitions (0, 2000).Count + " competitions");
-
+                
                 Console.WriteLine ("--------------- Creating new Players -------------");
                 PlayerCEN playerCEN = new PlayerCEN ();
                 int player1 = playerCEN.NewPlayer ("Yoel Rodríguez", newSport);
@@ -354,6 +395,7 @@ public static void InitializeData ()
                 Console.WriteLine ("Players in " + seleccion1.Name + ":");
                 foreach (var p in players2)
                         Console.WriteLine ("- " + p.Name);
+                */
 
                 //Publishing new post
                 PostCEN postCEN = new PostCEN ();
@@ -364,7 +406,7 @@ public static void InitializeData ()
                 int pickId = resultCEN.NewResult (2, "Gana Local", PickResultEnum.unstarted, "Kirolbet", match1, ResultEnum.home, TimeEnum.fulltime);
                 List<int> picks_id = new List<int>();
                 picks_id.Add (pickId);
-                postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster2, PickResultEnum.unfinished);
+                postCP.PublishPost (new DateTime (2017, 2, 25, 11, 0, 0), new DateTime (2017, 2, 25, 11, 0, 0), 0, "description", false, picks_id, tipster, PickResultEnum.unfinished);
 
                 Console.WriteLine ("--------------- Get Post by Tipster -------------");
                 PostCAD postCAD = new PostCAD ();
@@ -375,28 +417,45 @@ public static void InitializeData ()
 
                 MatchCEN matchCEN = new MatchCEN ();
                 int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), round1, team1, team5, "Camp Nou");
-                eventCEN.JoinCompetition (id_match, competition);
+                //eventCEN.JoinCompetition (id_match, competition);
 
                 CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
-                int id_correctScore = correctScoreCEN.NewCorrectScore (10, "Scorecast", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won,
-                        "Bet365", id_match, 2, 1);
-                IList<int> picks = new List<int>();
-                picks.Add (id_correctScore);
+                int correctscore_1 = correctScoreCEN.NewCorrectScore (10, "Scorecast 1", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Bet365", id_match, 2, 1);
+                int correctscore_2 = correctScoreCEN.NewCorrectScore(10, "Scorecast 2", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Sportium", id_match, 5, 1);
+
+                int correctscore_3 = correctScoreCEN.NewCorrectScore(10, "Scorecast 3", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Bet365", id_match, 5, 1);
+
+
+                IList<int> picks_1 = new List<int>();
+                picks_1.Add (correctscore_1);
+                picks_1.Add(correctscore_2);
+
+                IList<int> picks_2 = new List<int>();
+                picks_2.Add(correctscore_3);
 
                 int id_post_1 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
+                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
 
                 int id_post_2 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido 2",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
+                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
 
                 int id_post_3 = postCEN.NewPost (new DateTime (2017, 2, 25), new DateTime (2017, 2, 25), 1, "Va a ser un partido sufrido 3",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
+                        false, picks_2, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
 
                 int id_post_4 = postCEN.NewPost (new DateTime (2017, 2, 28), new DateTime (2017, 2, 28), 1, "Va a ser un partido sufrido 4",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
+                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
 
                 int id_post_5 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 5",
-                        false, picks, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
+                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
+
+                int id_post_6 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 6",
+                        false, picks_1, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 20, 0);
+
+                int id_post_7 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 7",
+                        false, picks_1, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
+
+                int id_post_8 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 8",
+                        false, picks_1, tipster3, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
 
                 postCP.VerifyPost (id_post_1);
                 postCEN.AddLike (id_post_1);
@@ -413,10 +472,21 @@ public static void InitializeData ()
                 postCP.VerifyPost (id_post_5);
                 postCEN.AddLike (id_post_5);
 
-                DateTime d_march = new DateTime (2017, 3, 8);
-                DateTime d_april = new DateTime (2017, 4, 3);
-                DateTime d_may = new DateTime (2017, 5, 3);
-                DateTime d_june = new DateTime (2017, 6, 3);
+                postCP.VerifyPost (id_post_6);
+                postCEN.AddLike (id_post_6);
+
+                postCP.VerifyPost (id_post_7);
+                postCEN.AddLike (id_post_7);
+
+                postCP.VerifyPost (id_post_8);
+                postCEN.AddLike (id_post_8);
+
+                DateTime d = new DateTime (2017, 3, 8);
+                DateTime d_march = new DateTime(2017, 3, 8);
+                DateTime d_april = new DateTime(2017, 4, 3);
+                DateTime d_may = new DateTime(2017, 5, 3);
+                DateTime d_june = new DateTime(2017, 6, 3);
+
 
                 StatsCEN statCEN = new StatsCEN ();
                 statCEN.NewMonthlyStats (4, 1, 10, 2, 12, d_march, tipster2, 24, 12,7,2,3);
@@ -483,7 +553,7 @@ public static void InitializeData ()
                 // Creating requests
 
                 RequestCEN requestCEN = new RequestCEN ();
-                requestCEN.New_ (id_post_1, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20));
+                requestCEN.New_ (id_post_1, RequestTypeEnum.modify, "I was wrong", RequestStateEnum.Open, new DateTime (2017, 2, 20), "", new DateTime (1900, 01, 01));
 
                 LoginCEN loginCEN = new LoginCEN ();
                 loginCEN.NewLogin ("arya", new DateTime (2016, 06, 01));

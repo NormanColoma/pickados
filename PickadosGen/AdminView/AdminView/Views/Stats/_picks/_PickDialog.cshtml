@@ -1,0 +1,109 @@
+﻿@model IEnumerable<AdminView.Models.PickModel>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#@(item.Post)_@(item.Id)">Pick @item.Id (@item.Type)</a>
+                </div>
+                <div id="@(item.Post)_@(item.Id)" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>@Html.DisplayNameFor(model => model.Odd)</dt>
+                            <dd>@Html.DisplayFor(modelItem => item.Odd)</dd>
+                        
+                            <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+                            <dd>@Html.DisplayFor(modelItem => item.Description)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.PickResult)</dt>
+                            <dd>@Html.DisplayFor(modelItem => item.PickResult)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.Bookie)</dt>
+                            <dd>@Html.DisplayFor(modelItem => item.Bookie)</dd>
+
+                            @switch (item.Type)
+                            {
+                                case "Result":
+                                    <dt>@Html.DisplayNameFor(model => model.Result)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Result)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.MatchTime)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.MatchTime)</dd>
+                                    break;
+                                case "Double chance":
+                                    <dt>@Html.DisplayNameFor(model => model.Result)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Result)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.MatchTime)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.MatchTime)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Result_b)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Result_b)</dd>
+                                    break;
+                                case "Goal":
+                                    <dt>@Html.DisplayNameFor(model => model.Line)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Line)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Quantity)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Quantity)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Asian)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Asian)</dd>
+                                    break;
+                                case "Handicap":
+                                    <dt>@Html.DisplayNameFor(model => model.Line)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Line)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Quantity)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Quantity)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Asian)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Asian)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.HandicapResult)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.HandicapResult)</dd>
+                                    break;
+                                case "Correct score":
+                                    <dt>@Html.DisplayNameFor(model => model.HomeScore)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.HomeScore)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.AwayScore)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.AwayScore)</dd>
+                                    break;
+                                case "Scorer":
+                                    <dt>@Html.DisplayNameFor(model => model.Scorer_name)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Scorer_name)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Scorer_Player)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Scorer_Player)</dd>
+                                    break;
+                                case "Wincast":
+                                    <dt>@Html.DisplayNameFor(model => model.Scorer_name)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Scorer_name)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Scorer_Player)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Scorer_Player)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Team_name)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Team_name)</dd>
+                                    break;
+                                case "TimeCast":
+                                    <dt>@Html.DisplayNameFor(model => model.Scorer_name)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Scorer_name)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Scorer_Player)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Scorer_Player)</dd>
+
+                                    <dt>@Html.DisplayNameFor(model => model.Score_time)</dt>
+                                    <dd>@Html.DisplayFor(modelItem => item.Score_time)</dd>
+                                    break;
+                            }
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

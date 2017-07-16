@@ -48,18 +48,18 @@
 			
 			
 		  			
-						<bag name="Pick" table="[pick_post]" inverse="true" >
+						<bag name="Pick" table="[pick_post]" inverse="true" lazy="false" >
 							<key>
 								
 									<column name="FK_id_idPost"/> 
 							</key>
-      						<many-to-many class="PickadosGenNHibernate.EN.Pickados.PickEN">
+      						<many-to-many class="PickadosGenNHibernate.EN.Pickados.PickEN" lazy="false">
 									<column name="FK_id_idPick"/> 
       						</many-to-many>
     					</bag>
 			
 		  			
-						<many-to-one name="Tipster" class="PickadosGenNHibernate.EN.Pickados.TipsterEN" >	
+						<many-to-one name="Tipster" class="PickadosGenNHibernate.EN.Pickados.TipsterEN" lazy="false">	
 								<column name="FK_id_idTipster"/> 
 						</many-to-one>
 											 					
@@ -97,5 +97,7 @@
 		  <query name="PostENReadAllHQL">from PostEN</query>
 		  <query name="PostENfindPostsByTipsterHQL"><![CDATA[select p FROM PostEN as p INNER JOIN p.Tipster t where t.Id = :id]]></query>
 		  <query name="PostENgetByResultHQL"><![CDATA[FROM PostEN  where postResult = :p_postResult]]></query>
+		  <query name="PostENgetPostsBetweenDateHQL"><![CDATA[FROM PostEN WHERE created_at BETWEEN :initialDate and :finalDate OR modified_at BETWEEN :initialDate and :finalDate]]></query>
+		  <query name="PostENgetMoreVotedHQL"><![CDATA[FROM PostEN WHERE created_at BETWEEN :initialDate and :finalDate OR modified_at BETWEEN :initialDate and :finalDate ORDER BY likeit DESC]]></query>
 		</hibernate-mapping>
 	

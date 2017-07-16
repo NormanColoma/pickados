@@ -24,10 +24,16 @@
 					<property name="Date" type="date"> 
 						<column name="date"  not-null="true"/>
 					</property>
+					<property name="AdminComment" type="string"> 
+						<column name="adminComment"  not-null="true"/>
+					</property>
+					<property name="ChangeDate" type="date"> 
+						<column name="changeDate"  not-null="true"/>
+					</property>
 			
 			
 		  			
-						<many-to-one name="Post" class="PickadosGenNHibernate.EN.Pickados.PostEN" >	
+						<many-to-one name="Post" class="PickadosGenNHibernate.EN.Pickados.PostEN" lazy="false">	
 								<column name="FK_id_idPost"/> 
 						</many-to-one>
 											 					
@@ -36,6 +42,10 @@
 			
 			
 			
+			
+			
+					
+					
 					
 					
 					

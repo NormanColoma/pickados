@@ -43,5 +43,12 @@ public PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum PickResult
         get { return pickResult; }
         set { pickResult = value; }
 }
-}
+
+        private IList<MatchDTOA> getAllMatchOfPick;
+        public IList<MatchDTOA> GetAllMatchOfPick
+        {
+            get { return getAllMatchOfPick; }
+            set { getAllMatchOfPick = value; }
+        }
+    }
 }

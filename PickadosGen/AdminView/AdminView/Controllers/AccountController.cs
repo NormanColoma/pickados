@@ -11,6 +11,9 @@ using Microsoft.Owin.Security;
 using AdminView.Models;
 using Microsoft.Owin;
 using PickadosGenNHibernate.CEN.Pickados;
+using System.Collections.Generic;
+using PickadosGenNHibernate.EN.Pickados;
+using PickadosGenNHibernate.Enumerated.Pickados;
 
 namespace AdminView.Controllers
 {
@@ -78,7 +81,6 @@ namespace AdminView.Controllers
         }
         //
         // POST: /Account/LogOff
-        [HttpPost]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

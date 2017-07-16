@@ -4,7 +4,7 @@
 
 @using (Html.BeginForm("Edit", "Matches", routeValues: new { idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
 {
-    @Html.AntiForgeryToken()
+    //@Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h4>@textos.Match</h4>
