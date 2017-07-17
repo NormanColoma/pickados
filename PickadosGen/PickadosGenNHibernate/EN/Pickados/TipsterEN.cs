@@ -56,6 +56,13 @@ private bool locked;
 
 
 
+/**
+ *	Atributo sport
+ */
+private string sport;
+
+
+
 
 
 
@@ -101,6 +108,12 @@ public virtual bool Locked {
 
 
 
+public virtual string Sport {
+        get { return sport; } set { sport = value;  }
+}
+
+
+
 
 
 public TipsterEN() : base ()
@@ -113,21 +126,21 @@ public TipsterEN() : base ()
 
 
 
-public TipsterEN(int id, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee, bool locked
+public TipsterEN(int id, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee, bool locked, string sport
                  , string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at, string nif, bool admin
                  )
 {
-        this.init (Id, monthlyStats, post, follow_to, followed_by, premium, subscription_fee, locked, alias, email, password, created_at, updated_at, nif, admin);
+        this.init (Id, monthlyStats, post, follow_to, followed_by, premium, subscription_fee, locked, sport, alias, email, password, created_at, updated_at, nif, admin);
 }
 
 
 public TipsterEN(TipsterEN tipster)
 {
-        this.init (Id, tipster.MonthlyStats, tipster.Post, tipster.Follow_to, tipster.Followed_by, tipster.Premium, tipster.Subscription_fee, tipster.Locked, tipster.Alias, tipster.Email, tipster.Password, tipster.Created_at, tipster.Updated_at, tipster.Nif, tipster.Admin);
+        this.init (Id, tipster.MonthlyStats, tipster.Post, tipster.Follow_to, tipster.Followed_by, tipster.Premium, tipster.Subscription_fee, tipster.Locked, tipster.Sport, tipster.Alias, tipster.Email, tipster.Password, tipster.Created_at, tipster.Updated_at, tipster.Nif, tipster.Admin);
 }
 
 private void init (int id
-                   , System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee, bool locked, string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at, string nif, bool admin)
+                   , System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.StatsEN> monthlyStats, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.PostEN> post, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> follow_to, System.Collections.Generic.IList<PickadosGenNHibernate.EN.Pickados.TipsterEN> followed_by, bool premium, double subscription_fee, bool locked, string sport, string alias, string email, String password, Nullable<DateTime> created_at, Nullable<DateTime> updated_at, string nif, bool admin)
 {
         this.Id = id;
 
@@ -145,6 +158,8 @@ private void init (int id
         this.Subscription_fee = subscription_fee;
 
         this.Locked = locked;
+
+        this.Sport = sport;
 
         this.Alias = alias;
 

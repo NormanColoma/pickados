@@ -39,6 +39,9 @@ public static StatsDTOA Convert (StatsEN en, NHibernate.ISession session = null)
                 dto.TotalPicks = en.TotalPicks;
                 dto.OddAccumulator = en.OddAccumulator;
                 dto.TotalStaked = en.TotalStaked;
+                dto.Wins = en.Wins;
+                dto.Voids = en.Voids;
+                dto.Lost = en.Lost;
 
                 //
                 // TravesalLink

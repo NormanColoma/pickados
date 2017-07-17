@@ -31,6 +31,9 @@
 		 
 				var locked: Bool?;
 				    	 
+		 
+				var sport: String?;
+				    	 
 	   	   
 			// MARK: - Constructor
 			
@@ -91,6 +94,10 @@
 
 				
 					dictionary["locked"] = self.locked;
+				
+
+				
+					dictionary["sport"] = self.sport;
 				
 						
 				return dictionary;

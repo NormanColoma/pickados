@@ -46,6 +46,10 @@
 				public Boolean getLocked () { return locked; } 
 				public void setLocked  (Boolean value) { locked = value;  } 
 				    	 
+				private String sport;
+				public String getSport () { return sport; } 
+				public void setSport  (String value) { sport = value;  } 
+				    	 
 	   
 			    public JSONObject toJSON ()
 				{
@@ -103,6 +107,9 @@
 				
 				
 						  json.put("Locked", this.locked);
+				
+				
+						  json.put("Sport", this.sport);
 				
 						
 					}

@@ -38,7 +38,7 @@ public IStatsCAD get_IStatsCAD ()
         return this._IStatsCAD;
 }
 
-public int NewMonthlyStats (double p_benefit, double p_stakeAverage, float p_yield, double p_oddAverage, int p_totalPicks, Nullable<DateTime> p_date, int p_tipster, double p_oddAccumulator, double p_totalStaked)
+public int NewMonthlyStats (double p_benefit, double p_stakeAverage, float p_yield, double p_oddAverage, int p_totalPicks, Nullable<DateTime> p_date, int p_tipster, double p_oddAccumulator, double p_totalStaked, int p_wins, int p_voids, int p_lost)
 {
         StatsEN statsEN = null;
         int oid;
@@ -69,13 +69,19 @@ public int NewMonthlyStats (double p_benefit, double p_stakeAverage, float p_yie
 
         statsEN.TotalStaked = p_totalStaked;
 
+        statsEN.Wins = p_wins;
+
+        statsEN.Voids = p_voids;
+
+        statsEN.Lost = p_lost;
+
         //Call to StatsCAD
 
         oid = _IStatsCAD.NewMonthlyStats (statsEN);
         return oid;
 }
 
-public void ModifyMonthlyStats (int p_Stats_OID, double p_benefit, double p_stakeAverage, float p_yield, double p_oddAverage, int p_totalPicks, Nullable<DateTime> p_date, double p_oddAccumulator, double p_totalStaked)
+public void ModifyMonthlyStats (int p_Stats_OID, double p_benefit, double p_stakeAverage, float p_yield, double p_oddAverage, int p_totalPicks, Nullable<DateTime> p_date, double p_oddAccumulator, double p_totalStaked, int p_wins, int p_voids, int p_lost)
 {
         StatsEN statsEN = null;
 
@@ -90,6 +96,9 @@ public void ModifyMonthlyStats (int p_Stats_OID, double p_benefit, double p_stak
         statsEN.Date = p_date;
         statsEN.OddAccumulator = p_oddAccumulator;
         statsEN.TotalStaked = p_totalStaked;
+        statsEN.Wins = p_wins;
+        statsEN.Voids = p_voids;
+        statsEN.Lost = p_lost;
         //Call to StatsCAD
 
         _IStatsCAD.ModifyMonthlyStats (statsEN);

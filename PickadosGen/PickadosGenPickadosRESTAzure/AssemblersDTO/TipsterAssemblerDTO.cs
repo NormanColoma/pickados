@@ -64,6 +64,7 @@ public static TipsterEN Convert (TipsterDTO dto)
                         newinstance.Premium = dto.Premium;
                         newinstance.Subscription_fee = dto.Subscription_fee;
                         newinstance.Locked = dto.Locked;
+                        newinstance.Sport = dto.Sport;
                         newinstance.Id = dto.Id;
                         newinstance.Alias = dto.Alias;
                         newinstance.Email = dto.Email;
