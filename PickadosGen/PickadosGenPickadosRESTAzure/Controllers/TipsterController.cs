@@ -146,6 +146,7 @@ public HttpResponseMessage GetFollowers (int id)
                     returnValue = new System.Collections.Generic.List<PostDTOA>();
                     foreach (PostEN entry in en)
                     {
+
                         foreach (PickEN pick in postCEN.GetPostById(entry.Id).Pick)
                         {
                             PickDTOA p = PickAssembler.Convert(pick, session);
@@ -156,6 +157,7 @@ public HttpResponseMessage GetFollowers (int id)
                             p.GetAllMatchOfPick = new List<MatchDTOA>();
                             p.GetAllMatchOfPick.Add(match);
                             PostDTOA post = PostAssembler.Convert(entry, session);
+                            post.Tipster = entry.Tipster.Alias;
                             post.GetAllPickOfPost = new List<PickDTOA>();
                             post.GetAllPickOfPost.Add(p);
                             returnValue.Add(post);
