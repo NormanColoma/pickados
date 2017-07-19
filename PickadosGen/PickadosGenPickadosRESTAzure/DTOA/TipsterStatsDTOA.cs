@@ -50,5 +50,24 @@ public IList<StatsDTOA> GetStatsOfTipster
         get { return getStatsOfTipster; }
         set { getStatsOfTipster = value; }
 }
+
+
+private int followers;
+
+public int Followers
+{
+    get
+    {
+        return followers;
+    }
+
+    set
+    {
+        followers = value;
+    }
+}
+
+        
+         
 }
 }

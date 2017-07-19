@@ -57,5 +57,12 @@ public string Nif
         get { return nif; }
         set { nif = value; }
 }
+
+private string sport;
+public string Sport
+{
+    get { return sport; }
+    set { sport = value; }
 }
+    }
 }

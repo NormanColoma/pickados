@@ -38,6 +38,7 @@ public static TipsterDTOA Convert (TipsterEN en, NHibernate.ISession session = n
                 dto.Premium = en.Premium;
                 dto.Subscription_fee = en.Subscription_fee;
                 dto.Nif = en.Nif;
+                dto.Sport = en.Sport;
 
                 //
                 // TravesalLink

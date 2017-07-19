@@ -27,7 +27,8 @@ public static TipsterStatsDTOA Convert (TipsterEN en, NHibernate.ISession sessio
                 tipsterCEN = new TipsterCEN (tipsterStatsRESTCAD);
                 tipsterCP = new TipsterCP (session);
 
-
+                int followers = tipsterCEN.GetFollowers(en.Id).Count;
+                
                 //
                 // Attributes
 
@@ -36,6 +37,7 @@ public static TipsterStatsDTOA Convert (TipsterEN en, NHibernate.ISession sessio
                 dto.Subscription_fee = en.Subscription_fee;
                 dto.Premium = en.Premium;
                 dto.Sport = en.Sport;
+                dto.Followers = followers;
 
                 //
                 // TravesalLink
