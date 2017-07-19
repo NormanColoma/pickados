@@ -145,6 +145,7 @@
     <Content Include="apiapp.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\MatchJSON.cs" />
     <Compile Include="DTO\OddJSON.cs" />
     <Compile Include="DTO\SportEventDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

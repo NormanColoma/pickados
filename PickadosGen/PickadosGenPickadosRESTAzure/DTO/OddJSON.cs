@@ -28,5 +28,6 @@ namespace PickadosGenPickadosRESTAzureREST.DTO
 
         [JsonProperty("u+2.5")]
         public string Under { get; set; }
+
     }
 }
