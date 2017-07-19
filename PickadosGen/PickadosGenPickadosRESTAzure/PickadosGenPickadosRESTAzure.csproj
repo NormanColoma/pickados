@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>3069d642-c1cd-4615-85ed-c16a7dbfc94a</ProjectGuid>
+    <ProjectGuid>{3069D642-C1CD-4615-85ED-C16A7DBFC94A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -18,6 +18,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,16 +56,16 @@
     <Reference Include="System.Web.Http.Cors">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.2\lib\net45\System.Web.Http.Cors.dll</HintPath>
     </Reference>
-     <Reference Include="System.Web.Cors">
+    <Reference Include="System.Web.Cors">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.2\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
-     <Reference Include="System.Web.Pages">
+    <Reference Include="System.Web.Pages">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Helpers">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-     <Reference Include="System.Web.Pages.Razor">
+    <Reference Include="System.Web.Pages.Razor">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc">
@@ -98,40 +99,39 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
   </ItemGroup>
-   <ItemGroup>
-  	<Reference Include="Swashbuckle.Core">
+  <ItemGroup>
+    <Reference Include="Swashbuckle.Core">
       <HintPath>..\ServiceLib\Swashbuckle.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebActivatorEx">
       <HintPath>..\ServiceLib\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
-        
   <ItemGroup>
     <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\PickadosGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
-	</Reference>
-	<Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\PickadosGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
-	</Reference>
-	<Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.dll</HintPath>
-	</Reference>
-	<Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
-	</Reference>
-	<Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
-	</Reference>
-	<Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-		<SpecificVersion>False</SpecificVersion>
-		<HintPath>..\PickadosGenNHibernate\AppLib\Antlr3.Runtime.dll</HintPath>
-	</Reference>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PickadosGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PickadosGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PickadosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PickadosGenNHibernate\AppLib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PickadosGenNHibernate\PickadosGenNHibernate.csproj">
@@ -145,124 +145,100 @@
     <Content Include="apiapp.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\MatchJSON.cs" />
+    <Compile Include="DTO\OddJSON.cs" />
+    <Compile Include="DTO\SportEventDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    
-	<Compile Include="DTO\PickDTO.cs" />
-	<Compile Include="AssemblersDTO\PickAssemblerDTO.cs" />
-	<Compile Include="DTO\Event_DTO.cs" />
-	<Compile Include="AssemblersDTO\Event_AssemblerDTO.cs" />
-	<Compile Include="DTO\CompetitionDTO.cs" />
-	<Compile Include="AssemblersDTO\CompetitionAssemblerDTO.cs" />
-	<Compile Include="DTO\TeamDTO.cs" />
-	<Compile Include="AssemblersDTO\TeamAssemblerDTO.cs" />
-	<Compile Include="DTO\ResultDTO.cs" />
-	<Compile Include="AssemblersDTO\ResultAssemblerDTO.cs" />
-	<Compile Include="DTO\GoalDTO.cs" />
-	<Compile Include="AssemblersDTO\GoalAssemblerDTO.cs" />
-	<Compile Include="DTO\HandicapDTO.cs" />
-	<Compile Include="AssemblersDTO\HandicapAssemblerDTO.cs" />
-	<Compile Include="DTO\DoubleChanceDTO.cs" />
-	<Compile Include="AssemblersDTO\DoubleChanceAssemblerDTO.cs" />
-	<Compile Include="DTO\CorrectScoreDTO.cs" />
-	<Compile Include="AssemblersDTO\CorrectScoreAssemblerDTO.cs" />
-	<Compile Include="DTO\PostDTO.cs" />
-	<Compile Include="AssemblersDTO\PostAssemblerDTO.cs" />
-	<Compile Include="DTO\UsuarioDTO.cs" />
-	<Compile Include="AssemblersDTO\UsuarioAssemblerDTO.cs" />
-	<Compile Include="DTO\TipsterDTO.cs" />
-	<Compile Include="AssemblersDTO\TipsterAssemblerDTO.cs" />
-	<Compile Include="DTO\AdminDTO.cs" />
-	<Compile Include="AssemblersDTO\AdminAssemblerDTO.cs" />
-	<Compile Include="DTO\StatsDTO.cs" />
-	<Compile Include="AssemblersDTO\StatsAssemblerDTO.cs" />
-	<Compile Include="DTO\PlayerDTO.cs" />
-	<Compile Include="AssemblersDTO\PlayerAssemblerDTO.cs" />
-	<Compile Include="DTO\SportDTO.cs" />
-	<Compile Include="AssemblersDTO\SportAssemblerDTO.cs" />
-	<Compile Include="DTO\MatchDTO.cs" />
-	<Compile Include="AssemblersDTO\MatchAssemblerDTO.cs" />
-	<Compile Include="DTO\ScorerDTO.cs" />
-	<Compile Include="AssemblersDTO\ScorerAssemblerDTO.cs" />
-	<Compile Include="DTO\WincastDTO.cs" />
-	<Compile Include="AssemblersDTO\WincastAssemblerDTO.cs" />
-	<Compile Include="DTO\TimecastDTO.cs" />
-	<Compile Include="AssemblersDTO\TimecastAssemblerDTO.cs" />
-	<Compile Include="DTO\RequestDTO.cs" />
-	<Compile Include="AssemblersDTO\RequestAssemblerDTO.cs" />
-	<Compile Include="DTO\LoginDTO.cs" />
-	<Compile Include="AssemblersDTO\LoginAssemblerDTO.cs" />
-	<Compile Include="DTO\SeasonDTO.cs" />
-	<Compile Include="AssemblersDTO\SeasonAssemblerDTO.cs" />
-	<Compile Include="DTO\RoundDTO.cs" />
-	<Compile Include="AssemblersDTO\RoundAssemblerDTO.cs" />
-	
-
-    
-	
-	
-	
-	<Compile Include="Controllers\BasicController.cs" />
-	
-		<Compile Include="CAD\CompetitionRESTCAD.cs" />
-		<Compile Include="DTOA\CompetitionDTOA.cs" />
-		<Compile Include="Assemblers\CompetitionAssembler.cs" />
-		<Compile Include="Controllers\CompetitionController.cs" />
-		
-		<Compile Include="CAD\MatchRESTCAD.cs" />
-		<Compile Include="DTOA\MatchDTOA.cs" />
-		<Compile Include="Assemblers\MatchAssembler.cs" />
-		<Compile Include="Controllers\MatchController.cs" />
-		
-		<Compile Include="CAD\TeamRESTCAD.cs" />
-		<Compile Include="DTOA\TeamDTOA.cs" />
-		<Compile Include="Assemblers\TeamAssembler.cs" />
-		<Compile Include="Controllers\TeamController.cs" />
-		
-		<Compile Include="CAD\TipsterRESTCAD.cs" />
-		<Compile Include="DTOA\TipsterDTOA.cs" />
-		<Compile Include="Assemblers\TipsterAssembler.cs" />
-		<Compile Include="Controllers\TipsterController.cs" />
-		
-		<Compile Include="CAD\PostRESTCAD.cs" />
-		<Compile Include="DTOA\PostDTOA.cs" />
-		<Compile Include="Assemblers\PostAssembler.cs" />
-		<Compile Include="Controllers\PostController.cs" />
-		
-		<Compile Include="CAD\PlayerRESTCAD.cs" />
-		<Compile Include="DTOA\PlayerDTOA.cs" />
-		<Compile Include="Assemblers\PlayerAssembler.cs" />
-		<Compile Include="Controllers\PlayerController.cs" />
-		
-		<Compile Include="CAD\SportRESTCAD.cs" />
-		<Compile Include="DTOA\SportDTOA.cs" />
-		<Compile Include="Assemblers\SportAssembler.cs" />
-		<Compile Include="Controllers\SportController.cs" />
-		
-		<Compile Include="CAD\PickRESTCAD.cs" />
-		<Compile Include="DTOA\PickDTOA.cs" />
-		<Compile Include="Assemblers\PickAssembler.cs" />
-		<Compile Include="Controllers\PickController.cs" />
-		
-		<Compile Include="CAD\StatsRESTCAD.cs" />
-		<Compile Include="DTOA\StatsDTOA.cs" />
-		<Compile Include="Assemblers\StatsAssembler.cs" />
-		<Compile Include="Controllers\StatsController.cs" />
-		
-		<Compile Include="CAD\TipsterStatsRESTCAD.cs" />
-		<Compile Include="DTOA\TipsterStatsDTOA.cs" />
-		<Compile Include="Assemblers\TipsterStatsAssembler.cs" />
-		<Compile Include="Controllers\TipsterStatsController.cs" />
-		
-	
-	
-	
-
-    
+    <Compile Include="DTO\PickDTO.cs" />
+    <Compile Include="AssemblersDTO\PickAssemblerDTO.cs" />
+    <Compile Include="DTO\Event_DTO.cs" />
+    <Compile Include="AssemblersDTO\Event_AssemblerDTO.cs" />
+    <Compile Include="DTO\CompetitionDTO.cs" />
+    <Compile Include="AssemblersDTO\CompetitionAssemblerDTO.cs" />
+    <Compile Include="DTO\TeamDTO.cs" />
+    <Compile Include="AssemblersDTO\TeamAssemblerDTO.cs" />
+    <Compile Include="DTO\ResultDTO.cs" />
+    <Compile Include="AssemblersDTO\ResultAssemblerDTO.cs" />
+    <Compile Include="DTO\GoalDTO.cs" />
+    <Compile Include="AssemblersDTO\GoalAssemblerDTO.cs" />
+    <Compile Include="DTO\HandicapDTO.cs" />
+    <Compile Include="AssemblersDTO\HandicapAssemblerDTO.cs" />
+    <Compile Include="DTO\DoubleChanceDTO.cs" />
+    <Compile Include="AssemblersDTO\DoubleChanceAssemblerDTO.cs" />
+    <Compile Include="DTO\CorrectScoreDTO.cs" />
+    <Compile Include="AssemblersDTO\CorrectScoreAssemblerDTO.cs" />
+    <Compile Include="DTO\PostDTO.cs" />
+    <Compile Include="AssemblersDTO\PostAssemblerDTO.cs" />
+    <Compile Include="DTO\UsuarioDTO.cs" />
+    <Compile Include="AssemblersDTO\UsuarioAssemblerDTO.cs" />
+    <Compile Include="DTO\TipsterDTO.cs" />
+    <Compile Include="AssemblersDTO\TipsterAssemblerDTO.cs" />
+    <Compile Include="DTO\AdminDTO.cs" />
+    <Compile Include="AssemblersDTO\AdminAssemblerDTO.cs" />
+    <Compile Include="DTO\StatsDTO.cs" />
+    <Compile Include="AssemblersDTO\StatsAssemblerDTO.cs" />
+    <Compile Include="DTO\PlayerDTO.cs" />
+    <Compile Include="AssemblersDTO\PlayerAssemblerDTO.cs" />
+    <Compile Include="DTO\SportDTO.cs" />
+    <Compile Include="AssemblersDTO\SportAssemblerDTO.cs" />
+    <Compile Include="DTO\MatchDTO.cs" />
+    <Compile Include="AssemblersDTO\MatchAssemblerDTO.cs" />
+    <Compile Include="DTO\ScorerDTO.cs" />
+    <Compile Include="AssemblersDTO\ScorerAssemblerDTO.cs" />
+    <Compile Include="DTO\WincastDTO.cs" />
+    <Compile Include="AssemblersDTO\WincastAssemblerDTO.cs" />
+    <Compile Include="DTO\TimecastDTO.cs" />
+    <Compile Include="AssemblersDTO\TimecastAssemblerDTO.cs" />
+    <Compile Include="DTO\RequestDTO.cs" />
+    <Compile Include="AssemblersDTO\RequestAssemblerDTO.cs" />
+    <Compile Include="DTO\LoginDTO.cs" />
+    <Compile Include="AssemblersDTO\LoginAssemblerDTO.cs" />
+    <Compile Include="DTO\SeasonDTO.cs" />
+    <Compile Include="AssemblersDTO\SeasonAssemblerDTO.cs" />
+    <Compile Include="DTO\RoundDTO.cs" />
+    <Compile Include="AssemblersDTO\RoundAssemblerDTO.cs" />
+    <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="CAD\CompetitionRESTCAD.cs" />
+    <Compile Include="DTOA\CompetitionDTOA.cs" />
+    <Compile Include="Assemblers\CompetitionAssembler.cs" />
+    <Compile Include="Controllers\CompetitionController.cs" />
+    <Compile Include="CAD\MatchRESTCAD.cs" />
+    <Compile Include="DTOA\MatchDTOA.cs" />
+    <Compile Include="Assemblers\MatchAssembler.cs" />
+    <Compile Include="Controllers\MatchController.cs" />
+    <Compile Include="CAD\TeamRESTCAD.cs" />
+    <Compile Include="DTOA\TeamDTOA.cs" />
+    <Compile Include="Assemblers\TeamAssembler.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="CAD\TipsterRESTCAD.cs" />
+    <Compile Include="DTOA\TipsterDTOA.cs" />
+    <Compile Include="Assemblers\TipsterAssembler.cs" />
+    <Compile Include="Controllers\TipsterController.cs" />
+    <Compile Include="CAD\PostRESTCAD.cs" />
+    <Compile Include="DTOA\PostDTOA.cs" />
+    <Compile Include="Assemblers\PostAssembler.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="CAD\PlayerRESTCAD.cs" />
+    <Compile Include="DTOA\PlayerDTOA.cs" />
+    <Compile Include="Assemblers\PlayerAssembler.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="CAD\SportRESTCAD.cs" />
+    <Compile Include="DTOA\SportDTOA.cs" />
+    <Compile Include="Assemblers\SportAssembler.cs" />
+    <Compile Include="Controllers\SportController.cs" />
+    <Compile Include="CAD\PickRESTCAD.cs" />
+    <Compile Include="DTOA\PickDTOA.cs" />
+    <Compile Include="Assemblers\PickAssembler.cs" />
+    <Compile Include="Controllers\PickController.cs" />
+    <Compile Include="CAD\StatsRESTCAD.cs" />
+    <Compile Include="DTOA\StatsDTOA.cs" />
+    <Compile Include="Assemblers\StatsAssembler.cs" />
+    <Compile Include="Controllers\StatsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -277,7 +253,6 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
     <VisualStudio>

@@ -59,6 +59,14 @@ public IList<PickDTOA> GetAllPickOfPost
         get { return getAllPickOfPost; }
         set { getAllPickOfPost = value; }
 }
+
+        private String tipster;
+
+        public String Tipster
+        {
+            get { return tipster; }
+            set { tipster = value; }
+        }
     }
 }
 
