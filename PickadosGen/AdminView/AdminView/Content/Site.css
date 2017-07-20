@@ -128,3 +128,7 @@ span[id^="error_"] {
 .breadcrumb {
     margin-top: 10px;
 }
+
+.stat_user_table_title {
+    font-weight: bold;
+}
