@@ -128,9 +128,10 @@ public HttpResponseMessage GetFollowers (int id)
                 postRESTCAD = new PostRESTCAD(session);
                 postCEN = new PostCEN(postRESTCAD);
 
+                MatchRESTCAD matchRestCAD = new MatchRESTCAD(session);
+                MatchCEN matchCEN = new MatchCEN(matchRestCAD);
+
                 // CEN return
-
-
 
                 List<TipsterEN> tipstersFollowed = tipsterCEN.GetFollows(id).ToList();
 
@@ -150,10 +151,11 @@ public HttpResponseMessage GetFollowers (int id)
                         foreach (PickEN pick in postCEN.GetPostById(entry.Id).Pick)
                         {
                             PickDTOA p = PickAssembler.Convert(pick, session);
-                            MatchEN mEn = (MatchEN) pick.Event_rel.Competition.Event_.First();
-                            MatchDTOA match = MatchAssembler.Convert(mEn, session);
-                            match.Competition = mEn.Competition.Name;
-                            match.Sport = mEn.Competition.Sport.Name;
+                            MatchEN matchEN = matchCEN.GetMatchById(pick.Event_rel.Id);
+
+                            MatchDTOA match = MatchAssembler.Convert(matchEN, session);
+                            match.Competition = matchEN.Competition.Name;
+                            match.Sport = matchEN.Competition.Sport.Name;
                             p.GetAllMatchOfPick = new List<MatchDTOA>();
                             p.GetAllMatchOfPick.Add(match);
                             PostDTOA post = PostAssembler.Convert(entry, session);

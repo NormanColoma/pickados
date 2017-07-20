@@ -91,7 +91,7 @@ public static void InitializeData ()
 
                 int tipster = nuevo.NewTipster ("montoro", "montoro@gmail.com", "montoroPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "25448998G", false, false, 0, false, "Football");
                 int tipster1 = nuevo.NewTipster ("jose", "jose@gmail.com", "josePro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "41569269N", false, true, 0, false, "Football");
-                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "15095054Q", false, true, 15, false, "Football");
+                int tipster2 = nuevo.NewTipster ("laura", "laura@outlook.com", "lauraPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 25), "15095054Q", false, false, 0, false, "Football");
                 int tipster3 = nuevo.NewTipster ("ana", "ana@gmail.com", "anaPro", new DateTime (2017, 1, 1), new DateTime (2017, 2, 20), "41021257K", false, true, 0, false, "Football");
                 int tipster4 = nuevo.NewTipster ("maria", "maria@gmail.com", "mariaPro", new DateTime (2017, 5, 2), new DateTime (2017, 5, 2), "24233961B", false, false, 0, false, "Football");
                 int tipster5 = nuevo.NewTipster ("aaron", "aaron@gmail.com", "aaronPro", new DateTime (2017, 2, 20), new DateTime (2017, 2, 20), "78509149Y", false, false, 0, false, "Football");
@@ -230,6 +230,8 @@ public static void InitializeData ()
                 SeasonCEN seasons = new SeasonCEN ();
                 int season1 = seasons.NewSeason (new DateTime (2016, 8, 18), new DateTime (2017, 5, 19));
                 Console.WriteLine ("Season 16/17 Santander created");
+                int season3 = seasons.NewSeason(new DateTime(2016, 8, 18), new DateTime(2017, 5, 19));
+                Console.WriteLine("Season 16/17 Santander created");
                 int season2 = seasons.NewSeason (new DateTime (2016, 8, 18), new DateTime (2017, 5, 19));
                 Console.WriteLine ("Season 16/17 ACB created");
 
@@ -239,49 +241,49 @@ public static void InitializeData ()
                 Console.WriteLine ("Round 1 Santander created");
                 int round2 = rounds.NewRound (season1, "Jornada 2");
                 Console.WriteLine ("Round 2 Santander created");
+                
+                int round3 = rounds.NewRound(season3, "Jornada 3");
 
-                // Añadimos datos a Equipos
-                Console.WriteLine ("------------- Creating new teams -------------");
-                TeamCEN teamCEN = new TeamCEN ();
-                int team1 = teamCEN.NewTeam ("Barcelona", "Catalunya", true);
-                TeamEN equipo1 = teamCEN.GetTeamById (team1);
-                Console.WriteLine ("New team: " + equipo1.Name);
+                TeamCEN teamCEN = new TeamCEN();
+                /**int team1 = teamCEN.NewTeam("Barcelona", "Catalunya", true);
+                TeamEN equipo1 = teamCEN.GetTeamById(team1);
+                Console.WriteLine("New team: " + equipo1.Name);**/
 
-                int team2 = teamCEN.NewTeam ("Madrid", "Spain", true);
-                TeamEN equipo2 = teamCEN.GetTeamById (team2);
-                Console.WriteLine ("New team: " + equipo2.Name);
+                int team2 = teamCEN.NewTeam("Madrid", "Spain", true);
+                TeamEN equipo2 = teamCEN.GetTeamById(team2);
+                Console.WriteLine("New team: " + equipo2.Name);
 
-                int team3 = teamCEN.NewTeam ("Juventus", "Italy", true);
-                TeamEN equipo3 = teamCEN.GetTeamById (team3);
-                Console.WriteLine ("New team: " + equipo3.Name);
+                int team3 = teamCEN.NewTeam("Juventus", "Italy", true);
+                TeamEN equipo3 = teamCEN.GetTeamById(team3);
+                Console.WriteLine("New team: " + equipo3.Name);
 
-                int team4 = teamCEN.NewTeam ("SD Eibar", "Spain", true);
-                TeamEN equipo4 = teamCEN.GetTeamById (team4);
-                Console.WriteLine ("New team: " + equipo4.Name);
+                int team4 = teamCEN.NewTeam("SD Eibar", "Spain", true);
+                TeamEN equipo4 = teamCEN.GetTeamById(team4);
+                Console.WriteLine("New team: " + equipo4.Name);
 
-                int team5 = teamCEN.NewTeam ("Manchester united", "England", true);
-                TeamEN equipo5 = teamCEN.GetTeamById (team5);
-                Console.WriteLine ("New team: " + equipo5.Name);
+                /**int team5 = teamCEN.NewTeam("Manchester united", "England", true);
+                TeamEN equipo5 = teamCEN.GetTeamById(team5);
+                Console.WriteLine("New team: " + equipo5.Name);**/
 
-                int team6 = teamCEN.NewTeam ("Barça Basket", "Spain", true);
-                TeamEN equipo6 = teamCEN.GetTeamById (team6);
-                Console.WriteLine ("New team: " + equipo6.Name);
+                int team6 = teamCEN.NewTeam("Barça Basket", "Spain", true);
+                TeamEN equipo6 = teamCEN.GetTeamById(team6);
+                Console.WriteLine("New team: " + equipo6.Name);
 
-                int team7 = teamCEN.NewTeam ("Gran Canaria Basket", "Spain", true);
-                TeamEN equipo7 = teamCEN.GetTeamById (team7);
-                Console.WriteLine ("New team: " + equipo7.Name);
+                int team7 = teamCEN.NewTeam("Gran Canaria Basket", "Spain", true);
+                TeamEN equipo7 = teamCEN.GetTeamById(team7);
+                Console.WriteLine("New team: " + equipo7.Name);
 
-                int selection1 = teamCEN.NewTeam ("Selección Española", "Spain", false);
-                TeamEN seleccion1 = teamCEN.GetTeamById (selection1);
-                Console.WriteLine ("New team: " + seleccion1.Name);
+                int selection1 = teamCEN.NewTeam("Selección Española", "Spain", false);
+                TeamEN seleccion1 = teamCEN.GetTeamById(selection1);
+                Console.WriteLine("New team: " + seleccion1.Name);
 
                 // Añadimos datos a Partidos
                 Console.WriteLine ("------------- Creating new Matches -------------");
                 MatchCEN match = new MatchCEN ();
-                int match1 = match.NewMatch (new DateTime (2017, 4, 2), round1, team2, team1, "Camp Nou");
+                int match1 = match.NewMatch (new DateTime (2017, 4, 2), round1, team2, team6, "Camp Nou");
                 MatchEN partido1 = match.GetMatchById (match1);
                 Console.WriteLine ("New match in: " + partido1.Stadium);
-                int match2 = match.NewMatch (new DateTime (2017, 3, 17), round1, team1, team3, "Juventus Stadium");
+                int match2 = match.NewMatch (new DateTime (2017, 3, 17), round1, team6, team3, "Juventus Stadium");
                 MatchEN partido2 = match.GetMatchById (match2);
                 Console.WriteLine ("New match in: " + partido2.Stadium);
                 int match3 = match.NewMatch (new DateTime (2017, 3, 30), round1, team6, team7, "Palau");
@@ -289,24 +291,30 @@ public static void InitializeData ()
                 Console.WriteLine ("New match in: " + partido3.Stadium);
 
                 Console.WriteLine ("Local and Visistant matches");
-                IList<MatchEN> totalMatch = match.GetMatchByLocalTeam (team1);
+                IList<MatchEN> totalMatch = match.GetMatchByLocalTeam (team6);
                 Console.WriteLine ("Barcelona has played: " + totalMatch.Count + " matches as local");
-                IList<MatchEN> totalMatch1 = match.GetMatchByVisistantTeam (team1);
+                IList<MatchEN> totalMatch1 = match.GetMatchByVisistantTeam (team6);
                 Console.WriteLine ("Barcelona has played: " + totalMatch1.Count + " matches as visitant");
                 IList<MatchEN> totalMatch2 = match.GetMatchByVisistantTeam (team2);
                 Console.WriteLine ("Madrid has played: " + totalMatch2.Count + " matches as visistant");
 
-                IList<MatchEN> total = match.GetTotalMatchesByTeam (team1);
+                IList<MatchEN> total = match.GetTotalMatchesByTeam (team6);
                 Console.WriteLine ("Barcelona has played: " + total.Count + " matches");
 
-                /*
+                
                 Console.WriteLine ("--------------- Creating new Competition -------------");
                 List<int> seasonsSantander = new List<int>();
                 seasonsSantander.Add (season1);
+                List<int> seasonsPremier = new List<int>();
+                seasonsPremier.Add(season3);
+
                 List<int> seasonsACB = new List<int>();
                 seasonsACB.Add (season2);
                 CompetitionCEN competi = new CompetitionCEN ();
-                int competition = competi.NewCompetition ("Santander League", newSport, "Spain", true, seasonsSantander);
+                int competition_santanderLeague = competi.NewCompetition ("Liga Santander", newSport, "Spain", true, seasonsSantander);
+                int competition_premierLeague = competi.NewCompetition("Premier League", newSport, "England", true, seasonsPremier);
+                
+                /*
                 Console.WriteLine ("Santander League created");
                 Console.WriteLine ("There are " + competi.GetCompetitionsByPlace ("Spain").Count + " competitions in Spain");
                 int competition2 = competi.NewCompetition ("ACB", newSport2, "Spain", true, seasonsACB);
@@ -415,47 +423,174 @@ public static void InitializeData ()
                         Console.WriteLine ("- " + p.Description);
                 }
 
+                //Santanger League TEAMS
+
+                int teamValencia = teamCEN.NewTeam("Valencia", "Spain", true);
+                int teamBarcelona = teamCEN.NewTeam("Barcelona", "Spain", true);
+                int teamGirona = teamCEN.NewTeam("Girona", "Spain", true);
+                int teamAlbacete = teamCEN.NewTeam("Albacete", "Spain", true);
+                int teamVillarreal = teamCEN.NewTeam("Villarreal", "Spain", true);
+                int teamEibar = teamCEN.NewTeam("Eibar", "Spain", true);
+                int teamCelta = teamCEN.NewTeam("Celta", "Spain", true);
+                int teamGetafe = teamCEN.NewTeam("Getafe", "Spain", true);
+
+                //Premier League TEAMS
+
+
+                int teamAstonVilla = teamCEN.NewTeam("Aston Villa", "England", true);
+                int teamChelsea = teamCEN.NewTeam("Chelsea", "England", true);
+                int teamArsenal = teamCEN.NewTeam("Arsenal", "England", true);
+                int teamManchesterUnited = teamCEN.NewTeam("Manchester United", "England", true);
+                int teamManchesterCity = teamCEN.NewTeam("Manchester City", "England", true);
+                int teamTottenham = teamCEN.NewTeam("Tottenham", "England", true);
+                int teamEverton = teamCEN.NewTeam("Everton", "England", true);
+                int teamSwansea = teamCEN.NewTeam("Swansea", "England", true);
+
+                //Santander League MATCHES
                 MatchCEN matchCEN = new MatchCEN ();
-                int id_match = matchCEN.NewMatch (new DateTime (2017, 2, 20), round1, team1, team5, "Camp Nou");
-                //eventCEN.JoinCompetition (id_match, competition);
 
-                CorrectScoreCEN correctScoreCEN = new CorrectScoreCEN ();
-                int correctscore_1 = correctScoreCEN.NewCorrectScore (10, "Scorecast 1", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Bet365", id_match, 2, 1);
-                int correctscore_2 = correctScoreCEN.NewCorrectScore(10, "Scorecast 2", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Sportium", id_match, 5, 1);
+                int match_VLC_GIR = matchCEN.NewMatch(new DateTime(2017, 7, 26), round1, teamValencia, teamGirona, "Mestalla");
+                int match_ALB_VIL = matchCEN.NewMatch(new DateTime(2017, 7, 26), round1, teamAlbacete, teamVillarreal, "Carlos Belmonte");
+                int match_BAR_EIB = matchCEN.NewMatch(new DateTime(2017, 7, 26), round1, teamBarcelona, teamEibar, "Camp Nou");
+                int match_CEL_GET = matchCEN.NewMatch(new DateTime(2017, 7, 26), round1, teamCelta, teamGetafe, "Balaidos");
 
-                int correctscore_3 = correctScoreCEN.NewCorrectScore(10, "Scorecast 3", PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.won, "Bet365", id_match, 5, 1);
+                eventCEN.JoinCompetition(match_VLC_GIR, competition_santanderLeague);
+                eventCEN.JoinCompetition(match_ALB_VIL, competition_santanderLeague);
+                eventCEN.JoinCompetition(match_BAR_EIB, competition_santanderLeague);
+                eventCEN.JoinCompetition(match_CEL_GET, competition_santanderLeague);
 
+                //Premier League MATCHES
+
+                int match_MAN_MAN = matchCEN.NewMatch(new DateTime(2017, 7, 28), round3, teamManchesterUnited, teamManchesterCity, "Old Trafford");
+                int match_AST_CHE = matchCEN.NewMatch(new DateTime(2017, 7, 28), round3, teamAstonVilla, teamChelsea, "Villa Park");
+                int match_TOT_EVE = matchCEN.NewMatch(new DateTime(2017, 7, 28), round3, teamTottenham, teamEverton, "white Hart Lane");
+                int match_ARS_SWA = matchCEN.NewMatch(new DateTime(2017, 7, 28), round3, teamArsenal, teamSwansea, "Emirates Stadium");
+
+                eventCEN.JoinCompetition(match_MAN_MAN, competition_premierLeague);
+                eventCEN.JoinCompetition(match_AST_CHE, competition_premierLeague);
+                eventCEN.JoinCompetition(match_TOT_EVE, competition_premierLeague);
+                eventCEN.JoinCompetition(match_ARS_SWA, competition_premierLeague);
+
+              
+                //Santander League PICKS
+                int result1 = resultCEN.NewResult(2.1, "Gana Valencia", PickResultEnum.unstarted, "Kirolbet", match_VLC_GIR, ResultEnum.home, TimeEnum.fulltime);
+                int result2 = resultCEN.NewResult(2.5, "Gana Albacete", PickResultEnum.unstarted, "Bet365", match_ALB_VIL, ResultEnum.home, TimeEnum.fulltime);
+                int result3 = resultCEN.NewResult(1.25, "Gana Barça", PickResultEnum.unstarted, "Bet365", match_BAR_EIB, ResultEnum.home, TimeEnum.fulltime);
+                int result4 = resultCEN.NewResult(1.5, "Gana Celta", PickResultEnum.unstarted, "Kirolbet", match_CEL_GET, ResultEnum.home, TimeEnum.fulltime);
+                int result5 = resultCEN.NewResult(3, "Empate", PickResultEnum.unstarted, "Kirolbet", match_CEL_GET, ResultEnum.draw, TimeEnum.fulltime);
+                int result6 = resultCEN.NewResult(3.3, "Empate", PickResultEnum.unstarted, "Kirolbet", match_ALB_VIL, ResultEnum.draw, TimeEnum.fulltime);
+                int result7 = resultCEN.NewResult(2.75, "Empate", PickResultEnum.unstarted, "Kirolbet", match_VLC_GIR, ResultEnum.draw, TimeEnum.fulltime);
+                int result8 = resultCEN.NewResult(4, "Gana Girona", PickResultEnum.unstarted, "Kirolbet", match_VLC_GIR, ResultEnum.away, TimeEnum.fulltime);
+                int result9 = resultCEN.NewResult(2.25, "Gana Villarreal", PickResultEnum.unstarted, "Bet365", match_ALB_VIL, ResultEnum.away, TimeEnum.fulltime);
+
+                GoalCEN goalCEN = new GoalCEN();
+                //Premier League PICKS
+                int goal1 = goalCEN.NewGoal(1.75, "+2.5 goles", PickResultEnum.unstarted, "Luckia", match_MAN_MAN, LineEnum.over, 2.5, false);
+                int result11 = resultCEN.NewResult(2.15, "Gana Manchester United", PickResultEnum.unstarted, "Bet365", match_MAN_MAN, ResultEnum.home, TimeEnum.fulltime);
+                int result13 = resultCEN.NewResult(3, "Gana Aston Villa", PickResultEnum.unstarted, "Bet365", match_AST_CHE, ResultEnum.home, TimeEnum.fulltime);
+                int result14 = resultCEN.NewResult(1.5, "Empate", PickResultEnum.unstarted, "Bet365", match_TOT_EVE, ResultEnum.draw, TimeEnum.fulltime);
+                int goal2 = goalCEN.NewGoal(2.5, "-2.5 goles", PickResultEnum.unstarted, "Luckia", match_MAN_MAN, LineEnum.over, 2.5, false);
+                int goal3 = goalCEN.NewGoal(2.2, "-2.5 goles", PickResultEnum.unstarted, "William Hill", match_AST_CHE, LineEnum.over, 2.5, false);
+                int goal4 = goalCEN.NewGoal(2.2, "-2.5 goles", PickResultEnum.unstarted, "Betfair", match_ARS_SWA, LineEnum.over, 2.5, false);
+                int goal6 = goalCEN.NewGoal(2, "+2.5 goles", PickResultEnum.unstarted, "Luckia", match_ARS_SWA, LineEnum.over, 2.5, false);
 
                 IList<int> picks_1 = new List<int>();
-                picks_1.Add (correctscore_1);
-                picks_1.Add(correctscore_2);
+                picks_1.Add (result1);
+                //picks_1.Add(correctscore_2);
 
                 IList<int> picks_2 = new List<int>();
-                picks_2.Add(correctscore_3);
+                picks_2.Add(result2);
 
-                int id_post_1 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido",
-                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
+                IList<int> picks_3 = new List<int>();
+                picks_3.Add(result3);
 
-                int id_post_2 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Va a ser un partido sufrido 2",
-                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
+                IList<int> picks_4 = new List<int>();
+                picks_4.Add(result4);
 
-                int id_post_3 = postCEN.NewPost (new DateTime (2017, 2, 25), new DateTime (2017, 2, 25), 1, "Va a ser un partido sufrido 3",
-                        false, picks_2, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
+                IList<int> picks_5 = new List<int>();
+                picks_5.Add(result5);
 
-                int id_post_4 = postCEN.NewPost (new DateTime (2017, 2, 28), new DateTime (2017, 2, 28), 1, "Va a ser un partido sufrido 4",
-                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
+                IList<int> picks_6 = new List<int>();
+                picks_6.Add(result6);
 
-                int id_post_5 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 5",
-                        false, picks_1, tipster1, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
+                IList<int> picks_7 = new List<int>();
+                picks_7.Add(result7);
 
-                int id_post_6 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 6",
-                        false, picks_1, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 20, 0);
+                IList<int> picks_8 = new List<int>();
+                picks_8.Add(result8);
 
-                int id_post_7 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 7",
-                        false, picks_1, tipster2, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
+                IList<int> picks_9 = new List<int>();
+                picks_9.Add(result9);
 
-                int id_post_8 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido 8",
-                        false, picks_1, tipster3, 10, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
+                IList<int> picks_10 = new List<int>();
+                picks_10.Add(goal1);
+
+                IList<int> picks_11 = new List<int>();
+                picks_11.Add(goal2);
+
+                IList<int> picks_12 = new List<int>();
+                picks_12.Add(goal3);
+
+                IList<int> picks_13 = new List<int>();
+                picks_13.Add(goal4);
+
+                IList<int> picks_14 = new List<int>();
+                picks_14.Add(result11);
+
+                IList<int> picks_15 = new List<int>();
+                picks_15.Add(result13);
+
+                IList<int> picks_16 = new List<int>();
+                picks_16.Add(result14);
+               
+
+                int id_post_1 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "El jugador estrella es baja.",
+                        false, picks_1, tipster1, 2.1, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
+
+                int id_post_2 = postCEN.NewPost (new DateTime (2017, 2, 18), new DateTime (2017, 2, 18), 1, "Vienen en racha ascendente",
+                        false, picks_8, tipster1, 2.25, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
+
+                int id_post_3 = postCEN.NewPost (new DateTime (2017, 2, 25), new DateTime (2017, 2, 25), 1, "Partido trabado preveo",
+                        false, picks_2, tipster1, 2.5, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
+
+                int id_post_4 = postCEN.NewPost (new DateTime (2017, 2, 28), new DateTime (2017, 2, 28), 1, "Tienen que ganar si quieren clasificarse",
+                        false, picks_3, tipster1, 1.25, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
+
+                int id_post_5 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Ultimos 2 partidos les costó",
+                        false, picks_4, tipster1, 1.5, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
+
+                int id_post_6 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Va a ser un partido sufrido",
+                        false, picks_5, tipster2, 3, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 20, 0);
+
+                int id_post_7 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Juegan en casa",
+                        false, picks_6, tipster2, 3.3, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
+
+                int id_post_8 = postCEN.NewPost (new DateTime (2017, 9, 30), new DateTime (2017, 9, 30), 1, "Les vale el empate",
+                        false, picks_7, tipster3, 2, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
+
+                int id_post_9 = postCEN.NewPost(new DateTime(2017, 2, 18), new DateTime(2017, 2, 18), 1, "Se prevee lluvia",
+        false, picks_1, tipster1, 2.1, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 0, 5);
+
+                int id_post_10 = postCEN.NewPost(new DateTime(2017, 2, 18), new DateTime(2017, 2, 18), 1, "Quiere el Balon de Oro",
+                        false, picks_8, tipster1, 2.25, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 16, 0);
+
+                int id_post_11 = postCEN.NewPost(new DateTime(2017, 2, 25), new DateTime(2017, 2, 25), 1, "Tienen que callar bocas",
+                        false, picks_9, tipster1, 2.5, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 70, 0);
+
+                int id_post_12 = postCEN.NewPost(new DateTime(2017, 2, 28), new DateTime(2017, 2, 28), 1, "Estrenan mister",
+                        false, picks_10, tipster1, 1.25, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 5, 0);
+
+                int id_post_13 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Han fichado a los 3 mejores",
+                        false, picks_11, tipster1, 1.5, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 2000, 0);
+
+                int id_post_14 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Si quieren seguir con aspiraciones deben ganar",
+                        false, picks_12, tipster2, 3, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 20, 0);
+
+                int id_post_15 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Mala defensa",
+                        false, picks_13, tipster2, 3.3, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
+
+                int id_post_16 = postCEN.NewPost(new DateTime(2017, 9, 30), new DateTime(2017, 9, 30), 1, "Buen Ataque",
+                        false, picks_14, tipster3, 2, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum.unstarted, 700, 0);
 
                 postCP.VerifyPost (id_post_1);
                 postCEN.AddLike (id_post_1);
