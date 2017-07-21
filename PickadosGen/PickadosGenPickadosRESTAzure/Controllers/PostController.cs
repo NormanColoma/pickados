@@ -210,6 +210,45 @@ public HttpResponseMessage GetByResult (PickadosGenNHibernate.Enumerated.Pickado
 
 
 
+        [HttpPost]
+
+        [Route("~/api/Post/like")]
+
+        public HttpResponseMessage LikePost(int post_id)
+        {
+            // CAD, CEN, EN, returnValue
+
+            PostRESTCAD postRESTCAD = null;
+            PostCEN postCEN = null;
+
+            int returnValue = 0;
+
+            try
+            {
+                SessionInitializeWithoutTransaction();
+
+                postRESTCAD = new PostRESTCAD(session);
+                postCEN = new PostCEN(postRESTCAD);
+
+                // CEN return
+
+                postCEN.AddLike(post_id);
+                returnValue = postCEN.GetPostById(post_id).Likeit;
+            }
+
+            catch (Exception e)
+            {
+                if (e.GetType() == typeof(HttpResponseException)) throw e;
+                else if (e.GetType() == typeof(PickadosGenNHibernate.Exceptions.ModelException) || e.GetType() == typeof(PickadosGenNHibernate.Exceptions.DataLayerException)) throw new HttpResponseException(HttpStatusCode.BadRequest);
+                else throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
+            finally
+            {
+                SessionClose();
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, returnValue);
+        }
 
 
 
@@ -219,8 +258,7 @@ public HttpResponseMessage GetByResult (PickadosGenNHibernate.Enumerated.Pickado
 
 
 
-
-[HttpPost]
+        [HttpPost]
 
 [Route ("~/api/Post/VerifyPost")]
 
