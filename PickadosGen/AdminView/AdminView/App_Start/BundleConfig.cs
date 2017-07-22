@@ -20,6 +20,9 @@ namespace AdminView
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/index").Include(
+                      "~/Scripts/functions/functions_index.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
@@ -35,7 +38,7 @@ namespace AdminView
                       "~/Scripts/metisMenu.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/users").Include(
-                      "~/Scripts/functions/functions.js"));
+                      "~/Scripts/functions/functions_users.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/edituser").Include(
                       "~/Scripts/functions/functions_edituser.js"));

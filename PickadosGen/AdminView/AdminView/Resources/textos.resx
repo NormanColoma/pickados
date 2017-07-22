@@ -121,13 +121,13 @@
     <value>Acciones</value>
   </data>
   <data name="AddPlayerToTeam" xml:space="preserve">
-    <value>Añadir Jugador al Equipo</value>
+    <value>Añadir jugador a un equipo</value>
   </data>
   <data name="AddTeamCompetition" xml:space="preserve">
-    <value>Agregar equipo a Competición</value>
+    <value>Agregar equipo a una competición</value>
   </data>
   <data name="AdminPanel" xml:space="preserve">
-    <value>Panel de Administración</value>
+    <value>Panel de administración</value>
   </data>
   <data name="Away_score" xml:space="preserve">
     <value>Marcador visitante</value>
@@ -145,7 +145,7 @@
     <value>Creado el</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Fecha:</value>
+    <value>Fecha</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Descripción</value>
@@ -163,7 +163,7 @@
     <value>Imagen</value>
   </data>
   <data name="Information" xml:space="preserve">
-    <value>Información:</value>
+    <value>Información</value>
   </data>
   <data name="International" xml:space="preserve">
     <value>Internacional</value>
@@ -175,7 +175,7 @@
     <value>Linea</value>
   </data>
   <data name="Local" xml:space="preserve">
-    <value>Local:</value>
+    <value>Local</value>
   </data>
   <data name="LocalAccount" xml:space="preserve">
     <value>Usa una cuenta local para inciar sesión</value>
@@ -238,13 +238,13 @@
     <value>Deportes</value>
   </data>
   <data name="Stadium" xml:space="preserve">
-    <value>Estadio:</value>
+    <value>Estadio</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>Apuesta</value>
   </data>
   <data name="State" xml:space="preserve">
-    <value>Estado:</value>
+    <value>Estado</value>
   </data>
   <data name="Team_name" xml:space="preserve">
     <value>Nombre del equipo</value>
@@ -259,7 +259,7 @@
     <value>Última actualización</value>
   </data>
   <data name="Visitor" xml:space="preserve">
-    <value>Visitante:</value>
+    <value>Visitante</value>
   </data>
   <data name="Asian" xml:space="preserve">
     <value>Asian</value>
@@ -272,5 +272,8 @@
   </data>
   <data name="Subscription_fee" xml:space="preserve">
     <value>Cuota de suscripción</value>
+  </data>
+  <data name="Enter_email" xml:space="preserve">
+    <value>El email es obligatorio</value>
   </data>
 </root>

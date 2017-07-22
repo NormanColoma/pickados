@@ -2,13 +2,39 @@
 
 @model PickadosGenNHibernate.EN.Pickados.MatchEN
 
+<h1>@textos.Match</h1>
+<hr />
+
+<div class="col-xs-6 col-md-6 text-center">
+    <strong>@textos.Local</strong><br />
+    @using (Html.BeginForm("AddLocalTeamToMatch", "Matches", routeValues: new { idLocalTeam = Model.Home.Id, idMatch = Model.Id, idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
+    {
+        <input type="hidden" id="hfTeamLocal" name="TeamIdLocal" />
+        <div class="input-group">
+            <input type="text" id="txtTeamLocal" name="TeamNameLocal" value="@Model.Home.Name" class="form-control" />
+            <span class="input-group-btn"><button type="submit" class="btn btn-default">Añadir</button></span>
+        </div>
+    }
+</div>
+
+<div class="col-xs-6 col-md-6 text-center">
+    <strong>@textos.Visitor</strong><br />
+    @using (Html.BeginForm("AddAwayTeamToMatch", "Matches", routeValues: new { idAwayTeam = Model.Away.Id, idMatch = Model.Id, idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
+    {
+        <input type="hidden" id="hfTeamAway" name="TeamIdAway" />
+        <div class="input-group">
+            <input type="text" id="txtTeamAway" name="TeamNameAway" value="@Model.Away.Name" class="form-control" />
+            <span class="input-group-btn"><button type="submit" class="btn btn-default">Añadir</button></span>
+        </div>
+    }
+</div>
+
 @using (Html.BeginForm("Edit", "Matches", routeValues: new { idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
 {
     //@Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>@textos.Match</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
@@ -36,31 +62,6 @@
 
     </div>
 }
-
-<div class="col-xs-3 col-md-3 text-center">
-    <strong>@textos.Local</strong><br />
-    @using (Html.BeginForm("AddLocalTeamToMatch", "Matches", routeValues: new { idLocalTeam = Model.Home.Id, idMatch = Model.Id, idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
-    {
-        <input type="text" id="txtTeamLocal" name="TeamNameLocal" value="@Model.Home.Name"/>
-            <input type="hidden" id="hfTeamLocal" name="TeamIdLocal" />
-            <button type="submit">
-                <span class="fa fa-plus fa-fw"></span>
-            </button>
-            <br /><br />
-    }
-</div>
-<div class="col-xs-3 col-md-3 text-center">
-    <strong>@textos.Visitor</strong><br />
-    @using (Html.BeginForm("AddAwayTeamToMatch", "Matches", routeValues: new { idAwayTeam = Model.Away.Id, idMatch = Model.Id, idRound = ViewBag.round, idSeason = ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }))
-    {
-        <input type="text" id="txtTeamAway" name="TeamNameAway" value="@Model.Away.Name"/>
-        <input type="hidden" id="hfTeamAway" name="TeamIdAway" />
-            <button type="submit">
-                <span class="fa fa-plus fa-fw"></span>
-            </button>
-            <br /><br />
-    }
-</div><br /><br /><br /><br />
 
 <div>
     @Html.ActionLink(@textos.Back, "Matches", "Matches", new { idRound = ViewBag.round, idSeason=ViewBag.season, idCompetition = ViewBag.competition, countryName = ViewBag.country, idSport = ViewBag.sport, typeCompetition = ViewBag.typeCompetition }, null)

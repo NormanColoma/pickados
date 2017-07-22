@@ -121,13 +121,13 @@
     <value>Actions</value>
   </data>
   <data name="AddPlayerToTeam" xml:space="preserve">
-    <value>Add Player to Team</value>
+    <value>Add player to team</value>
   </data>
   <data name="AddTeamCompetition" xml:space="preserve">
-    <value>Add Team to Competition</value>
+    <value>Add team to competition</value>
   </data>
   <data name="AdminPanel" xml:space="preserve">
-    <value>Admin Panel</value>
+    <value>Admin panel</value>
   </data>
   <data name="Away_score" xml:space="preserve">
     <value>Away score</value>
@@ -145,7 +145,7 @@
     <value>Created at</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date:</value>
+    <value>Date</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
@@ -175,7 +175,7 @@
     <value>Line</value>
   </data>
   <data name="Local" xml:space="preserve">
-    <value>Local:</value>
+    <value>Local</value>
   </data>
   <data name="LocalAccount" xml:space="preserve">
     <value>Use a local account to login</value>
@@ -238,16 +238,16 @@
     <value>Sports</value>
   </data>
   <data name="Stadium" xml:space="preserve">
-    <value>Stadium:</value>
+    <value>Stadium</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>Stake</value>
   </data>
   <data name="State" xml:space="preserve">
-    <value>State:</value>
+    <value>State</value>
   </data>
   <data name="Team_name" xml:space="preserve">
-    <value>Team_name</value>
+    <value>Team name</value>
   </data>
   <data name="Tipster" xml:space="preserve">
     <value>Tipster</value>
@@ -259,7 +259,7 @@
     <value>Updated at</value>
   </data>
   <data name="Visitor" xml:space="preserve">
-    <value>Visitor:</value>
+    <value>Visitor</value>
   </data>
   <data name="Asian" xml:space="preserve">
     <value>Asian</value>
@@ -272,5 +272,8 @@
   </data>
   <data name="Subscription_fee" xml:space="preserve">
     <value>Subscription fee</value>
+  </data>
+  <data name="Enter_email" xml:space="preserve">
+    <value>Email required</value>
   </data>
 </root>

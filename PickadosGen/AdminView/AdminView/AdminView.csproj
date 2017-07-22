@@ -153,9 +153,10 @@
     <Content Include="Scripts\chartjs\Chart.js" />
     <Content Include="Scripts\chartjs\Chart.min.js" />
     <Content Include="Scripts\canvas\jquery.canvasjs.min.js" />
-    <Content Include="Scripts\functions\functions.js" />
+    <Content Include="Scripts\functions\functions_users.js" />
     <Content Include="Scripts\functions\functions_edituser.js" />
     <Content Include="Scripts\functions\functions_database.js" />
+    <Content Include="Scripts\functions\functions_index.js" />
     <Content Include="Scripts\functions\functions_stats.js" />
     <Content Include="Scripts\functions\functions_posts.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />

@@ -1,6 +1,8 @@
 ﻿<div class="col-md-12">
-        @{Html.RenderAction("_poststat", "stats");}
+        @{Html.RenderAction("_poststat", "stats"); }
 
-        @{Html.RenderAction("_loginstat", "stats");}
-
+        @{Html.RenderAction("_loginstat", "stats"); }
 </div>
+
+
+@Scripts.Render("~/bundles/index")

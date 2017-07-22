@@ -70,7 +70,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Añadir Jugador al Equipo.
+        ///   Busca una cadena traducida similar a Añadir jugador a un equipo.
         /// </summary>
         public static string AddPlayerToTeam {
             get {
@@ -79,7 +79,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Agregar equipo a Competición.
+        ///   Busca una cadena traducida similar a Agregar equipo a una competición.
         /// </summary>
         public static string AddTeamCompetition {
             get {
@@ -88,7 +88,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Panel de Administración.
+        ///   Busca una cadena traducida similar a Panel de administración.
         /// </summary>
         public static string AdminPanel {
             get {
@@ -151,7 +151,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Fecha:.
+        ///   Busca una cadena traducida similar a Fecha.
         /// </summary>
         public static string Date {
             get {
@@ -174,6 +174,15 @@ namespace AdminView.Resources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El email es obligatorio.
+        /// </summary>
+        public static string Enter_email {
+            get {
+                return ResourceManager.GetString("Enter_email", resourceCulture);
             }
         }
         
@@ -214,7 +223,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Información:.
+        ///   Busca una cadena traducida similar a Información.
         /// </summary>
         public static string Information {
             get {
@@ -250,7 +259,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Local:.
+        ///   Busca una cadena traducida similar a Local.
         /// </summary>
         public static string Local {
             get {
@@ -448,7 +457,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Estadio:.
+        ///   Busca una cadena traducida similar a Estadio.
         /// </summary>
         public static string Stadium {
             get {
@@ -466,7 +475,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Estado:.
+        ///   Busca una cadena traducida similar a Estado.
         /// </summary>
         public static string State {
             get {
@@ -520,7 +529,7 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Visitante:.
+        ///   Busca una cadena traducida similar a Visitante.
         /// </summary>
         public static string Visitor {
             get {

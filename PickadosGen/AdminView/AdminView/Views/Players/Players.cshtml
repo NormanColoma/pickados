@@ -15,12 +15,11 @@
         <label>@textos.AddPlayerToTeam</label>
         @using (Html.BeginForm("AddPlayerToTeam", "Players", routeValues: new { idTeam = ViewBag.team.Id, idCompetition = ViewBag.competition.Id, countryName = ViewBag.country, idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }))
         {
-            <input type="text" id="txtPlayer" name="PlayerName" />
             <input type="hidden" id="hfPlayer" name="PlayerId" />
-            <button type="submit">
-                <span class="fa fa-plus fa-fw"></span>
-            </button>
-            <br /><br />
+            <div class="input-group">
+                <input type="text" id="txtPlayer" name="PlayerName" class="form-control" />
+                <span class="input-group-btn"><button type="submit" class="btn btn-default">Añadir</button></span>
+            </div>
         }
     </div>
 </div>

@@ -18,7 +18,7 @@ namespace AdminView.Models
         [Display(Name = "Alias")]
         public string Alias { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.textos), ErrorMessageResourceName = "enteremail")]
         [Display(Name = "Email", ResourceType = typeof(textos))]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

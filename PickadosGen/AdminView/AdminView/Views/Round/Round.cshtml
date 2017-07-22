@@ -8,7 +8,7 @@ string total = inicio + "/" + final;
     @Html.Raw(message + total);
 }
 
-<ul class="nav nav-tabs">
+<ul class="breadcrumb">
     <li>@Html.ActionLink(@textos.Calendar, "Calendar", "Calendar")</li>
     <li>@Html.ActionLink((string)ViewBag.typeCompetition, "TypeCompetiCalendar", "TypeCompetiCalendar", new { idSport = ViewBag.sport.Id }, null)</li>
     <li>@Html.ActionLink((string)ViewBag.sport.Name, "CountryCalendar", "CountryCalendar", new { idSport = ViewBag.sport.Id, typeCompetition = ViewBag.typeCompetition }, null)</li>
