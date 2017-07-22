@@ -10,7 +10,7 @@ private int id;
 public int Id {
         get { return id; } set { id = value;  }
 }
-private Nullable<DateTime> created_at;
+        private Nullable<DateTime> created_at;
 public Nullable<DateTime> Created_at {
         get { return created_at; } set { created_at = value;  }
 }

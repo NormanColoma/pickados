@@ -15,8 +15,15 @@ public int Id
         set { id = value; }
 }
 
+        private int likes;
+        public int Likes
+        {
+            get { return likes; }
+            set { likes = value; }
+        }
 
-private Nullable<DateTime> created_at;
+
+        private Nullable<DateTime> created_at;
 public Nullable<DateTime> Created_at
 {
         get { return created_at; }

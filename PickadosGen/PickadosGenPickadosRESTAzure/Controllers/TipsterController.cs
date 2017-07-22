@@ -159,6 +159,7 @@ public HttpResponseMessage GetFollowers (int id)
                             p.GetAllMatchOfPick = new List<MatchDTOA>();
                             p.GetAllMatchOfPick.Add(match);
                             PostDTOA post = PostAssembler.Convert(entry, session);
+                            post.Likes = entry.Likeit;
                             post.Tipster = entry.Tipster.Alias;
                             post.GetAllPickOfPost = new List<PickDTOA>();
                             post.GetAllPickOfPost.Add(p);
