@@ -276,4 +276,28 @@
   <data name="Enter_email" xml:space="preserve">
     <value>El email es obligatorio</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="Loaddata" xml:space="preserve">
+    <value>Cargar datos</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Solicitudes</value>
+  </data>
+  <data name="Resolved" xml:space="preserve">
+    <value>Finalizadas</value>
+  </data>
+  <data name="Stats" xml:space="preserve">
+    <value>Estadísticas</value>
+  </data>
+  <data name="Unresolved" xml:space="preserve">
+    <value>Pendientes</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="Logins" xml:space="preserve">
+    <value>Inicios de sesión</value>
+  </data>
 </root>

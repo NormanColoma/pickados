@@ -205,6 +205,15 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Inicio.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Marcador de casa.
         /// </summary>
         public static string Home_score {
@@ -259,6 +268,15 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cargar datos.
+        /// </summary>
+        public static string Loaddata {
+            get {
+                return ResourceManager.GetString("Loaddata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Local.
         /// </summary>
         public static string Local {
@@ -291,6 +309,15 @@ namespace AdminView.Resources {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Inicios de sesión.
+        /// </summary>
+        public static string Logins {
+            get {
+                return ResourceManager.GetString("Logins", resourceCulture);
             }
         }
         
@@ -403,6 +430,24 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Solicitudes.
+        /// </summary>
+        public static string Requests {
+            get {
+                return ResourceManager.GetString("Requests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Finalizadas.
+        /// </summary>
+        public static string Resolved {
+            get {
+                return ResourceManager.GetString("Resolved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Resultado.
         /// </summary>
         public static string Result {
@@ -484,6 +529,15 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Estadísticas.
+        /// </summary>
+        public static string Stats {
+            get {
+                return ResourceManager.GetString("Stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cuota de suscripción.
         /// </summary>
         public static string Subscription_fee {
@@ -520,11 +574,29 @@ namespace AdminView.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Pendientes.
+        /// </summary>
+        public static string Unresolved {
+            get {
+                return ResourceManager.GetString("Unresolved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Última actualización.
         /// </summary>
         public static string Updated_at {
             get {
                 return ResourceManager.GetString("Updated_at", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Usuarios.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

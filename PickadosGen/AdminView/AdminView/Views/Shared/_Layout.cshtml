@@ -47,7 +47,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="~/App_Resources/img/Pikados.png" alt="Pickados" height="42" width="84" /></a>
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-brand logo" })
+                <!--<a class="navbar-brand" href="/"><img src="~/App_Resources/img/Pikados.png" alt="Pickados" height="42" width="84" /></a>-->
             </div>
             <!-- /.navbar-header -->
             <div class="navbar-collapse collapse">
@@ -92,34 +93,34 @@
                                 -->
                             <ul class="nav" id="side-menu">
                                 <li>
-                                    <a href="/"><i class="fa fa-home fa-fw"></i>Inicio</a>
+                                    <a href="/"><i class="fa fa-home fa-fw"></i>@textos.Home</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Estadísticas<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>@textos.Stats<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="/stats/post">Publicaciones</a>
+                                            <a href="/stats/post">@textos.Posts</a>
                                         </li>
                                         <li>
-                                            <a href="/stats/users">Usuarios</a>
+                                            <a href="/stats/users">@textos.Users</a>
                                         </li>
                                         <li>
-                                            <a href="/stats/login">login</a>
+                                            <a href="/stats/login">@textos.Logins</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-second-level -->
                                 </li>
                                 <li>
-                                    <a href="/user"><i class="fa fa-user fa-fw"></i>Usuarios</a>
+                                    <a href="/user"><i class="fa fa-user fa-fw"></i>@textos.Users</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-inbox fa-fw"></i>Solicitudes<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-inbox fa-fw"></i>@textos.Requests<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="/request">Pendientes</a>
+                                            <a href="/request">@textos.Unresolved</a>
                                         </li>
                                         <li>
-                                            <a href="/request/finalizadas">Finalizadas</a>
+                                            <a href="/request/finalizadas">@textos.Resolved</a>
                                         </li>
                                     </ul>
                                     <!--<a href="/request"><i class="fa fa-inbox fa-fw"></i>Solicitudes</a>-->
@@ -128,10 +129,10 @@
                                     <a href="/sports/sports"><i class="fa fa-soccer-ball-o fa-fw"></i>@textos.Sport</a>
                                 </li>
                                 <li>
-                                    <a href="/calendar/calendar"><i class="fa fa-calendar fa-fw"></i>Calendario</a>
+                                    <a href="/calendar/calendar"><i class="fa fa-calendar fa-fw"></i>@textos.Calendar</a>
                                 </li>
                                 <li>
-                                    <a href="/database/index"><i class="fa fa-database fa-fw"></i>Cargar datos</a>
+                                    <a href="/database/index"><i class="fa fa-database fa-fw"></i>@textos.Loaddata</a>
                                 </li>
                             </ul>
                         </div>

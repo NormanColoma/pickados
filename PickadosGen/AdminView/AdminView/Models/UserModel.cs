@@ -18,17 +18,17 @@ namespace AdminView.Models
         [Display(Name = "Alias")]
         public string Alias { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resources.textos), ErrorMessageResourceName = "enteremail")]
+        [Required(ErrorMessageResourceType = typeof(Resources.textos), ErrorMessageResourceName = "Enter_email")]
         [Display(Name = "Email", ResourceType = typeof(textos))]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Display(Name = "Created_at", ResourceType = typeof(textos))]
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Created_at { get; set; }
 
         [Display(Name = "Updated_at", ResourceType = typeof(textos))]
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Updated_at { get; set; }
 
         public string Password { get; set; }

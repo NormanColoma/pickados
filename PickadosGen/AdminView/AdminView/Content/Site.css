@@ -131,3 +131,15 @@ span[id^="error_"] {
 .stat_user_table_title {
     font-weight: bold;
 }
+
+a.logo
+{
+    background: url(../App_Resources/img/Pikados.png) no-repeat top left;
+    background-size: 100% 100%;
+    margin-left: 10px;
+    display: block;
+    height: 42px;
+    width: 130px;
+    padding: 0 0 0 0;
+    text-indent: -9999px; /* hides the link text */
+}
