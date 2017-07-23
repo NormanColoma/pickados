@@ -301,18 +301,53 @@ public HttpResponseMessage VerifyPost (int p_oid)
 
 [Route ("~/api/Post/PublishPost")]
 
-public HttpResponseMessage PublishPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, bool p_private, System.Collections.Generic.IList<int> p_pick, int p_tipster, PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postresult)
+        public HttpResponseMessage PublishPost (Nullable<DateTime> p_created_at, Nullable<DateTime> p_modified_at, double p_stake, string p_description, 
+                                                bool p_private, System.Collections.Generic.IList<int> picks, int p_tipster, 
+                                                PickadosGenNHibernate.Enumerated.Pickados.PickResultEnum p_postresult, 
+                                                int competition_id, string competition_name, string competition_place,
+                                                double pick_odd, string pick_bookie, Nullable<DateTime> event_date)
 {
         // CP, returnValue
         PostCP postCP = null;
-
+            PickRESTCAD pickRESTCAD = null;
+            PickCEN pickCEN = null;
+            CompetitionRESTCAD competitionRESTCAD = null;
+            CompetitionCEN competitionCEN = null;
+            Event_CEN eventCEN = null;
         int returnValue;
 
         try
         {
                 SessionInitializeTransaction ();
+                pickRESTCAD = new PickRESTCAD(session);
+                pickCEN = new PickCEN(pickRESTCAD);
+                competitionRESTCAD = new CompetitionRESTCAD(session);
+                competitionCEN = new CompetitionCEN(competitionRESTCAD);
+                eventCEN = new Event_CEN();
+
                 postCP = new PostCP (session);
 
+                List<int> p_pick = new List<int>();
+                List<int> p_seasons = new List<int>();
+                int round_id = 163840;
+                int event_id = -1;
+                p_seasons.Add(131072);
+
+                foreach (int pick_id_post in picks) {
+                    PickEN found = pickCEN.GetPickById(pick_id_post);
+                    if (found == null) {
+                        CompetitionEN competitionFound = competitionCEN.GetCompetitionById(competition_id);
+                        if (competitionFound == null) {
+                            competition_id = competitionCEN.NewCompetition(competition_name, 98304, competition_place, true, p_seasons);
+
+                        }
+                        event_id = eventCEN.NewEvent(event_date, round_id);
+                        int pick_id = pickCEN.NewPick(pick_odd, p_description, p_postresult, pick_bookie, event_id);
+                        p_pick.Add(pick_id);
+                    } else {
+                        p_pick.Add(found.Id);
+                    }
+                }
                 // Operation
                 returnValue = postCP.PublishPost (p_created_at, p_modified_at, p_stake, p_description, p_private, p_pick, p_tipster, p_postresult);
                 SessionCommit ();
