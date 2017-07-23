@@ -329,6 +329,8 @@
     <Content Include="Views\Stats\_picks\_PickDialog.cshtml" />
     <Content Include="Views\Database\Index.cshtml" />
     <Content Include="Views\Database\_insert\_SuccessDialog.cshtml" />
+    <Content Include="Views\Post\PostDetails.cshtml" />
+    <Content Include="Views\Pick\DetailsPick.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
