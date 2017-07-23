@@ -4,9 +4,7 @@
 			    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
 			    <property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
 			    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
-			    <property name="connection.connection_string">
-            Data Source=13.73.153.232;Initial Catalog=PickadosGenNHibernate;User Id=pickados;Password=ElPerroDeSanRoque!1;
-          </property>
+			    <property name="connection.connection_string">Data Source=52.166.71.67;Initial Catalog=PickadosGenNHibernate;User Id=pickados;Password=ElPerroDeSanRoque_1;</property>
 			    <property name="proxyfactory.factory_class">
 			      NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu
 			    </property>
